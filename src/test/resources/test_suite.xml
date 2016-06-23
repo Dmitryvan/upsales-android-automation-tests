@@ -1,0 +1,19 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="test suite" parallel="false">
+    <listeners>
+        <listener class-name="com.android.util.ExtentReporterNG" />
+    </listeners>
+    <test name="App Test">
+        <classes>
+            <class name="com.android.tests.DashboardTest"/>
+            <class name="com.android.tests.DashboardFilterTest"/>
+            <class name="com.android.tests.SalesPipelineTest"/>
+            <class name="com.android.tests.SalesPipelineNavigationTest"/>
+            <!--<class name="com.android.tests.LeftMenuTest"/>-->
+            <!--<class name="com.android.tests.LoginTest"/>-->
+            <!--<class name="com.android.tests.LogoutTest"/>-->
+            <!--<class name="com.android.tests.PipelineTest"/>-->
+            <!--<class name="com.android.tests.PipelineFilterTest"/>-->
+        </classes>
+    </test>
+</suite>
