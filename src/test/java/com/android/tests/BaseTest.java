@@ -22,7 +22,7 @@ public class BaseTest {
     public void setUp() throws Exception {
         File app = new File(PropertyLoader.loadProperty("src/test/resources/app.properties", "appPath"));
         DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "6.0");
+        capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "4.4.2");
         capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "Nexus_5X_API_19");
         capabilities.setCapability(MobileCapabilityType.APP, app.getAbsolutePath());
         if (driver != null) { driver.quit(); }

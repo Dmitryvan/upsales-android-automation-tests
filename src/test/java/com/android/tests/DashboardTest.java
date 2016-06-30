@@ -1,5 +1,6 @@
 package com.android.tests;
 
+import com.android.pages.BasePage;
 import com.android.pages.DashboardPage;
 import com.android.pages.FilterPage;
 import com.android.pages.LoginPage;
@@ -104,7 +105,7 @@ public class DashboardTest extends BaseTest {
         softAssert.assertAll();
     }
 
-//    @Test(priority = 5) //CASE 3
+    //    @Test(priority = 5) //CASE 3
 //    public void softMyAppointmentsTodayVerification() {
 //        SoftAssertExtended softAssert = new SoftAssertExtended();
 //        softAssert.assertTrue(DashboardPage.checkAllAppointmentsAreForToday(today));

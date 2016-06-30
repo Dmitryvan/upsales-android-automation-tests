@@ -6,26 +6,25 @@ import org.openqa.selenium.By;
 public class PipelinePage extends BasePage {
 
     private static final By buttonFilter = MobileBy.IosUIAutomation(".navigationBars()[0].buttons()[2]");
-    private static final By tabSales = MobileBy.id(
-            "sales");
-    private static final By tableStages = MobileBy.IosUIAutomation(".tableViews()[0].groups()");
+    private static final By tabSales = MobileBy.id("sales");
+    private static final By tableStages = MobileBy.id("stageNameTxt");
     private static final By tableFallback = MobileBy.IosUIAutomation(".tableViews()[0].cells()");
 
-    private static final By labelFallback = MobileBy.IosUIAutomation(".tableViews()[0].groups()[0].staticTexts()[0]");
-    private static final By labelFallbackCount = MobileBy.IosUIAutomation(".tableViews()[0].groups()[0].staticTexts()[1]");
-    private static final By labelFallbackSum = MobileBy.IosUIAutomation(".tableViews()[0].groups()[0].staticTexts()[2]");
-    private static final By labelProspect1 = MobileBy.IosUIAutomation(".tableViews()[0].groups()[1].staticTexts()[0]");
-    private static final By labelProspect1Count = MobileBy.IosUIAutomation(".tableViews()[0].groups()[1].staticTexts()[1]");
-    private static final By labelProspect1Sum = MobileBy.IosUIAutomation(".tableViews()[0].groups()[1].staticTexts()[2]");
-    private static final By labelProspect2 = MobileBy.IosUIAutomation(".tableViews()[0].groups()[2].staticTexts()[0]");
-    private static final By labelProspect2Count = MobileBy.IosUIAutomation(".tableViews()[0].groups()[2].staticTexts()[1]");
-    private static final By labelProspect2Sum = MobileBy.IosUIAutomation(".tableViews()[0].groups()[2].staticTexts()[2]");
-    private static final By labelMuntlig = MobileBy.IosUIAutomation(".tableViews()[0].groups()[3].staticTexts()[0]");
-    private static final By labelMuntligCount = MobileBy.IosUIAutomation(".tableViews()[0].groups()[3].staticTexts()[1]");
-    private static final By labelMuntligSum = MobileBy.IosUIAutomation(".tableViews()[0].groups()[3].staticTexts()[2]");
-    private static final By pipelineTotalValue = MobileBy.IosUIAutomation(".tableViews()[0].staticTexts()[1]");
-    private static final By weightedWidgetValue = MobileBy.IosUIAutomation(".tableViews()[0].staticTexts()[2]");
-    private static final By averageWidgetValue = MobileBy.IosUIAutomation(".tableViews()[0].staticTexts()[5]");
+    private static final By labelFallback = MobileBy.IosUIAutomation("//android.support.v7.widget.RecyclerView[1]/android.widget.LinearLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]");
+    private static final By labelFallbackCount = MobileBy.IosUIAutomation("//android.support.v7.widget.RecyclerView[1]/android.widget.LinearLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[2]");
+    private static final By labelFallbackSum = MobileBy.xpath("//android.support.v7.widget.RecyclerView[1]/android.widget.LinearLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[3]");
+    private static final By labelProspect1 = MobileBy.xpath("//android.support.v7.widget.RecyclerView[1]/android.widget.LinearLayout[2]/android.widget.RelativeLayout[1]/android.widget.TextView[1]");
+    private static final By labelProspect1Count = MobileBy.xpath("//android.support.v7.widget.RecyclerView[1]/android.widget.LinearLayout[2]/android.widget.RelativeLayout[1]/android.widget.TextView[2]");
+    private static final By labelProspect1Sum = MobileBy.xpath("//android.support.v7.widget.RecyclerView[1]/android.widget.LinearLayout[2]/android.widget.RelativeLayout[1]/android.widget.TextView[3]");
+    private static final By labelProspect2 = MobileBy.xpath("//android.support.v7.widget.RecyclerView[1]/android.widget.LinearLayout[3]/android.widget.RelativeLayout[1]/android.widget.TextView[1]");
+    private static final By labelProspect2Count = MobileBy.xpath("//android.support.v7.widget.RecyclerView[1]/android.widget.LinearLayout[3]/android.widget.RelativeLayout[1]/android.widget.TextView[2]");
+    private static final By labelProspect2Sum = MobileBy.xpath("//android.support.v7.widget.RecyclerView[1]/android.widget.LinearLayout[3]/android.widget.RelativeLayout[1]/android.widget.TextView[3]");
+    private static final By labelMuntlig = MobileBy.xpath("//android.support.v7.widget.RecyclerView[1]/android.widget.LinearLayout[4]/android.widget.RelativeLayout[1]/android.widget.TextView[1]");
+    private static final By labelMuntligCount = MobileBy.xpath("//android.support.v7.widget.RecyclerView[1]/android.widget.LinearLayout[4]/android.widget.RelativeLayout[1]/android.widget.TextView[2]");
+    private static final By labelMuntligSum = MobileBy.xpath("//android.support.v7.widget.RecyclerView[1]/android.widget.LinearLayout[4]/android.widget.RelativeLayout[1]/android.widget.TextView[3]");
+    private static final By pipelineTotalValue = MobileBy.id("salesTotal");
+    private static final By weightedWidgetValue = MobileBy.id("weightedValue");
+    private static final By averageWidgetValue = MobileBy.id("averageValue");
 
     public static void clickTabSales() {
         find(tabSales).click();
@@ -135,7 +134,8 @@ public class PipelinePage extends BasePage {
         return getTableSize(tableStages);
     }
 
-    public static boolean checkProspect1Sum() {
-        return checkValuesSum(labelProspect1Sum);
+    public static boolean checkProspect1Sum() throws InterruptedException {
+        wait(labelProspect1Sum);
+        return checkValuesSumInStages(labelProspect1Sum);
     }
 }

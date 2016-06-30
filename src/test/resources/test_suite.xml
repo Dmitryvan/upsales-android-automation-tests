@@ -9,9 +9,11 @@
             <class name="com.android.tests.DashboardFilterTest"/>
             <class name="com.android.tests.SalesPipelineTest"/>
             <class name="com.android.tests.SalesPipelineNavigationTest"/>
-            <!--<class name="com.android.tests.LeftMenuTest"/>-->
-            <!--<class name="com.android.tests.LoginTest"/>-->
-            <!--<class name="com.android.tests.LogoutTest"/>-->
+            <class name="com.android.tests.SalesFilterTest"/>
+            <class name="com.android.tests.CalendarFilterTest"/>
+            <class name="com.android.tests.CalendarNavigationAndVerifyTest"/>
+            <class name="com.android.tests.LoginTest"/>
+            <class name="com.android.tests.LogoutTest"/>
             <!--<class name="com.android.tests.PipelineTest"/>-->
             <!--<class name="com.android.tests.PipelineFilterTest"/>-->
         </classes>

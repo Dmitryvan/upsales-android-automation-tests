@@ -1,6 +1,7 @@
 package com.android.pages;
 
 import io.appium.java_client.MobileBy;
+import io.appium.java_client.MobileDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -8,7 +9,7 @@ import java.util.List;
 
 public class SalesPage extends BasePage {
 
-    private static final By buttonFilter = MobileBy.IosUIAutomation(".navigationBars()[0].buttons()[2]");
+    private static final By buttonFilter = MobileBy.id("filter_icon");
     private static final By tabPipeline = MobileBy.id("pipeline");
     private static final By labelTabPipeline = MobileBy.xpath("//android.widget.RelativeLayout[2]/android.widget.LinearLayout[1]/android.widget.TextView[2]");
     private static final By labelTabSales = MobileBy.xpath("//android.support.v4.widget.DrawerLayout[1]/android.view.View[1]/android.widget.FrameLayout[1]/android.view.View[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.TextView[2]");
@@ -53,6 +54,7 @@ public class SalesPage extends BasePage {
     }
 
     public static int countAverageValue() {
+        ((MobileDriver)getDriver()).scrollTo("SALES TOTAL");
         int sec = getIntValue(labelTotalSalesValue);
         int orders = getLabelOrdersNumericValue();
         float avr = (float) sec / orders;
@@ -73,8 +75,10 @@ public class SalesPage extends BasePage {
 
     public static boolean checkTableContainsOnly(String user) {
         for(int i = 0; i < getTableSize(tableSalesPerUserCells); i++) {
-            String activityName = find(MobileBy.IosUIAutomation(
-                    ".tableViews()[0].groups()[" + i + "].staticTexts()[0]")).getAttribute("value");
+            String activityName = find(MobileBy.xpath(
+                    "//android.support.v7.widget.RecyclerView[1]/android.widget.LinearLayout[" +
+                            (i + 1) +
+                            "]/android.widget.RelativeLayout[1]/android.widget.TextView[1]")).getText();
             if(!activityName.contains(user)) {
                 return false;
             }
@@ -108,12 +112,12 @@ public class SalesPage extends BasePage {
         return getFloatValue(labelTotalSalesValue);
     }
 
-    public static boolean checkFirstUserSum() {
-        return checkValuesSum(labelSumOfFirstUser);
+    public static boolean checkFirstUserSum() throws InterruptedException {
+        return checkValuesSumInSales(labelSumOfFirstUser);
     }
 
     public static boolean checkTotalSales() {
-        return checkValuesSum(labelTotalSalesValue);
+        return checkValuesSumInSales(labelTotalSalesValue);
     }
 
     private static int getUserIndex(String name) {

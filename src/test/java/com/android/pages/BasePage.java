@@ -3,6 +3,8 @@ package com.android.pages;
 import com.android.util.Helpers;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileBy;
+import io.appium.java_client.MobileElement;
+import io.appium.java_client.SwipeElementDirection;
 import io.appium.java_client.ios.IOSElement;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
@@ -108,5 +110,15 @@ public class BasePage extends Helpers {
         int endy = (int) (size.height * 0.20);
         int startx = size.width / 2;
         ((AppiumDriver)getDriver()).swipe(startx, starty, startx, endy, 3000);
+    }
+
+    protected static void swipeLeft(By locator) {
+        MobileElement element = (MobileElement)  find(locator);
+        element.swipe(SwipeElementDirection.LEFT, 70, 70, 500);
+    }
+
+    protected static void swipeRight(By locator) {
+        MobileElement element = (MobileElement)  find(locator);
+        element.swipe(SwipeElementDirection.RIGHT, 70, 70, 500);
     }
 }

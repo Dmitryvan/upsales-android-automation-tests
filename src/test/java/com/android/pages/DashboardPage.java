@@ -225,11 +225,9 @@ public class DashboardPage extends BasePage {
     }
 
     public static void swipeLeft() {
-        MobileElement element = (MobileElement)  find(salesPipelinePanel);
-        element.swipe(SwipeElementDirection.LEFT, 70, 70, 500);
+        swipeLeft(salesPipelinePanel);
     }
-
-//    public static String getLastAppType() {
+    //    public static String getLastAppType() {
 //        int appointmentsCount = getMyAppointmentsTodayCount();
 //        find(MobileBy.IosUIAutomation(".tableViews()[0].cells()[" + (appointmentsCount - 1) + "]")).click();
 //        AppointmentPage.clickTools();

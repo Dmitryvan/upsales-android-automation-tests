@@ -12,14 +12,13 @@ import static org.testng.AssertJUnit.assertTrue;
 public class FilterPage extends BasePage {
 
     private static final By labelFilter = MobileBy.xpath(
-            "//android.support.v7.widget.RecyclerView[1]/android.widget.LinearLayout[1]//android.widget.TextView[1]");
+            "//*[@class='android.widget.TextView' and @text='Filter']");
 
     private static final By buttonClose = MobileBy.id("close");
-    private static final By buttonUsers = MobileBy.id("users");
+    private static final By buttonUsers = MobileBy.id("users_selected");
     private static final By buttonUsersOnCalendar = MobileBy.IosUIAutomation(
             ".tableViews()[2].cells()[0]");
-    private static final By buttonAppointmentsType = MobileBy.IosUIAutomation(
-            ".tableViews()[2].cells()[1]");
+    private static final By buttonAppointmentsType = MobileBy.id("appointment_types");
     private static final By buttonActivityType = MobileBy.IosUIAutomation(
             ".tableViews()[1].cells()[1]");
     private static final By buttonDate = MobileBy.IosUIAutomation(
@@ -46,12 +45,9 @@ public class FilterPage extends BasePage {
             ".tableViews()[1].cells()[1].staticTexts()[1]");
     private static final By labelDateValue = MobileBy.IosUIAutomation(
             ".tableViews()[1].cells()[2].staticTexts()[1]");
-    private static final By labelDatePeriodValue = MobileBy.IosUIAutomation(
-            ".tableViews()[1].cells()[1].staticTexts()[1]");
-    private static final By labelStagesValue = MobileBy.IosUIAutomation(
-            ".tableViews()[1].cells()[2].staticTexts()[1]");
-    private static final By labelAppointmentsTypeValue = MobileBy.IosUIAutomation(
-            ".tableViews()[2].cells()[1].staticTexts()[1]");
+    private static final By labelDatePeriodValue = MobileBy.id("period_selected");
+    private static final By labelStagesValue = MobileBy.id("stages_selected");
+    private static final By labelAppointmentsTypeValue = MobileBy.id("appointment_type_selected");
     private static final By labelFirstSearchResult = MobileBy.xpath(
             "//*[@class='android.widget.CheckBox' and @index='0']");
     private static final By labelCategoriesValue = MobileBy.IosUIAutomation(
@@ -109,16 +105,12 @@ public class FilterPage extends BasePage {
         return getText(labelUserValue);
     }
 
-    public static String getCurrentUserOnCalendarLabelValue() {
-        return  getValue(labelUserOnCalendarValue);
-    }
-
     public static String getCurrentActivityTypeLabelValue() {
         return getValue(labelActivityTypeValue);
     }
 
     public static String getCurrentAppointmentsTypeLabelValue() {
-        return getValue(labelAppointmentsTypeValue);
+        return getText(labelAppointmentsTypeValue);
     }
 
     public static String getCurrentDateValue() {
@@ -126,11 +118,11 @@ public class FilterPage extends BasePage {
     }
 
     public static String getCurrentDatePeriodValue() {
-        return getValue(labelDatePeriodValue);
+        return getText(labelDatePeriodValue);
     }
 
     public static String getCurrentStagesValue() {
-        return getValue(labelStagesValue);
+        return getText(labelStagesValue);
     }
 
     public static String getArchivedValue() {

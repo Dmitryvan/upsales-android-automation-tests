@@ -1,10 +1,10 @@
 package com.android.util;
 
 import com.android.pages.BasePage;
-import com.android.pages.LoginPage;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.SwipeElementDirection;
+import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.ios.IOSElement;
 import org.openqa.selenium.*;
 import org.openqa.selenium.NoSuchElementException;
@@ -73,7 +73,7 @@ public class Helpers {
 
     public static boolean checkIsDisplayed(By locator) {
         try {
-            find(locator).isDisplayed();
+            find(locator);
             return true;
         } catch (NoSuchElementException e) {
             return false;
@@ -179,7 +179,7 @@ public class Helpers {
 
     public static String calendarTodayDate() {
         Date date = new Date();
-        return ("TODAY " + calendarDateFormat.format(date).toUpperCase());
+        return ("Today " + calendarDateFormat.format(date));
     }
 
     public static String expectedDateInFormsAndMail() {
@@ -229,7 +229,7 @@ public class Helpers {
         }
     }
 
-    public static int countValuesWithSEKandM() {
+    public static int countValuesInSales() {
         int total = 0;
 
         List<WebElement> list = getDriver().findElements(tableWithSEK);
@@ -240,12 +240,65 @@ public class Helpers {
         return total;
     }
 
-    public static boolean checkValuesSum(By numberLocator) {
-        int count = countValuesWithSEKandM();
+    public static int countValuesInStages() throws InterruptedException {
+        int total = 0;
+        int iterator = 0;
+        List<WebElement> list = getDriver().findElements(tableWithSEK);
+        for (WebElement aList : list) {
+            total = total + getNumberFromCell(aList.getText());
+            iterator++;
+        }
+        int lastValue = iterator + 2;
+        String previousCampaign = find(MobileBy.xpath(
+                "//android.support.v7.widget.RecyclerView[1]/android.widget.LinearLayout[" +
+                        lastValue +
+                        "]/android.widget.RelativeLayout[1]/android.widget.TextView[1]")).getText();
+        while(true) {
+            AndroidElement el = (AndroidElement) find(MobileBy.xpath(
+                    "//android.support.v7.widget.RecyclerView[1]/android.widget.LinearLayout[" +
+                            (iterator - 3) + "]/android.widget.RelativeLayout[1]"));
+            el.swipe(SwipeElementDirection.UP, 500);
+            Thread.sleep(500);
+            try {
+                String account = find(MobileBy.xpath(
+                        "//android.support.v7.widget.RecyclerView[1]/android.widget.LinearLayout[" +
+                                lastValue +
+                                "]/android.widget.RelativeLayout[1]/android.widget.TextView[1]")).getText();
+                if(account.equals(previousCampaign)) {
+                    continue;
+                }
+                if(account.equals("Prospect 2"))
+                    break;
+                String value = find(MobileBy.xpath(
+                        "//android.support.v7.widget.RecyclerView[1]/android.widget.LinearLayout[" +
+                                lastValue +
+                                "]/android.widget.RelativeLayout[1]/android.widget.TextView[2]")).getText();
+                total += getNumberFromCell(value);
+                previousCampaign = account;
+            } catch (Exception e) {
+                break;
+            }
+        }
+        return total;
+    }
+
+    public static boolean checkValuesSumInStages(By numberLocator) throws InterruptedException {
         int sum = getNumberFromCell(BasePage.getText(numberLocator));
+        int count = countValuesInStages();
         if (sum >= 1000000) {
             count = (int) (Math.round((double) count / 100000)) * 100000;
         }
+//        System.out.println("sum: " + sum + "\ncount: " + count);
+        return sum == count;
+    }
+
+    public static boolean checkValuesSumInSales(By numberLocator) {
+        int sum = getNumberFromCell(BasePage.getText(numberLocator));
+        int count = countValuesInSales();
+        if (sum >= 1000000) {
+            count = (int) (Math.round((double) count / 100000)) * 100000;
+        }
+//        System.out.println("sum: " + sum + "\ncount: " + count);
         return sum == count;
     }
 

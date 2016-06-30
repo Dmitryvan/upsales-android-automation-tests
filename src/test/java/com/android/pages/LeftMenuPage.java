@@ -6,17 +6,11 @@ import org.openqa.selenium.NoSuchElementException;
 
 public class LeftMenuPage extends BasePage {
 
-    private static final By buttonDashboard = MobileBy.IosUIAutomation(
-            ".tableViews()[0].cells().firstWithPredicate(\"staticTexts[1].name=='Dashboard'\")");
-    //    firstWithPredicate("staticTexts[0].label
-    private static final By buttonCalendar = MobileBy.IosUIAutomation(
-            ".tableViews()[0].cells().firstWithPredicate(\"staticTexts[1].name=='Calendar'\")");
-    private static final By buttonActivities = MobileBy.IosUIAutomation(
-            ".tableViews()[0].cells().firstWithPredicate(\"staticTexts[1].name=='Activities'\")");
-    private static final By buttonSales = MobileBy.xpath(
-            "//*[@class='android.widget.TextView' and @text='Sales']");
-    private static final By buttonPipeline = MobileBy.IosUIAutomation(
-            ".tableViews()[0].cells().firstWithPredicate(\"staticTexts[1].name=='Pipeline'\")");
+    private static final By buttonDashboard = MobileBy.id("dashboard");
+    private static final By buttonCalendar = MobileBy.id("calendar");
+    private static final By buttonActivities = MobileBy.id("activities");
+    private static final By buttonSales = MobileBy.id("sales");
+    private static final By buttonPipeline = MobileBy.id("pipeline");
     private static final By buttonAccAndCon = MobileBy.IosUIAutomation(
             ".tableViews()[0].cells().firstWithPredicate(\"staticTexts[1].name=='Accounts & Contacts'\")");
     private static final By buttonForms = MobileBy.IosUIAutomation(

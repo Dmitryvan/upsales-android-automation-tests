@@ -76,7 +76,7 @@ public class SalesPipelineTest extends BaseTest {
     }
 
     @Test(priority = 3) //CASE 6
-    public void softSalesPerUserNavigation() {
+    public void softSalesPerUserNavigation() throws InterruptedException {
         SoftAssertExtended softAssert = new SoftAssertExtended();
         SalesPage.clickFirstUserInSalesTable();
         softAssert.assertTrue(SalesPage.countVisibleOrders() >= Integer.parseInt(visibleOrdersSum));
@@ -116,8 +116,9 @@ public class SalesPipelineTest extends BaseTest {
     }
 
     @Test(priority = 7) //CASE 10
-    public void softOpportunitiesPerStageNavigation() {
+    public void softOpportunitiesPerStageNavigation() throws InterruptedException {
         SoftAssertExtended softAssert = new SoftAssertExtended();
+        SalesPage.clickTabPipeline();
         PipelinePage.clickProspect1();
         softAssert.assertTrue(PipelinePage.checkProspect1Sum());
         softAssert.assertAll();
