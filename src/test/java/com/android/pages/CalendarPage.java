@@ -18,6 +18,7 @@ import java.util.List;
 public class CalendarPage extends BasePage {
 
     private static final String todayDate = calendarTodayDate();
+    private static final String firstDateInTable = "Wednesday 30 Sep 2015";
 
     private static final By buttonListView = MobileBy.id("list");
     private static final By buttonCalendarView = MobileBy.id("calendar");
@@ -94,20 +95,19 @@ public class CalendarPage extends BasePage {
     }
 
     public static int getCellsCount() throws InterruptedException {
-        int total = 0;
-        int iterator = 0;
+        int total;
+        int iterator;
         List<WebElement> list = getDriver().findElements(MobileBy.id("descriptionTxt"));
 //        for (WebElement aList : list) {
 //            System.out.println(aList.getText());
-//            total++;
-//            iterator++;
 //        }
+        total = iterator = list.size();
         int lastValue = iterator;
         String previousCampaign = find(MobileBy.xpath(
                 "//android.support.v7.widget.RecyclerView[1]/android.widget.RelativeLayout[" +
                         lastValue +
                         "]/android.widget.RelativeLayout[1]/android.widget.TextView[1]")).getText();
-        String account = "O_o";
+        String account;
         do {
             AndroidElement el = (AndroidElement) find(MobileBy.xpath(
                     "//android.support.v7.widget.RecyclerView[1]/android.widget.RelativeLayout[" +
@@ -149,6 +149,6 @@ public class CalendarPage extends BasePage {
     }
 
     public static void scrollToTheFirstRecord() {
-        ((MobileDriver)getDriver()).scrollTo(("Friday 18 September 2015").toUpperCase());
+        ((MobileDriver)getDriver()).scrollTo((firstDateInTable));
     }
 }

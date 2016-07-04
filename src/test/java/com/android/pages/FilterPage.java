@@ -137,6 +137,9 @@ public class FilterPage extends BasePage {
         wait(buttonBack);
 //        String name = value;
 //        String path = "//*[@class='android.widget.CheckBox' and @text='" + name + "']";
+//        List<WebElement> elements = getDriver().findElements(MobileBy.xpath("//*[@class='android.widget.CheckBox']"));
+//        for (WebElement el : elements)
+//            System.out.println(el.getText());
         find(MobileBy.xpath("//*[@class='android.widget.CheckBox' and @text='" + value + "']")).click();
     }
 

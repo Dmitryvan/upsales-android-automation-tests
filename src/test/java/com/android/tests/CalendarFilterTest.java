@@ -34,7 +34,7 @@ public class CalendarFilterTest extends BaseTest {
         LeftMenuPage.clickCalendar();
     }
 
-    @Test // Case 2 without step 10
+    @Test(priority = 1) // Case 2 without step 10
     public void setUserFilter() {
         CalendarPage.clickFilter();
         assertEquals(FilterPage.getCurrentUserLabelValue(), currentUser);
@@ -46,7 +46,7 @@ public class CalendarFilterTest extends BaseTest {
         assertFalse(FilterPage.checkFilter());
     }
 
-    @Test // Case 3 without step 13
+    @Test(priority = 2) // Case 3 without step 13
     public void setMultipleUserFilters() throws InterruptedException {
         CalendarPage.clickFilter();
         assertEquals(FilterPage.getCurrentUserLabelValue(), currentUser);
@@ -66,7 +66,7 @@ public class CalendarFilterTest extends BaseTest {
         assertTrue(cellsCount >= 25 && cellsCount <= 35);
     }
 
-    @Test // Case 4
+    @Test(priority = 3) // Case 4
     public void setAppointmentTypeAndVerify() {
         CalendarPage.clickFilter();
         assertEquals(FilterPage.getCurrentAppointmentsTypeLabelValue(), usersAll);
@@ -79,7 +79,7 @@ public class CalendarFilterTest extends BaseTest {
         assertTrue(CalendarPage.checkVisibleCellsCount() <= 5);
     }
 
-    @Test // Case 5
+    @Test(priority = 4) // Case 5
     public void setMultipleAppointmentTypesAndVerify() {
         CalendarPage.clickFilter();
         assertEquals(FilterPage.getCurrentAppointmentsTypeLabelValue(), usersAll);
@@ -90,7 +90,7 @@ public class CalendarFilterTest extends BaseTest {
         assertEquals(FilterPage.getCurrentAppointmentsTypeLabelValue(), twoAppLabelValue);
         FilterPage.clickClose();
         assertFalse(FilterPage.checkFilter());
-        assertTrue(CalendarPage.checkVisibleCellsCount() >= 7);
+        assertTrue(CalendarPage.checkVisibleCellsCount() >= 3);
     }
 
     @AfterMethod
