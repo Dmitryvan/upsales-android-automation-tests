@@ -1,9 +1,11 @@
 package com.android.pages;
 
 import io.appium.java_client.MobileBy;
+import io.appium.java_client.MobileDriver;
 import io.appium.java_client.SwipeElementDirection;
 import io.appium.java_client.android.AndroidElement;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 
@@ -134,25 +136,30 @@ public class ActivitiesPage extends BasePage {
 
     public static int countActivities() throws InterruptedException {
         int total;
-        int iterator;
+        int lastValue;
+        int cellHeight;
+        int windowHeight = getDriver().manage().window().getSize().getWidth();
+
         List<WebElement> list = getDriver().findElements(MobileBy.id("name"));
         for (WebElement aList : list) {
             System.out.println(aList.getText());
         }
-        total = iterator = list.size();
-        int lastValue = iterator;
+        total = lastValue = list.size();
         String previousCampaign = find(MobileBy.xpath(
                 "//android.support.v7.widget.RecyclerView[1]/android.widget.RelativeLayout[" +
                         lastValue +
                         "]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]" +
                         "/android.widget.LinearLayout[2]/android.widget.TextView[2]")).getText();
         String account;
-        do {
-            AndroidElement el = (AndroidElement) find(MobileBy.id("activity_item"));
+        AndroidElement el = (AndroidElement) find(MobileBy.id("activity_item"));
 //                    "//android.support.v7.widget.RecyclerView[1]/android.widget.RelativeLayout[" +
 //                            (iterator - 1) + "]/android.widget.FrameLayout[1]" +
 //                            "/android.widget.RelativeLayout[1]/android.widget.LinearLayout[2]"));
-            el.swipe(SwipeElementDirection.UP, 500);
+        cellHeight = el.getSize().height + 2;
+//        System.out.println(cellHeight);
+//        System.out.println(windowHeight);
+        do {
+            ((MobileDriver)getDriver()).swipe(0, windowHeight, 0, windowHeight - cellHeight, 500);
             try{ Thread.sleep(500); } catch (Exception e) {}
             try {
                 try {
@@ -173,10 +180,6 @@ public class ActivitiesPage extends BasePage {
                 if (account.equals(previousCampaign)) {
                     continue;
                 }
-//                if (account.equals("app3")) {
-//                    total++;
-//                    break;
-//                }
                 total++;
                 System.out.println(total);
                 previousCampaign = account;
@@ -187,7 +190,6 @@ public class ActivitiesPage extends BasePage {
 //        System.out.println(iterator);
         System.out.println(total);
         return total;
-//        return getTableSize(tableCells);
     }
 
     public static int countActivitiesByDate(String date) {
