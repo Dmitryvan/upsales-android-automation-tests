@@ -41,10 +41,8 @@ public class FilterPage extends BasePage {
     private static final By labelUserValue = MobileBy.id("users_selected");
     private static final By labelUserOnCalendarValue = MobileBy.IosUIAutomation(
             ".tableViews()[2].cells()[0].staticTexts()[1]");
-    private static final By labelActivityTypeValue = MobileBy.IosUIAutomation(
-            ".tableViews()[1].cells()[1].staticTexts()[1]");
-    private static final By labelDateValue = MobileBy.IosUIAutomation(
-            ".tableViews()[1].cells()[2].staticTexts()[1]");
+    private static final By labelActivityTypeValue = MobileBy.id("activity_type_selected");
+    private static final By labelDateValue = MobileBy.id("date_selected");
     private static final By labelDatePeriodValue = MobileBy.id("period_selected");
     private static final By labelStagesValue = MobileBy.id("stages_selected");
     private static final By labelAppointmentsTypeValue = MobileBy.id("appointment_type_selected");
@@ -78,7 +76,7 @@ public class FilterPage extends BasePage {
     }
 
     public static void clickActivityType() {
-        find(buttonActivityType).click();
+        find(labelActivityTypeValue).click();
     }
 
     public static void clickDate() {
@@ -106,7 +104,7 @@ public class FilterPage extends BasePage {
     }
 
     public static String getCurrentActivityTypeLabelValue() {
-        return getValue(labelActivityTypeValue);
+        return getText(labelActivityTypeValue);
     }
 
     public static String getCurrentAppointmentsTypeLabelValue() {
@@ -114,7 +112,7 @@ public class FilterPage extends BasePage {
     }
 
     public static String getCurrentDateValue() {
-        return getValue(labelDateValue);
+        return getText(labelDateValue);
     }
 
     public static String getCurrentDatePeriodValue() {

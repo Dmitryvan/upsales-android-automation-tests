@@ -16,27 +16,21 @@ import java.util.List;
 
 public class ActivitiesPage extends BasePage {
 
-    private final static By buttonFilter = MobileBy.IosUIAutomation(".navigationBars()[0].buttons()[2]");
     private final static By tableEmptyList = MobileBy.IosUIAutomation(".tableViews()[\"Empty list\"]");
     private final static By rowFirstActivity = MobileBy.IosUIAutomation(".tableViews()[0].cells()[0]");
     private final static By tableActivity = MobileBy.IosUIAutomation(".tableViews()[0]");
     private final static By tableActivityCells = MobileBy.IosUIAutomation(".tableViews()[0].cells()");
-    private final static By firstRowDate = MobileBy.IosUIAutomation(".tableViews()[0].cells()[0].staticTexts()[2]");
+    private final static By firstRowDate = MobileBy.xpath("//android.support.v7.widget.RecyclerView[1]/android.widget.RelativeLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.TextView[1]");
     private final static By lastRowDate = MobileBy.xpath("//android.support.v7.widget.RecyclerView[1]/android.widget.RelativeLayout[11]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.TextView[1]");
 
     private static final DateFormat activityDate = new SimpleDateFormat("d MMM");
 
     public static String getFirstRowDate() {
-        return getValue(firstRowDate);
+        return getText(firstRowDate);
     }
 
     public static String getLastRowDate() {
         return getText(lastRowDate);
-    }
-
-    public static void clickFilter() {
-        wait(buttonFilter);
-        find(buttonFilter).click();
     }
 
     public static void clickFirstActivity() {
