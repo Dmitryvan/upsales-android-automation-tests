@@ -34,8 +34,7 @@ public class FilterPage extends BasePage {
     private static final By buttonBack = MobileBy.id("back");
     private static final By buttonSearchClearText = MobileBy.IosUIAutomation(
             ".searchBars()[0].buttons()[0]");
-    private static final By tableFilterValues = MobileBy.IosUIAutomation(
-            ".tableViews()[1].cells()");
+    private static final By tableFilterValues = MobileBy.id("user");
     private static final By fieldSearch = MobileBy.id("search");
 
     private static final By labelUserValue = MobileBy.id("users_selected");
@@ -96,7 +95,7 @@ public class FilterPage extends BasePage {
     }
 
     public static void clickSearchClear() {
-        find(buttonSearchClearText).click();
+        find(fieldSearch).clear();
     }
 
     public static String getCurrentUserLabelValue() {
@@ -171,7 +170,7 @@ public class FilterPage extends BasePage {
 
     public static boolean checkSearchResultsContains(String value) {
         for(WebElement el : getTableValues(tableFilterValues)) {
-            if (!containsIgnoreCase(el.getAttribute("name"), value))
+            if (!containsIgnoreCase(el.getText(), value))
                 return false;
         }
         return true;

@@ -44,7 +44,7 @@ public class ActivitiesTest extends BaseTest {
     public void verifyThatTodaysActivitiesAreShownFirst() throws InterruptedException {
         SoftAssertExtended softAssert = new SoftAssertExtended();
 //        softAssert.assertEquals(ActivitiesPage.getFirstRowDate(), today); // database inconsistency - currently today - 1
-        softAssert.assertTrue(ActivitiesPage.countActivities() <=35 );
+        softAssert.assertTrue(ActivitiesPage.countActivities() <= 35 );
         softAssert.assertFalse(ActivitiesPage.getLastRowDate().equals(today));
         softAssert.assertAll();
     }

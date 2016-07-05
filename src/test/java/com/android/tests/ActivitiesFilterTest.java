@@ -84,7 +84,7 @@ public class ActivitiesFilterTest extends BaseTest {
     }
 
     @Test(priority = 4) // Case 5
-    public void setMultipleActivityTypesAndVerify() throws InterruptedException {
+    public void setMultipleActivityTypesAndVerify() {
         assertEquals(FilterPage.getCurrentActivityTypeLabelValue(), all);
         FilterPage.clickActivityType();
         FilterPage.select(activityType1);
@@ -100,6 +100,7 @@ public class ActivitiesFilterTest extends BaseTest {
     @Test(priority = 5)
     public void searchUser() {
         FilterPage.clickUsers();
+        FilterPage.select(currentUser);
         FilterPage.search(searchString);
         assertTrue(FilterPage.checkSearchResultsContains(searchString));
         FilterPage.selectFirstSearchResult();
@@ -136,7 +137,7 @@ public class ActivitiesFilterTest extends BaseTest {
         assertEquals(FilterPage.getCurrentDateValue(), dateToday);
     }
 
-    @Test(priority = 8)
+    @Test(priority = 8, enabled = false) // features are not fully implemented
     public void selectUserActivityType() {
         FilterPage.clickUsers();
         FilterPage.select(currentUser);
