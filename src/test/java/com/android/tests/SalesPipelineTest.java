@@ -118,7 +118,6 @@ public class SalesPipelineTest extends BaseTest {
     @Test(priority = 7) //CASE 10
     public void softOpportunitiesPerStageNavigation() throws InterruptedException {
         SoftAssertExtended softAssert = new SoftAssertExtended();
-        SalesPage.clickTabPipeline();
         PipelinePage.clickProspect1();
         softAssert.assertTrue(PipelinePage.checkProspect1Sum());
         softAssert.assertAll();

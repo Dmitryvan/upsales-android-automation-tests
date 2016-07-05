@@ -19,6 +19,7 @@ public class BasePage extends Helpers {
     protected static final By buttonLeftMenu = MobileBy.xpath("//android.widget.ImageButton[1]");
     protected static final By buttonCancel = MobileBy.IosUIAutomation(".navigationBars()[0].buttons()[1]");
     protected static final By buttonSave = MobileBy.IosUIAutomation(".navigationBars()[0].buttons()[2]");
+    private static final By buttonFilter = MobileBy.id("filter_icon");
     private static final By arrowBack = MobileBy.xpath("//android.widget.ImageButton[1]");
 
     private static final By title = MobileBy.id("title");
@@ -26,6 +27,10 @@ public class BasePage extends Helpers {
     public static String getTitle() {
         wait(title);
         return getName(title);
+    }
+
+    public static void clickFilter() {
+        find(buttonFilter).click();
     }
 
     public static void checkPageTitle(String title) {

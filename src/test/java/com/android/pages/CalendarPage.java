@@ -22,7 +22,6 @@ public class CalendarPage extends BasePage {
 
     private static final By buttonListView = MobileBy.id("list");
     private static final By buttonCalendarView = MobileBy.id("calendar");
-    private static final By buttonFilter = MobileBy.id("filter_icon");
 
     private static final By calendarView = MobileBy.id("calendar1");
     private static final By labelToday = MobileBy.xpath(
@@ -40,10 +39,6 @@ public class CalendarPage extends BasePage {
 
     public static void clickCalendarView() {
         find(buttonCalendarView).click();
-    }
-
-    public static void clickFilter() {
-        find(buttonFilter).click();
     }
 
     public static boolean checkTodayLabel() {

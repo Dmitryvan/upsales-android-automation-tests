@@ -105,7 +105,7 @@ public class DashboardTest extends BaseTest {
         softAssert.assertAll();
     }
 
-    //    @Test(priority = 5) //CASE 3
+//    @Test(priority = 5) //CASE 3
 //    public void softMyAppointmentsTodayVerification() {
 //        SoftAssertExtended softAssert = new SoftAssertExtended();
 //        softAssert.assertTrue(DashboardPage.checkAllAppointmentsAreForToday(today));

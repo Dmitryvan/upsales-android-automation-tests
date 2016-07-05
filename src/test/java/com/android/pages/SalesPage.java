@@ -9,7 +9,6 @@ import java.util.List;
 
 public class SalesPage extends BasePage {
 
-    private static final By buttonFilter = MobileBy.id("filter_icon");
     private static final By tabPipeline = MobileBy.id("pipeline");
     private static final By labelTabPipeline = MobileBy.xpath("//android.widget.RelativeLayout[2]/android.widget.LinearLayout[1]/android.widget.TextView[2]");
     private static final By labelTabSales = MobileBy.xpath("//android.support.v4.widget.DrawerLayout[1]/android.view.View[1]/android.widget.FrameLayout[1]/android.view.View[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.TextView[2]");
@@ -63,10 +62,6 @@ public class SalesPage extends BasePage {
 
     public static void clickTabPipeline() {
         find(tabPipeline).click();
-    }
-
-    public static void clickFilter() {
-        find(buttonFilter).click();
     }
 
     public static void clickFirstUserInSalesTable() {

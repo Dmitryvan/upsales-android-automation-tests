@@ -14,8 +14,6 @@
             <class name="com.android.tests.CalendarNavigationAndVerifyTest"/>
             <class name="com.android.tests.LoginTest"/>
             <class name="com.android.tests.LogoutTest"/>
-            <!--<class name="com.android.tests.PipelineTest"/>-->
-            <!--<class name="com.android.tests.PipelineFilterTest"/>-->
         </classes>
     </test>
 </suite>

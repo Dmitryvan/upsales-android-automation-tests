@@ -5,7 +5,6 @@ import org.openqa.selenium.By;
 
 public class PipelinePage extends BasePage {
 
-    private static final By buttonFilter = MobileBy.IosUIAutomation(".navigationBars()[0].buttons()[2]");
     private static final By tabSales = MobileBy.id("sales");
     private static final By tableStages = MobileBy.id("stageNameTxt");
     private static final By tableFallback = MobileBy.IosUIAutomation(".tableViews()[0].cells()");
@@ -28,10 +27,6 @@ public class PipelinePage extends BasePage {
 
     public static void clickTabSales() {
         find(tabSales).click();
-    }
-
-    public static void clickFilter() {
-        find(buttonFilter).click();
     }
 
     public static void clickFallback() {

@@ -23,7 +23,6 @@ public class DashboardPage extends BasePage {
     private static final By buttonMonth = MobileBy.id("month");
     private static final By buttonQuarter = MobileBy.id("quarter");
     private static final By buttonYear = MobileBy.id("year");
-    private static final By buttonFilter = MobileBy.id("filter_icon");
 
     private static final By labelSales = MobileBy.id("sales_title");
     private static final By labelPipeline = MobileBy.id("pipeline_title");
@@ -104,10 +103,6 @@ public class DashboardPage extends BasePage {
 
     public static void clickLabelPipeline() {
         find(labelPipeline).click();
-    }
-
-    public static void clickFilter() {
-        find(buttonFilter).click();
     }
 
     public static void saveCurrentSalesAndPipelineValues() throws InterruptedException {

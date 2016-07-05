@@ -32,7 +32,7 @@ public class SalesFilterTest extends BaseTest {
     }
 
     @Test(priority = 1) // Case 2
-    public void setUerFilter() {
+    public void setUserFilter() {
         FilterPage.clickUsers();
         FilterPage.select(currentUser);
         FilterPage.clickBack();
