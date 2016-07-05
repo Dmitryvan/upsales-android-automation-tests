@@ -100,6 +100,7 @@ public class ActivitiesFilterTest extends BaseTest {
     @Test(priority = 5)
     public void searchUser() {
         FilterPage.clickUsers();
+        FilterPage.select(currentUser);
         FilterPage.search(searchString);
         assertTrue(FilterPage.checkSearchResultsContains(searchString));
         FilterPage.selectFirstSearchResult();
@@ -115,7 +116,6 @@ public class ActivitiesFilterTest extends BaseTest {
         FilterPage.clickUsers();
         FilterPage.search(searchString);
         assertTrue(FilterPage.checkSearchResultsContains(searchString));
-        FilterPage.clickSearchClear();
         FilterPage.clickBack();
         assertEquals(FilterPage.getCurrentUserLabelValue(), currentUser);
         assertEquals(FilterPage.getCurrentActivityTypeLabelValue(), all);
@@ -129,7 +129,6 @@ public class ActivitiesFilterTest extends BaseTest {
         FilterPage.select(user2);
         FilterPage.search(searchString);
         assertTrue(FilterPage.checkSearchResultsContains(searchString));
-        FilterPage.clickSearchClear();
         FilterPage.clickBack();
         assertEquals(FilterPage.getCurrentUserLabelValue(), user2);
         assertEquals(FilterPage.getCurrentActivityTypeLabelValue(), all);

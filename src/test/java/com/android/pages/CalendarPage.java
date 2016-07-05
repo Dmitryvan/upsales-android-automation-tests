@@ -43,25 +43,20 @@ public class CalendarPage extends BasePage {
 
     public static boolean checkTodayLabel() {
         System.out.println(todayDate);
-        return checkIsVisible(labelToday);
+        return checkIsDisplayed(labelToday);
     }
 
     public static boolean checkCalendarView() {
-        return checkIsVisible(calendarView);
+        return checkIsDisplayed(calendarView);
+    }
+
+    public static boolean checkButtonCalendarView() {
+        return checkIsDisplayed(buttonCalendarView);
     }
 
     public static int checkVisibleCellsCount() {
 //        wait(labelToday);
         return getTableSize(visibleElements);
-    }
-
-    private static boolean checkIsVisible(By item) {
-        try {
-            find(item);
-            return true;
-        } catch (NoSuchElementException e) {
-            return false;
-        }
     }
 
     public static void swipeLeft() {
