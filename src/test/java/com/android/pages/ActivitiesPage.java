@@ -95,19 +95,77 @@ public class ActivitiesPage extends BasePage {
     }
 
     public static boolean searchActivityByName(String activity) {
-        try {
-            find(MobileBy.IosUIAutomation(
-                    ".tableViews()[0].cells().firstWithPredicate(\"staticTexts[0].name=='" + activity + "'\")"));
-            return true;
-        } catch (NoSuchElementException e) {
-            try {
-                find(MobileBy.IosUIAutomation(
-                        ".tableViews()[0].cells().firstWithPredicate(\"staticTexts[2].name=='" + activity + "'\")"));
+        int counter = 0;
+        int lastValue;
+        int cellHeight;
+        int windowHeight = getDriver().manage().window().getSize().getWidth();
+        String activityName;
+        String accountName;
+
+        List<WebElement> list = getDriver().findElements(MobileBy.id("description"));
+        for (WebElement aList : list) {
+            if(aList.getText().equals(activity))
                 return true;
-            } catch (NoSuchElementException ex) {
-                return false;
-            }
         }
+        lastValue = list.size();
+
+        String previousActivity = find(MobileBy.xpath(
+                "//android.support.v7.widget.RecyclerView[1]/android.widget.RelativeLayout[" +
+                        lastValue +
+                        "]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]" +
+                        "/android.widget.LinearLayout[2]/android.widget.TextView[1]")).getText();
+        String previousAccount = find(MobileBy.xpath(
+                "//android.support.v7.widget.RecyclerView[1]/android.widget.RelativeLayout[" +
+                        lastValue +
+                        "]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]" +
+                        "/android.widget.LinearLayout[2]/android.widget.TextView[2]")).getText();
+
+        AndroidElement el = (AndroidElement) find(MobileBy.id("activity_item"));
+        cellHeight = el.getSize().height + 2;
+        do {
+            ((MobileDriver)getDriver()).swipe(0, windowHeight, 0, windowHeight - cellHeight, 500);
+            try{ Thread.sleep(500); } catch (Exception e) {}
+            try {
+                try {
+                    activityName = find(MobileBy.xpath(
+                            "//android.support.v7.widget.RecyclerView[1]/android.widget.RelativeLayout[" +
+                                    (lastValue + 1) +
+                                    "]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]" +
+                                    "/android.widget.LinearLayout[2]/android.widget.TextView[1]")).getText();
+                    accountName = find(MobileBy.xpath(
+                            "//android.support.v7.widget.RecyclerView[1]/android.widget.RelativeLayout[" +
+                                    (lastValue + 1) +
+                                    "]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]" +
+                                    "/android.widget.LinearLayout[2]/android.widget.TextView[2]")).getText();
+                }
+                catch (Exception e) {
+                    activityName = find(MobileBy.xpath(
+                            "//android.support.v7.widget.RecyclerView[1]/android.widget.RelativeLayout[" +
+                                    lastValue +
+                                    "]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]" +
+                                    "/android.widget.LinearLayout[2]/android.widget.TextView[1]")).getText();
+                    accountName = find(MobileBy.xpath(
+                            "//android.support.v7.widget.RecyclerView[1]/android.widget.RelativeLayout[" +
+                                    lastValue +
+                                    "]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]" +
+                                    "/android.widget.LinearLayout[2]/android.widget.TextView[2]")).getText();
+                }
+                if (activityName.equals(previousActivity) && accountName.equals(previousAccount)) {
+                    counter++;
+                    continue;
+                } else {
+                    counter = 0;
+                }
+                if (activityName.equals(activity)) {
+                    return true;
+                }
+                previousActivity = activityName;
+                previousAccount = accountName;
+            } catch (Exception e) {
+                break;
+            }
+        } while (counter < 2);
+        return false;
     }
 
     public static void selectActivity(String activity) {
@@ -128,18 +186,18 @@ public class ActivitiesPage extends BasePage {
 //        return false;
 //    }
 
-    public static int countActivities() throws InterruptedException {
+    public static int countActivities() {
         int total;
         int lastValue;
         int cellHeight;
         int windowHeight = getDriver().manage().window().getSize().getWidth();
 
         List<WebElement> list = getDriver().findElements(MobileBy.id("name"));
-        for (WebElement aList : list) {
-            System.out.println(aList.getText());
-        }
+//        for (WebElement aList : list) {
+//            System.out.println(aList.getText());
+//        }
         total = lastValue = list.size();
-        String previousCampaign = find(MobileBy.xpath(
+        String previousAccount = find(MobileBy.xpath(
                 "//android.support.v7.widget.RecyclerView[1]/android.widget.RelativeLayout[" +
                         lastValue +
                         "]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]" +
@@ -156,27 +214,27 @@ public class ActivitiesPage extends BasePage {
             ((MobileDriver)getDriver()).swipe(0, windowHeight, 0, windowHeight - cellHeight, 500);
             try{ Thread.sleep(500); } catch (Exception e) {}
             try {
-                try {
-                    account = find(MobileBy.xpath(
-                            "//android.support.v7.widget.RecyclerView[1]/android.widget.RelativeLayout[" +
-                                    (lastValue + 1) +
-                                    "]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]" +
-                                    "/android.widget.LinearLayout[2]/android.widget.TextView[2]")).getText();
+                account = find(MobileBy.xpath(
+                        "//android.support.v7.widget.RecyclerView[1]/android.widget.RelativeLayout[" +
+                                lastValue +
+                                "]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]" +
+                                "/android.widget.LinearLayout[2]/android.widget.TextView[2]")).getText();
+                if(account.equals(previousAccount)) {
+                    try {
+                        account = find(MobileBy.xpath(
+                                "//android.support.v7.widget.RecyclerView[1]/android.widget.RelativeLayout[" +
+                                        (lastValue + 1) +
+                                        "]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]" +
+                                        "/android.widget.LinearLayout[2]/android.widget.TextView[2]")).getText();
+                    } catch (Exception e) { }
                 }
-                catch (Exception e) {
-                    account = find(MobileBy.xpath(
-                            "//android.support.v7.widget.RecyclerView[1]/android.widget.RelativeLayout[" +
-                                    lastValue +
-                                    "]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]" +
-                                    "/android.widget.LinearLayout[2]/android.widget.TextView[2]")).getText();
-                }
-                System.out.println(account);
-                if (account.equals(previousCampaign)) {
+//                System.out.println(account);
+                if (account.equals(previousAccount)) {
                     continue;
                 }
                 total++;
-                System.out.println(total);
-                previousCampaign = account;
+//                System.out.println(total);
+                previousAccount = account;
             } catch (Exception e) {
                 break;
             }

@@ -95,7 +95,7 @@ public class FilterPage extends BasePage {
     }
 
     public static void clickSearchClear() {
-        find(buttonSearchClearText).click();
+        find(fieldSearch).clear();
     }
 
     public static String getCurrentUserLabelValue() {
@@ -170,7 +170,7 @@ public class FilterPage extends BasePage {
 
     public static boolean checkSearchResultsContains(String value) {
         for(WebElement el : getTableValues(tableFilterValues)) {
-            if (!containsIgnoreCase(el.getAttribute("name"), value))
+            if (!containsIgnoreCase(el.getText(), value))
                 return false;
         }
         return true;
