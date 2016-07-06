@@ -70,10 +70,7 @@ public class SalesPage extends BasePage {
 
     public static boolean checkTableContainsOnly(String user) {
         for(int i = 0; i < getTableSize(tableSalesPerUserCells); i++) {
-            String activityName = find(MobileBy.xpath(
-                    "//android.support.v7.widget.RecyclerView[1]/android.widget.LinearLayout[" +
-                            (i + 1) +
-                            "]/android.widget.RelativeLayout[1]/android.widget.TextView[1]")).getText();
+            String activityName = getTextByPath("//android.support.v7.widget.RecyclerView[1]/android.widget.LinearLayout[", (i + 1), "]/android.widget.RelativeLayout[1]/android.widget.TextView[1]");
             if(!activityName.contains(user)) {
                 return false;
             }

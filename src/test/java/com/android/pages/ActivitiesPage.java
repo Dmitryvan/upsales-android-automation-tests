@@ -2,10 +2,8 @@ package com.android.pages;
 
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileDriver;
-import io.appium.java_client.SwipeElementDirection;
 import io.appium.java_client.android.AndroidElement;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 
@@ -24,6 +22,9 @@ public class ActivitiesPage extends BasePage {
     private final static By lastRowDate = MobileBy.xpath("//android.support.v7.widget.RecyclerView[1]/android.widget.RelativeLayout[11]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.TextView[1]");
 
     private static final DateFormat activityDate = new SimpleDateFormat("d MMM");
+    private static final String elementPathStart = "//android.support.v7.widget.RecyclerView[1]/android.widget.RelativeLayout[";
+    private static final String activityNamePathEnd = "]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[2]/android.widget.TextView[1]";
+    private static final String accountNamePathEnd = "]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[2]/android.widget.TextView[2]";
 
     public static String getFirstRowDate() {
         return getText(firstRowDate);
@@ -109,16 +110,8 @@ public class ActivitiesPage extends BasePage {
         }
         lastValue = list.size();
 
-        String previousActivity = find(MobileBy.xpath(
-                "//android.support.v7.widget.RecyclerView[1]/android.widget.RelativeLayout[" +
-                        lastValue +
-                        "]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]" +
-                        "/android.widget.LinearLayout[2]/android.widget.TextView[1]")).getText();
-        String previousAccount = find(MobileBy.xpath(
-                "//android.support.v7.widget.RecyclerView[1]/android.widget.RelativeLayout[" +
-                        lastValue +
-                        "]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]" +
-                        "/android.widget.LinearLayout[2]/android.widget.TextView[2]")).getText();
+        String previousActivity = getTextByPath(elementPathStart, lastValue, activityNamePathEnd);
+        String previousAccount = getTextByPath(elementPathStart, lastValue, accountNamePathEnd);
 
         AndroidElement el = (AndroidElement) find(MobileBy.id("activity_item"));
         cellHeight = el.getSize().height + 2;
@@ -127,28 +120,12 @@ public class ActivitiesPage extends BasePage {
             try{ Thread.sleep(500); } catch (Exception e) {}
             try {
                 try {
-                    activityName = find(MobileBy.xpath(
-                            "//android.support.v7.widget.RecyclerView[1]/android.widget.RelativeLayout[" +
-                                    (lastValue + 1) +
-                                    "]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]" +
-                                    "/android.widget.LinearLayout[2]/android.widget.TextView[1]")).getText();
-                    accountName = find(MobileBy.xpath(
-                            "//android.support.v7.widget.RecyclerView[1]/android.widget.RelativeLayout[" +
-                                    (lastValue + 1) +
-                                    "]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]" +
-                                    "/android.widget.LinearLayout[2]/android.widget.TextView[2]")).getText();
+                    activityName = getTextByPath(elementPathStart, (lastValue + 1), activityNamePathEnd);
+                    accountName = getTextByPath(elementPathStart, (lastValue + 1), accountNamePathEnd);
                 }
                 catch (Exception e) {
-                    activityName = find(MobileBy.xpath(
-                            "//android.support.v7.widget.RecyclerView[1]/android.widget.RelativeLayout[" +
-                                    lastValue +
-                                    "]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]" +
-                                    "/android.widget.LinearLayout[2]/android.widget.TextView[1]")).getText();
-                    accountName = find(MobileBy.xpath(
-                            "//android.support.v7.widget.RecyclerView[1]/android.widget.RelativeLayout[" +
-                                    lastValue +
-                                    "]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]" +
-                                    "/android.widget.LinearLayout[2]/android.widget.TextView[2]")).getText();
+                    activityName = getTextByPath(elementPathStart, lastValue, activityNamePathEnd);
+                    accountName = getTextByPath(elementPathStart, lastValue, accountNamePathEnd);
                 }
                 if (activityName.equals(previousActivity) && accountName.equals(previousAccount)) {
                     counter++;
@@ -197,11 +174,7 @@ public class ActivitiesPage extends BasePage {
 //            System.out.println(aList.getText());
 //        }
         total = lastValue = list.size();
-        String previousAccount = find(MobileBy.xpath(
-                "//android.support.v7.widget.RecyclerView[1]/android.widget.RelativeLayout[" +
-                        lastValue +
-                        "]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]" +
-                        "/android.widget.LinearLayout[2]/android.widget.TextView[2]")).getText();
+        String previousAccount = getTextByPath(elementPathStart, lastValue, accountNamePathEnd);
         String account;
         AndroidElement el = (AndroidElement) find(MobileBy.id("activity_item"));
 //                    "//android.support.v7.widget.RecyclerView[1]/android.widget.RelativeLayout[" +
@@ -214,18 +187,10 @@ public class ActivitiesPage extends BasePage {
             ((MobileDriver)getDriver()).swipe(0, windowHeight, 0, windowHeight - cellHeight, 500);
             try{ Thread.sleep(500); } catch (Exception e) {}
             try {
-                account = find(MobileBy.xpath(
-                        "//android.support.v7.widget.RecyclerView[1]/android.widget.RelativeLayout[" +
-                                lastValue +
-                                "]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]" +
-                                "/android.widget.LinearLayout[2]/android.widget.TextView[2]")).getText();
+                account = getTextByPath(elementPathStart, lastValue, accountNamePathEnd);
                 if(account.equals(previousAccount)) {
                     try {
-                        account = find(MobileBy.xpath(
-                                "//android.support.v7.widget.RecyclerView[1]/android.widget.RelativeLayout[" +
-                                        (lastValue + 1) +
-                                        "]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]" +
-                                        "/android.widget.LinearLayout[2]/android.widget.TextView[2]")).getText();
+                        account = getTextByPath(elementPathStart, (lastValue + 1), accountNamePathEnd);
                     } catch (Exception e) { }
                 }
 //                System.out.println(account);

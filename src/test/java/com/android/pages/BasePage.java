@@ -101,6 +101,10 @@ public class BasePage extends Helpers {
         return find(locator).getText();
     }
 
+    protected static String getTextByPath(String start, int index, String end) {
+        return find(MobileBy.xpath(start + index + end)).getText();
+    }
+
     public static void swipeFromTopToBottom() {
         Dimension size = getDriver().manage().window().getSize();
         int starty = (int) (size.height * 0.80);
