@@ -93,10 +93,7 @@ public class CalendarPage extends BasePage {
 //        }
         total = iterator = list.size();
         int lastValue = iterator;
-        String previousCampaign = find(MobileBy.xpath(
-                "//android.support.v7.widget.RecyclerView[1]/android.widget.RelativeLayout[" +
-                        lastValue +
-                        "]/android.widget.RelativeLayout[1]/android.widget.TextView[1]")).getText();
+        String previousCampaign = getTextByPath("//android.support.v7.widget.RecyclerView[1]/android.widget.RelativeLayout[", lastValue, "]/android.widget.RelativeLayout[1]/android.widget.TextView[1]");
         String account;
         do {
             AndroidElement el = (AndroidElement) find(MobileBy.xpath(
@@ -106,16 +103,10 @@ public class CalendarPage extends BasePage {
             Thread.sleep(500);
             try {
                 try {
-                    account = find(MobileBy.xpath(
-                            "//android.support.v7.widget.RecyclerView[1]/android.widget.RelativeLayout[" +
-                                    (lastValue + 1) +
-                                    "]/android.widget.RelativeLayout[1]/android.widget.TextView[1]")).getText();
+                    account = getTextByPath("//android.support.v7.widget.RecyclerView[1]/android.widget.RelativeLayout[", (lastValue + 1), "]/android.widget.RelativeLayout[1]/android.widget.TextView[1]");
                 }
                 catch (Exception e) {
-                    account = find(MobileBy.xpath(
-                            "//android.support.v7.widget.RecyclerView[1]/android.widget.RelativeLayout[" +
-                                    lastValue +
-                                    "]/android.widget.RelativeLayout[1]/android.widget.TextView[1]")).getText();
+                    account = getTextByPath("//android.support.v7.widget.RecyclerView[1]/android.widget.RelativeLayout[", lastValue, "]/android.widget.RelativeLayout[1]/android.widget.TextView[1]");
                 }
 //                System.out.println(account);
                 if (account.equals(previousCampaign)) {
