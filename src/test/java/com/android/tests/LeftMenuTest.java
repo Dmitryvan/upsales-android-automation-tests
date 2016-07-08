@@ -81,10 +81,11 @@ public class LeftMenuTest extends BaseTest {
         assertTrue(LeftMenuPage.checkSearch());
     }
 
-//    @Test(priority = 6)
-//    public void softPopoverListOfCreateButtonInTheSideMenu() {
-//        SoftAssertExtended softAssert = new SoftAssertExtended();
-//        LeftMenuPage.clickCreate();
+    @Test(priority = 6, enabled = false)
+    public void softPopoverListOfCreateButtonInTheSideMenu() {
+        SoftAssertExtended softAssert = new SoftAssertExtended();
+        LeftMenuPage.clickCreate();
+        CreateMenuPage.clickContact();
 //        softAssert.assertEquals(labelHeader, CreateMenuPage.getLabelHeader());
 //        softAssert.assertEquals(labelActivity, CreateMenuPage.getLabelActivity());
 //        softAssert.assertEquals(labelAppointment, CreateMenuPage.getLabelAppointment());
@@ -92,8 +93,8 @@ public class LeftMenuTest extends BaseTest {
 //        softAssert.assertEquals(labelOrder, CreateMenuPage.getLabelOrder());
 //        softAssert.assertEquals(labelContact, CreateMenuPage.getLabelContact());
 //        softAssert.assertEquals(labelAccount, CreateMenuPage.getLabelAccount());
-//        softAssert.assertAll();
-//    }
+        softAssert.assertAll();
+    }
 
     @AfterClass
     public void tearDown() {

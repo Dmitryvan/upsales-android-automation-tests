@@ -17,8 +17,8 @@ import static org.junit.Assert.assertEquals;
 public class BasePage extends Helpers {
 
     protected static final By buttonLeftMenu = MobileBy.xpath("//android.widget.ImageButton[1]");
-    protected static final By buttonCancel = MobileBy.IosUIAutomation(".navigationBars()[0].buttons()[1]");
-    protected static final By buttonSave = MobileBy.IosUIAutomation(".navigationBars()[0].buttons()[2]");
+    protected static final By buttonCancel = MobileBy.id("cancel");
+    protected static final By buttonSave = MobileBy.id("save");
     private static final By buttonFilter = MobileBy.id("filter_icon");
     private static final By arrowBack = MobileBy.xpath("//android.widget.ImageButton[1]");
 
@@ -66,11 +66,11 @@ public class BasePage extends Helpers {
     }
 
     public static String getLabelSave() {
-        return getLabel(buttonSave);
+        return getText(buttonSave);
     }
 
     public static String getLabelCancel() {
-        return getLabel(buttonCancel);
+        return getText(buttonCancel);
     }
 
     public static String getValue(By by) {

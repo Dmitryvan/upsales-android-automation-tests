@@ -17,7 +17,7 @@ public class LeftMenuPage extends BasePage {
             ".tableViews()[0].cells().firstWithPredicate(\"staticTexts[1].name=='Forms'\")");
     private static final By buttonGroupMail = MobileBy.IosUIAutomation(
             ".tableViews()[0].cells().firstWithPredicate(\"staticTexts[1].name=='Group mail'\")");
-    private static final By buttonCreate = MobileBy.IosUIAutomation(".buttons()[0]");
+    private static final By buttonCreate = MobileBy.id("create");
     private static final By buttonSettings = MobileBy.IosUIAutomation(".buttons()[1]");
 
     private static final By buttonSignOut = MobileBy.id("sign_out");
