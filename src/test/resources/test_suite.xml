@@ -6,7 +6,9 @@
     <test name="App Test">
         <classes>
             <class name="com.android.tests.DashboardTest"/>
+            <class name="com.android.tests.ActivitiesTest"/>
             <class name="com.android.tests.DashboardFilterTest"/>
+            <class name="com.android.tests.ActivitiesFilterTest"/>
             <class name="com.android.tests.SalesPipelineTest"/>
             <class name="com.android.tests.SalesPipelineNavigationTest"/>
             <class name="com.android.tests.SalesFilterTest"/>
@@ -14,6 +16,7 @@
             <class name="com.android.tests.CalendarNavigationAndVerifyTest"/>
             <class name="com.android.tests.LoginTest"/>
             <class name="com.android.tests.LogoutTest"/>
+            <class name="com.android.tests.CreateEditActivityTest"/>
         </classes>
     </test>
 </suite>

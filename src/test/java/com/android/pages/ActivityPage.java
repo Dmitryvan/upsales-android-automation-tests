@@ -1,6 +1,7 @@
 package com.android.pages;
 
 import io.appium.java_client.MobileBy;
+import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.By;
 
 import java.text.DateFormat;
@@ -11,9 +12,9 @@ public class ActivityPage extends BasePage {
 
     private static final By buttonLeftMenu = MobileBy.IosUIAutomation(".navigationBar().buttons()[1]");
 
-    private static final By labelActivityDescriptionValue = MobileBy.IosUIAutomation(".staticTexts()[0]");
-    private static final By buttonTools = MobileBy.IosUIAutomation(".navigationBars()[0].buttons()[\"Right Icon\"]");
-    private static final By buttonAccount = MobileBy.IosUIAutomation(".buttons()[0]");
+    private static final By labelActivityDescriptionValue = MobileBy.id("activity_title");
+    private static final By buttonTools = MobileBy.id("save");
+    private static final By buttonAccount = MobileBy.id("activity_contact");
     private static final By labelUserValue = MobileBy.IosUIAutomation(".staticTexts()[2]");
     private static final By labelDateValue = MobileBy.IosUIAutomation(".scrollViews()[0].tableViews()[0].cells()[0].textFields()[0]");
     private static final By labelTimeValue = MobileBy.IosUIAutomation(".scrollViews()[0].tableViews()[0].cells()[0].staticTexts()[1]");
@@ -21,10 +22,10 @@ public class ActivityPage extends BasePage {
     private static final By labelContactTitle = MobileBy.IosUIAutomation(".tableViews()[0].cells()[3].staticTexts()[1]");
     private static final By labelCampaignValue = MobileBy.IosUIAutomation(".scrollViews()[0].tableViews()[0].cells()[2].staticTexts()[1]");
     private static final By labelCampaignWithoutContact = MobileBy.IosUIAutomation(".scrollViews()[0].tableViews()[0].cells()[1].staticTexts()[1]");
-    private static final By labelCampaignWithoutContactAndTime = MobileBy.IosUIAutomation(".scrollViews()[0].tableViews()[0].cells()[1].staticTexts()[1]");
+    private static final By labelCampaignWithoutContactAndTime = MobileBy.xpath("//android.support.v4.view.ViewPager[1]//android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]");
     private static final By labelOpportunityValue = MobileBy.IosUIAutomation(".scrollViews()[0].tableViews()[0].cells()[3].staticTexts()[1]");
     private static final By labelOpportunityWithoutContact = MobileBy.IosUIAutomation(".scrollViews()[0].tableViews()[0].cells()[2].staticTexts()[1]");
-    private static final By labelOpportunityWithoutContactAndTime = MobileBy.IosUIAutomation(".scrollViews()[0].tableViews()[0].cells()[2].staticTexts()[1]");
+    private static final By labelOpportunityWithoutContactAndTime = MobileBy.xpath("//android.support.v4.view.ViewPager[1]//android.widget.RelativeLayout[2]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]");
     private static final By fieldNotesValue = MobileBy.IosUIAutomation(".scrollViews()[0].tableViews()[0].cells()[4].textViews()[0]");
     private static final By fieldNotesWithoutContact = MobileBy.IosUIAutomation(".scrollViews()[0].tableViews()[0].cells()[3].textViews()[0]");;
     private static final By fieldNotesWithoutContactAndTime = MobileBy.IosUIAutomation(".tableViews()[0].cells()[4].textViews()[0]");;
@@ -56,7 +57,7 @@ public class ActivityPage extends BasePage {
     }
 
     public static void clickTools() {
-        wait(buttonTools);
+        wait(labelActivityDescriptionValue);
         find(buttonTools).click();
     }
 
@@ -74,18 +75,17 @@ public class ActivityPage extends BasePage {
 
 
     public static void clickEditActivity() {
-        wait(popoverEditActivity);
-        find(popoverEditActivity).click();
+        waitByThread(1000);
+        ((AndroidDriver)getDriver()).tap(1, 790, 300, 1);
     }
-
 
     public static String getActivityDescription() {
         wait(buttonTools);
-        return getValue(labelActivityDescriptionValue);
+        return getText(labelActivityDescriptionValue);
     }
 
     public static String getAccountName() {
-        return getLabel(buttonAccount);
+        return getText(buttonAccount);
     }
 
     public static String getContact() {
@@ -113,7 +113,7 @@ public class ActivityPage extends BasePage {
     }
 
     public static String getCampaignWithoutContactAndTime() {
-        return getValue(labelCampaignWithoutContactAndTime);
+        return getText(labelCampaignWithoutContactAndTime);
     }
 
     public static String getOpportunity() {
@@ -121,7 +121,7 @@ public class ActivityPage extends BasePage {
     }
 
     public static String getOpportunityWithoutContactAndTime() {
-        return getValue(labelOpportunityWithoutContactAndTime);
+        return getText(labelOpportunityWithoutContactAndTime);
     }
 
     public static String getOpportunityWithoutContact() {
@@ -180,3 +180,4 @@ public class ActivityPage extends BasePage {
         return getValue(popoverEditActivity);
     }
 }
+

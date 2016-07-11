@@ -91,6 +91,12 @@ public class Helpers {
         return calendar;
     }
 
+    protected static void waitByThread(int duration) {
+        try {
+            Thread.sleep(duration);
+        } catch (Exception e) {}
+    }
+
     public static String getCurrentDate() {
         Date date = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("d MMM yyyy", Locale.ENGLISH);

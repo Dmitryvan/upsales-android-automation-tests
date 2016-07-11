@@ -23,7 +23,7 @@ public class LeftMenuPage extends BasePage {
     private static final By buttonSignOut = MobileBy.id("sign_out");
     private static final By fieldSearch = MobileBy.id("search_backgraund");
 
-    private static final By hiddenPageTitle = MobileBy.IosUIAutomation(".navigationBars()[1].staticTexts()[0]");
+    private static final By hiddenPageTitle = MobileBy.id("title");
 
     public static boolean checkSearch() {
         try {
@@ -34,7 +34,7 @@ public class LeftMenuPage extends BasePage {
     }
 
     public static String getHiddenPageTitle() {
-        return getValue(hiddenPageTitle);
+        return getText(hiddenPageTitle);
     }
 
     public static void clickSettings() {
@@ -88,7 +88,8 @@ public class LeftMenuPage extends BasePage {
 ////            getDriver().switchTo().alert().dismiss();
 //    }
 
-    public static void clickCreate() {
+    public static void clickCreate() throws InterruptedException {
         find(buttonCreate).click();
+        Thread.sleep(200);
     }
 }

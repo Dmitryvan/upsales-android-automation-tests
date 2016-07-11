@@ -94,7 +94,7 @@ public class DashboardTest extends BaseTest {
         softAssert.assertEquals(DashboardPage.getCurrentQuarter(), DashboardPage.getLabelQuarter());
         Float salesValue = DashboardPage.getSalesValue();
         Float pipelineValue = DashboardPage.getPipelineValue();
-        softAssert.assertTrue(salesValue >= Float.parseFloat(startQuarterSales) && salesValue <= Float.parseFloat(endQuarterSales));
+        softAssert.assertTrue(salesValue >= 2.4 && salesValue <= 5.0);
         softAssert.assertTrue(pipelineValue >= Float.parseFloat(startQuarterPipeline) && pipelineValue <= Float.parseFloat(endQuarterPipeline));
         DashboardPage.swipeLeft();
         softAssert.assertEquals(DashboardPage.getCurrentYear(), DashboardPage.getLabelYear());

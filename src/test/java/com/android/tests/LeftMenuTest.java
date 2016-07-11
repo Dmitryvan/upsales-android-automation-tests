@@ -84,8 +84,8 @@ public class LeftMenuTest extends BaseTest {
     @Test(priority = 6, enabled = false)
     public void softPopoverListOfCreateButtonInTheSideMenu() {
         SoftAssertExtended softAssert = new SoftAssertExtended();
-        LeftMenuPage.clickCreate();
-        CreateMenuPage.clickContact();
+//        LeftMenuPage.clickCreate();
+//        CreateMenuPage.clickContact();
 //        softAssert.assertEquals(labelHeader, CreateMenuPage.getLabelHeader());
 //        softAssert.assertEquals(labelActivity, CreateMenuPage.getLabelActivity());
 //        softAssert.assertEquals(labelAppointment, CreateMenuPage.getLabelAppointment());

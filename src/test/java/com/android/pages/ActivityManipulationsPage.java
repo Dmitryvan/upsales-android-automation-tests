@@ -3,7 +3,6 @@ package com.android.pages;
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
-import io.appium.java_client.ios.IOSElement;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
@@ -23,18 +22,19 @@ public class ActivityManipulationsPage extends BasePage {
     private static final By fieldDescription = MobileBy.xpath("//android.widget.LinearLayout[1]/android.widget.EditText[1]");
     private static final By buttonActivityType = MobileBy.id("item_select");
     private static final By listActvityType = MobileBy.id("text1");
-    private static final By buttonDueDate = MobileBy.IosUIAutomation(".tableViews()[0].cells()[2]");
-    private static final By pickerWheelDueDateMonth = MobileBy.IosUIAutomation(".tableViews()[0].cells()[3].pickers()[0].wheels()[0]");
-    private static final By pickerWheelDueDateDay = MobileBy.IosUIAutomation(".tableViews()[0].cells()[3].pickers()[0].wheels()[1]");
-    private static final By pickerWheelDueDateYear = MobileBy.IosUIAutomation(".tableViews()[0].cells()[3].pickers()[0].wheels()[2]");
-    private static final By buttonTime = MobileBy.IosUIAutomation(".tableViews()[0].cells()[3]");
+    private static final By buttonDueDate = MobileBy.xpath("//*[@class='android.widget.RelativeLayout' and @index='2']");
+    private static final By pickerFirstField = MobileBy.xpath("//android.widget.NumberPicker[1]/android.widget.EditText[1]");
+    private static final By pickerSecondField = MobileBy.xpath("//android.widget.NumberPicker[2]/android.widget.EditText[1]");
+    private static final By pickerThirdField = MobileBy.xpath("//android.widget.NumberPicker[3]/android.widget.EditText[1]");
+    private static final By pickerDone = MobileBy.id("button1");
+    private static final By buttonTime = MobileBy.xpath("//*[@class='android.widget.RelativeLayout' and @index='3']");
     private static final By pickerWheelTimeHours = MobileBy.IosUIAutomation(".tableViews()[0].cells()[4].pickers()[0].wheels()[0]");
     private static final By pickerWheelTimeMinutes = MobileBy.IosUIAutomation(".tableViews()[0].cells()[4].pickers()[0].wheels()[1]");
     private static final By pickerWheelTimeAmPm = MobileBy.IosUIAutomation(".tableViews()[0].cells()[4].pickers()[0].wheels()[2]");
     private static final By buttonAccount = MobileBy.xpath("//*[@class='android.widget.RelativeLayout' and @index='6']");
-    private static final By buttonContact = MobileBy.IosUIAutomation(".tableViews()[0].cells()[5]");
+    private static final By buttonContact = MobileBy.xpath("//*[@class='android.widget.RelativeLayout' and @index='8']");
     private static final By pickerWheelContact = MobileBy.IosUIAutomation(".tableViews()[0].cells()[6].pickers()[0].wheels()[0]");
-    private static final By buttonOpportunity = MobileBy.IosUIAutomation(".tableViews()[0].cells()[6]");
+    private static final By buttonOpportunity = MobileBy.xpath("//*[@class='android.widget.RelativeLayout' and @index='10']");
     private static final By pickerWheelOpportunity = MobileBy.IosUIAutomation(".tableViews()[0].cells()[7].pickers()[0].wheels()[0]");
     private static final By buttonUser = MobileBy.IosUIAutomation(".tableViews()[0].cells()[7]");
     private static final By buttonSelectUser = MobileBy.IosUIAutomation(".navigationBars()[0].buttons()[2]");
@@ -140,8 +140,10 @@ public class ActivityManipulationsPage extends BasePage {
         } catch (WebDriverException e) {}
     }
 
-    public static void spinActivityTypeWheelTo(String value) {
-        find(listActvityType).sendKeys(value);
+    public static void selectActivityType(String value) {
+        find(MobileBy.xpath(
+                "//*[@class='android.widget.CheckedTextView' and @text='" +
+                        value + "']")).click();
     }
 
     public static void spinContactWheelTo(String value) {
@@ -149,25 +151,32 @@ public class ActivityManipulationsPage extends BasePage {
         find(pickerWheelContact).sendKeys(value);
     }
 
-    public static void spinOpportunityWheelTo(String value) {
-        spinWheel(value, pickerWheelOpportunity, cellIndexOpportunity);
-//        find(pickerWheelOpportunity).sendKeys(value);
+    public static void selectOpportunity(String value) {
+        find(MobileBy.xpath(
+                "//*[@class='android.widget.CheckBox' and @text='" +
+                        value + "']")).click();
     }
 
     public static void clickDueDate() {
         find(buttonDueDate).click();
     }
 
+    public static void closePicker() {
+        find(pickerDone).click();
+    }
+
     public static void selectDueDateMonth(String month) {
-        getDriver().findElements(By.className("UIAPickerWheel")).get(0).sendKeys(month);
+        WebElement el = find(pickerFirstField);
+        el.click();
+        el.sendKeys(month);
     }
 
     public static void selectDueDateDay(String day) {
-        find(pickerWheelDueDateDay).sendKeys(day);
+        find(pickerSecondField).sendKeys(day);
     }
 
     public static void selectDueDateYear(String year) {
-        find(pickerWheelDueDateYear).sendKeys(year);
+        find(pickerThirdField).sendKeys(year);
     }
 
     public static void clickTime() {
@@ -175,15 +184,15 @@ public class ActivityManipulationsPage extends BasePage {
     }
 
     public static void selectTimeHours(String hours) {
-        getDriver().findElements(By.className("UIAPickerWheel")).get(0).sendKeys(hours);
+        find(pickerFirstField).sendKeys(hours);
     }
 
     public static void selectTimeMinutes(String minutes) {
-        find(pickerWheelTimeMinutes).sendKeys(minutes);
+        find(pickerSecondField).sendKeys(minutes);
     }
 
     public static void selectTimeAmPm(String aMpM) {
-        getDriver().findElements(By.className("UIAPickerWheel")).get(2).sendKeys(aMpM);
+        find(pickerThirdField).sendKeys(aMpM);
     }
 
     public static void clickAccount() {
@@ -191,7 +200,7 @@ public class ActivityManipulationsPage extends BasePage {
     }
 
     public static void clickContact() {
-        wait(buttonContact);
+        waitByThread(1000);
         find(buttonContact).click();
     }
 
