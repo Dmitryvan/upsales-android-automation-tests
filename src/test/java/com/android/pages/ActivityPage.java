@@ -15,7 +15,7 @@ public class ActivityPage extends BasePage {
     private static final By labelActivityDescriptionValue = MobileBy.id("activity_title");
     private static final By buttonTools = MobileBy.id("save");
     private static final By buttonAccount = MobileBy.id("activity_contact");
-    private static final By labelUserValue = MobileBy.IosUIAutomation(".staticTexts()[2]");
+    private static final By labelUserValue = MobileBy.id("user_name");
     private static final By labelDateValue = MobileBy.IosUIAutomation(".scrollViews()[0].tableViews()[0].cells()[0].textFields()[0]");
     private static final By labelTimeValue = MobileBy.IosUIAutomation(".scrollViews()[0].tableViews()[0].cells()[0].staticTexts()[1]");
     private static final By buttonContact = MobileBy.IosUIAutomation(".scrollViews()[0].tableViews()[0].cells()[1].textFields()[0]");
@@ -32,7 +32,7 @@ public class ActivityPage extends BasePage {
     private static final By labelEttTillValueWithoutContact = MobileBy.IosUIAutomation(".tableViews()[0].cells()[7].staticTexts()[1]");
     private static final By labelEttTillValue = MobileBy.IosUIAutomation(".scrollViews()[0].tableViews()[0].cells()[6].staticTexts()[2]");
 
-    private static final By popoverEditActivity = MobileBy.IosUIAutomation(".popover().tableViews()[0].cells()[0].staticTexts()[1]");
+    private static final By popoverEditActivity = MobileBy.id("item_edit");
     private static final By popoverCloseActivity = MobileBy.IosUIAutomation(".popover().tableViews()[0].cells()[3].staticTexts()[1]");
     private static final By popoverFollowUpActivity = MobileBy.IosUIAutomation(".popover().tableViews()[0].cells()[3]");
 
@@ -76,7 +76,8 @@ public class ActivityPage extends BasePage {
 
     public static void clickEditActivity() {
         waitByThread(1000);
-        ((AndroidDriver)getDriver()).tap(1, 790, 300, 1);
+//        ((AndroidDriver)getDriver()).tap(1, 790, 300, 1);
+        find(popoverEditActivity).click();
     }
 
     public static String getActivityDescription() {

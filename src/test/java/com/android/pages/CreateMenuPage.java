@@ -7,8 +7,7 @@ import org.openqa.selenium.By;
 
 public class CreateMenuPage extends BasePage {
 
-    private static final By buttonActivity = MobileBy.id(
-            "activity");
+    private static final By buttonActivity = MobileBy.id("activity");
     private static final By buttonAppointment = MobileBy.IosUIAutomation(
             ".popover().tableViews()[0].cells()[2].staticTexts()[1]");
     private static final By buttonOpportunity = MobileBy.IosUIAutomation(
@@ -51,8 +50,8 @@ public class CreateMenuPage extends BasePage {
     }
 
     public static void clickActivity() {
-        ((AndroidDriver)getDriver()).tap(1, 500, 860, 1);
-//        find(buttonActivity).click();
+//        ((AndroidDriver)getDriver()).tap(1, 500, 860, 1);
+        find(buttonActivity).click();
     }
 
     public static void clickAppointment() {

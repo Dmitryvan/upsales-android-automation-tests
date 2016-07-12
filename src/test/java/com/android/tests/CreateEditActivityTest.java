@@ -125,7 +125,8 @@ public class CreateEditActivityTest extends BaseTest {
         softAssert.assertEquals(labelResults, AddSelectEntityPage.getResultsLabelValue());
         AddSelectEntityPage.clickBack();
         softAssert.assertEquals(labelNotes, ActivityManipulationsPage.getLabelNotes());
-//        softAssert.assertEquals(labelOtherInfo.toUpperCase(), ActivityManipulationsPage.getLabelOtherInfo());
+        ActivityManipulationsPage.scrollToOtherInfo(labelOtherInfo);
+        softAssert.assertEquals(labelOtherInfo, ActivityManipulationsPage.getLabelOtherInfo());
         softAssert.assertAll();
     }
 
@@ -179,7 +180,7 @@ public class CreateEditActivityTest extends BaseTest {
         ActivityManipulationsPage.clickCancel();
         softAssert.assertEquals(description, ActivityPage.getActivityDescription());
         softAssert.assertEquals(account, ActivityPage.getAccountName());
-        softAssert.assertTrue(ActivityPage.checkThereIsNoContact());
+//        softAssert.assertTrue(ActivityPage.checkThereIsNoContact());
         softAssert.assertEquals(labelNone, ActivityPage.getCampaignWithoutContactAndTime());
         softAssert.assertEquals(labelNone, ActivityPage.getOpportunityWithoutContactAndTime());
         ActivityPage.checkPageTitle(defaultActivityType);
@@ -210,17 +211,17 @@ public class CreateEditActivityTest extends BaseTest {
         softAssert.assertEquals(account, ActivityManipulationsPage.getAccount());
         ActivityManipulationsPage.clickContact();
         AddSelectEntityPage.select(contact);
-        softAssert.assertEquals(" " + contact, ActivityManipulationsPage.getContact());
+        softAssert.assertEquals(contact, ActivityManipulationsPage.getContact());
         ActivityManipulationsPage.clickOpportunity();
         ActivityManipulationsPage.selectOpportunity(opportunity);
-        ActivityManipulationsPage.clickOpportunity();
         softAssert.assertEquals(opportunity, ActivityManipulationsPage.getOpportunity());
         ActivityManipulationsPage.clickUser();
         AddSelectEntityPage.select(user);
-        softAssert.assertEquals(" " + user, ActivityManipulationsPage.getUser());
+        softAssert.assertEquals(user, ActivityManipulationsPage.getUser());
         ActivityManipulationsPage.clickCampaign();
         AddSelectEntityPage.select(campaign);
         softAssert.assertEquals(campaign, ActivityManipulationsPage.getCampaign());
+        ActivityManipulationsPage.scrollToOtherInfo(labelOtherInfo);
         ActivityManipulationsPage.typeIntoNotes(notes);
         ActivityManipulationsPage.clickSave();
         ActivityPage.clickTools();

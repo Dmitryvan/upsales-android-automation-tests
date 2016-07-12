@@ -10,7 +10,7 @@ public class AddSelectEntityPage extends BasePage{
     private static final By fieldSearch = MobileBy.id("edit");
     private static final By labelResults = MobileBy.xpath("//*[@class='android.widget.TextView' and @text='Results']");
     private static final By buttonSelect = MobileBy.IosUIAutomation(".navigationBars()[0].buttons()[2]");
-    private static final By labelNone = MobileBy.IosUIAutomation(".tableViews()[0].cells()[0].staticTexts()[0]");
+    private static final By labelNone = MobileBy.xpath("//*[@class='android.widget.CheckBox' and @index='0']");
 
     public static String getTitle() {
         return BasePage.getTitle();
@@ -30,7 +30,7 @@ public class AddSelectEntityPage extends BasePage{
     }
 
     public static String getSelectButtonValue() {
-        return getLabel(buttonSelect);
+        return getText(buttonSelect);
     }
 
     public static void search(String value) {
@@ -38,6 +38,8 @@ public class AddSelectEntityPage extends BasePage{
     }
 
     public static void select(String value) {
+        waitByThread(1000);
+        hideKeyboard();
         find(MobileBy.xpath("//*[@class='android.widget.CheckBox' and @text='" + value + "']")).click();
     }
 
@@ -58,6 +60,6 @@ public class AddSelectEntityPage extends BasePage{
     }
 
     public static String getLabelNone() {
-        return getValue(labelNone);
+        return getText(labelNone);
     }
 }

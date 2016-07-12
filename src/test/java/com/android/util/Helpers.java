@@ -356,8 +356,8 @@ public class Helpers {
         }
     }
 
-    public static void clickDoneOnKeyboard() {
-        find(buttonDoneOnKeyboard).click();
+    public static void hideKeyboard() {
+        ((AppiumDriver) getDriver()).hideKeyboard();
     }
 
     public static void clickClearOnKeyBoard() {
