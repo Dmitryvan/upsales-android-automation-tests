@@ -100,7 +100,7 @@ public class ActivitiesFilterTest extends BaseTest {
     @Test(priority = 5)
     public void searchUser() {
         FilterPage.clickUsers();
-        FilterPage.select(currentUser);
+        FilterPage.select(all);
         FilterPage.search(searchString);
         assertTrue(FilterPage.checkSearchResultsContains(searchString));
         FilterPage.selectFirstSearchResult();
