@@ -66,7 +66,7 @@ public class LoginPage extends BasePage {
     }
 
     public static void clearPasswordField() {
-        find(fieldPassword).clear();
+        find(fieldPassword).click();
     }
 
     public static void login() {
