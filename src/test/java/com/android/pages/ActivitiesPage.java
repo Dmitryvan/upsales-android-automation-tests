@@ -205,7 +205,7 @@ public class ActivitiesPage extends BasePage {
             }
         } while (!account.equals("H & M Hennes & Mauritz Sverige AB"));
 //        System.out.println(iterator);
-        System.out.println(total);
+//        System.out.println(total);
         return total;
     }
 

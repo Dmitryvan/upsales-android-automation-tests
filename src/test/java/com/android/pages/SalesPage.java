@@ -11,7 +11,7 @@ public class SalesPage extends BasePage {
 
     private static final By tabPipeline = MobileBy.id("pipeline");
     private static final By labelTabPipeline = MobileBy.xpath("//android.widget.RelativeLayout[2]/android.widget.LinearLayout[1]/android.widget.TextView[2]");
-    private static final By labelTabSales = MobileBy.xpath("//android.support.v4.widget.DrawerLayout[1]/android.view.View[1]/android.widget.FrameLayout[1]/android.view.View[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.TextView[2]");
+    private static final By labelTabSales = MobileBy.xpath("//android.support.v4.widget.DrawerLayout[1]/android.view.ViewGroup[1]/android.widget.FrameLayout[1]/android.view.ViewGroup[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.TextView[2]");
     private static final By labelSalesTotal = MobileBy.xpath("//android.support.v7.widget.RecyclerView[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[1]/android.widget.TextView[1]");
     private static final By labelTotalSalesValue = MobileBy.id("salesTotal");
     private static final By labelSalesOnDiagram = MobileBy.xpath("//android.support.v7.widget.RecyclerView[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[2]/android.widget.TextView[1]");
