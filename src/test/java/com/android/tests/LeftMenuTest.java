@@ -81,18 +81,17 @@ public class LeftMenuTest extends BaseTest {
         assertTrue(LeftMenuPage.checkSearch());
     }
 
-    @Test(priority = 6, enabled = false)
+    @Test(priority = 6)
     public void softPopoverListOfCreateButtonInTheSideMenu() {
         SoftAssertExtended softAssert = new SoftAssertExtended();
-//        LeftMenuPage.clickCreate();
-//        CreateMenuPage.clickContact();
-//        softAssert.assertEquals(labelHeader, CreateMenuPage.getLabelHeader());
-//        softAssert.assertEquals(labelActivity, CreateMenuPage.getLabelActivity());
-//        softAssert.assertEquals(labelAppointment, CreateMenuPage.getLabelAppointment());
-//        softAssert.assertEquals(labelOpportunity, CreateMenuPage.getLabelOpportunity());
-//        softAssert.assertEquals(labelOrder, CreateMenuPage.getLabelOrder());
-//        softAssert.assertEquals(labelContact, CreateMenuPage.getLabelContact());
-//        softAssert.assertEquals(labelAccount, CreateMenuPage.getLabelAccount());
+        LeftMenuPage.clickCreate();
+        softAssert.assertEquals(labelHeader, CreateMenuPage.getLabelHeader());
+        softAssert.assertEquals(labelActivity, CreateMenuPage.getLabelActivity());
+        softAssert.assertEquals(labelAppointment, CreateMenuPage.getLabelAppointment());
+        softAssert.assertEquals(labelOpportunity, CreateMenuPage.getLabelOpportunity());
+        softAssert.assertEquals(labelOrder, CreateMenuPage.getLabelOrder());
+        softAssert.assertEquals(labelContact, CreateMenuPage.getLabelContact());
+        softAssert.assertEquals(labelAccount, CreateMenuPage.getLabelAccount());
         softAssert.assertAll();
     }
 

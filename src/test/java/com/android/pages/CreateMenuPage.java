@@ -8,45 +8,52 @@ import org.openqa.selenium.By;
 public class CreateMenuPage extends BasePage {
 
     private static final By buttonActivity = MobileBy.id("activity");
-    private static final By buttonAppointment = MobileBy.IosUIAutomation(
-            ".popover().tableViews()[0].cells()[2].staticTexts()[1]");
-    private static final By buttonOpportunity = MobileBy.IosUIAutomation(
-            ".popover().tableViews()[0].cells()[3].staticTexts()[1]");
-    private static final By buttonOrder = MobileBy.IosUIAutomation(
-            ".popover().tableViews()[0].cells()[4].staticTexts()[1]");
-    private static final By buttonContact = MobileBy.IosUIAutomation(
-            ".popover().tableViews()[0].cells()[5].staticTexts()[1]");
-    private static final By buttonAccount = MobileBy.IosUIAutomation(
-            ".popover().tableViews()[0].cells()[6].staticTexts()[1]");
-    private static final By labelHeader = MobileBy.IosUIAutomation(
-            ".popover().tableViews()[0].cells()[0].staticTexts()[0]");
+    private static final By buttonAppointment = MobileBy.id("appointment");
+    private static final By buttonOpportunity = MobileBy.id("opportunity");
+    private static final By buttonOrder = MobileBy.id("order");
+    private static final By buttonContact = MobileBy.id("contact");
+    private static final By buttonAccount = MobileBy.id("account");
+
+    private static final By labelHeader = MobileBy.xpath("//*[@class='android.widget.TextView' and @index='0']");
+    private static final By labelActivity = MobileBy.xpath("" +
+            "//android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[1]/android.widget.TextView[2]");
+    private static final By labelAppointment = MobileBy.xpath("" +
+            "//android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[2]/android.widget.TextView[2]");
+    private static final By labelOpportunity = MobileBy.xpath("" +
+            "//android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[3]/android.widget.TextView[2]");
+    private static final By labelOrder = MobileBy.xpath("" +
+            "//android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[4]/android.widget.TextView[2]");
+    private static final By labelContact = MobileBy.xpath("" +
+            "//android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[5]/android.widget.TextView[2]");
+    private static final By labelAccount = MobileBy.xpath("" +
+            "//android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[6]/android.widget.TextView[2]");
 
     public static String getLabelHeader() {
         return find(labelHeader).getText();
     }
 
     public static String getLabelActivity() {
-        return find(buttonActivity).getText();
+        return find(labelActivity).getText();
     }
 
     public static String getLabelAppointment() {
-        return find(buttonAppointment).getText();
+        return find(labelAppointment).getText();
     }
 
     public static String getLabelOpportunity() {
-        return find(buttonOpportunity).getText();
+        return find(labelOpportunity).getText();
     }
 
     public static String getLabelOrder() {
-        return find(buttonOrder).getText();
+        return find(labelOrder).getText();
     }
 
     public static String getLabelAccount() {
-        return find(buttonAccount).getText();
+        return find(labelAccount).getText();
     }
 
     public static String getLabelContact() {
-        return find(buttonContact).getText();
+        return find(labelContact).getText();
     }
 
     public static void clickActivity() {
@@ -67,8 +74,8 @@ public class CreateMenuPage extends BasePage {
     }
 
     public static void clickContact() {
-        ((AndroidDriver)getDriver()).tap(1, 168, 1380, 1);
-//        find(buttonContact).click();
+//        ((AndroidDriver)getDriver()).tap(1, 168, 1380, 1);
+        find(buttonContact).click();
     }
 
     public static void clickAccount() {

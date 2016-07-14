@@ -88,8 +88,8 @@ public class LeftMenuPage extends BasePage {
 ////            getDriver().switchTo().alert().dismiss();
 //    }
 
-    public static void clickCreate() throws InterruptedException {
+    public static void clickCreate() {
         find(buttonCreate).click();
-        Thread.sleep(200);
+        waitByThread(200);
     }
 }

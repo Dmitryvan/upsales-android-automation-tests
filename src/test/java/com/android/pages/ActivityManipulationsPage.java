@@ -22,6 +22,7 @@ public class ActivityManipulationsPage extends BasePage {
     private static final By pickerFirstField = MobileBy.xpath("//android.widget.NumberPicker[1]/android.widget.EditText[1]");
     private static final By pickerSecondField = MobileBy.xpath("//android.widget.NumberPicker[2]/android.widget.EditText[1]");
     private static final By pickerThirdField = MobileBy.xpath("//android.widget.NumberPicker[3]/android.widget.EditText[1]");
+    private static final By pickerAmPmField = MobileBy.xpath("//android.widget.TimePicker[1]/android.widget.LinearLayout[1]/android.widget.NumberPicker[1]/android.widget.EditText[1]");
     private static final By pickerDone = MobileBy.id("button1");
     private static final By buttonTime = MobileBy.id("time_field");
     private static final By pickerWheelTimeHours = MobileBy.IosUIAutomation(".tableViews()[0].cells()[4].pickers()[0].wheels()[0]");
@@ -50,6 +51,7 @@ public class ActivityManipulationsPage extends BasePage {
     private static final WebElement campaign = values.get(7);
 
     private static final List<WebElement> labels = findElements(MobileBy.id("name"));
+    private static final WebElement labelActivityType = labels.get(0);
     private static final WebElement labelDueDate = labels.get(1);
     private static final WebElement labelTime = labels.get(2);
     private static final WebElement labelAccount = labels.get(3);
@@ -71,6 +73,10 @@ public class ActivityManipulationsPage extends BasePage {
 
     public static String getCustomFieldEttTill() {
         return getText(customFieldEttTillValue);
+    }
+
+    public static String getLabelActivityType() {
+        return labelActivityType.getText();
     }
 
     public static String getLabelCampaign() {
@@ -194,7 +200,7 @@ public class ActivityManipulationsPage extends BasePage {
     }
 
     public static void selectTimeAmPm(String aMpM) {
-        WebElement el = find(pickerThirdField);
+        WebElement el = find(pickerAmPmField);
         el.clear();
         el.sendKeys(aMpM);
     }

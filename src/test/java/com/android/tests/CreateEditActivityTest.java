@@ -75,6 +75,7 @@ public class CreateEditActivityTest extends BaseTest {
     private final String labelDueDate = PropertyLoader.loadProperty(createActivityPropertyPath, "labelDueDate");
     private final String defaultTime = PropertyLoader.loadProperty(createActivityPropertyPath, "defaultTime");
     private final String labelTime = PropertyLoader.loadProperty(createActivityPropertyPath, "labelTime");
+    private final String labelActivityType = PropertyLoader.loadProperty(createActivityPropertyPath, "labelActivityType");
 
     @BeforeMethod
     public void setUp() throws Exception{
@@ -94,6 +95,7 @@ public class CreateEditActivityTest extends BaseTest {
         softAssert.assertEquals(ActivityManipulationsPage.getLabelSave(), labelSave);
         softAssert.assertEquals(ActivityManipulationsPage.getLabelCancel(), labelCancel);
         softAssert.assertEquals(defaultLabelDescription, ActivityManipulationsPage.getDefaultLabelDescription());
+        softAssert.assertEquals(labelActivityType, ActivityManipulationsPage.getLabelActivityType());
         softAssert.assertEquals(defaultActivityType, ActivityManipulationsPage.getActivityType());
         ActivityManipulationsPage.clickActivityType();
         softAssert.assertEquals(activityTypes, ActivityManipulationsPage.getAllActivityTypes());
@@ -203,7 +205,7 @@ public class CreateEditActivityTest extends BaseTest {
         ActivityManipulationsPage.clickTime();
         ActivityManipulationsPage.selectTimeHours(timeHours);
         ActivityManipulationsPage.selectTimeMinutes(timeMinutes);
-//        ActivityManipulationsPage.selectTimeAmPm(timeAmPm);
+        ActivityManipulationsPage.selectTimeAmPm(timeAmPm);
         ActivityManipulationsPage.closePicker();
         softAssert.assertEquals(time, ActivityManipulationsPage.getTime());
         ActivityManipulationsPage.clickAccount();
