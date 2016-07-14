@@ -203,7 +203,7 @@ public class CreateEditActivityTest extends BaseTest {
         ActivityManipulationsPage.clickTime();
         ActivityManipulationsPage.selectTimeHours(timeHours);
         ActivityManipulationsPage.selectTimeMinutes(timeMinutes);
-        ActivityManipulationsPage.selectTimeAmPm(timeAmPm);
+//        ActivityManipulationsPage.selectTimeAmPm(timeAmPm);
         ActivityManipulationsPage.closePicker();
         softAssert.assertEquals(time, ActivityManipulationsPage.getTime());
         ActivityManipulationsPage.clickAccount();
@@ -216,8 +216,8 @@ public class CreateEditActivityTest extends BaseTest {
         ActivityManipulationsPage.selectOpportunity(opportunity);
         softAssert.assertEquals(opportunity, ActivityManipulationsPage.getOpportunity());
         ActivityManipulationsPage.clickUser();
-        AddSelectEntityPage.select(user);
-        softAssert.assertEquals(user, ActivityManipulationsPage.getUser());
+//        AddSelectEntityPage.select(user);
+//        softAssert.assertEquals(user, ActivityManipulationsPage.getUser());
         ActivityManipulationsPage.clickCampaign();
         AddSelectEntityPage.select(campaign);
         softAssert.assertEquals(campaign, ActivityManipulationsPage.getCampaign());

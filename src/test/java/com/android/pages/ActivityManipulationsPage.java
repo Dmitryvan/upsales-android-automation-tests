@@ -160,16 +160,21 @@ public class ActivityManipulationsPage extends BasePage {
 
     public static void selectDueDateMonth(String month) {
         WebElement el = find(pickerFirstField);
-        el.click();
+        el.clear();
         el.sendKeys(month);
     }
 
     public static void selectDueDateDay(String day) {
-        find(pickerSecondField).sendKeys(day);
+        WebElement el = find(pickerSecondField);
+        el.clear();
+        el.sendKeys(day);
     }
 
     public static void selectDueDateYear(String year) {
-        find(pickerThirdField).sendKeys(year);
+        WebElement el = find(pickerThirdField);
+        el.clear();
+        el.sendKeys(year);
+        hideKeyboard();
     }
 
     public static void clickTime() {
@@ -177,15 +182,21 @@ public class ActivityManipulationsPage extends BasePage {
     }
 
     public static void selectTimeHours(String hours) {
-        find(pickerFirstField).sendKeys(hours);
+        WebElement el = find(pickerFirstField);
+        el.clear();
+        el.sendKeys(hours);
     }
 
     public static void selectTimeMinutes(String minutes) {
-        find(pickerSecondField).sendKeys(minutes);
+        WebElement el = find(pickerSecondField);
+        el.clear();
+        el.sendKeys(minutes);
     }
 
     public static void selectTimeAmPm(String aMpM) {
-        find(pickerThirdField).sendKeys(aMpM);
+        WebElement el = find(pickerThirdField);
+        el.clear();
+        el.sendKeys(aMpM);
     }
 
     public static void clickAccount() {
