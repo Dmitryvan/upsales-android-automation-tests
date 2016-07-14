@@ -16,44 +16,49 @@ public class ActivityManipulationsPage extends BasePage {
     private static final String descriptionNamePrefix = "act_";
 
     private static final By fieldDescription = MobileBy.xpath("//TextInputLayout[1]/android.widget.EditText[1]");
-    private static final By buttonActivityType = MobileBy.id("item_select");
+    private static final By buttonActivityType = MobileBy.id("activity_type_field");
     private static final By listActvityType = MobileBy.id("text1");
-    private static final By buttonDueDate = MobileBy.xpath("//*[@class='android.widget.RelativeLayout' and @index='2']");
+    private static final By buttonDueDate = MobileBy.id("date_field");
     private static final By pickerFirstField = MobileBy.xpath("//android.widget.NumberPicker[1]/android.widget.EditText[1]");
     private static final By pickerSecondField = MobileBy.xpath("//android.widget.NumberPicker[2]/android.widget.EditText[1]");
     private static final By pickerThirdField = MobileBy.xpath("//android.widget.NumberPicker[3]/android.widget.EditText[1]");
     private static final By pickerDone = MobileBy.id("button1");
-    private static final By buttonTime = MobileBy.xpath("//*[@class='android.widget.RelativeLayout' and @index='3']");
+    private static final By buttonTime = MobileBy.id("time_field");
     private static final By pickerWheelTimeHours = MobileBy.IosUIAutomation(".tableViews()[0].cells()[4].pickers()[0].wheels()[0]");
     private static final By pickerWheelTimeMinutes = MobileBy.IosUIAutomation(".tableViews()[0].cells()[4].pickers()[0].wheels()[1]");
     private static final By pickerWheelTimeAmPm = MobileBy.IosUIAutomation(".tableViews()[0].cells()[4].pickers()[0].wheels()[2]");
-    private static final By buttonAccount = MobileBy.xpath("//*[@class='android.widget.RelativeLayout' and @index='6']");
-    private static final By buttonContact = MobileBy.xpath("//*[@class='android.widget.RelativeLayout' and @index='8']");
-    private static final By buttonOpportunity = MobileBy.xpath("//*[@class='android.widget.RelativeLayout' and @index='10']");
-    private static final By buttonUser = MobileBy.xpath("//*[@class='android.widget.RelativeLayout' and @index='12'");
-    private static final By buttonCampaign = MobileBy.xpath("//*[@class='android.widget.RelativeLayout' and @index='15']");
+    private static final By buttonAccount = MobileBy.id("account_field");
+    private static final By buttonContact = MobileBy.id("contact_field");
+    private static final By buttonOpportunity = MobileBy.id("opportunity_field");
+    private static final By buttonUser = MobileBy.id("user_field");
+    private static final By buttonCampaign = MobileBy.id("company_field");
     private static final By fieldNotes = MobileBy.id("notes");
-    private static final By activityType = MobileBy.id("values");
-    private static final By labelDueDate = MobileBy.xpath("//android.widget.RelativeLayout[2]/android.widget.RelativeLayout[1]/android.widget.TextView[2]");
-    private static final By time = MobileBy.xpath("//android.widget.RelativeLayout[3]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]");
-    private static final By account = MobileBy.xpath("//android.widget.RelativeLayout[4]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]");
-    private static final By contact = MobileBy.xpath("//android.widget.RelativeLayout[5]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]");
-    private static final By opportunity = MobileBy.xpath("//android.widget.RelativeLayout[6]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]");
-    private static final By user = MobileBy.xpath("//android.widget.RelativeLayout[7]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]");
-    private static final By campaign = MobileBy.xpath("//android.widget.RelativeLayout[8]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]");
-    private static final By defaultLabelDescription = MobileBy.id("title_container");
-    private static final By date = MobileBy.xpath("//android.widget.RelativeLayout[2]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]");
-    private static final By labelAccount = MobileBy.xpath("//android.widget.RelativeLayout[4]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.TextView[2]");
-    private static final By labelTime = MobileBy.xpath("//android.widget.RelativeLayout[3]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.TextView[2]");
-    private static final By labelContact = MobileBy.xpath("//android.widget.RelativeLayout[5]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.TextView[2]");
-    private static final By labelOpportunity = MobileBy.xpath("//android.widget.RelativeLayout[6]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.TextView[2]");
-    private static final By labelUser = MobileBy.xpath("//android.widget.RelativeLayout[7]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.TextView[2]");
-    private static final By labelCampaign = MobileBy.xpath("//android.widget.RelativeLayout[8]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.TextView[1]");
-    private static final By labelNotes = MobileBy.xpath("//android.widget.RelativeLayout[9]/android.widget.RelativeLayout[1]/android.widget.TextView[1]");
+    private static final By defaultLabelDescription = MobileBy.id("text_input");
     private static final By labelOtherInfo = MobileBy.xpath("//android.widget.RelativeLayout[9]/android.widget.LinearLayout[1]/android.widget.TextView[1]");
     private static final By customFieldWheelEttTill = MobileBy.IosUIAutomation(".tableViews()[0].cells()[11]");
     private static final By customFieldPickerWheel = MobileBy.IosUIAutomation(".tableViews()[0].cells()[12].pickers()[0].wheels()[0]");
     private static final By customFieldEttTillValue = MobileBy.IosUIAutomation(".tableViews()[0].cells()[11].staticTexts()[0]");
+
+    private static final List<WebElement> values = findElements(MobileBy.id("select"));
+    private static final WebElement activityType = values.get(0);
+    private static final WebElement date = values.get(1);
+    private static final WebElement time = values.get(2);
+    private static final WebElement account = values.get(3);
+    private static final WebElement contact = values.get(4);
+    private static final WebElement opportunity = values.get(5);
+    private static final WebElement user = values.get(6);
+    private static final WebElement campaign = values.get(7);
+
+    private static final List<WebElement> labels = findElements(MobileBy.id("name"));
+    private static final WebElement labelDueDate = labels.get(1);
+    private static final WebElement labelTime = labels.get(2);
+    private static final WebElement labelAccount = labels.get(3);
+    private static final WebElement labelContact = labels.get(4);
+    private static final WebElement labelOpportunity = labels.get(5);
+    private static final WebElement labelUser = labels.get(6);
+    private static final WebElement labelCampaign = labels.get(7);
+    private static final WebElement labelNotes = labels.get(8);
+
 
     public static void clickCustomFieldEttTill() {
         find(customFieldWheelEttTill).click();
@@ -69,7 +74,7 @@ public class ActivityManipulationsPage extends BasePage {
     }
 
     public static String getLabelCampaign() {
-        return getText(labelCampaign);
+        return labelCampaign.getText();
     }
 
     public static String getLabelOtherInfo() {
@@ -77,27 +82,27 @@ public class ActivityManipulationsPage extends BasePage {
     }
 
     public static String getLabelNotes() {
-        return getText(labelNotes);
+        return labelNotes.getText();
     }
 
     public static String getLabelAccount() {
-        return getText(labelAccount);
+        return labelAccount.getText();
     }
 
     public static String getLabelUser() {
-        return getText(labelUser);
+        return labelUser.getText();
     }
 
     public static String getLabelOpportunity() {
-        return getText(labelOpportunity);
+        return labelOpportunity.getText();
     }
 
     public static String getLabelTime() {
-        return getText(labelTime);
+        return labelTime.getText();
     }
 
     public static String getLabelContact() {
-        return getText(labelContact);
+        return labelContact.getText();
     }
 
     public static String getAllActivityTypes() {
@@ -112,7 +117,7 @@ public class ActivityManipulationsPage extends BasePage {
     }
 
     public static String getDueDate() {
-        return getText(date);
+        return date.getText();
     }
 
     public static void enterDescription (String description) {
@@ -141,7 +146,7 @@ public class ActivityManipulationsPage extends BasePage {
 
     public static void selectOpportunity(String value) {
         find(MobileBy.xpath(
-                "//*[@class='android.widget.CheckBox' and @text='" +
+                "//*[@class='android.widget.CheckedTextView' and @text='" +
                         value + "']")).click();
     }
 
@@ -215,35 +220,35 @@ public class ActivityManipulationsPage extends BasePage {
     }
 
     public static String getActivityType() {
-        return getText(activityType);
+        return activityType.getText();
     }
 
     public static String getLabelDueDate() {
-        return getText(labelDueDate);
+        return labelDueDate.getText();
     }
 
     public static String getTime() {
-        return getText(time);
+        return time.getText();
     }
 
     public static String getAccount() {
-        return getText(account);
+        return account.getText();
     }
 
     public static String getContact() {
-        return getText(contact);
+        return contact.getText();
     }
 
     public static String getOpportunity() {
-        return getText(opportunity);
+        return opportunity.getText();
     }
 
     public static String getUser() {
-        return getText(user);
+        return user.getText();
     }
 
     public static String getCampaign() {
-        return getText(campaign);
+        return campaign.getText();
     }
 
     public static String getDefaultLabelDescription() {

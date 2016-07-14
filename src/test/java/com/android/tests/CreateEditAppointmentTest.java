@@ -95,11 +95,11 @@ public class CreateEditAppointmentTest extends BaseTest {
     @Test(priority = 1)
     public void softContentOfCreateAppointmentPage() {
         SoftAssertExtended softAssert = new SoftAssertExtended();
-        AppointmentManipulationsPage.checkPageTitle(titleCreate);
+        ActivityManipulationsPage.checkPageTitle(titleCreate);
         AppointmentManipulationsPage.setDefaultAppStartEndDates();
-        softAssert.assertEquals(AppointmentManipulationsPage.getLabelCancel(), labelCancel);
-        softAssert.assertEquals(AppointmentManipulationsPage.getLabelSave(), labelSave);
-        softAssert.assertEquals(defaultLabelDescription, AppointmentManipulationsPage.getDefaultLabelDescription());
+        softAssert.assertEquals(ActivityManipulationsPage.getLabelCancel(), labelCancel);
+        softAssert.assertEquals(ActivityManipulationsPage.getLabelSave(), labelSave);
+        softAssert.assertEquals(defaultLabelDescription, ActivityManipulationsPage.getDefaultLabelDescription());
         softAssert.assertEquals(defaultAppointmentType, AppointmentManipulationsPage.getLabelAppointmentType());
         AppointmentManipulationsPage.clickAppointmentType();
         softAssert.assertEquals(appointmentTypes, AppointmentManipulationsPage.getAllAppointmentTypes());

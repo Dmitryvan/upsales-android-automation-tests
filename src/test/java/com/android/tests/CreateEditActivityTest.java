@@ -183,7 +183,7 @@ public class CreateEditActivityTest extends BaseTest {
 //        softAssert.assertTrue(ActivityPage.checkThereIsNoContact());
         softAssert.assertEquals(labelNone, ActivityPage.getCampaignWithoutContactAndTime());
         softAssert.assertEquals(labelNone, ActivityPage.getOpportunityWithoutContactAndTime());
-        ActivityPage.checkPageTitle(defaultActivityType);
+        ActivityPage.checkPageTitle(defaultActivityType.toUpperCase());
         softAssert.assertAll();
     }
 

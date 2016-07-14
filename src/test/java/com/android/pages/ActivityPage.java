@@ -57,7 +57,7 @@ public class ActivityPage extends BasePage {
     }
 
     public static void clickTools() {
-        wait(labelActivityDescriptionValue);
+//        wait(labelActivityDescriptionValue);
         find(buttonTools).click();
     }
 
