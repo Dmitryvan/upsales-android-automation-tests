@@ -33,11 +33,11 @@ public class AppointmentPage extends BasePage {
     private static final By motetCustomfalt = MobileBy.IosUIAutomation(".tableViews()[0].cells()[9].textFields()[0]");
     private static final By labelMotetCustomfalt = MobileBy.IosUIAutomation(".tableViews()[0].cells()[9].staticTexts()[0]");
 
-    private static final By popoverEditAppointment = MobileBy.IosUIAutomation(".popover().tableViews()[0].cells()[0].staticTexts()[1]");
-    private static final By popoverDeleteAppointment = MobileBy.IosUIAutomation(".popover().tableViews()[0].cells()[1].staticTexts()[1]");
+    private static final By popoverEditAppointment = MobileBy.id("item_edit");
+    private static final By popoverDeleteAppointment = MobileBy.id("item_delete");
     private static final By popoverFollowUp = MobileBy.IosUIAutomation(".popover().tableViews()[0].cells()[2].staticTexts()[0]");
-    private static final By popoverFollowUpActivity = MobileBy.IosUIAutomation(".popover().tableViews()[0].cells()[3].staticTexts()[1]");
-    private static final By popoverFollowUpAppointment = MobileBy.IosUIAutomation(".popover().tableViews()[0].cells()[4].staticTexts()[1]");
+    private static final By popoverFollowUpActivity = MobileBy.id("item_follow");
+    private static final By popoverFollowUpAppointment = MobileBy.id("item_follow_appointment");
 
     private static final By fifththCellValue = MobileBy.IosUIAutomation(".tableViews()[0].cells()[4]");
 
@@ -59,7 +59,6 @@ public class AppointmentPage extends BasePage {
     }
 
     public static void clickTools() {
-        wait(buttonTools);
         find(buttonTools).click();
     }
 
@@ -73,7 +72,6 @@ public class AppointmentPage extends BasePage {
 
     public static void clickEditAppointment() {
         find(popoverEditAppointment).click();
-//        waitInvisibilityOfElement(popoverEditAppointment);
     }
 
     public static void clickShowMore() {

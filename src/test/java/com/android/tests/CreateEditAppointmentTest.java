@@ -105,7 +105,7 @@ public class CreateEditAppointmentTest extends BaseTest {
         softAssert.assertEquals(defaultAppointmentType, AppointmentManipulationsPage.getAppointmentType());
         AppointmentManipulationsPage.clickAppointmentType();
         softAssert.assertEquals(appointmentTypes, AppointmentManipulationsPage.getAllAppointmentTypes());
-        AppointmentManipulationsPage.closeAppointmentTypeList();
+        BasePage.closePopUp();
 //        softAssert.assertEquals(AppointmentManipulationsPage.getDefaultAppStartDate(), AppointmentManipulationsPage.getStartDate());
 //        softAssert.assertEquals(AppointmentManipulationsPage.getDefaultAppEndDate(), AppointmentManipulationsPage.getEndDate());
         softAssert.assertEquals(labelAccount, AppointmentManipulationsPage.getLabelAccount());
@@ -148,46 +148,44 @@ public class CreateEditAppointmentTest extends BaseTest {
         softAssert.assertAll();
     }
 
-//    @Test(priority = 3)
-//    public void softCancelAppointmentBeforeSave() {
-//        AppointmentManipulationsPage.enterDescription(description);
-//        AppointmentManipulationsPage.clickAccount();
-//        AddSelectEntityPage.select(account);
-//        AppointmentManipulationsPage.clickCancel();
-//        assertTrue(LeftMenuPage.checkSearch());
-//        assertEquals(LeftMenuPage.getHiddenPageTitle(), titleDashboard);
-//    }
-//
-//    @Test(priority = 4)
-//    public void softCancelAfterSelectEditAppointment() {
-//        SoftAssertExtended softAssert = new SoftAssertExtended();
-//        AppointmentManipulationsPage.enterDescription(description);
-//        AppointmentManipulationsPage.clickAccount();
-//        AddSelectEntityPage.select(account);
-//        AppointmentManipulationsPage.clickSave();
-//        AppointmentPage.clickTools();
-//        AppointmentPage.clickEditAppointment();
-//        AppointmentManipulationsPage.setAppointmentName();
-//        String newDescription = AppointmentManipulationsPage.getAppointmentName();
-//        AppointmentManipulationsPage.enterDescription(newDescription);
-//        AppointmentManipulationsPage.clickAppointmentType();
-//        AppointmentManipulationsPage.spinWheelToAppointmentType(newAppointmentType);
-//        AppointmentManipulationsPage.clickAppointmentType();
-//        AppointmentManipulationsPage.clickContacts();
-//        AddSelectEntityPage.select(contact);
-//        AppointmentManipulationsPage.clickButtonSelect();
-//        AppointmentManipulationsPage.clickOpportunity();
-//        AppointmentManipulationsPage.spinOpportunityWheelTo(opportunity);
-//        AppointmentManipulationsPage.clickOpportunity();
-//        AppointmentManipulationsPage.clickCancel();
-//        softAssert.assertEquals(account, AppointmentPage.getAccountName());
-//        softAssert.assertEquals(description, AppointmentPage.getAppointmentDescription());
-//        AppointmentPage.checkPageTitle(defaultAppointmentType.toUpperCase());
-//        softAssert.assertFalse(AppointmentPage.checkThereIsNoContact());
-//        softAssert.assertEquals(labelNone, AppointmentPage.getCampaignWithoutContact());
-//        softAssert.assertEquals(labelNone, AppointmentPage.getOpportunityWithoutContact());
-//        softAssert.assertAll();
-//    }
+    @Test(priority = 3)
+    public void softCancelAppointmentBeforeSave() {
+        AppointmentManipulationsPage.enterDescription(description);
+        AppointmentManipulationsPage.clickAccount();
+        AddSelectEntityPage.select(account);
+        AppointmentManipulationsPage.clickCancel();
+        assertTrue(LeftMenuPage.checkSearch());
+        assertEquals(LeftMenuPage.getHiddenPageTitle(), titleDashboard);
+    }
+
+    @Test(priority = 4)
+    public void softCancelAfterSelectEditAppointment() {
+        SoftAssertExtended softAssert = new SoftAssertExtended();
+        AppointmentManipulationsPage.enterDescription(description);
+        AppointmentManipulationsPage.clickAccount();
+        AddSelectEntityPage.select(account);
+        AppointmentManipulationsPage.clickSave();
+        AppointmentPage.clickTools();
+        AppointmentPage.clickEditAppointment();
+        AppointmentManipulationsPage.setAppointmentName();
+        String newDescription = AppointmentManipulationsPage.getAppointmentName();
+        AppointmentManipulationsPage.enterDescription(newDescription);
+        AppointmentManipulationsPage.clickAppointmentType();
+        AppointmentManipulationsPage.selectValueFromPopUp(newAppointmentType);
+        AppointmentManipulationsPage.clickContacts();
+        AddSelectEntityPage.select(contact);
+        AppointmentManipulationsPage.clickSelect();
+        AppointmentManipulationsPage.clickOpportunity();
+        AppointmentManipulationsPage.selectValueFromPopUp(opportunity);
+        AppointmentManipulationsPage.clickCancel();
+////        softAssert.assertEquals(account, AppointmentPage.getAccountName());
+        softAssert.assertEquals(description, AppointmentPage.getAppointmentDescription());
+        softAssert.assertEquals(defaultAppointmentType.toUpperCase(), AppointmentPage.getTitle());
+////        softAssert.assertFalse(AppointmentPage.checkThereIsNoContact());
+        softAssert.assertEquals(labelNone, AppointmentPage.getCampaignWithoutContact());
+        softAssert.assertEquals(labelNone, AppointmentPage.getOpportunityWithoutContact());
+        softAssert.assertAll();
+    }
 //
 //    @Test(priority = 5)
 //    public void softEditAppointment() {
@@ -217,7 +215,7 @@ public class CreateEditAppointmentTest extends BaseTest {
 //        softAssert.assertEquals(account, AppointmentManipulationsPage.getAccount());
 //        AppointmentManipulationsPage.clickContacts();
 //        AddSelectEntityPage.select(contact);
-//        AppointmentManipulationsPage.clickButtonSelect();
+//        AppointmentManipulationsPage.clickSelect();
 //        softAssert.assertEquals(" " + contact, AppointmentManipulationsPage.getContact());
 //        AppointmentManipulationsPage.clickOpportunity();
 //        AppointmentManipulationsPage.spinOpportunityWheelTo(opportunity);
@@ -226,7 +224,7 @@ public class CreateEditAppointmentTest extends BaseTest {
 //        AppointmentManipulationsPage.clickUser();
 //        AddSelectEntityPage.select(user);
 //        AddSelectEntityPage.select(yourUser);
-//        AppointmentManipulationsPage.clickButtonSelect();
+//        AppointmentManipulationsPage.clickSelect();
 //        AppointmentManipulationsPage.clickCampaign();
 //        AddSelectEntityPage.select(campaign);
 //        AppointmentManipulationsPage.clickInsertSignature();
@@ -257,14 +255,14 @@ public class CreateEditAppointmentTest extends BaseTest {
 //        AppointmentManipulationsPage.clickContacts();
 //        AddSelectEntityPage.select(newContact);
 //        AddSelectEntityPage.select(contact);
-//        AppointmentManipulationsPage.clickButtonSelect();
+//        AppointmentManipulationsPage.clickSelect();
 ////        AppointmentManipulationsPage.clickOpportunity();
 ////        AppointmentManipulationsPage.spinOpportunityWheelTo(newOpportunity);
 ////        AppointmentManipulationsPage.clickOpportunity();
 //        AppointmentManipulationsPage.clickUser();
 //        AddSelectEntityPage.select(yourUser);
 //        AddSelectEntityPage.select(user);
-//        AppointmentManipulationsPage.clickButtonSelect();
+//        AppointmentManipulationsPage.clickSelect();
 //        AppointmentManipulationsPage.clickCampaign();
 //        AddSelectEntityPage.select(newCampaign);
 //        AppointmentManipulationsPage.clickInsertSignature();

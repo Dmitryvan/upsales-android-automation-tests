@@ -138,24 +138,6 @@ public class ActivityManipulationsPage extends BasePage {
         find(buttonActivityType).click();
     }
 
-    public static void closeActivityTypeList() {
-        try {
-            ((AndroidDriver) getDriver()).tap(1, 100, 100, 1);
-        } catch (WebDriverException e) {}
-    }
-
-    public static void selectActivityType(String value) {
-        find(MobileBy.xpath(
-                "//*[@class='android.widget.CheckedTextView' and @text='" +
-                        value + "']")).click();
-    }
-
-    public static void selectOpportunity(String value) {
-        find(MobileBy.xpath(
-                "//*[@class='android.widget.CheckedTextView' and @text='" +
-                        value + "']")).click();
-    }
-
     public static void clickDueDate() {
         find(buttonDueDate).click();
     }

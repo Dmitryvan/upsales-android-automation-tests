@@ -54,7 +54,7 @@ public class AppointmentManipulationsPage extends BasePage {
     private static final By pickerWheelAppointmentType = MobileBy.IosUIAutomation(".tableViews()[0].cells()[2].pickers()[0].wheels()");
     private static final By fieldNotes = MobileBy.id("notes");
     private static final By fieldLocation = MobileBy.IosUIAutomation(".tableViews()[0].cells()[4].textFields()[0]");
-    private static final By buttonSelectUser = MobileBy.IosUIAutomation(".navigationBars()[0].buttons()[2]");
+    private static final By buttonSelectUser = MobileBy.id("select");
     private static final By pickerWheelOpportunity = MobileBy.IosUIAutomation(".tableViews()[0].cells()[8].pickers()[0].wheels()[0]");
     private static final By pickerWheelStartDate = MobileBy.IosUIAutomation(".tableViews()[0].cells()[3].pickers()[0].wheels()[0]");
     private static final By pickerWheelStartHours = MobileBy.IosUIAutomation(".tableViews()[0].cells()[3].pickers()[0].wheels()[1]");
@@ -158,7 +158,7 @@ public class AppointmentManipulationsPage extends BasePage {
         find(buttonContacts).click();
     }
 
-    public static void clickButtonSelect() {
+    public static void clickSelect() {
         find(buttonSelectUser).click();
     }
 
@@ -192,7 +192,6 @@ public class AppointmentManipulationsPage extends BasePage {
     }
 
     public static void spinMotesalternativWheelTo(String value) {
-//        spinWheel(value, pickerWheelOpportunity, cellIndexOpportunity);
         find(pickerWheelMotesalternativ).sendKeys(value);
     }
 
@@ -309,12 +308,6 @@ public class AppointmentManipulationsPage extends BasePage {
                 string += ", ";
         }
         return string;
-    }
-
-    public static void closeAppointmentTypeList() {
-        try {
-            ((AndroidDriver) getDriver()).tap(1, 100, 100, 1);
-        } catch (WebDriverException e) {}
     }
 
     public static void setAppointmentName() {

@@ -99,7 +99,7 @@ public class CreateEditActivityTest extends BaseTest {
         softAssert.assertEquals(defaultActivityType, ActivityManipulationsPage.getActivityType());
         ActivityManipulationsPage.clickActivityType();
         softAssert.assertEquals(activityTypes, ActivityManipulationsPage.getAllActivityTypes());
-        ActivityManipulationsPage.closeActivityTypeList();
+        ActivityManipulationsPage.closePopUp();
         softAssert.assertEquals(labelDueDate, ActivityManipulationsPage.getLabelDueDate());
         softAssert.assertEquals(ActivityManipulationsPage.getCurrentDate(), ActivityManipulationsPage.getDueDate());
         softAssert.assertEquals(defaultTime, ActivityManipulationsPage.getTime());
@@ -174,11 +174,11 @@ public class CreateEditActivityTest extends BaseTest {
         String newDescription = ActivityManipulationsPage.getDescription();
         ActivityManipulationsPage.enterDescription(newDescription);
         ActivityManipulationsPage.clickActivityType();
-        ActivityManipulationsPage.selectActivityType(newActivityType);
+        BasePage.selectValueFromPopUp(newActivityType);
         ActivityManipulationsPage.clickContact();
         AddSelectEntityPage.select(contact);
         ActivityManipulationsPage.clickOpportunity();
-        ActivityManipulationsPage.selectOpportunity(opportunity);
+        BasePage.selectValueFromPopUp(opportunity);
         ActivityManipulationsPage.clickCancel();
         softAssert.assertEquals(description, ActivityPage.getActivityDescription());
         softAssert.assertEquals(account, ActivityPage.getAccountName());
@@ -194,7 +194,7 @@ public class CreateEditActivityTest extends BaseTest {
         SoftAssertExtended softAssert = new SoftAssertExtended();
         ActivityManipulationsPage.enterDescription(description);
         ActivityManipulationsPage.clickActivityType();
-        ActivityManipulationsPage.selectActivityType(activityType);
+        BasePage.selectValueFromPopUp(activityType);
         softAssert.assertEquals(activityType, ActivityManipulationsPage.getActivityType());
         ActivityManipulationsPage.clickDueDate();
         ActivityManipulationsPage.selectDueDateMonth(dueDateMonth);
@@ -215,7 +215,7 @@ public class CreateEditActivityTest extends BaseTest {
         AddSelectEntityPage.select(contact);
         softAssert.assertEquals(contact, ActivityManipulationsPage.getContact());
         ActivityManipulationsPage.clickOpportunity();
-        ActivityManipulationsPage.selectOpportunity(opportunity);
+        BasePage.selectValueFromPopUp(opportunity);
         softAssert.assertEquals(opportunity, ActivityManipulationsPage.getOpportunity());
         ActivityManipulationsPage.clickUser();
 //        AddSelectEntityPage.select(user);
@@ -232,7 +232,7 @@ public class CreateEditActivityTest extends BaseTest {
         String newDescription = ActivityManipulationsPage.getDescription();
         ActivityManipulationsPage.enterDescription(newDescription);
         ActivityManipulationsPage.clickActivityType();
-        ActivityManipulationsPage.selectActivityType(newActivityType);
+        BasePage.selectValueFromPopUp(newActivityType);
         ActivityManipulationsPage.clickActivityType();
         ActivityManipulationsPage.clickDueDate();
         ActivityManipulationsPage.selectDueDateMonth(newDueDateMonth);
@@ -246,7 +246,7 @@ public class CreateEditActivityTest extends BaseTest {
         ActivityManipulationsPage.clickContact();
         AddSelectEntityPage.select(newContact);
 //        ActivityManipulationsPage.clickOpportunity();
-//        ActivityManipulationsPage.selectOpportunity(opportunity);
+//        ActivityManipulationsPage.selectValueFromPopUp(opportunity);
 //        ActivityManipulationsPage.clickOpportunity();
         ActivityManipulationsPage.clickUser();
         AddSelectEntityPage.select(newUser);

@@ -17,6 +17,7 @@
             <class name="com.android.tests.LoginTest"/>
             <class name="com.android.tests.LogoutTest"/>
             <class name="com.android.tests.CreateEditActivityTest"/>
+            <class name="com.android.tests.CreateEditAppointmentTest"/>
         </classes>
     </test>
 </suite>

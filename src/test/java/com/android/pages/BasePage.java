@@ -5,9 +5,11 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.SwipeElementDirection;
+import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSElement;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
@@ -129,5 +131,18 @@ public class BasePage extends Helpers {
     protected static void swipeRight(By locator) {
         MobileElement element = (MobileElement)  find(locator);
         element.swipe(SwipeElementDirection.RIGHT, 70, 70, 500);
+    }
+
+    public static void selectValueFromPopUp(String value) {
+        waitByThread(500);
+        find(MobileBy.xpath(
+                "//*[@class='android.widget.CheckedTextView' and @text='" +
+                        value + "']")).click();
+    }
+
+    public static void closePopUp() {
+        try {
+            ((AndroidDriver) getDriver()).tap(1, 100, 100, 1);
+        } catch (WebDriverException e) {}
     }
 }
