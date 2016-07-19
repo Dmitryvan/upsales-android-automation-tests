@@ -4,6 +4,7 @@ import com.android.pages.BasePage;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.SwipeElementDirection;
+import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.ios.IOSElement;
 import org.openqa.selenium.*;
@@ -39,6 +40,12 @@ public class Helpers {
     private static final DateFormat appDateFormatWithDoW = new SimpleDateFormat("EEEE d MMM YYYY HH:mm");
     private static final DateFormat calendarDateFormat = new SimpleDateFormat("EEEE d MMM YYYY");
     protected static final DateFormat formAndMailDateFormat = new SimpleDateFormat("YYYY-MM-dd");
+
+    protected static final By pickerSecondField = MobileBy.xpath("//android.widget.NumberPicker[2]/android.widget.EditText[1]");
+    protected static final By pickerFirstField = MobileBy.xpath("//android.widget.NumberPicker[1]/android.widget.EditText[1]");
+    protected static final By pickerThirdField = MobileBy.xpath("//android.widget.NumberPicker[3]/android.widget.EditText[1]");
+    protected static final By pickerAmPmField = MobileBy.xpath("//android.widget.TimePicker[1]/android.widget.LinearLayout[1]/android.widget.NumberPicker[1]/android.widget.EditText[1]");
+    protected static final By pickerDone = MobileBy.id("button1");
 
     private static final String charList = "abcdefghigklmnopqrstuvwxyzABCDEFGHIGKLMNOPQRSTUVWXYZ1234567890";
     private static final int randomStringLength = 8;
@@ -192,6 +199,51 @@ public class Helpers {
         Calendar calendar = getCalendar();
         calendar.add(Calendar.DAY_OF_MONTH, - 4);
         return formAndMailDateFormat.format(calendar.getTime());
+    }
+
+//*
+//work with date&time wheels
+//*
+    public static void closePicker() {
+        find(pickerDone).click();
+    }
+
+    public static void selectDateMonth(String month) {
+        WebElement el = find(pickerFirstField);
+        el.clear();
+        el.sendKeys(month);
+    }
+
+    public static void selectDateDay(String day) {
+        WebElement el = find(pickerSecondField);
+        el.clear();
+        el.sendKeys(day);
+    }
+
+    public static void selectDateYear(String year) {
+        WebElement el = find(pickerThirdField);
+        el.clear();
+        el.sendKeys(year);
+        hideKeyboard();
+    }
+
+    public static void selectTimeHours(String hours) {
+        WebElement el = find(pickerFirstField);
+        el.clear();
+        el.sendKeys(hours);
+    }
+
+    public static void selectTimeMinutes(String minutes) {
+        WebElement el = find(pickerSecondField);
+        el.clear();
+        el.sendKeys(minutes);
+    }
+
+    public static void selectTimeAmPm(String aMpM) {
+        WebElement el = find(pickerAmPmField);
+        el.clear();
+        el.sendKeys(aMpM);
+        hideKeyboard();
     }
 
 //*
@@ -392,47 +444,11 @@ public class Helpers {
 // other methods
 //*
 
-    public static void spinWheel(String value, By wheel, String cellIndex) {
-        String yOffset;
-
-        String st = find(wheel).getAttribute("values");
-        st = st.substring(1, st.length() - 1);
-//        System.out.println(st);
-        ArrayList<String> values = new ArrayList<>(Arrays.asList(st.split(", ")));
-
-        String currentValue = find(wheel).getAttribute("value");
-
-        int indexOfCurrentValue = values.indexOf(currentValue);
-        int indexOfTargetValue = values.indexOf(value);
-        int stepsAmount = Math.abs(indexOfTargetValue - indexOfCurrentValue);
-
-        if (indexOfTargetValue > indexOfCurrentValue) {
-            yOffset = offsetDown;
-        } else {
-            yOffset = offsetUp;
-        }
-
-        for (int i = 0; i < stepsAmount; i++) {
-            ((JavascriptExecutor) getDriver()).executeScript(
-                    "au.mainWindow().tableViews()[0].cells()[" + cellIndex +
-                            "].pickers()[0].wheels()[0].tapWithOptions({tapOffset:{x:0.05, y:" + yOffset + "}});"
-            );
-        }
-    }
-
-    protected static int getTableSize(By elementPath) {
-        List<WebElement> list = getDriver().findElements(elementPath);
-//        System.out.println(list.size());
-//        System.out.println(activity);
-//        byte[] b = activity.getBytes("UTF-8");
-//        for (byte bb : b) {
-//            System.out.print(bb + " ");
-//        }
-//        System.out.println();
-        return list.size();
-    }
-
     protected static List<WebElement> findElements(By locator) {
         return getDriver().findElements(locator);
+    }
+
+    public static void scrollToLabel(String text) {
+        ((AndroidDriver)getDriver()).scrollTo(text);
     }
 }

@@ -240,10 +240,6 @@ public class DashboardPage extends BasePage {
         return getText(labelShowAllActivities);
     }
 
-    public static void scrollToShowAllActivities(String text) {
-        ((AndroidDriver)getDriver()).scrollTo(text);
-    }
-
     public static boolean checkShowAllActivitiesVisibility() {
         return find(labelShowAllActivities).isDisplayed();
     }

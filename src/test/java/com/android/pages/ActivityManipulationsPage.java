@@ -2,10 +2,8 @@ package com.android.pages;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileBy;
-import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
@@ -19,15 +17,8 @@ public class ActivityManipulationsPage extends BasePage {
     private static final By buttonActivityType = MobileBy.id("activity_type_field");
     private static final By listActvityType = MobileBy.id("text1");
     private static final By buttonDueDate = MobileBy.id("date_field");
-    private static final By pickerFirstField = MobileBy.xpath("//android.widget.NumberPicker[1]/android.widget.EditText[1]");
-    private static final By pickerSecondField = MobileBy.xpath("//android.widget.NumberPicker[2]/android.widget.EditText[1]");
-    private static final By pickerThirdField = MobileBy.xpath("//android.widget.NumberPicker[3]/android.widget.EditText[1]");
-    private static final By pickerAmPmField = MobileBy.xpath("//android.widget.TimePicker[1]/android.widget.LinearLayout[1]/android.widget.NumberPicker[1]/android.widget.EditText[1]");
-    private static final By pickerDone = MobileBy.id("button1");
+
     private static final By buttonTime = MobileBy.id("time_field");
-    private static final By pickerWheelTimeHours = MobileBy.IosUIAutomation(".tableViews()[0].cells()[4].pickers()[0].wheels()[0]");
-    private static final By pickerWheelTimeMinutes = MobileBy.IosUIAutomation(".tableViews()[0].cells()[4].pickers()[0].wheels()[1]");
-    private static final By pickerWheelTimeAmPm = MobileBy.IosUIAutomation(".tableViews()[0].cells()[4].pickers()[0].wheels()[2]");
     private static final By buttonAccount = MobileBy.id("account_field");
     private static final By buttonContact = MobileBy.id("contact_field");
     private static final By buttonOpportunity = MobileBy.id("opportunity_field");
@@ -131,7 +122,7 @@ public class ActivityManipulationsPage extends BasePage {
         element.click();
         element.clear();
         element.sendKeys(description);
-        ((AppiumDriver) getDriver()).hideKeyboard();
+        hideKeyboard();
     }
 
     public static void clickActivityType() {
@@ -142,49 +133,8 @@ public class ActivityManipulationsPage extends BasePage {
         find(buttonDueDate).click();
     }
 
-    public static void closePicker() {
-        find(pickerDone).click();
-    }
-
-    public static void selectDueDateMonth(String month) {
-        WebElement el = find(pickerFirstField);
-        el.clear();
-        el.sendKeys(month);
-    }
-
-    public static void selectDueDateDay(String day) {
-        WebElement el = find(pickerSecondField);
-        el.clear();
-        el.sendKeys(day);
-    }
-
-    public static void selectDueDateYear(String year) {
-        WebElement el = find(pickerThirdField);
-        el.clear();
-        el.sendKeys(year);
-        hideKeyboard();
-    }
-
     public static void clickTime() {
         find(buttonTime).click();
-    }
-
-    public static void selectTimeHours(String hours) {
-        WebElement el = find(pickerFirstField);
-        el.clear();
-        el.sendKeys(hours);
-    }
-
-    public static void selectTimeMinutes(String minutes) {
-        WebElement el = find(pickerSecondField);
-        el.clear();
-        el.sendKeys(minutes);
-    }
-
-    public static void selectTimeAmPm(String aMpM) {
-        WebElement el = find(pickerAmPmField);
-        el.clear();
-        el.sendKeys(aMpM);
     }
 
     public static void clickAccount() {
@@ -212,10 +162,6 @@ public class ActivityManipulationsPage extends BasePage {
         find(fieldNotes).clear();
         find(fieldNotes).sendKeys(note);
 //        hideKeyboard();
-    }
-
-    public static void scrollToOtherInfo(String text) {
-        ((AndroidDriver)getDriver()).scrollTo(text);
     }
 
     public static String getActivityType() {

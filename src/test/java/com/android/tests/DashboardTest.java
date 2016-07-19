@@ -1,9 +1,9 @@
 package com.android.tests;
 
-import com.android.pages.BasePage;
 import com.android.pages.DashboardPage;
 import com.android.pages.FilterPage;
 import com.android.pages.LoginPage;
+import com.android.util.Helpers;
 import com.android.util.PropertyLoader;
 import com.android.util.SoftAssertExtended;
 import org.testng.annotations.AfterClass;
@@ -121,7 +121,7 @@ public class DashboardTest extends BaseTest {
     @Test(priority = 6) //CASE 4
     public void softMyOpenActivitiesVerification() {
         SoftAssertExtended softAssert = new SoftAssertExtended();
-        DashboardPage.scrollToShowAllActivities(labelShowAllActivities);
+        Helpers.scrollToLabel(labelShowAllActivities);
         softAssert.assertTrue(DashboardPage.checkShowAllActivitiesVisibility());
         softAssert.assertEquals(DashboardPage.getLabelShowAllActivities(), labelShowAllActivities);
         softAssert.assertAll();

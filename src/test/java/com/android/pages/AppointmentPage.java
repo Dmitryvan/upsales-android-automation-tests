@@ -13,7 +13,7 @@ public class AppointmentPage extends BasePage {
 
     private static final By labelAppointmentDescriptionValue = MobileBy.id("activity_title");
     private static final By buttonTools = MobileBy.id("save");
-    private static final By buttonAccount = MobileBy.IosUIAutomation(".tableViews()[0].buttons()[0]");
+    private static final By buttonAccount = MobileBy.id("activity_contact");
     private static final By labelUserValue = MobileBy.id("user_name");
     private static final By labelStartDateValue = MobileBy.IosUIAutomation(".tableViews()[0].cells()[1].staticTexts()[0]");
     private static final By labelEndDateValue = MobileBy.IosUIAutomation(".tableViews()[0].cells()[2].staticTexts()[0]");
@@ -42,8 +42,8 @@ public class AppointmentPage extends BasePage {
     private static final By fifththCellValue = MobileBy.IosUIAutomation(".tableViews()[0].cells()[4]");
 
     private static final List<WebElement> values = findElements(MobileBy.id("select"));
-    private static final WebElement labelCampaignValueWithoutContact = values.get(1);
-    private static final WebElement labelOpportunityValueWithoutContact = values.get(2);
+    private static final WebElement labelCampaignValueWithoutContact = values.get(0);
+    private static final WebElement labelOpportunityValueWithoutContact = values.get(1);
 
     public static String getFifthCellValue() {
         return getValue(fifththCellValue);
@@ -91,7 +91,7 @@ public class AppointmentPage extends BasePage {
     }
 
     public static String getAccountName() {
-        return getName(buttonAccount);
+        return getText(buttonAccount);
     }
 
     public static String getContact() {

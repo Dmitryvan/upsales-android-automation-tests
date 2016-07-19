@@ -1,12 +1,13 @@
 package com.android.pages;
 
 import io.appium.java_client.MobileBy;
-import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 public class ActivityPage extends BasePage {
 
@@ -16,17 +17,23 @@ public class ActivityPage extends BasePage {
     private static final By buttonTools = MobileBy.id("save");
     private static final By buttonAccount = MobileBy.id("activity_contact");
     private static final By labelUserValue = MobileBy.id("user_name");
-    private static final By labelDateValue = MobileBy.IosUIAutomation(".scrollViews()[0].tableViews()[0].cells()[0].textFields()[0]");
-    private static final By labelTimeValue = MobileBy.IosUIAutomation(".scrollViews()[0].tableViews()[0].cells()[0].staticTexts()[1]");
-    private static final By buttonContact = MobileBy.IosUIAutomation(".scrollViews()[0].tableViews()[0].cells()[1].textFields()[0]");
+    private static final By dateValue = MobileBy.id("date");
+    private static final By timeValue = MobileBy.id("time");
+    private static final By fieldNotesValue = MobileBy.id("notes");
+
+    private static final List<WebElement> users = findElements(MobileBy.id("user_title"));
+    private static final WebElement contactValue = users.get(1);
+
+    private static final List<WebElement> values = findElements(MobileBy.id("select"));
+    private static final WebElement campaignValue = values.get(0);
+    private static final WebElement opportunityValue = values.get(1);
+
+
     private static final By labelContactTitle = MobileBy.IosUIAutomation(".tableViews()[0].cells()[3].staticTexts()[1]");
-    private static final By labelCampaignValue = MobileBy.IosUIAutomation(".scrollViews()[0].tableViews()[0].cells()[2].staticTexts()[1]");
     private static final By labelCampaignWithoutContact = MobileBy.IosUIAutomation(".scrollViews()[0].tableViews()[0].cells()[1].staticTexts()[1]");
     private static final By labelCampaignWithoutContactAndTime = MobileBy.xpath("//android.support.v4.view.ViewPager[1]//android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]");
-    private static final By labelOpportunityValue = MobileBy.IosUIAutomation(".scrollViews()[0].tableViews()[0].cells()[3].staticTexts()[1]");
     private static final By labelOpportunityWithoutContact = MobileBy.IosUIAutomation(".scrollViews()[0].tableViews()[0].cells()[2].staticTexts()[1]");
     private static final By labelOpportunityWithoutContactAndTime = MobileBy.xpath("//android.support.v4.view.ViewPager[1]//android.widget.RelativeLayout[2]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]");
-    private static final By fieldNotesValue = MobileBy.IosUIAutomation(".scrollViews()[0].tableViews()[0].cells()[4].textViews()[0]");
     private static final By fieldNotesWithoutContact = MobileBy.IosUIAutomation(".scrollViews()[0].tableViews()[0].cells()[3].textViews()[0]");;
     private static final By fieldNotesWithoutContactAndTime = MobileBy.IosUIAutomation(".tableViews()[0].cells()[4].textViews()[0]");;
     private static final By labelEttTillValueWithoutContact = MobileBy.IosUIAutomation(".tableViews()[0].cells()[7].staticTexts()[1]");
@@ -65,13 +72,8 @@ public class ActivityPage extends BasePage {
     }
 
     public static void clickDateTime() {
-        find(labelDateValue).click();
+        find(dateValue).click();
     }
-
-    public static void clickContact() {
-        find(buttonContact).click();
-    }
-
 
     public static void clickEditActivity() {
         waitByThread(1000);
@@ -89,23 +91,23 @@ public class ActivityPage extends BasePage {
     }
 
     public static String getContact() {
-        return getValue(buttonContact);
+        return contactValue.getText();
     }
 
     public static String getUserName() {
-        return getValue(labelUserValue);
+        return getText(labelUserValue);
     }
 
     public static String getDate() {
-        return getValue(labelDateValue);
+        return getText(dateValue);
     }
 
     public static String getTime() {
-        return getValue(labelTimeValue);
+        return getText(timeValue);
     }
 
     public static String getCampaign() {
-        return getValue(labelCampaignValue);
+        return campaignValue.getText();
     }
 
     public static String getCampaignWithoutContact() {
@@ -117,7 +119,7 @@ public class ActivityPage extends BasePage {
     }
 
     public static String getOpportunity() {
-        return getValue(labelOpportunityValue);
+        return opportunityValue.getText();
     }
 
     public static String getOpportunityWithoutContactAndTime() {
@@ -129,7 +131,7 @@ public class ActivityPage extends BasePage {
     }
 
     public static String getNotes() {
-        return getValue(fieldNotesValue);
+        return getText(fieldNotesValue);
     }
 
     public static String getNotesWithoutContact() {
@@ -151,7 +153,7 @@ public class ActivityPage extends BasePage {
     }
 
 //    public static String getContact() {
-//        return getValue(buttonContact);
+//        return getValue(contactValue);
 //    }
 
     public static String getContactTitle() {
