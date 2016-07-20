@@ -25,8 +25,8 @@ public class ActivityManipulationsPage extends BasePage {
     private static final By buttonUser = MobileBy.id("user_field");
     private static final By buttonCampaign = MobileBy.id("company_field");
     private static final By fieldNotes = MobileBy.id("notes");
-    private static final By defaultLabelDescription = MobileBy.id("text_input");
-    private static final By labelOtherInfo = MobileBy.xpath("//android.widget.RelativeLayout[9]/android.widget.LinearLayout[1]/android.widget.TextView[1]");
+    private static final By defaultLabelDescription = MobileBy.id("edit");
+    private static final By labelOtherInfo = MobileBy.xpath("//*[contains(@resource-id, 'title') and @index='0']");
     private static final By customFieldWheelEttTill = MobileBy.IosUIAutomation(".tableViews()[0].cells()[11]");
     private static final By customFieldPickerWheel = MobileBy.IosUIAutomation(".tableViews()[0].cells()[12].pickers()[0].wheels()[0]");
     private static final By customFieldEttTillValue = MobileBy.IosUIAutomation(".tableViews()[0].cells()[11].staticTexts()[0]");

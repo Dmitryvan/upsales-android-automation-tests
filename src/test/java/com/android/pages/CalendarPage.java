@@ -42,7 +42,7 @@ public class CalendarPage extends BasePage {
     }
 
     public static boolean checkTodayLabel() {
-        System.out.println(todayDate);
+//        System.out.println(todayDate);
         return checkIsDisplayed(labelToday);
     }
 

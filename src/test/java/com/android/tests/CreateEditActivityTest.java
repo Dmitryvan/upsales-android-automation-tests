@@ -160,7 +160,7 @@ public class CreateEditActivityTest extends BaseTest {
         softAssert.assertAll();
     }
 
-    @Test(priority = 4) // CASE 6
+    @Test(priority = 4) //CASE 6
     public void softCancelAfterSelectEditActivity() {
         SoftAssertExtended softAssert = new SoftAssertExtended();
         ActivityManipulationsPage.enterDescription(description);
@@ -189,7 +189,7 @@ public class CreateEditActivityTest extends BaseTest {
         softAssert.assertAll();
     }
 
-    @Test(priority = 5) // CASE 5
+    @Test(priority = 5) //CASE 5
     public void softEditActivity() {
         SoftAssertExtended softAssert = new SoftAssertExtended();
         ActivityManipulationsPage.enterDescription(description);

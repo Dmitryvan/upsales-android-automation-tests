@@ -58,7 +58,7 @@ public class Helpers {
 
     public static void init(AppiumDriver webDriver) {
         driver = webDriver;
-        int timeoutInSeconds = 30;
+        int timeoutInSeconds = 60;
         driverWait = new WebDriverWait(webDriver, timeoutInSeconds);
     }
 

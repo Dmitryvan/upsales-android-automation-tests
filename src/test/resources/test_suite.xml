@@ -1,5 +1,5 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="test suite" parallel="false">
+<suite name="test suite" parallel="false" configfailurepolicy="continue">
     <listeners>
         <listener class-name="com.android.util.ExtentReporterNG" />
     </listeners>
