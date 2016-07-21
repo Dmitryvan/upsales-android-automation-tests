@@ -195,9 +195,8 @@ public class CreateEditAppointmentTest extends BaseTest {
         softAssert.assertEquals(account, AppointmentPage.getAccountName());
         softAssert.assertEquals(description, AppointmentPage.getAppointmentDescription());
         softAssert.assertEquals(defaultAppointmentType.toUpperCase(), AppointmentPage.getTitle());
-//        softAssert.assertFalse(AppointmentPage.checkThereIsNoContact());
-        softAssert.assertEquals(labelNone, AppointmentPage.getCampaignWithoutContact());
-        softAssert.assertEquals(labelNone, AppointmentPage.getOpportunityWithoutContact());
+        softAssert.assertEquals(labelNone, AppointmentPage.getCampaign());
+        softAssert.assertEquals(labelNone, AppointmentPage.getOpportunity());
         softAssert.assertAll();
     }
 
@@ -208,6 +207,7 @@ public class CreateEditAppointmentTest extends BaseTest {
         AppointmentManipulationsPage.clickAppointmentType();
         AppointmentManipulationsPage.selectValueFromPopUp(appointmentType);
         softAssert.assertEquals(appointmentType, AppointmentManipulationsPage.getAppointmentType());
+
         AppointmentManipulationsPage.clickStartsDate();
         AppointmentManipulationsPage.selectDateMonth(startMonth);
         AppointmentManipulationsPage.selectDateDay(startDay);
@@ -229,8 +229,8 @@ public class CreateEditAppointmentTest extends BaseTest {
         AppointmentManipulationsPage.selectTimeMinutes(endMinutes);
         AppointmentManipulationsPage.selectTimeAmPm(endAmPm);
         AppointmentManipulationsPage.closePicker();
-
         softAssert.assertEquals(endDateTime, AppointmentManipulationsPage.getEndDate() + " " + AppointmentManipulationsPage.getEndTime());
+
         AppointmentManipulationsPage.clickLocation();
         AppointmentManipulationsPage.enterLocation(location);
         softAssert.assertEquals(location, AppointmentManipulationsPage.getLocation());
@@ -246,14 +246,14 @@ public class CreateEditAppointmentTest extends BaseTest {
         softAssert.assertEquals(opportunity, AppointmentManipulationsPage.getOpportunity());
         AppointmentManipulationsPage.clickUser();
         AddSelectEntityPage.select(user);
-//        AddSelectEntityPage.select(yourUser);
-//        AppointmentManipulationsPage.clickSelect();
+        AddSelectEntityPage.unselect(yourUser);
+        AppointmentManipulationsPage.clickSelect();
         AppointmentManipulationsPage.clickCampaign();
         AddSelectEntityPage.select(campaign);
         ActivityManipulationsPage.scrollToLabel(labelOtherInfo);
-//        AppointmentManipulationsPage.clickInsertSignature();
         AppointmentManipulationsPage.typeIntoNotes(notes);
         AppointmentManipulationsPage.clickSave();
+
         AppointmentPage.clickTools();
         AppointmentPage.clickEditAppointment();
         AppointmentManipulationsPage.setAppointmentName();
@@ -261,6 +261,7 @@ public class CreateEditAppointmentTest extends BaseTest {
         AppointmentManipulationsPage.enterDescription(newDescription);
         AppointmentManipulationsPage.clickAppointmentType();
         AppointmentManipulationsPage.selectValueFromPopUp(newAppointmentType);
+
         AppointmentManipulationsPage.clickStartsDate();
         AppointmentManipulationsPage.selectDateMonth(newStartMonth);
         AppointmentManipulationsPage.selectDateDay(newStartDay);
@@ -281,22 +282,23 @@ public class CreateEditAppointmentTest extends BaseTest {
         AppointmentManipulationsPage.selectTimeMinutes(newEndMinutes);
         AppointmentManipulationsPage.selectTimeAmPm(newEndAmPm);
         AppointmentManipulationsPage.closePicker();
+
         AppointmentManipulationsPage.clickLocation();
         AppointmentManipulationsPage.enterLocation(newLocation);
         AppointmentManipulationsPage.clickContacts();
         AddSelectEntityPage.select(newContact);
-        AddSelectEntityPage.select(contact);
+        AddSelectEntityPage.unselect(contact);
         AppointmentManipulationsPage.clickSelect();
         AppointmentManipulationsPage.clickUser();
-        AddSelectEntityPage.select(yourUser);
         AddSelectEntityPage.select(user);
+        AddSelectEntityPage.unselect(yourUser);
         AppointmentManipulationsPage.clickSelect();
         AppointmentManipulationsPage.clickCampaign();
-        AddSelectEntityPage.selectValueFromPopUp(newCampaign);
-//        AppointmentManipulationsPage.clickInsertSignature();
+        AddSelectEntityPage.select(newCampaign);
         ActivityManipulationsPage.scrollToLabel(labelOtherInfo);
         AppointmentManipulationsPage.typeIntoNotes(newNotes);
         AppointmentManipulationsPage.clickSave();
+
         softAssert.assertEquals(account, AppointmentPage.getAccountName());
         softAssert.assertEquals(newDescription, AppointmentPage.getAppointmentDescription());
         softAssert.assertEquals(AppointmentPage.getTitle(), newAppointmentType.toUpperCase());
@@ -305,6 +307,7 @@ public class CreateEditAppointmentTest extends BaseTest {
         softAssert.assertEquals(newStartTime, AppointmentPage.getStartTime());
         softAssert.assertEquals(newEndFullDate, AppointmentPage.getEndDate());
         softAssert.assertEquals(newEndTime, AppointmentPage.getEndTime());
+        softAssert.assertEquals(newLocation, AppointmentPage.getLocation());
         softAssert.assertEquals(newContact, AppointmentPage.getContact());
         softAssert.assertEquals(newCampaign, AppointmentPage.getCampaign());
         softAssert.assertEquals(opportunity, AppointmentPage.getOpportunity());

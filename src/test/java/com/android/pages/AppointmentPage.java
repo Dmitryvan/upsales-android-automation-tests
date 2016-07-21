@@ -11,39 +11,36 @@ public class AppointmentPage extends BasePage {
     private static final By buttonLeftMenu = MobileBy.IosUIAutomation(".navigationBar().buttons()[2]");
     private static final By buttonLeftMenuInFollowUp = MobileBy.IosUIAutomation(".navigationBar().buttons()[1]");
 
-    private static final By labelAppointmentDescriptionValue = MobileBy.id("activity_title");
+    private static final By appointmentDescriptionValue = MobileBy.id("activity_title");
     private static final By buttonTools = MobileBy.id("save");
     private static final By buttonAccount = MobileBy.id("activity_contact");
-    private static final By labelUserValue = MobileBy.id("user_name");
-    private static final By labelStartDateValue = MobileBy.IosUIAutomation(".tableViews()[0].cells()[1].staticTexts()[0]");
-    private static final By labelEndDateValue = MobileBy.IosUIAutomation(".tableViews()[0].cells()[2].staticTexts()[0]");
-    private static final By labelStartTimeValue = MobileBy.IosUIAutomation(".tableViews()[0].cells()[1].staticTexts()[1]");
-    private static final By labelEndTimeValue = MobileBy.IosUIAutomation(".tableViews()[0].cells()[2].staticTexts()[1]");
-    private static final By labelLocationValue = MobileBy.IosUIAutomation(".tableViews()[0].cells()[3].staticTexts()[0]");
-    private static final By labelCampaignValueWithContact = MobileBy.IosUIAutomation(".tableViews()[0].cells()[5].staticTexts()[1]");
-    private static final By labelOpportunityValueWithContact = MobileBy.IosUIAutomation(".tableViews()[0].cells()[6].staticTexts()[1]");
-    private static final By buttonContact = MobileBy.IosUIAutomation(".tableViews()[0].cells()[4].staticTexts()[0]");
-    private static final By labelContactTitle = MobileBy.IosUIAutomation(".tableViews()[0].cells()[4].staticTexts()[1]");
-    private static final By notes = MobileBy.IosUIAutomation(".tableViews()[0].cells()[7].textViews()[0]");
-    private static final By notesWithoutContact = MobileBy.IosUIAutomation(".tableViews()[0].cells()[6].textViews()[0]");
+    private static final By userValue = MobileBy.id("user_name");
+    private static final By locationValue = MobileBy.xpath("//android.widget.LinearLayout[2]/android.widget.RelativeLayout[4]/android.widget.RelativeLayout[1]/android.widget.TextView[2]");
+    private static final By notes = MobileBy.id("notes");
     private static final By labelShowMore = MobileBy.IosUIAutomation(".tableViews()[0].cells()[8]");
 
     private static final By motesalternativ = MobileBy.IosUIAutomation(".tableViews()[0].cells()[8].staticTexts()[1]");
-    private static final By labelMotesalternativ = MobileBy.IosUIAutomation(".tableViews()[0].cells()[8].staticTexts()[1]");
     private static final By motetCustomfalt = MobileBy.IosUIAutomation(".tableViews()[0].cells()[9].textFields()[0]");
-    private static final By labelMotetCustomfalt = MobileBy.IosUIAutomation(".tableViews()[0].cells()[9].staticTexts()[0]");
 
     private static final By popoverEditAppointment = MobileBy.id("item_edit");
-    private static final By popoverDeleteAppointment = MobileBy.id("item_delete");
-    private static final By popoverFollowUp = MobileBy.IosUIAutomation(".popover().tableViews()[0].cells()[2].staticTexts()[0]");
     private static final By popoverFollowUpActivity = MobileBy.id("item_follow");
     private static final By popoverFollowUpAppointment = MobileBy.id("item_follow_appointment");
 
     private static final By fifththCellValue = MobileBy.IosUIAutomation(".tableViews()[0].cells()[4]");
 
     private static final List<WebElement> values = findElements(MobileBy.id("select"));
-    private static final WebElement labelCampaignValueWithoutContact = values.get(0);
-    private static final WebElement labelOpportunityValueWithoutContact = values.get(1);
+    private static final WebElement campaignValue = values.get(0);
+    private static final WebElement opportunityValue = values.get(1);
+
+    private static final List<WebElement> date = findElements(MobileBy.id("date"));
+    private static final WebElement startDateValue = date.get(0);
+    private static final WebElement endDateValue = date.get(1);
+
+    private static final List<WebElement> time = findElements(MobileBy.id("time"));
+    private static final WebElement startTimeValue = time.get(0);
+    private static final WebElement endTimeValue = time.get(1);
+
+    private static final List<WebElement> users = findElements(MobileBy.id("user_title"));
 
     public static String getFifthCellValue() {
         return getValue(fifththCellValue);
@@ -66,10 +63,6 @@ public class AppointmentPage extends BasePage {
         find(buttonAccount).click();
     }
 
-    public static void clickContact() {
-        find(buttonContact).click();
-    }
-
     public static void clickEditAppointment() {
         find(popoverEditAppointment).click();
     }
@@ -87,7 +80,7 @@ public class AppointmentPage extends BasePage {
     }
 
     public static String getAppointmentDescription() {
-        return getText(labelAppointmentDescriptionValue);
+        return getText(appointmentDescriptionValue);
     }
 
     public static String getAccountName() {
@@ -95,60 +88,43 @@ public class AppointmentPage extends BasePage {
     }
 
     public static String getContact() {
-        return getValue(buttonContact);
-    }
-
-    public static String getContactTitle() {
-        return getValue(labelContactTitle);
+        return users.get(1).getText();
     }
 
     public static String getUserName() {
-        return getValue(labelUserValue);
+        return getText(userValue);
     }
 
     public static String getStartDate() {
-        return getValue(labelStartDateValue).substring(3);
+        return startDateValue.getText();
     }
 
     public static String getEndDate() {
-        return getValue(labelEndDateValue).substring(3);
+        return endDateValue.getText();
     }
 
     public static String getStartTime() {
-        return getValue(labelStartTimeValue).substring(3);
+        return startTimeValue.getText();
     }
 
     public static String getEndTime() {
-        return getValue(labelEndTimeValue).substring(3);
-    }
-
-    public static String getCampaignWithoutContact() {
-        return labelCampaignValueWithoutContact.getText();
-    }
-
-    public static String getLocation() {
-        return trimFirstFourChars(getValue(labelLocationValue));
-//        return trimFirstTwoChars(getValue(labelLocationValue));
-    }
-
-    public static String getNotes() {
-        return getValue(notes);
-    }
-
-    public static String getNotesWithoutContact() {
-        return getValue(notesWithoutContact);
+        return endTimeValue.getText();
     }
 
     public static String getCampaign() {
-        return getValue(labelCampaignValueWithContact);
+        return campaignValue.getText();
+    }
+
+    public static String getLocation() {
+        return getText(locationValue);
+    }
+
+    public static String getNotes() {
+        return getText(notes);
     }
 
     public static String getOpportunity() {
-        return getValue(labelOpportunityValueWithContact);
-    }
-
-    public static String getOpportunityWithoutContact() {
-        return labelOpportunityValueWithoutContact.getText();
+        return opportunityValue.getText();
     }
 
     public static String getMotesalternativ() {
@@ -158,15 +134,6 @@ public class AppointmentPage extends BasePage {
     public static String getMotetCustomfalt() {
 //        ((IOSDriver)getDriver()).scrollTo("OTHER INFO");
         return getValue(motetCustomfalt);
-    }
-
-    public static boolean checkThereIsNoContact() {
-        boolean res = false;
-        String thirdValue = getFifthCellValue();
-        if (thirdValue.equals("Campaign")) {
-            res = true;
-        }
-        return res;
     }
 
     public static String getTextEditAppointment() {

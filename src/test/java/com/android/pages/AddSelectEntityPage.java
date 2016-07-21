@@ -43,6 +43,11 @@ public class AddSelectEntityPage extends BasePage{
         find(MobileBy.xpath("//*[@class='android.widget.CheckBox' and @text='" + value + "']")).click();
     }
 
+    public static void unselect(String value) {
+        waitByThread(1000);
+        find(MobileBy.xpath("//*[@class='android.widget.CheckBox' and @text='" + value + "']")).click();
+    }
+
     public static void clickResultsLabel() {
         find(labelResults).click();
     }

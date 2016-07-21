@@ -20,7 +20,7 @@ public class AppointmentManipulationsPage extends BasePage {
     private static final By buttonAccount = MobileBy.id("account_field");
     private static final By buttonStarts = MobileBy.id("starts_field");
     private static final By buttonEnds = MobileBy.id("ends_field");
-    private static final By fieldLocation = MobileBy.xpath("//android.widget.RelativeLayout[5]/android.widget.LinearLayout[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.EditText[1]");
+    private static final By fieldLocation = MobileBy.xpath("//android.widget.RelativeLayout[5]/android.widget.LinearLayout[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.EditText[1]");
     private static final By buttonContacts = MobileBy.id("contact_field");
     private static final By buttonOpportunity = MobileBy.id("opportunity_field");
     private static final By buttonUser = MobileBy.id("user_field");
@@ -135,7 +135,9 @@ public class AppointmentManipulationsPage extends BasePage {
     }
 
     public static void enterLocation(String location) {
-        find(fieldLocation).sendKeys(location);
+        WebElement el = find(fieldLocation);
+        el.clear();
+        el.sendKeys(location);
         hideKeyboard();
     }
 
