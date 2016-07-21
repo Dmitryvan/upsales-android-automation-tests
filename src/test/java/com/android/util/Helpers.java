@@ -3,6 +3,7 @@ package com.android.util;
 import com.android.pages.BasePage;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileBy;
+import io.appium.java_client.MobileElement;
 import io.appium.java_client.SwipeElementDirection;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
@@ -204,46 +205,74 @@ public class Helpers {
 //*
 //work with date&time wheels
 //*
+
     public static void closePicker() {
         find(pickerDone).click();
     }
 
     public static void selectDateMonth(String month) {
-        WebElement el = find(pickerFirstField);
-        el.clear();
-        el.sendKeys(month);
+        MobileElement el = (MobileElement) find(pickerFirstField);
+        while (!el.getText().equals(month)) {
+            el.swipe(SwipeElementDirection.UP, 500);
+            waitByThread(100);
+        }
+//        el.clear();
+//        el.sendKeys(month);
     }
 
     public static void selectDateDay(String day) {
-        WebElement el = find(pickerSecondField);
-        el.clear();
-        el.sendKeys(day);
+        MobileElement el = (MobileElement) find(pickerSecondField);
+        spinNumericField(el, day);
+//        el.clear();
+//        el.sendKeys(day);
     }
 
     public static void selectDateYear(String year) {
-        WebElement el = find(pickerThirdField);
-        el.clear();
-        el.sendKeys(year);
-        hideKeyboard();
+        MobileElement el = (MobileElement) find(pickerThirdField);
+        spinNumericField(el, year);
+//        el.clear();
+//        el.sendKeys(year);
+//        hideKeyboard();
     }
 
     public static void selectTimeHours(String hours) {
-        WebElement el = find(pickerFirstField);
-        el.clear();
-        el.sendKeys(hours);
+        MobileElement el = (MobileElement) find(pickerFirstField);
+        spinNumericField(el, hours);
+//        el.clear();
+//        el.sendKeys(hours);
     }
 
     public static void selectTimeMinutes(String minutes) {
-        WebElement el = find(pickerSecondField);
-        el.clear();
-        el.sendKeys(minutes);
+        MobileElement el = (MobileElement) find(pickerSecondField);
+        spinNumericField(el, minutes);
+//        el.clear();
+//        el.sendKeys(minutes);
     }
 
     public static void selectTimeAmPm(String aMpM) {
-        WebElement el = find(pickerAmPmField);
-        el.clear();
-        el.sendKeys(aMpM);
-        hideKeyboard();
+        MobileElement el = (MobileElement) find(pickerAmPmField);
+        String currentValue = el.getText().toLowerCase();
+        if (currentValue.startsWith("a") && aMpM.toLowerCase().startsWith("p"))
+            el.swipe(SwipeElementDirection.UP, 500);
+        else if (currentValue.startsWith("p") && aMpM.toLowerCase().startsWith("a"))
+            el.swipe(SwipeElementDirection.DOWN, 500);
+//        el.clear();
+//        el.sendKeys(aMpM);
+//        hideKeyboard();
+    }
+
+    protected static void spinNumericField(MobileElement el, String value) {
+        int currentValue = Integer.parseInt(el.getText());
+        int aimValue = Integer.parseInt(value);
+        while (currentValue != aimValue) {
+            if (currentValue < aimValue) {
+                el.swipe(SwipeElementDirection.UP, 500);
+            } else {
+                el.swipe(SwipeElementDirection.DOWN, 500);
+            }
+            waitByThread(100);
+            currentValue = Integer.parseInt(el.getText());
+        }
     }
 
 //*

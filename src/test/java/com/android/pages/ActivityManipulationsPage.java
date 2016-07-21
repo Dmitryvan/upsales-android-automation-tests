@@ -24,7 +24,7 @@ public class ActivityManipulationsPage extends BasePage {
     private static final By buttonOpportunity = MobileBy.id("opportunity_field");
     private static final By buttonUser = MobileBy.id("user_field");
     private static final By buttonCampaign = MobileBy.id("company_field");
-    private static final By fieldNotes = MobileBy.id("notes");
+    private static final By fieldNotes = MobileBy.xpath("//*[contains(@resource-id, 'notes') and @index='2']");
     private static final By defaultLabelDescription = MobileBy.id("edit");
     private static final By labelOtherInfo = MobileBy.xpath("//*[contains(@resource-id, 'title') and @index='0']");
     private static final By customFieldWheelEttTill = MobileBy.IosUIAutomation(".tableViews()[0].cells()[11]");

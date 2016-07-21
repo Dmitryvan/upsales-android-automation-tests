@@ -33,33 +33,33 @@ public class SalesFilterTest extends BaseTest {
 
     @Test(priority = 1) // Case 2
     public void setUserFilter() {
+        assertEquals(FilterPage.getCurrentUserLabelValue(), labelAll);
         FilterPage.clickUsers();
         FilterPage.select(currentUser);
         FilterPage.clickBack();
         assertEquals(FilterPage.getCurrentUserLabelValue(), currentUser);
         FilterPage.clickClose();
         assertFalse(FilterPage.checkFilter());
+        assertEquals(SalesPage.getSalesPerUserCountCells(), 1);
     }
 
     @Test(priority = 2) // Case 3
-    public void softVerifySalesValuesAfterFilterSet() {
+    public void softVerifyPipelineValuesAreSetWithSalesFilter() {
         SoftAssertExtended softAssert = new SoftAssertExtended();
         FilterPage.clickUsers();
         FilterPage.select(currentUser);
         FilterPage.clickBack();
-        assertEquals(FilterPage.getCurrentUserLabelValue(), currentUser);
+        softAssert.assertEquals(FilterPage.getCurrentUserLabelValue(), currentUser);
         FilterPage.clickClose();
-        float salesTotalSum = SalesPage.getSEKNumericValueWithM();
-        softAssert.assertTrue(salesTotalSum >= 1.3 && salesTotalSum <= 1.8);
-        softAssert.assertEquals(SalesPage.getSalesPerUserCountCells(), 1);
-        int orders = SalesPage.getLabelOrdersNumericValue();
-        softAssert.assertTrue(orders >= 5 && orders <= 9);
-        int average = SalesPage.getAverageValueNumeric();
-        softAssert.assertTrue(average >= 190000 && average <= 250000);
+        SalesPage.clickTabPipeline();
+        PipelinePage.clickFilter();
+        softAssert.assertEquals(FilterPage.getCurrentUserLabelValue(), currentUser);
+        FilterPage.clickClose();
+        softAssert.assertFalse(FilterPage.checkFilter());
         softAssert.assertAll();
     }
 
-    @Test(priority = 3) // Case 4
+    @Test(priority = 3, enabled = false) // Case 4
     public void verifyPipelineValuesAfterFilterSet() {
         SoftAssertExtended softAssert = new SoftAssertExtended();
         FilterPage.clickUsers();

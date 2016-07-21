@@ -8,6 +8,8 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
+import java.util.Calendar;
+
 import static org.testng.Assert.*;
 
 @Listeners(com.android.util.ScreenshotTaker.class)
@@ -33,7 +35,7 @@ public class CalendarNavigationAndVerifyTest extends BaseTest {
 
     @Test // Case 2
     public void verifyTodayAppointmentsAreShownFirst() {
-//        assertTrue(CalendarPage.checkTodayLabel());
+        assertTrue(CalendarPage.checkTodayLabel());
         assertTrue(CalendarPage.checkVisibleCellsCount() <= cellsOnScreen);
     }
 
@@ -50,15 +52,18 @@ public class CalendarNavigationAndVerifyTest extends BaseTest {
     public void softNavigateToCalendarViewAndVerify() {
         SoftAssertExtended softAssert = new SoftAssertExtended();
         softAssert.assertFalse(CalendarPage.checkCalendarView());
+        int todayAppoinmentInList = CalendarPage.getTodayAppointmentsCount();
         CalendarPage.clickCalendarView();
         softAssert.assertTrue(CalendarPage.checkCalendarView());
         softAssert.assertTrue(CalendarPage.checkTodayLabel());
-        softAssert.assertTrue(CalendarPage.checkVisibleCellsCount() <= cellsOnScreen);
+        int todayAppointmentInCalendar = CalendarPage.getCellsCount();
+        softAssert.assertEquals(todayAppoinmentInList, todayAppointmentInCalendar);
+//        softAssert.assertTrue(CalendarPage.checkVisibleCellsCount() <= cellsOnScreen);
         softAssert.assertAll();
     }
 
     @Test // Case 5
-    public void calendarSwipe() throws InterruptedException {
+    public void calendarSwipe() {
         CalendarPage.clickCalendarView();
         assertTrue(CalendarPage.checkCalendarView());
         CalendarPage.swipeRight();

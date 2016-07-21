@@ -6,7 +6,7 @@
     <test name="App Test">
         <classes>
             <class name="com.android.tests.DashboardTest"/>
-            <class name="com.android.tests.ActivitiesTest"/>
+            <class name="com.android.tests.ActivitiesNavigationAndVerifyTest"/>
             <class name="com.android.tests.DashboardFilterTest"/>
             <class name="com.android.tests.ActivitiesFilterTest"/>
             <class name="com.android.tests.SalesPipelineTest"/>

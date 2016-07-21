@@ -106,7 +106,7 @@ public class DashboardPage extends BasePage {
     }
 
     public static void saveCurrentSalesAndPipelineValues() throws InterruptedException {
-        Thread.sleep(1500);
+        Thread.sleep(2000);
 //        System.out.println(getText(labelSalesValue));
 //        System.out.println(getText(labelPipelineValue));
         String[] stringArray = {getText(labelSalesValue),
@@ -119,7 +119,7 @@ public class DashboardPage extends BasePage {
     }
 
     public static float[] getCurrentSalesAndPipelineValues() throws InterruptedException {
-        Thread.sleep(1500);
+        Thread.sleep(2000);
 //        System.out.println(getText(labelSalesValue));
 //        System.out.println(getText(labelPipelineValue));
         String[] stringValues = {getText(labelSalesValue),

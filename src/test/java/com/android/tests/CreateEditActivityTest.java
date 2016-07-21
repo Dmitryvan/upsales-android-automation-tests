@@ -223,7 +223,7 @@ public class CreateEditActivityTest extends BaseTest {
         ActivityManipulationsPage.clickCampaign();
         AddSelectEntityPage.select(campaign);
         softAssert.assertEquals(campaign, ActivityManipulationsPage.getCampaign());
-        ActivityManipulationsPage.scrollToLabel(labelOtherInfo);
+        ActivityManipulationsPage.scrollToLabel(labelOtherInfo.toUpperCase());
         ActivityManipulationsPage.typeIntoNotes(notes);
         ActivityManipulationsPage.clickSave();
         ActivityPage.clickTools();

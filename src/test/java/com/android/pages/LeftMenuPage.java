@@ -10,7 +10,7 @@ public class LeftMenuPage extends BasePage {
     private static final By buttonCalendar = MobileBy.id("calendar");
     private static final By buttonActivities = MobileBy.id("activities");
     private static final By buttonSales = MobileBy.id("sales");
-    private static final By buttonPipeline = MobileBy.id("pipeline");
+    private static final By buttonPipeline = MobileBy.xpath("//*[contains(@resource-id, 'pipeline') and @index=4]");
     private static final By buttonAccAndCon = MobileBy.IosUIAutomation(
             ".tableViews()[0].cells().firstWithPredicate(\"staticTexts[1].name=='Accounts & Contacts'\")");
     private static final By buttonForms = MobileBy.IosUIAutomation(
@@ -67,6 +67,7 @@ public class LeftMenuPage extends BasePage {
     }
 
     public static void clickPipeline() {
+        wait(fieldSearch);
         find(buttonPipeline).click();
     }
 

@@ -29,6 +29,7 @@ public class CalendarPage extends BasePage {
 
     private static final By visibleElements = MobileBy.id("dates");
     private static By monthOnCalendar = MobileBy.id("calendar_month_year_textview");
+    private static By datesInCells = MobileBy.id("toTxt");
     private final static By tableCells = MobileBy.IosUIAutomation(".tableViews()[1].cells()");
 
     private static final DateFormat monthOnCalendarFormat = new SimpleDateFormat("MMMM YYYY");
@@ -67,8 +68,18 @@ public class CalendarPage extends BasePage {
         swipeRight(calendarView);
     }
 
-    public static String getMonthOnCalendar() throws InterruptedException {
-        Thread.sleep(1500);
+    public static int getTodayAppointmentsCount() {
+        List<WebElement> appointments = getDriver().findElements(datesInCells);
+        int todayAppCount = 0;
+        for(WebElement el : appointments) {
+            if(el.getText().contains("Today"))
+                todayAppCount++;
+        }
+        return todayAppCount;
+    }
+
+    public static String getMonthOnCalendar() {
+        waitByThread(1500);
         return find(monthOnCalendar).getText();
     }
 
@@ -84,7 +95,18 @@ public class CalendarPage extends BasePage {
         return monthOnCalendarFormat.format(calendar.getTime());
     }
 
-    public static int getCellsCount() throws InterruptedException {
+//    public static int getTodayAppoinmetsCountOnCalendarView() {
+//        List<WebElement> appointments = getDriver().findElements(datesInCells);
+//        int count = appointments.size();
+//        if(count < 4)
+//            return count;
+//        String appName = getText(MobileBy.xpath("//android.support.v7.widget.RecyclerView[1]/android.widget.RelativeLayout[4]/android.widget.RelativeLayout[1]/android.widget.TextView[1]"));
+//        String accName = getText(MobileBy.xpath("//android.support.v7.widget.RecyclerView[1]/android.widget.RelativeLayout[4]/android.widget.RelativeLayout[1]/android.widget.TextView[2]"));
+//
+//
+//    }
+
+    public static int getCellsCount() {
         int total;
         int iterator;
         List<WebElement> list = getDriver().findElements(MobileBy.id("descriptionTxt"));
@@ -93,23 +115,29 @@ public class CalendarPage extends BasePage {
 //        }
         total = iterator = list.size();
         int lastValue = iterator;
-        String previousCampaign = getTextByPath("//android.support.v7.widget.RecyclerView[1]/android.widget.RelativeLayout[", lastValue, "]/android.widget.RelativeLayout[1]/android.widget.TextView[1]");
+        String previousActivity = getTextByPath("//android.support.v7.widget.RecyclerView[1]/android.widget.RelativeLayout[", lastValue, "]/android.widget.RelativeLayout[1]/android.widget.TextView[1]");
+        String previousAccount = getTextByPath("//android.support.v7.widget.RecyclerView[1]/android.widget.RelativeLayout[", lastValue, "]/android.widget.RelativeLayout[1]/android.widget.TextView[2]");
+        String activity;
         String account;
+        int counter = 0;
         do {
             AndroidElement el = (AndroidElement) find(MobileBy.xpath(
                     "//android.support.v7.widget.RecyclerView[1]/android.widget.RelativeLayout[" +
                             (iterator - 1) + "]/android.widget.RelativeLayout[1]"));
             el.swipe(SwipeElementDirection.UP, 500);
-            Thread.sleep(500);
+            waitByThread(500);
             try {
                 try {
-                    account = getTextByPath("//android.support.v7.widget.RecyclerView[1]/android.widget.RelativeLayout[", (lastValue + 1), "]/android.widget.RelativeLayout[1]/android.widget.TextView[1]");
+                    activity = getTextByPath("//android.support.v7.widget.RecyclerView[1]/android.widget.RelativeLayout[", (lastValue + 1), "]/android.widget.RelativeLayout[1]/android.widget.TextView[1]");
+                    account = getTextByPath("//android.support.v7.widget.RecyclerView[1]/android.widget.RelativeLayout[", (lastValue + 1), "]/android.widget.RelativeLayout[1]/android.widget.TextView[2]");
                 }
                 catch (Exception e) {
-                    account = getTextByPath("//android.support.v7.widget.RecyclerView[1]/android.widget.RelativeLayout[", lastValue, "]/android.widget.RelativeLayout[1]/android.widget.TextView[1]");
+                    activity = getTextByPath("//android.support.v7.widget.RecyclerView[1]/android.widget.RelativeLayout[", lastValue, "]/android.widget.RelativeLayout[1]/android.widget.TextView[1]");
+                    account = getTextByPath("//android.support.v7.widget.RecyclerView[1]/android.widget.RelativeLayout[", lastValue, "]/android.widget.RelativeLayout[1]/android.widget.TextView[2]");
                 }
 //                System.out.println(account);
-                if (account.equals(previousCampaign)) {
+                if (account.equals(previousAccount) && activity.equals(previousActivity)) {
+                    counter ++;
                     continue;
                 }
 //                if (account.equals("app3")) {
@@ -118,11 +146,11 @@ public class CalendarPage extends BasePage {
 //                }
                 total++;
 //                System.out.println(total);
-                previousCampaign = account;
+                previousAccount = account;
             } catch (Exception e) {
                 break;
             }
-        } while (!account.equals("app3"));
+        } while (counter < 3);
 //        System.out.println(iterator);
 //        System.out.println(total);
         return total;

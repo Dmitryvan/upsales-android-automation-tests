@@ -42,6 +42,7 @@ public class DashboardFilterTest extends BaseTest {
 
     @Test(priority = 1) // Case 2
     public void setUserFilter() {
+        assertEquals(FilterPage.getCurrentUserLabelValue(), usersAll);
         FilterPage.clickUsers();
         FilterPage.select(currentUser);
         FilterPage.clickBack();
@@ -50,7 +51,7 @@ public class DashboardFilterTest extends BaseTest {
         assertFalse(FilterPage.checkFilter());
     }
 
-    @Test(priority = 2) // Case 3
+    @Test(priority = 2, enabled = false) // Case 3
     public void verifyValuesAfterFilterSet() {
         SoftAssertExtended softAssert = new SoftAssertExtended();
         FilterPage.clickUsers();
@@ -65,7 +66,7 @@ public class DashboardFilterTest extends BaseTest {
         softAssert.assertAll();
     }
 
-    @Test(priority = 3) // Case 4
+    @Test(priority = 3, enabled = false) // Case 4
     public void softNavigateAndVerifyValuesAfterFilterSet() {
         SoftAssertExtended softAssert = new SoftAssertExtended();
         FilterPage.clickUsers();
@@ -84,8 +85,9 @@ public class DashboardFilterTest extends BaseTest {
         softAssert.assertAll();
     }
 
-    @Test(priority = 4) // Case 5
+    @Test(priority = 4) // Case 5(3)
     public void setMultipleUserFilters() {
+        assertEquals(FilterPage.getCurrentUserLabelValue(), usersAll);
         FilterPage.clickUsers();
         FilterPage.select(user1);
         FilterPage.select(user3);
@@ -96,7 +98,7 @@ public class DashboardFilterTest extends BaseTest {
         assertFalse(FilterPage.checkFilter());
     }
 
-    @Test(priority = 5) // Case 6
+    @Test(priority = 5, enabled = false) // Case 6
     public void softVerifyValuesAfterMultipleUsersSet() {
         SoftAssertExtended softAssert = new SoftAssertExtended();
         FilterPage.clickUsers();
@@ -112,7 +114,7 @@ public class DashboardFilterTest extends BaseTest {
         softAssert.assertAll();
     }
 
-    @Test(priority = 6) // Case 7
+    @Test(priority = 6, enabled = false) // Case 7
     public void softNavigateAndVerifyValuesAfterMultipleUsersSet() {
         SoftAssertExtended softAssert = new SoftAssertExtended();
         FilterPage.clickUsers();
@@ -133,7 +135,7 @@ public class DashboardFilterTest extends BaseTest {
         softAssert.assertAll();
     }
 
-    @Test(priority = 7) // Case 8
+    @Test(priority = 7) // Case 8(4)
     public void toggleBetweenAllAndSelection() {
         assertEquals(FilterPage.getCurrentUserLabelValue(), usersAll);
         FilterPage.clickUsers();

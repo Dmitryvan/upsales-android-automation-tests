@@ -8,8 +8,10 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class ActivitiesPage extends BasePage {
@@ -28,6 +30,23 @@ public class ActivitiesPage extends BasePage {
 
     public static String getFirstRowDate() {
         return getText(firstRowDate);
+    }
+
+    public static boolean verifyFirstActivityRowDateLessThanToday() {
+        String date = getFirstRowDate();
+        SimpleDateFormat format = new SimpleDateFormat("dd MMM");
+        Date currentDate = new Date();
+        if(date.contains("Today"))
+            return true;
+
+        date = date.substring(6);
+        try {
+            if (format.parse(date).compareTo(currentDate) <= 0)
+                return true;
+        } catch (ParseException e) {
+            return false;
+        }
+        return false;
     }
 
     public static String getLastRowDate() {

@@ -81,7 +81,7 @@ public class LeftMenuTest extends BaseTest {
         assertTrue(LeftMenuPage.checkSearch());
     }
 
-    @Test(priority = 6)
+    @Test(priority = 6, enabled = false)
     public void softPopoverListOfCreateButtonInTheSideMenu() {
         SoftAssertExtended softAssert = new SoftAssertExtended();
         LeftMenuPage.clickCreate();

@@ -48,17 +48,18 @@ public class ActivitiesFilterTest extends BaseTest {
 
     @Test(priority = 1) // Case 2
     public void setUserFilter() {
+        assertEquals(FilterPage.getCurrentUserLabelValue(), currentUser);
         FilterPage.clickUsers();
         FilterPage.select(all);
         FilterPage.clickBack();
         assertEquals(FilterPage.getCurrentUserLabelValue(), all);
         FilterPage.clickClose();
         assertFalse(FilterPage.checkFilter());
-        assertTrue(ActivitiesPage.searchActivityByName(activityName));
     }
 
     @Test(priority = 2) // Case 3
     public void setMultipleUserFilters() {
+        assertEquals(FilterPage.getCurrentUserLabelValue(), currentUser);
         FilterPage.clickUsers();
         FilterPage.select(user1);
         FilterPage.select(user3);
@@ -68,7 +69,6 @@ public class ActivitiesFilterTest extends BaseTest {
         assertEquals(FilterPage.getCurrentUserLabelValue(), threeUsersLabelValue);
         FilterPage.clickClose();
         assertFalse(FilterPage.checkFilter());
-//        assertTrue(ActivitiesPage.searchActivity(activityName, ActivitiesPage.dateYesterday(), activityTime));
     }
 
     @Test(priority = 3) // Case 4
@@ -80,7 +80,6 @@ public class ActivitiesFilterTest extends BaseTest {
         assertEquals(FilterPage.getCurrentActivityTypeLabelValue(), activityType3);
         FilterPage.clickClose();
         assertFalse(FilterPage.checkFilter());
-//        assertTrue(ActivitiesPage.countActivitiesByDate(dateYesterday) == 1);
     }
 
     @Test(priority = 4) // Case 5
@@ -94,7 +93,6 @@ public class ActivitiesFilterTest extends BaseTest {
         assertEquals(FilterPage.getCurrentActivityTypeLabelValue(), threeAccSelected);
         FilterPage.clickClose();
         assertFalse(FilterPage.checkFilter());
-        assertTrue(ActivitiesPage.countActivities() == 26);
     }
 
     @Test(priority = 5)
