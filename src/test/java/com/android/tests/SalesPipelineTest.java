@@ -2,10 +2,9 @@ package com.android.tests;
 
 import com.android.pages.*;
 import com.android.util.*;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Listeners;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
+
+import static org.testng.Assert.*;
 
 @Listeners(com.android.util.ScreenshotTaker.class)
 public class SalesPipelineTest extends BaseTest {
@@ -43,7 +42,7 @@ public class SalesPipelineTest extends BaseTest {
     private final String labelAll = PropertyLoader.loadProperty(filterPropertyPath, "labelAll");
     private final String dateCurrentMonth = PropertyLoader.loadProperty(filterPropertyPath, "dateCurrentMonth");
 
-    @BeforeClass
+    @BeforeMethod
     public void setUp () throws Exception{
         super.setUp();
         LoginPage.login();
@@ -51,7 +50,7 @@ public class SalesPipelineTest extends BaseTest {
         LeftMenuPage.clickSales();
     }
 
-    @Test(priority = 1) //CASE 4 + CASE 2
+    @Test(priority = 1, enabled = false) //CASE 4 + CASE 2 obsolete
     public void softWidgetSalesVerification() {
         SoftAssertExtended softAssert = new SoftAssertExtended();
         Float totalSalesValue = SalesPage.getSEKNumericValueWithM();
@@ -63,19 +62,29 @@ public class SalesPipelineTest extends BaseTest {
         softAssert.assertAll();
     }
 
-    @Test(priority = 2) //CASE 5
-    public void softPerUserVerification() {
+    @Test(priority = 2) //CASE 3
+    public void softSalesPerUserVerification() {
         SoftAssertExtended softAssert = new SoftAssertExtended();
-        Integer salesPerUserCount = SalesPage.getSalesPerUserCountCells();
-        Float sumGustav = SalesPage.getLabelSumOfFirstUser();
-        Integer sumLisa = SalesPage.findSumByUserName("Lisa Henriksson");
-        softAssert.assertTrue(salesPerUserCount >= Integer.parseInt(startSalesPerUserCount) && salesPerUserCount <= Integer.parseInt(endSalesPerUserCount));
-        softAssert.assertTrue(sumGustav >= Float.parseFloat(startSumOfFirstUser) && sumGustav <= Float.parseFloat(endSumOfFirstUser));
-        softAssert.assertTrue(sumLisa >= Integer.parseInt(startSumOfLisaSales) && sumLisa <= Integer.parseInt(endSumOfLisaSales));
+        softAssert.assertEquals(SalesPage.getSalesPerUserCountCells(), 8);
+        SalesPage.verifySumForEachUser();
         softAssert.assertAll();
     }
 
-    @Test(priority = 3) //CASE 6
+    @Test(priority = 3) // Case 4
+    public void softSalesFilterNavigateAndVerification() {
+        SoftAssertExtended softAssert = new SoftAssertExtended();
+        SalesPage.clickFilter();
+        softAssert.assertTrue(FilterPage.checkFilter());
+        softAssert.assertEquals(FilterPage.getCurrentUserLabelValue(), labelAll);
+        softAssert.assertEquals(FilterPage.getCurrentDatePeriodValue(), dateCurrentMonth);
+        softAssert.assertEquals(FilterPage.getCurrentStagesValue(), labelAll);
+        FilterPage.clickClose();
+        softAssert.assertFalse(FilterPage.checkFilter());
+        softAssert.assertAll();
+
+    }
+
+    @Test(priority = 4, enabled = false) //CASE 6 obsolete
     public void softSalesPerUserNavigation() throws InterruptedException {
         SoftAssertExtended softAssert = new SoftAssertExtended();
         SalesPage.clickFirstUserInSalesTable();
@@ -84,7 +93,7 @@ public class SalesPipelineTest extends BaseTest {
         softAssert.assertAll();
     }
 
-    @Test(priority = 4) //CASE 6
+    @Test(priority = 5) //CASE 5
     public void softPipelineNavigation() {
         SoftAssertExtended softAssert = new SoftAssertExtended();
         SalesPage.clickTabPipeline();
@@ -92,7 +101,7 @@ public class SalesPipelineTest extends BaseTest {
         softAssert.assertAll();
     }
 
-    @Test(priority = 5) //CASE 8 + CASE 7
+    @Test(priority = 6, enabled = false) //CASE 8 + CASE 7 obsolete
     public void softWidgetPipelineVerification() {
         SoftAssertExtended softAssert = new SoftAssertExtended();
         Float totalPipeline = PipelinePage.getTotalPipelineValue();
@@ -104,9 +113,10 @@ public class SalesPipelineTest extends BaseTest {
         softAssert.assertAll();
     }
 
-    @Test(priority = 6) //CASE 9
+    @Test(priority = 7) //CASE 9
     public void softOpportunitiesPerStageVerification() {
         SoftAssertExtended softAssert = new SoftAssertExtended();
+        SalesPage.clickTabPipeline();
         softAssert.assertEquals(PipelinePage.getTableStagesSize(), Integer.parseInt(stagesRows));
         Float sumProspect1 = PipelinePage.getProspect1SumValue();
         Integer sumFallback = PipelinePage.getFallbackSumValue();
@@ -115,7 +125,7 @@ public class SalesPipelineTest extends BaseTest {
         softAssert.assertAll();
     }
 
-    @Test(priority = 7) //CASE 10
+    @Test(priority = 8, enabled = false) //CASE 10 obsolete
     public void softOpportunitiesPerStageNavigation() throws InterruptedException {
         SoftAssertExtended softAssert = new SoftAssertExtended();
         PipelinePage.clickProspect1();
@@ -123,9 +133,10 @@ public class SalesPipelineTest extends BaseTest {
         softAssert.assertAll();
     }
 
-    @Test(priority = 8) //CASE 11
+    @Test(priority = 9) //CASE 8
     public void softFilterNavigateAndVerify() {
         SoftAssertExtended softAssert = new SoftAssertExtended();
+        SalesPage.clickTabPipeline();
         PipelinePage.clickFilter();
         softAssert.assertEquals(FilterPage.getCurrentUserLabelValue(), labelAll);
         softAssert.assertEquals(FilterPage.getCurrentDatePeriodValue(), dateCurrentMonth);
@@ -135,7 +146,7 @@ public class SalesPipelineTest extends BaseTest {
         softAssert.assertAll();
     }
 
-    @AfterClass
+    @AfterMethod
     public void tearDown() {
         super.tearDown();
     }

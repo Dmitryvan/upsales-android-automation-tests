@@ -59,7 +59,7 @@ public class SalesFilterTest extends BaseTest {
         softAssert.assertAll();
     }
 
-    @Test(priority = 3, enabled = false) // Case 4
+    @Test(priority = 3, enabled = false) // Case 4 obsolete
     public void verifyPipelineValuesAfterFilterSet() {
         SoftAssertExtended softAssert = new SoftAssertExtended();
         FilterPage.clickUsers();

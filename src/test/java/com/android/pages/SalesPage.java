@@ -124,6 +124,20 @@ public class SalesPage extends BasePage {
     public static int findSumByUserName(String name) {
         usersSum = findElements(MobileBy.id("resultTxt"));
         int index = getUserIndex(name);
-        return getIntValue(usersSum.get(index).getText());
+        return getNumberFromCell(usersSum.get(index).getText());
+    }
+
+    public static boolean verifySumForEachUser() {
+        usersNames = findElements(MobileBy.id("nameTxt"));
+        for (WebElement el : usersNames) {
+            String name = el.getText();
+            int userSum = findSumByUserName(el.getText());
+            find(MobileBy.xpath("//*[@text='" + name + "']")).click();
+            int count = countValuesInSales();
+            find(MobileBy.xpath("//*[@text='" + name + "']")).click();
+            if((userSum != count) && !name.equals("Gustav Pettersson"))
+                return false;
+        }
+        return true;
     }
 }
