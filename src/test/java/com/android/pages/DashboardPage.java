@@ -30,9 +30,14 @@ public class DashboardPage extends BasePage {
     private static final By labelSalesValue = MobileBy.id("sales_value");
     private static final By labelPipelineValue = MobileBy.id("pipeline_value");
 
+    private static final By salesWidget = MobileBy.id("sales_view");
+    private static final By pipelineWidget = MobileBy.id("pipeline_view");
+    private static final List<WebElement> date = findElements(MobileBy.id("date"));
+
     private static final By labelShowMore = MobileBy.id("show_more");
 
     private static final List<WebElement> labelsTodayEvents = findElements(MobileBy.id("text"));
+    private static final List<WebElement> cells = findElements(MobileBy.id("content"));
 
     private static final WebElement labelMyAppointmentsToday = labelsTodayEvents.get(0);
     private static final WebElement labelMyActivitiesToday = labelsTodayEvents.get(1);
@@ -40,12 +45,20 @@ public class DashboardPage extends BasePage {
     private static final By salesPipelinePanel = MobileBy.xpath("//android.support.v4.view.ViewPager[1]/android.widget.LinearLayout[1]");
     private static final By labelShowAllActivities = MobileBy.id("show_all_activities");
 
-    public static String getLabelSalesValue() {
+    public static String getLabelSales() {
         return getText(labelSales);
     }
 
-    public static String getLabelPipelineValue() {
+    public static String getLabelPipeline() {
         return getText(labelPipeline);
+    }
+
+    public static boolean checkSalesWidget() {
+        return checkIsDisplayed(salesWidget);
+    }
+
+    public static boolean checkPipelineWidget() {
+        return checkIsDisplayed(pipelineWidget);
     }
 
     public static String getLabelMonth() {
@@ -212,9 +225,8 @@ public class DashboardPage extends BasePage {
     public static boolean checkAllAppointmentsAreForToday(String today) {
         int appointmentsCount = getMyAppointmentsTodayCount();
         for (int i = 0; i < appointmentsCount; i++) {
-            String date = find(MobileBy.IosUIAutomation(
-                    ".tableViews()[0].cells()[" + i + "].staticTexts()[4]")).getAttribute("name");
-            if (date.equals(today)) return true;
+            String appDate = date.get(i).getText().substring(6);
+            if (appDate.equals(today)) return true;
         }
         return false;
     }
@@ -242,5 +254,17 @@ public class DashboardPage extends BasePage {
 
     public static boolean checkShowAllActivitiesVisibility() {
         return find(labelShowAllActivities).isDisplayed();
+    }
+
+    public static String getLastAppType(int count) {
+        cells.get(count - 1).click();
+        AppointmentPage.clickTools();
+        return AppointmentPage.getTextEditAppointment();
+    }
+
+    public static String getFirstActivityType(int count) {
+        cells.get(count).click();
+        ActivityPage.clickTools();
+        return ActivityPage.getTextEditActivity();
     }
 }

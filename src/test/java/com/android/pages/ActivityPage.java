@@ -30,6 +30,8 @@ public class ActivityPage extends BasePage {
     private static final By labelCampaignWithoutContactAndTime = MobileBy.xpath("//android.support.v4.view.ViewPager[1]//android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]");
     private static final By labelOpportunityWithoutContactAndTime = MobileBy.xpath("//android.support.v4.view.ViewPager[1]//android.widget.RelativeLayout[2]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]");
 
+    private static final By popoverLabelEditActivity = MobileBy.xpath("//android.widget.LinearLayout[@index='0']/android.widget.TextView[@index='1']");
+
     private static final By popoverEditActivity = MobileBy.id("item_edit");
     private static final By popoverFollowUpActivity = MobileBy.IosUIAutomation(".popover().tableViews()[0].cells()[3]");
 
@@ -121,7 +123,7 @@ public class ActivityPage extends BasePage {
     }
 
     public static String getTextEditActivity() {
-        return getValue(popoverEditActivity);
+        return getText(popoverLabelEditActivity);
     }
 }
 

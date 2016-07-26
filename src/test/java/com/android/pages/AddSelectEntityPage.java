@@ -9,7 +9,7 @@ public class AddSelectEntityPage extends BasePage{
     private static final By buttonBack = MobileBy.id("back");
     private static final By fieldSearch = MobileBy.id("edit");
     private static final By labelResults = MobileBy.xpath("//*[@class='android.widget.TextView' and @text='Results']");
-    private static final By buttonSelect = MobileBy.IosUIAutomation(".navigationBars()[0].buttons()[2]");
+    private static final By buttonSelect = MobileBy.id("select");
     private static final By labelNone = MobileBy.xpath("//*[@class='android.widget.CheckBox' and @index='0']");
 
     public static String getTitle() {
@@ -53,6 +53,7 @@ public class AddSelectEntityPage extends BasePage{
     }
 
     public static void clickBack() {
+        hideKeyboard();
         find(buttonBack).click();
     }
 

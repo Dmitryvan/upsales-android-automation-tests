@@ -161,7 +161,6 @@ public class ActivityManipulationsPage extends BasePage {
     public static void typeIntoNotes(String note) {
         find(fieldNotes).clear();
         find(fieldNotes).sendKeys(note);
-//        hideKeyboard();
     }
 
     public static String getActivityType() {

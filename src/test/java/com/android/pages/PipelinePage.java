@@ -133,4 +133,8 @@ public class PipelinePage extends BasePage {
         wait(labelProspect1Sum);
         return checkValuesSumInStages(labelProspect1Sum);
     }
+
+    public static void clickBackOnPipeline() {
+        find(MobileBy.xpath("//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.support.v4.widget.DrawerLayout[1]/android.view.ViewGroup[1]/android.widget.LinearLayout[1]/android.view.ViewGroup[1]/android.widget.ImageButton[1]")).click();
+    }
 }

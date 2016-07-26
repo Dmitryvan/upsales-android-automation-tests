@@ -21,7 +21,7 @@ public class CalendarPage extends BasePage {
     private static final String firstDateInTable = "Wednesday 30 Sep 2015";
 
     private static final By buttonListView = MobileBy.id("list");
-    private static final By buttonCalendarView = MobileBy.id("calendar");
+    private static final By buttonCalendarView = MobileBy.id("calendar_radio_button");
 
     private static final By calendarView = MobileBy.id("calendar1");
     private static final By labelToday = MobileBy.xpath(

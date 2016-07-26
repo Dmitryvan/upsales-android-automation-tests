@@ -22,7 +22,8 @@ public class BasePage extends Helpers {
     protected static final By buttonCancel = MobileBy.id("cancel");
     protected static final By buttonSave = MobileBy.id("save");
     private static final By buttonFilter = MobileBy.id("filter_icon");
-    private static final By arrowBack = MobileBy.xpath("//android.widget.ImageButton[1]");
+    private static final By arrowBack = MobileBy.id("//android.widget.ImageButton[1]");
+    private static final By buttonBack = MobileBy.id("back");
 
     private static final By title = MobileBy.id("title");
 
@@ -39,8 +40,12 @@ public class BasePage extends Helpers {
         assertEquals(title, getTitle());
     }
 
-    public static void clickBack() {
+    public static void clickArrowBack() {
         find(arrowBack).click();
+    }
+
+    public static void clickBack() {
+        find(buttonBack).click();
     }
 
     public static void clickLeftMenu() {
@@ -91,12 +96,6 @@ public class BasePage extends Helpers {
         WebElement element = find(locator);
         element.clear();
         element.sendKeys(value);
-    }
-
-    protected static void setValues(String value, By locator) {
-        IOSElement element = (IOSElement) find(locator);
-        element.clear();
-        element.setValue(value);
     }
 
     public static String getText(By locator) {

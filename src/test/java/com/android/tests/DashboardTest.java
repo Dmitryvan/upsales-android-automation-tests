@@ -1,8 +1,6 @@
 package com.android.tests;
 
-import com.android.pages.DashboardPage;
-import com.android.pages.FilterPage;
-import com.android.pages.LoginPage;
+import com.android.pages.*;
 import com.android.util.Helpers;
 import com.android.util.PropertyLoader;
 import com.android.util.SoftAssertExtended;
@@ -56,27 +54,16 @@ public class DashboardTest extends BaseTest {
     }
 
     @Test(priority = 1) //CASE 1
-    public void checkDashboardLabels() {
+    public void softLoginAndDashboardOpens() {
         SoftAssertExtended softAssert = new SoftAssertExtended();
         DashboardPage.checkPageTitle(title);
-        softAssert.assertEquals(sales, DashboardPage.getLabelSalesValue());
-        softAssert.assertEquals(pipeline, DashboardPage.getLabelPipelineValue());
+        softAssert.assertEquals(sales, DashboardPage.getLabelSales());
+        softAssert.assertEquals(pipeline, DashboardPage.getLabelPipeline());
         softAssert.assertEquals(showMore, DashboardPage.getLabelShowMore());
         softAssert.assertAll();
     }
 
-    @Test(priority = 2) //CASE 2
-    public void softSalesAndPipelineWidgetVerification() {
-        SoftAssertExtended softAssert = new SoftAssertExtended();
-        softAssert.assertEquals(DashboardPage.getCurrentMonth().toUpperCase(), DashboardPage.getLabelMonth());
-        Float salesValue = DashboardPage.getSalesValue();
-        Float pipelineValue = DashboardPage.getPipelineValue();
-        softAssert.assertTrue(salesValue >= Float.parseFloat(startMonthSales) && salesValue <= Float.parseFloat(endMonthSales));
-        softAssert.assertTrue(pipelineValue >= Float.parseFloat(startMonthPipeline) && pipelineValue <= Float.parseFloat(endMonthPipeline));
-        softAssert.assertAll();
-    }
-
-    @Test(priority = 3) //CASE 5
+    @Test(priority = 2) //CASE 5
     public void filterNavigateAndVerification() {
         DashboardPage.clickFilter();
         assertEquals(FilterPage.getCurrentUserLabelValue(), usersAll);
@@ -87,38 +74,42 @@ public class DashboardTest extends BaseTest {
         DashboardPage.checkPageTitle(title);
     }
 
-    @Test(priority = 4) //CASE 6
-    public void softSalesAndPipelineWidgetNavigation() {
+    @Test(priority = 3) //CASE 2
+    public void softSalesAndPipelineWidgetVerification() {
         SoftAssertExtended softAssert = new SoftAssertExtended();
+        softAssert.assertEquals(DashboardPage.getCurrentMonth().toUpperCase(), DashboardPage.getLabelMonth());
+        softAssert.assertTrue(DashboardPage.checkSalesWidget());
+        softAssert.assertTrue(DashboardPage.checkPipelineWidget());
         DashboardPage.swipeLeft();
         softAssert.assertEquals(DashboardPage.getCurrentQuarter(), DashboardPage.getLabelQuarter());
-        Float salesValue = DashboardPage.getSalesValue();
-        Float pipelineValue = DashboardPage.getPipelineValue();
-        softAssert.assertTrue(salesValue >= 2.4 && salesValue <= 5.0);
-        softAssert.assertTrue(pipelineValue >= Float.parseFloat(startQuarterPipeline) && pipelineValue <= Float.parseFloat(endQuarterPipeline));
+        softAssert.assertTrue(DashboardPage.checkSalesWidget());
+        softAssert.assertTrue(DashboardPage.checkPipelineWidget());
         DashboardPage.swipeLeft();
         softAssert.assertEquals(DashboardPage.getCurrentYear(), DashboardPage.getLabelYear());
-        salesValue = DashboardPage.getSalesValue();
-        pipelineValue = DashboardPage.getPipelineValue();
-        softAssert.assertTrue(salesValue >= Float.parseFloat(startYearSales) && salesValue <= Float.parseFloat(endYearSales));
-        softAssert.assertTrue(pipelineValue >= Float.parseFloat(startYearPipeline) && pipelineValue <= Float.parseFloat(endYearPipeline));
+        softAssert.assertTrue(DashboardPage.checkSalesWidget());
+        softAssert.assertTrue(DashboardPage.checkPipelineWidget());
+//        Float salesValue = DashboardPage.getSalesValue();
+//        Float pipelineValue = DashboardPage.getPipelineValue();
+//        softAssert.assertTrue(salesValue >= Float.parseFloat(startMonthSales) && salesValue <= Float.parseFloat(endMonthSales));
+//        softAssert.assertTrue(pipelineValue >= Float.parseFloat(startMonthPipeline) && pipelineValue <= Float.parseFloat(endMonthPipeline));
         softAssert.assertAll();
     }
 
-//    @Test(priority = 5) //CASE 3
-//    public void softMyAppointmentsTodayVerification() {
-//        SoftAssertExtended softAssert = new SoftAssertExtended();
-//        softAssert.assertTrue(DashboardPage.checkAllAppointmentsAreForToday(today));
-//        softAssert.assertEquals(DashboardPage.getLastAppType(), editAppointment);
-//        AppointmentPage.clickBack();
-//        AppointmentPage.clickBack();
-//        softAssert.assertEquals(DashboardPage.getFirstActivityType(), editActivity);
-//        ActivityPage.clickBack();
-//        ActivityPage.clickBack();
-//        softAssert.assertAll();
-//    }
-//
-    @Test(priority = 6) //CASE 4
+    @Test(priority = 4) //CASE 3
+    public void softMyAppointmentsTodayVerification() {
+        SoftAssertExtended softAssert = new SoftAssertExtended();
+        softAssert.assertTrue(DashboardPage.checkAllAppointmentsAreForToday(today));
+        int appCount = DashboardPage.getMyAppointmentsTodayCount();
+        softAssert.assertEquals(DashboardPage.getLastAppType(appCount), editAppointment);
+        AppointmentPage.closePopUp();
+        AppointmentPage.clickBack();
+        softAssert.assertEquals(DashboardPage.getFirstActivityType(appCount), editActivity);
+        ActivityPage.closePopUp();
+        ActivityPage.clickBack();
+        softAssert.assertAll();
+    }
+
+    @Test(priority = 5) //CASE 4
     public void softMyOpenActivitiesVerification() {
         SoftAssertExtended softAssert = new SoftAssertExtended();
         Helpers.scrollToLabel(labelShowAllActivities);
@@ -126,6 +117,24 @@ public class DashboardTest extends BaseTest {
         softAssert.assertEquals(DashboardPage.getLabelShowAllActivities(), labelShowAllActivities);
         softAssert.assertAll();
     }
+
+//    @Test(priority = 4) //CASE 6
+//    public void softSalesAndPipelineWidgetNavigation() {
+//        SoftAssertExtended softAssert = new SoftAssertExtended();
+//        DashboardPage.swipeLeft();
+//        softAssert.assertEquals(DashboardPage.getCurrentQuarter(), DashboardPage.getLabelQuarter());
+//        Float salesValue = DashboardPage.getSalesValue();
+//        Float pipelineValue = DashboardPage.getPipelineValue();
+//        softAssert.assertTrue(salesValue >= 2.4 && salesValue <= 5.0);
+//        softAssert.assertTrue(pipelineValue >= Float.parseFloat(startQuarterPipeline) && pipelineValue <= Float.parseFloat(endQuarterPipeline));
+//        DashboardPage.swipeLeft();
+//        softAssert.assertEquals(DashboardPage.getCurrentYear(), DashboardPage.getLabelYear());
+//        salesValue = DashboardPage.getSalesValue();
+//        pipelineValue = DashboardPage.getPipelineValue();
+//        softAssert.assertTrue(salesValue >= Float.parseFloat(startYearSales) && salesValue <= Float.parseFloat(endYearSales));
+//        softAssert.assertTrue(pipelineValue >= Float.parseFloat(startYearPipeline) && pipelineValue <= Float.parseFloat(endYearPipeline));
+//        softAssert.assertAll();
+//    }
 
     @AfterClass
     public void tearDown() {

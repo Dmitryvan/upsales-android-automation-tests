@@ -26,6 +26,8 @@ public class AppointmentPage extends BasePage {
     private static final By popoverFollowUpActivity = MobileBy.id("item_follow");
     private static final By popoverFollowUpAppointment = MobileBy.id("item_follow_appointment");
 
+    private static final By popoverLabelEditAppointment = MobileBy.xpath("//android.widget.LinearLayout[@index='0']/android.widget.TextView[@index='1']");
+
     private static final By fifththCellValue = MobileBy.IosUIAutomation(".tableViews()[0].cells()[4]");
 
     private static final List<WebElement> values = findElements(MobileBy.id("select"));
@@ -137,6 +139,6 @@ public class AppointmentPage extends BasePage {
     }
 
     public static String getTextEditAppointment() {
-        return getValue(popoverEditAppointment);
+        return getText(popoverLabelEditAppointment);
     }
 }

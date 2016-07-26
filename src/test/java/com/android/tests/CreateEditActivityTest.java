@@ -138,7 +138,7 @@ public class CreateEditActivityTest extends BaseTest {
         ActivityManipulationsPage.enterDescription(description);
         ActivityManipulationsPage.clickAccount();
         AddSelectEntityPage.select(account);
-        softAssert.assertEquals(account, ActivityManipulationsPage.getAccount());
+//        softAssert.assertEquals(account, ActivityManipulationsPage.getAccount());
         ActivityManipulationsPage.clickSave();
         softAssert.assertEquals(description, ActivityPage.getActivityDescription());
         softAssert.assertEquals(account, ActivityPage.getAccountName());

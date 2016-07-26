@@ -37,7 +37,7 @@ public class SalesPipelineNavigationTest extends BaseTest {
         PipelinePage.checkPageTitle(titlePipeline);
         PipelinePage.clickTabSales();
         SalesPage.checkPageTitle(titleSales);
-        SalesPage.clickBack();
+        SalesPage.clickArrowBack();
         DashboardPage.checkPageTitle(titleDashboard);
     }
 
@@ -53,7 +53,7 @@ public class SalesPipelineNavigationTest extends BaseTest {
         softAssert.assertEquals(labelPipelineTab, SalesPage.getLabelPipelineTab());
         SalesPage.clickTabPipeline();
         PipelinePage.checkPageTitle(titlePipeline);
-        PipelinePage.clickBack();
+        PipelinePage.clickArrowBack();
         DashboardPage.checkPageTitle(titleDashboard);
         softAssert.assertAll();
     }
@@ -64,7 +64,7 @@ public class SalesPipelineNavigationTest extends BaseTest {
         SalesPage.checkPageTitle(titleSales);
         SalesPage.clickTabPipeline();
         PipelinePage.checkPageTitle(titlePipeline);
-        BasePage.clickBack();
+        PipelinePage.clickBackOnPipeline();
         DashboardPage.checkPageTitle(titleDashboard);
     }
 
