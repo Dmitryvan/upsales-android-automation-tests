@@ -131,7 +131,7 @@ public class CreateEditContactTest extends BaseTest {
         BasePage.clickLeftMenu();
         LeftMenuPage.clickCreate();
         CreateMenuPage.clickContact();
-//        ContactManipulationPage.hideKeyboard();
+        ContactManipulationPage.hideKeyboard();
         ContactManipulationPage.setContactName();
         contactName = ContactManipulationPage.getContactName();
     }

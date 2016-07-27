@@ -53,18 +53,9 @@ public class AppointmentManipulationsPage extends BasePage {
     private static final WebElement user = values.get(6);
     private static final WebElement campaign = values.get(7);
 
-    private static final By pickerWheelAppointmentType = MobileBy.IosUIAutomation(".tableViews()[0].cells()[2].pickers()[0].wheels()");
     private static final By fieldNotes = MobileBy.id("notes");
     private static final By buttonSelectUser = MobileBy.id("select");
     private static final By pickerWheelOpportunity = MobileBy.IosUIAutomation(".tableViews()[0].cells()[8].pickers()[0].wheels()[0]");
-    private static final By pickerWheelStartDate = MobileBy.IosUIAutomation(".tableViews()[0].cells()[3].pickers()[0].wheels()[0]");
-    private static final By pickerWheelStartHours = MobileBy.IosUIAutomation(".tableViews()[0].cells()[3].pickers()[0].wheels()[1]");
-    private static final By pickerWheelStartMinutes = MobileBy.IosUIAutomation(".tableViews()[0].cells()[3].pickers()[0].wheels()[2]");
-    private static final By pickerWheelStartAmPm = MobileBy.IosUIAutomation(".tableViews()[0].cells()[3].pickers()[0].wheels()[3]");
-    private static final By pickerWheelEndDate = MobileBy.IosUIAutomation(".tableViews()[0].cells()[4].pickers()[0].wheels()[0]");
-    private static final By pickerWheelEndHours = MobileBy.IosUIAutomation(".tableViews()[0].cells()[4].pickers()[0].wheels()[1]");
-    private static final By pickerWheelEndMinutes = MobileBy.IosUIAutomation(".tableViews()[0].cells()[4].pickers()[0].wheels()[2]");
-    private static final By pickerWheelEndAmPm = MobileBy.IosUIAutomation(".tableViews()[0].cells()[4].pickers()[0].wheels()[3]");
 
     private static final By buttonInsertSignature = MobileBy.IosUIAutomation(".tableViews()[0].cells()[10].staticTexts()[1]");
     private static final By labelOtherInfo = MobileBy.xpath("//android.widget.RelativeLayout[7]/android.widget.LinearLayout[1]/android.widget.TextView[1]");

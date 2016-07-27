@@ -14,7 +14,6 @@ import static org.testng.Assert.assertFalse;
 public class DashboardFilterTest extends BaseTest {
 
     private final String filterPropertyPath = "src/test/resources/filter.properties";
-    private final String dashboardPropertyPath = "src/test/resources/dashboard.properties";
 
     private final String currentUser= PropertyLoader.loadProperty(filterPropertyPath, "currentUser");
     private final String user1= PropertyLoader.loadProperty(filterPropertyPath, "user1");
@@ -181,7 +180,7 @@ public class DashboardFilterTest extends BaseTest {
         assertFalse(DashboardPage.compareSavedAndCurrentValues());
     }
 
-    @Test(priority = 10)
+    @Test(priority = 10, enabled = false)
     public void checkingSalesAndPipelineSum() throws InterruptedException {
         FilterPage.clickUsers();
         FilterPage.select(user2);

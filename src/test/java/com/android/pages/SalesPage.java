@@ -140,4 +140,8 @@ public class SalesPage extends BasePage {
         }
         return true;
     }
+
+    public static void clickBackOnSales() {
+        find(MobileBy.xpath("//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.support.v4.widget.DrawerLayout[1]/android.view.ViewGroup[1]/android.widget.LinearLayout[1]/android.view.ViewGroup[1]/android.widget.ImageButton[1]")).click();
+    }
 }

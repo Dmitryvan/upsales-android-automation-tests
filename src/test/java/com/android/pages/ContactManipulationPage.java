@@ -21,16 +21,8 @@ public class ContactManipulationPage extends BasePage {
     private static final By buttonWorksAt = MobileBy.id("account_field");
     private static final By labelContactInformation = MobileBy.xpath("//android.widget.RelativeLayout[2]/android.widget.LinearLayout[1]/android.widget.LinearLayout[1]/android.widget.TextView[1]");
 
-    private static final List<WebElement> labels = findElements(MobileBy.id("name"));
-    private static final WebElement labelWorksAt = labels.get(0);
-//    private static final WebElement labelCampaigns = labels.get(1);
-//    private static final WebElement labelCategories = labels.get(2);
-//    private static final WebElement labelNotes = labels.get(3);
-
-    private static final List<WebElement> values = findElements(MobileBy.id("select"));
-    private static final WebElement worksAt = values.get(0);
-//    private static final WebElement campaigns = values.get(1);
-//    private static final WebElement categories = values.get(2);
+    private static final By labels = MobileBy.id("name");
+    private static final By values = MobileBy.id("select");
 
     private static final By fieldContactName = MobileBy.xpath("//TextInputLayout[1]/android.widget.EditText[1]");
     private static final By fieldTitle = MobileBy.xpath("//android.widget.RelativeLayout[2]/android.widget.LinearLayout[1]/TextInputLayout[1]/android.widget.EditText[1]");
@@ -49,7 +41,6 @@ public class ContactManipulationPage extends BasePage {
 
     public static void clickNoThanks() {
         find(buttonNoThanks).click();
-//        waitByThread(1000);
     }
 
     public static void clickActivity() {
@@ -90,11 +81,11 @@ public class ContactManipulationPage extends BasePage {
     }
 
     public static String getLabelWorksAt() {
-        return labelWorksAt.getText();
+        return findElements(labels).get(0).getText();
     }
 
     public static String getWorksAt() {
-        return worksAt.getText();
+        return findElements(values).get(0).getText();
     }
 
     public static void clickWorksAt() {
@@ -127,28 +118,23 @@ public class ContactManipulationPage extends BasePage {
     }
 
     public static String getLabelCampaigns() {
-        WebElement labelCampaigns = labels.get(1);
-        return labelCampaigns.getText();
+        return findElements(labels).get(1).getText();
     }
 
     public static String getCampaigns() {
-        WebElement campaigns = values.get(1);
-        return campaigns.getText();
+        return findElements(values).get(1).getText();
     }
 
     public static String getLabelCategories() {
-        WebElement labelCategories = labels.get(2);
-        return labelCategories.getText();
+        return findElements(labels).get(2).getText();
     }
 
     public static String getCategories() {
-        WebElement categories = values.get(2);
-        return categories.getText();
+        return findElements(values).get(2).getText();
     }
 
     public static String getLabelNotes() {
-        WebElement labelNotes = labels.get(3);
-        return labelNotes.getText();
+        return findElements(labels).get(3).getText();
     }
 
     public static void typeIntoNotes(String note) {
@@ -166,10 +152,6 @@ public class ContactManipulationPage extends BasePage {
 
     public static String getContactName() {
         return contactName;
-    }
-
-    public static void waitForLabelWorksAt() {
-        wait(labelWorksAt);
     }
 
     public static void clickExtraID() {
