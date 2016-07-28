@@ -113,7 +113,7 @@ public class CreateEditAppointmentTest extends BaseTest {
         AppointmentManipulationsPage.setDefaultAppStartEndDates();
         softAssert.assertEquals(ActivityManipulationsPage.getLabelCancel(), labelCancel);
         softAssert.assertEquals(ActivityManipulationsPage.getLabelSave(), labelSave);
-        softAssert.assertEquals(defaultLabelDescription, ActivityManipulationsPage.getDefaultLabelDescription());
+        softAssert.assertEquals(defaultLabelDescription, BasePage.getLabelDescription());
         softAssert.assertEquals(labelAppointmentType, AppointmentManipulationsPage.getLabelAppointmentType());
         softAssert.assertEquals(defaultAppointmentType, AppointmentManipulationsPage.getAppointmentType());
         AppointmentManipulationsPage.clickAppointmentType();
@@ -188,7 +188,7 @@ public class CreateEditAppointmentTest extends BaseTest {
         AppointmentManipulationsPage.selectValueFromPopUp(newAppointmentType);
         AppointmentManipulationsPage.clickContacts();
         AddSelectEntityPage.select(contact);
-        AppointmentManipulationsPage.clickSelect();
+        AddSelectEntityPage.clickSelect();
         AppointmentManipulationsPage.clickOpportunity();
         AppointmentManipulationsPage.selectValueFromPopUp(opportunity);
         AppointmentManipulationsPage.clickCancel();
@@ -239,7 +239,7 @@ public class CreateEditAppointmentTest extends BaseTest {
         softAssert.assertEquals(account, AppointmentManipulationsPage.getAccount());
         AppointmentManipulationsPage.clickContacts();
         AddSelectEntityPage.select(contact);
-        AppointmentManipulationsPage.clickSelect();
+        AddSelectEntityPage.clickSelect();
         softAssert.assertEquals(contact, AppointmentManipulationsPage.getContact());
         AppointmentManipulationsPage.clickOpportunity();
         AppointmentManipulationsPage.selectValueFromPopUp(opportunity);
@@ -247,7 +247,7 @@ public class CreateEditAppointmentTest extends BaseTest {
         AppointmentManipulationsPage.clickUser();
         AddSelectEntityPage.select(user);
         AddSelectEntityPage.unselect(yourUser);
-        AppointmentManipulationsPage.clickSelect();
+        AddSelectEntityPage.clickSelect();
         AppointmentManipulationsPage.clickCampaign();
         AddSelectEntityPage.select(campaign);
         ActivityManipulationsPage.scrollToLabel(labelOtherInfo);
@@ -288,11 +288,11 @@ public class CreateEditAppointmentTest extends BaseTest {
         AppointmentManipulationsPage.clickContacts();
         AddSelectEntityPage.select(newContact);
         AddSelectEntityPage.unselect(contact);
-        AppointmentManipulationsPage.clickSelect();
+        AddSelectEntityPage.clickSelect();
         AppointmentManipulationsPage.clickUser();
         AddSelectEntityPage.select(user);
         AddSelectEntityPage.unselect(yourUser);
-        AppointmentManipulationsPage.clickSelect();
+        AddSelectEntityPage.clickSelect();
         AppointmentManipulationsPage.clickCampaign();
         AddSelectEntityPage.select(newCampaign);
         ActivityManipulationsPage.scrollToLabel(labelOtherInfo);

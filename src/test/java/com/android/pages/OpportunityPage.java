@@ -11,7 +11,6 @@ public class OpportunityPage extends BasePage {
     private static final By account = MobileBy.IosUIAutomation(".tableViews()[0].buttons()[0]");
     private static final By stage = MobileBy.IosUIAutomation(".tableViews()[0].cells()[0].staticTexts()[1]");
     private static final By user = MobileBy.IosUIAutomation(".tableViews()[0].staticTexts()[2]");
-    private static final By buttonTools = MobileBy.IosUIAutomation(".navigationBars()[0].buttons()[\"Right Icon\"]");
     private static final By contact = MobileBy.IosUIAutomation(".tableViews()[0].cells()[1].staticTexts()[2]");
     private static final By campaign = MobileBy.IosUIAutomation(".tableViews()[0].cells()[2].staticTexts()[1]");
     private static final By product = MobileBy.IosUIAutomation(".tableViews()[0].cells()[3].staticTexts()[0]");
@@ -70,11 +69,6 @@ public class OpportunityPage extends BasePage {
 
     public static String getProduct() {
         return getValue(product);
-    }
-
-    public static void clickTools() {
-        wait(buttonTools);
-        find(buttonTools).click();
     }
 
     public static void clickLeftMenuOnCreatedOpp() {

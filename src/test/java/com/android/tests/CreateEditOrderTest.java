@@ -102,7 +102,7 @@ public class CreateEditOrderTest extends BaseTest {
         OpportunityManipulationsPage.checkPageTitle(titleCreate);
         softAssert.assertEquals(OpportunityManipulationsPage.getLabelSave(), labelSave);
         softAssert.assertEquals(OpportunityManipulationsPage.getLabelCancel(), labelCancel);
-        softAssert.assertEquals(OpportunityManipulationsPage.getDescription(), defaultLabelDescription);
+        softAssert.assertEquals(OpportunityManipulationsPage.getLabelDescription(), defaultLabelDescription);
         softAssert.assertEquals(OpportunityManipulationsPage.getLabelUser(), labelUser);
         softAssert.assertEquals(OpportunityManipulationsPage.getUser(), defaultUser);
         softAssert.assertEquals(OpportunityManipulationsPage.getLabelStage(), labelStage);

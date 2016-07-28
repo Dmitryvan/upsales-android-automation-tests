@@ -61,10 +61,6 @@ public class AddSelectEntityPage extends BasePage{
         find(buttonSelect).click();
     }
 
-    public static void clickCancel() {
-        find(buttonCancel).click();
-    }
-
     public static String getLabelNone() {
         return getText(labelNone);
     }

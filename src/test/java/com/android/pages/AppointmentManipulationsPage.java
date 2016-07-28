@@ -12,19 +12,13 @@ public class AppointmentManipulationsPage extends BasePage {
     private static String appointmentName;
     private static final String namePrefix = "app_";
 
-    private static final By defaultLabelDescription = MobileBy.id("text_input");
-    private static final By fieldDescription = MobileBy.xpath("//TextInputLayout[1]/android.widget.EditText[1]");
     private static final By listAppointmentType = MobileBy.id("text1");
 
     private static final By buttonAppointmentType = MobileBy.id("appointment_type_field");
-    private static final By buttonAccount = MobileBy.id("account_field");
-    private static final By buttonStarts = MobileBy.id("starts_field");
-    private static final By buttonEnds = MobileBy.id("ends_field");
-    private static final By fieldLocation = MobileBy.xpath("//android.widget.RelativeLayout[5]/android.widget.LinearLayout[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.EditText[1]");
+    private static final By fieldLocation = MobileBy.xpath("//android.widget.RelativeLayout[@index='7']//android.widget.EditText[@index='0']");
     private static final By buttonContacts = MobileBy.id("contact_field");
     private static final By buttonOpportunity = MobileBy.id("opportunity_field");
     private static final By buttonUser = MobileBy.id("user_field");
-    private static final By buttonCampaign = MobileBy.id("company_field");
 
     private static final List<WebElement> labels = findElements(MobileBy.id("name"));
     private static final WebElement labelAppointmentType = labels.get(0);
@@ -53,12 +47,9 @@ public class AppointmentManipulationsPage extends BasePage {
     private static final WebElement user = values.get(6);
     private static final WebElement campaign = values.get(7);
 
-    private static final By fieldNotes = MobileBy.id("notes");
-    private static final By buttonSelectUser = MobileBy.id("select");
     private static final By pickerWheelOpportunity = MobileBy.IosUIAutomation(".tableViews()[0].cells()[8].pickers()[0].wheels()[0]");
 
     private static final By buttonInsertSignature = MobileBy.IosUIAutomation(".tableViews()[0].cells()[10].staticTexts()[1]");
-    private static final By labelOtherInfo = MobileBy.xpath("//android.widget.RelativeLayout[7]/android.widget.LinearLayout[1]/android.widget.TextView[1]");
     private static final By startDateForAcc = MobileBy.IosUIAutomation(".tableViews()[0].cells()[2].staticTexts()[1]");
     private static final By endDateForAcc = MobileBy.IosUIAutomation(".tableViews()[0].cells()[3].staticTexts()[1]");
 
@@ -68,10 +59,6 @@ public class AppointmentManipulationsPage extends BasePage {
     private static final By motetCustomfalt = MobileBy.IosUIAutomation(".tableViews()[0].cells()[12].staticTexts()[0]");
     private static final By labelMotetCustomfalt = MobileBy.IosUIAutomation(".tableViews()[0].cells()[12].staticTexts()[0]");
     private static final By fieldMotetCustomfalt = MobileBy.IosUIAutomation(".tableViews()[0].cells()[12].textViews()[0]");
-
-    public static String getLabelOtherInfo() {
-        return getText(labelOtherInfo);
-    }
 
     public static String getStartDate() {
         return startDate.getText();
@@ -99,10 +86,6 @@ public class AppointmentManipulationsPage extends BasePage {
 
     public static String getLocation() {
         return getText(fieldLocation);
-    }
-
-    public static void clickAccount() {
-        find(buttonAccount).click();
     }
 
     public static void clickStartsDate() {
@@ -137,10 +120,6 @@ public class AppointmentManipulationsPage extends BasePage {
         find(buttonContacts).click();
     }
 
-    public static void clickSelect() {
-        find(buttonSelectUser).click();
-    }
-
     public static void clickOpportunity() {
         find(buttonOpportunity).click();
     }
@@ -152,15 +131,6 @@ public class AppointmentManipulationsPage extends BasePage {
 
     public static void clickUser() {
         find(buttonUser).click();
-    }
-
-    public static void clickCampaign() {
-        find(buttonCampaign).click();
-    }
-
-    public static void typeIntoNotes(String note) {
-        find(fieldNotes).clear();
-        find(fieldNotes).sendKeys(note);
     }
 
     public static void clickInsertSignature() {
@@ -181,18 +151,6 @@ public class AppointmentManipulationsPage extends BasePage {
 
     public static void enterMotetCustomfalt(String value) {
         sendValues(value, fieldMotetCustomfalt);
-    }
-
-    public static void enterDescription (String description) {
-        AndroidElement element = (AndroidElement) find(fieldDescription);
-        element.click();
-        element.clear();
-        element.sendKeys(description);
-        hideKeyboard();
-    }
-
-    public static String getDefaultLabelDescription() {
-        return getText(defaultLabelDescription);
     }
 
     public static void clickAppointmentType() {
@@ -233,10 +191,6 @@ public class AppointmentManipulationsPage extends BasePage {
 
     public static String getUser() {
         return user.getText();
-    }
-
-    public static String getNotes() {
-        return getValue(fieldNotes);
     }
 
     public static String getCampaign() {

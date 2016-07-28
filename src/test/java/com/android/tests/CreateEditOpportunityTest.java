@@ -108,7 +108,7 @@ public class CreateEditOpportunityTest extends BaseTest {
         OpportunityManipulationsPage.checkPageTitle(titleCreate);
         softAssert.assertEquals(OpportunityManipulationsPage.getLabelSave(), labelSave);
         softAssert.assertEquals(OpportunityManipulationsPage.getLabelCancel(), labelCancel);
-        softAssert.assertEquals(OpportunityManipulationsPage.getDescription(), defaultLabelDescription);
+        softAssert.assertEquals(OpportunityManipulationsPage.getLabelDescription(), defaultLabelDescription);
         softAssert.assertEquals(OpportunityManipulationsPage.getLabelUser(), labelUser);
         softAssert.assertEquals(OpportunityManipulationsPage.getUser(), defaultUser);
         softAssert.assertEquals(OpportunityManipulationsPage.getLabelStage(), labelStage);
@@ -141,6 +141,7 @@ public class CreateEditOpportunityTest extends BaseTest {
         softAssert.assertEquals(OpportunityManipulationsPage.getLabelOrdersRow(), labelOrdersRow);
         softAssert.assertEquals(OpportunityManipulationsPage.getLabelNewOrderRow(), labelNewOrderRow);
         softAssert.assertEquals(OpportunityManipulationsPage.getLabelNotes(), labelNotes);
+        OpportunityManipulationsPage.scrollToLabel("Other");
         softAssert.assertEquals(OpportunityManipulationsPage.getLabelOtherInfo(), labelOtherInfo);
         OpportunityManipulationsPage.clickNewOrderRow();
         NewOrderRowPage.checkPageTitle(titleNewOrderRow);

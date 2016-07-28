@@ -2,34 +2,24 @@ package com.android.pages;
 
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.android.AndroidElement;
-import io.appium.java_client.ios.IOSElement;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-
-import java.util.List;
 
 public class ContactManipulationPage extends BasePage {
 
     private static String contactName;
     private static final String contactNamePrefix = "con_";
 
-    private static final By defaultLabelContactName = MobileBy.xpath("//android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/TextInputLayout[1]/android.widget.EditText[1]");
-    private static final By defaultLabelTitle = MobileBy.xpath("//android.widget.RelativeLayout[2]/android.widget.LinearLayout[1]/TextInputLayout[1]/android.widget.EditText[1]");
-    private static final By buttonCampaigns = MobileBy.id("company_field");
     private static final By buttonCategories = MobileBy.id("category_field");
-    private static final By labelOtherInfo = MobileBy.xpath("//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.RelativeLayout[2]/android.widget.LinearLayout[1]/android.widget.TextView[1]");
-    private static final By buttonWorksAt = MobileBy.id("account_field");
-    private static final By labelContactInformation = MobileBy.xpath("//android.widget.RelativeLayout[2]/android.widget.LinearLayout[1]/android.widget.LinearLayout[1]/android.widget.TextView[1]");
+    private static final By labelContactInformation = MobileBy.xpath("//android.widget.RelativeLayout[2]//android.widget.TextView[1]");
 
-    private static final By labels = MobileBy.id("name");
-    private static final By values = MobileBy.id("select");
-
-    private static final By fieldContactName = MobileBy.xpath("//TextInputLayout[1]/android.widget.EditText[1]");
-    private static final By fieldTitle = MobileBy.xpath("//android.widget.RelativeLayout[2]/android.widget.LinearLayout[1]/TextInputLayout[1]/android.widget.EditText[1]");
+    private static final By fieldTitle = MobileBy.xpath("//android.widget.RelativeLayout[2]//android.widget.EditText[1]");
     private static final By fieldPhone = MobileBy.id("phone");
     private static final By fieldMobile = MobileBy.id("mobile");
     private static final By fieldEmail = MobileBy.id("email");
-    private static final By fieldNotes = MobileBy.id("notes");
+
+    protected static final By labels = MobileBy.id("name");
+    protected static final By values = MobileBy.id("select");
+
     public static final By extraID = MobileBy.IosUIAutomation(".tableViews()[0].cells()[19]");
     public static final By fieldExtraID = MobileBy.IosUIAutomation(".tableViews()[0].cells()[19].textFields()[0]");
     public static final By chanceOfSuccess = MobileBy.IosUIAutomation(".tableViews()[0].cells()[10]");
@@ -56,20 +46,8 @@ public class ContactManipulationPage extends BasePage {
         find(buttonOpportunity).click();
     }
 
-    public static void enterContactName(String name) {
-        AndroidElement element = (AndroidElement) find(fieldContactName);
-        element.click();
-        element.clear();
-        element.sendKeys(name);
-        hideKeyboard();
-    }
-
-    public static String getDefaultLabelContactName() {
-        return getText(defaultLabelContactName);
-    }
-
     public static String getDefaultLabelTitle() {
-        return getText(defaultLabelTitle);
+        return getText(fieldTitle);
     }
 
     public static void enterTitle(String title) {
@@ -88,16 +66,8 @@ public class ContactManipulationPage extends BasePage {
         return findElements(values).get(0).getText();
     }
 
-    public static void clickWorksAt() {
-        find(buttonWorksAt).click();
-    }
-
     public static String getLabelContactInformation() {
         return getText(labelContactInformation);
-    }
-
-    public static void clickCampaigns() {
-        find(buttonCampaigns).click();
     }
 
     public static void clickCategories() {
@@ -137,15 +107,6 @@ public class ContactManipulationPage extends BasePage {
         return findElements(labels).get(3).getText();
     }
 
-    public static void typeIntoNotes(String note) {
-        find(fieldNotes).clear();
-        find(fieldNotes).sendKeys(note);
-    }
-
-    public static String getLabelOtherInfo() {
-        return getText(labelOtherInfo);
-    }
-
     public static void setContactName() {
         contactName = generateName(contactNamePrefix);
     }
@@ -167,4 +128,7 @@ public class ContactManipulationPage extends BasePage {
         find(chanceOfSuccess).click();
     }
 
+    public static void enterContactName(String contactName) {
+        enterDescription(contactName);
+    }
 }

@@ -128,7 +128,7 @@ public class CreateEditContactTest extends BaseTest {
     public void setUp() throws Exception{
         super.setUp();
         LoginPage.login();
-        BasePage.clickLeftMenu();
+        DashboardPage.clickLeftMenu();
         LeftMenuPage.clickCreate();
         CreateMenuPage.clickContact();
         ContactManipulationPage.hideKeyboard();
@@ -142,11 +142,11 @@ public class CreateEditContactTest extends BaseTest {
         ContactManipulationPage.checkPageTitle(titleCreateContact);
         softAssert.assertEquals(ContactManipulationPage.getLabelSave(), labelSave);
         softAssert.assertEquals(ContactManipulationPage.getLabelCancel(), labelCancel);
-        softAssert.assertEquals(ContactManipulationPage.getDefaultLabelContactName(), defaultLabelContactName);
+        softAssert.assertEquals(ContactManipulationPage.getLabelDescription(), defaultLabelContactName);
         softAssert.assertEquals(ContactManipulationPage.getDefaultLabelTitle(), defaultLabelTitle);
         softAssert.assertEquals(ContactManipulationPage.getLabelWorksAt(), labelWorksAt);
         softAssert.assertEquals(ContactManipulationPage.getWorksAt(), defaultWorksAt);
-        ContactManipulationPage.clickWorksAt();
+        ContactManipulationPage.clickAccount();
         softAssert.assertEquals(AddSelectEntityPage.getTitle(), titleSelectAccount);
         softAssert.assertEquals(AddSelectEntityPage.getSearchFieldValue(), labelSearch);
         softAssert.assertEquals(AddSelectEntityPage.getLabelCancel(), labelCancel);
@@ -155,7 +155,7 @@ public class CreateEditContactTest extends BaseTest {
         softAssert.assertEquals(ContactManipulationPage.getLabelContactInformation(), labelContactInformation.toUpperCase());
         softAssert.assertEquals(ContactManipulationPage.getLabelCampaigns(), labelCampaigns);
         softAssert.assertEquals(ContactManipulationPage.getCampaigns(), defaultCampaigns);
-        ContactManipulationPage.clickCampaigns();
+        ContactManipulationPage.clickCampaign();
         softAssert.assertEquals(AddSelectEntityPage.getTitle(), titleAddCampaign);
         softAssert.assertEquals(AddSelectEntityPage.getSearchFieldValue(), labelSearch);
         softAssert.assertEquals(AddSelectEntityPage.getLabelCancel(), labelCancel);
@@ -183,7 +183,7 @@ public class CreateEditContactTest extends BaseTest {
     public void softCreateContact() {
         SoftAssertExtended softAssert = new SoftAssertExtended();
         ContactManipulationPage.enterContactName(contactName);
-        ContactManipulationPage.clickWorksAt();
+        ContactManipulationPage.clickAccount();
         AddSelectEntityPage.select(account);
 //        ContactManipulationPage.waitForLabelWorksAt();
 //        ContactManipulationPage.clickExtraID();
@@ -210,7 +210,7 @@ public class CreateEditContactTest extends BaseTest {
     public void softCancelContactBeforeSave() {
         SoftAssertExtended softAssert = new SoftAssertExtended();
         ContactManipulationPage.enterContactName(contactName);
-        ContactManipulationPage.clickWorksAt();
+        ContactManipulationPage.clickAccount();
         AddSelectEntityPage.select(account);
 //        ContactManipulationPage.waitForLabelWorksAt();
 //        ContactManipulationPage.clickExtraID();
@@ -228,12 +228,12 @@ public class CreateEditContactTest extends BaseTest {
         SoftAssertExtended softAssert = new SoftAssertExtended();
         ContactManipulationPage.enterContactName(contactName);
         ContactManipulationPage.enterTitle(title);
-        ContactManipulationPage.clickWorksAt();
+        ContactManipulationPage.clickAccount();
         AddSelectEntityPage.select(account);
         ContactManipulationPage.enterPhone(phone);
         ContactManipulationPage.enterMobile(mobile);
         ContactManipulationPage.enterEmail(email);
-        ContactManipulationPage.clickCampaigns();
+        ContactManipulationPage.clickCampaign();
         AddSelectEntityPage.select(campaign);
         AddSelectEntityPage.clickSelect();
         ContactManipulationPage.clickCategories();
@@ -247,7 +247,7 @@ public class CreateEditContactTest extends BaseTest {
 //        ContactManipulationPage.enterValueFromKeyboard(extraID);
         ContactManipulationPage.clickSave();
         ContactManipulationPage.clickNoThanks();
-        ContactPage.clickTools();
+        BasePage.clickTools();
         ContactPage.clickEditContact();
         ContactManipulationPage.setContactName();
         String newContactName = ContactManipulationPage.getContactName();
@@ -256,7 +256,7 @@ public class CreateEditContactTest extends BaseTest {
         ContactManipulationPage.enterPhone(newPhone);
         ContactManipulationPage.enterMobile(newMobile);
         ContactManipulationPage.enterEmail(newEmail);
-        ContactManipulationPage.clickCampaigns();
+        ContactManipulationPage.clickCampaign();
         AddSelectEntityPage.select(newCampaign);
         AddSelectEntityPage.unselect(campaign);
         AddSelectEntityPage.clickSelect();
@@ -300,7 +300,7 @@ public class CreateEditContactTest extends BaseTest {
     public void softEditContactWithHelpAddContactInfoForNameButton() {
         SoftAssertExtended softAssert = new SoftAssertExtended();
         ContactManipulationPage.enterContactName(contactName);
-        ContactManipulationPage.clickWorksAt();
+        ContactManipulationPage.clickAccount();
         AddSelectEntityPage.select(account);
 //        ContactManipulationPage.waitForLabelWorksAt();
 //        ContactManipulationPage.clickChanceOfSuccess();
@@ -317,7 +317,7 @@ public class CreateEditContactTest extends BaseTest {
         ContactManipulationPage.enterPhone(phone);
         ContactManipulationPage.enterMobile(mobile);
         ContactManipulationPage.enterEmail(email);
-        ContactManipulationPage.clickCampaigns();
+        ContactManipulationPage.clickCampaign();
         AddSelectEntityPage.select(campaign);
         AddSelectEntityPage.clickSelect();
         ContactManipulationPage.clickCategories();
@@ -358,7 +358,7 @@ public class CreateEditContactTest extends BaseTest {
     public void softCancelAfterSelectEditContact() {
         SoftAssertExtended softAssert = new SoftAssertExtended();
         ContactManipulationPage.enterContactName(contactName);
-        ContactManipulationPage.clickWorksAt();
+        ContactManipulationPage.clickAccount();
         AddSelectEntityPage.select(account);
         ContactManipulationPage.enterPhone(newPhone);
 //        ContactManipulationPage.clickChanceOfSuccess();
@@ -367,7 +367,7 @@ public class CreateEditContactTest extends BaseTest {
 //        ContactManipulationPage.enterValueFromKeyboard(extraID);
         ContactManipulationPage.clickSave();
         ContactManipulationPage.clickNoThanks();
-        ContactPage.clickTools();
+        BasePage.clickTools();
         ContactPage.clickEditContact();
         ContactManipulationPage.setContactName();
         String newContactName = ContactManipulationPage.getContactName();
@@ -376,7 +376,7 @@ public class CreateEditContactTest extends BaseTest {
         ContactManipulationPage.enterPhone(phone);
         ContactManipulationPage.enterMobile(mobile);
         ContactManipulationPage.enterEmail(email);
-        ContactManipulationPage.clickCampaigns();
+        ContactManipulationPage.clickCampaign();
         AddSelectEntityPage.select(campaign);
         AddSelectEntityPage.clickSelect();
         ContactManipulationPage.clickCategories();
@@ -403,7 +403,7 @@ public class CreateEditContactTest extends BaseTest {
     public void softCreateContactAndCreateActivity() {
         SoftAssertExtended softAssert = new SoftAssertExtended();
         ContactManipulationPage.enterContactName(contactName);
-        ContactManipulationPage.clickWorksAt();
+        ContactManipulationPage.clickAccount();
         AddSelectEntityPage.select(account);
 //        ContactManipulationPage.waitForLabelWorksAt();
 //        ContactManipulationPage.clickChanceOfSuccess();
@@ -443,7 +443,7 @@ public class CreateEditContactTest extends BaseTest {
     public void softCreateContactAndCreateActivityAndCancel() {
         SoftAssertExtended softAssert = new SoftAssertExtended();
         ContactManipulationPage.enterContactName(contactName);
-        ContactManipulationPage.clickWorksAt();
+        ContactManipulationPage.clickAccount();
         AddSelectEntityPage.select(account);
 //        ContactManipulationPage.waitForLabelWorksAt();
 //        ContactManipulationPage.clickChanceOfSuccess();
@@ -471,7 +471,7 @@ public class CreateEditContactTest extends BaseTest {
     public void softCreateContactAndCreateActivityAndEditActivity() {
         SoftAssertExtended softAssert = new SoftAssertExtended();
         ContactManipulationPage.enterContactName(contactName);
-        ContactManipulationPage.clickWorksAt();
+        ContactManipulationPage.clickAccount();
         AddSelectEntityPage.select(account);
 //        ContactManipulationPage.waitForLabelWorksAt();
 //        ContactManipulationPage.clickChanceOfSuccess();
@@ -482,7 +482,7 @@ public class CreateEditContactTest extends BaseTest {
         ContactManipulationPage.clickActivity();
         ActivityManipulationsPage.setDescription();
         activityDescription = ActivityManipulationsPage.getDescription();
-        ActivityManipulationsPage.enterDescription(activityDescription);
+        ContactManipulationPage.enterContactName(activityDescription);
 //        ActivityManipulationsPage.clickExpenses();
 //        ActivityManipulationsPage.enterValueFromKeyboard(expenses);
         ActivityManipulationsPage.clickSave();
@@ -507,10 +507,10 @@ public class CreateEditContactTest extends BaseTest {
         ActivityManipulationsPage.selectValueFromPopUp(opportunity);
         ActivityManipulationsPage.clickUser();
         AddSelectEntityPage.select(newUser);
-        ActivityManipulationsPage.clickCampaign();
+        BasePage.clickCampaign();
         AddSelectEntityPage.select(campaign);
         ActivityManipulationsPage.scrollToLabel(labelOtherInfo.toUpperCase());
-        ActivityManipulationsPage.typeIntoNotes(notes);
+        BasePage.typeIntoNotes(notes);
         ActivityManipulationsPage.clickSave();
         softAssert.assertEquals(ActivityPage.getTitle(), activityType);
         softAssert.assertEquals(ActivityPage.getActivityDescription(), activityDescription);
@@ -529,7 +529,7 @@ public class CreateEditContactTest extends BaseTest {
     public void softCreateContactAndCreateAppointment() {
         SoftAssertExtended softAssert = new SoftAssertExtended();
         ContactManipulationPage.enterContactName(contactName);
-        ContactManipulationPage.clickWorksAt();
+        ContactManipulationPage.clickAccount();
         AddSelectEntityPage.select(account);
 //        ContactManipulationPage.waitForLabelWorksAt();
 //        ContactManipulationPage.clickChanceOfSuccess();
@@ -557,7 +557,7 @@ public class CreateEditContactTest extends BaseTest {
     public void softCreateContactAndCreateAppointmentAndCancel() {
         SoftAssertExtended softAssert = new SoftAssertExtended();
         ContactManipulationPage.enterContactName(contactName);
-        ContactManipulationPage.clickWorksAt();
+        ContactManipulationPage.clickAccount();
         AddSelectEntityPage.select(account);
 //        ContactManipulationPage.waitForLabelWorksAt();
 //        ContactManipulationPage.clickChanceOfSuccess();

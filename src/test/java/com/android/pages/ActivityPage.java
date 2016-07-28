@@ -14,7 +14,6 @@ public class ActivityPage extends BasePage {
     private static final By buttonLeftMenu = MobileBy.IosUIAutomation(".navigationBar().buttons()[1]");
 
     private static final By activityDescriptionValue = MobileBy.id("activity_title");
-    private static final By buttonTools = MobileBy.id("save");
     private static final By buttonAccount = MobileBy.id("activity_contact");
     private static final By userValue = MobileBy.id("user_name");
     private static final By dateValue = MobileBy.id("date");
@@ -49,10 +48,6 @@ public class ActivityPage extends BasePage {
         find(popoverFollowUpActivity).click();
     }
 
-    public static void clickTools() {
-        find(buttonTools).click();
-    }
-
     public static void clickAccount() {
         find(buttonAccount).click();
     }
@@ -68,7 +63,6 @@ public class ActivityPage extends BasePage {
     }
 
     public static String getActivityDescription() {
-        wait(buttonTools);
         return getText(activityDescriptionValue);
     }
 

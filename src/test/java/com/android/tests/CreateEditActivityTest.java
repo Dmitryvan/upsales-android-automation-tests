@@ -94,7 +94,7 @@ public class CreateEditActivityTest extends BaseTest {
         ActivityManipulationsPage.checkPageTitle(titleCreate);
         softAssert.assertEquals(ActivityManipulationsPage.getLabelSave(), labelSave);
         softAssert.assertEquals(ActivityManipulationsPage.getLabelCancel(), labelCancel);
-        softAssert.assertEquals(defaultLabelDescription, ActivityManipulationsPage.getDefaultLabelDescription());
+        softAssert.assertEquals(defaultLabelDescription, BasePage.getLabelDescription());
         softAssert.assertEquals(labelActivityType, ActivityManipulationsPage.getLabelActivityType());
         softAssert.assertEquals(defaultActivityType, ActivityManipulationsPage.getActivityType());
         ActivityManipulationsPage.clickActivityType();
@@ -106,7 +106,7 @@ public class CreateEditActivityTest extends BaseTest {
         assertEquals(labelTime, ActivityManipulationsPage.getLabelTime());
         softAssert.assertEquals(labelAccount, ActivityManipulationsPage.getLabelAccount());
         softAssert.assertEquals(defaultAccount, ActivityManipulationsPage.getAccount());
-        ActivityManipulationsPage.clickAccount();
+        BasePage.clickAccount();
         softAssert.assertEquals(labelResults, AddSelectEntityPage.getResultsLabelValue());
         softAssert.assertEquals(titleSelectAccount, AddSelectEntityPage.getTitle());
         softAssert.assertEquals(labelSearch, AddSelectEntityPage.getSearchFieldValue());
@@ -120,7 +120,7 @@ public class CreateEditActivityTest extends BaseTest {
         softAssert.assertEquals(defaultUser, ActivityManipulationsPage.getUser());
         softAssert.assertEquals(labelCampaign, ActivityManipulationsPage.getLabelCampaign());
         softAssert.assertEquals(defaultCampaign, ActivityManipulationsPage.getCampaign());
-        ActivityManipulationsPage.clickCampaign();
+        BasePage.clickCampaign();
         AddSelectEntityPage.checkPageTitle(titleAddCampaign);
         softAssert.assertEquals(labelSearch, AddSelectEntityPage.getSearchFieldValue());
         softAssert.assertEquals(labelCancel, AddSelectEntityPage.getLabelCancel());
@@ -128,7 +128,7 @@ public class CreateEditActivityTest extends BaseTest {
         AddSelectEntityPage.clickBack();
         softAssert.assertEquals(labelNotes, ActivityManipulationsPage.getLabelNotes());
         ActivityManipulationsPage.scrollToLabel(labelOtherInfo);
-        softAssert.assertEquals(labelOtherInfo, ActivityManipulationsPage.getLabelOtherInfo());
+        softAssert.assertEquals(labelOtherInfo, BasePage.getLabelOtherInfo());
         softAssert.assertAll();
     }
 
@@ -174,11 +174,11 @@ public class CreateEditActivityTest extends BaseTest {
         String newDescription = ActivityManipulationsPage.getDescription();
         ActivityManipulationsPage.enterDescription(newDescription);
         ActivityManipulationsPage.clickActivityType();
-        BasePage.selectValueFromPopUp(newActivityType);
+        ActivityManipulationsPage.selectValueFromPopUp(newActivityType);
         ActivityManipulationsPage.clickContact();
         AddSelectEntityPage.select(contact);
         ActivityManipulationsPage.clickOpportunity();
-        BasePage.selectValueFromPopUp(opportunity);
+        ActivityManipulationsPage.selectValueFromPopUp(opportunity);
         ActivityManipulationsPage.clickCancel();
         softAssert.assertEquals(description, ActivityPage.getActivityDescription());
         softAssert.assertEquals(account, ActivityPage.getAccountName());

@@ -14,7 +14,6 @@ public class OpportunityManipulationsPage extends BasePage {
     private static String opportunityName;
     private static final String namePrefix = "opp_";
 
-    private static final By fieldDescription = MobileBy.xpath("//TextInputLayout[1]/android.widget.EditText[1]");
     private static final By probability = MobileBy.xpath("//android.widget.RelativeLayout[@index='5']//android.widget.EditText[@index='0']");
 
     private static final By labels = MobileBy.id("name");
@@ -22,19 +21,13 @@ public class OpportunityManipulationsPage extends BasePage {
     private static final By titles = MobileBy.id("title");
     private static final By listStages = MobileBy.id("text1");
 
-
     private static final By buttonUser = MobileBy.id("sales_representative_field");
     private static final By buttonStage = MobileBy.id("stage_field");
     private static final By buttonProbability = MobileBy.id("probability_field");
     private static final By buttonCloseDate = MobileBy.id("date_field");
-    private static final By buttonAccount = MobileBy.id("account_field");
     private static final By buttonContact = MobileBy.id("contact_field");
-    private static final By buttonCampaign = MobileBy.id("company_field");
     private static final By buttonNewOrderRow = MobileBy.id("new_oredr");
 
-    private static final By fieldNotes = MobileBy.id("notes");
-
-    private static final By pickerWheelStages = MobileBy.IosUIAutomation(".tableViews()[0].cells()[1].pickers()[0].wheels()");
     private static final By pickerWheelMonth = MobileBy.IosUIAutomation(".tableViews()[0].cells()[3].pickers()[0].wheels()[0]");
     private static final By pickerWheelDay = MobileBy.IosUIAutomation(".tableViews()[0].cells()[3].pickers()[0].wheels()[1]");
     private static final By pickerWheelYear = MobileBy.IosUIAutomation(".tableViews()[0].cells()[3].pickers()[0].wheels()[2]");
@@ -54,10 +47,6 @@ public class OpportunityManipulationsPage extends BasePage {
 
     public static void selectYear(String year) {
         find(pickerWheelYear).sendKeys(year);
-    }
-
-    public static String getDescription() {
-        return getText(fieldDescription);
     }
 
     public static String getLabelNewOrderRow() {
@@ -116,10 +105,6 @@ public class OpportunityManipulationsPage extends BasePage {
         return findElements(values).get(2).getText();
     }
 
-    public static void clickAccount() {
-        find(buttonAccount).click();
-    }
-
     public static String getLabelAccount() {
         return findElements(labels).get(4).getText();
     }
@@ -140,10 +125,6 @@ public class OpportunityManipulationsPage extends BasePage {
         return findElements(values).get(4).getText();
     }
 
-    public static void clickCampaign() {
-        find(buttonCampaign).click();
-    }
-
     public static String getLabelCampaign() {
         return findElements(labels).get(6).getText();
     }
@@ -160,25 +141,14 @@ public class OpportunityManipulationsPage extends BasePage {
         find(buttonNewOrderRow).click();
     }
 
-    public static String getLabelOtherInfo() {
-        scrollToLabel("Other");
-        return findElements(titles).get(2).getText();
-    }
+//    public static String getLabelOtherInfo() {
+//        scrollToLabel("Other");
+//        return findElements(titles).get(2).getText();
+//    }
 
-    public static void typeIntoNotes(String note) {
-        scrollToLabel("Notes");
-        sendValues(note, fieldNotes);
-    }
 
     public static String getLabelNotes() {
         return findElements(labels).get(7).getText();
-    }
-
-    public static void enterDescription(String description) {
-        AndroidElement element = (AndroidElement) find(fieldDescription);
-        element.click();
-        element.clear();
-        element.sendKeys(description);
     }
 
     public static String getAllStages() {

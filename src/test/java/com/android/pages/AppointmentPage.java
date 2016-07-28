@@ -12,7 +12,6 @@ public class AppointmentPage extends BasePage {
     private static final By buttonLeftMenuInFollowUp = MobileBy.IosUIAutomation(".navigationBar().buttons()[1]");
 
     private static final By appointmentDescriptionValue = MobileBy.id("activity_title");
-    private static final By buttonTools = MobileBy.id("save");
     private static final By buttonAccount = MobileBy.id("activity_contact");
     private static final By userValue = MobileBy.id("user_name");
     private static final By locationValue = MobileBy.xpath("//android.widget.LinearLayout[2]/android.widget.RelativeLayout[4]/android.widget.RelativeLayout[1]/android.widget.TextView[2]");
@@ -53,12 +52,7 @@ public class AppointmentPage extends BasePage {
     }
 
     public static void clickLeftMenuInFollowUp() {
-        wait(buttonLeftMenuInFollowUp);
         find(buttonLeftMenuInFollowUp).click();
-    }
-
-    public static void clickTools() {
-        find(buttonTools).click();
     }
 
     public static void clickAccount() {

@@ -1,6 +1,5 @@
 package com.android.pages;
 
-import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.android.AndroidElement;
 import org.openqa.selenium.By;
@@ -13,20 +12,14 @@ public class ActivityManipulationsPage extends BasePage {
     private static String description;
     private static final String descriptionNamePrefix = "act_";
 
-    private static final By fieldDescription = MobileBy.xpath("//TextInputLayout[1]/android.widget.EditText[1]");
     private static final By buttonActivityType = MobileBy.id("activity_type_field");
     private static final By listActvityType = MobileBy.id("text1");
     private static final By buttonDueDate = MobileBy.id("date_field");
 
     private static final By buttonTime = MobileBy.id("time_field");
-    private static final By buttonAccount = MobileBy.id("account_field");
     private static final By buttonContact = MobileBy.id("contact_field");
     private static final By buttonOpportunity = MobileBy.id("opportunity_field");
     private static final By buttonUser = MobileBy.id("user_field");
-    private static final By buttonCampaign = MobileBy.id("company_field");
-    private static final By fieldNotes = MobileBy.xpath("//*[contains(@resource-id, 'notes') and @index='2']");
-    private static final By defaultLabelDescription = MobileBy.id("edit");
-    private static final By labelOtherInfo = MobileBy.xpath("//*[contains(@resource-id, 'title') and @index='0']");
     private static final By customFieldWheelEttTill = MobileBy.IosUIAutomation(".tableViews()[0].cells()[11]");
     private static final By customFieldPickerWheel = MobileBy.IosUIAutomation(".tableViews()[0].cells()[12].pickers()[0].wheels()[0]");
     private static final By customFieldEttTillValue = MobileBy.IosUIAutomation(".tableViews()[0].cells()[11].staticTexts()[0]");
@@ -74,10 +67,6 @@ public class ActivityManipulationsPage extends BasePage {
         return labelCampaign.getText();
     }
 
-    public static String getLabelOtherInfo() {
-        return getText(labelOtherInfo);
-    }
-
     public static String getLabelNotes() {
         return labelNotes.getText();
     }
@@ -117,14 +106,6 @@ public class ActivityManipulationsPage extends BasePage {
         return date.getText();
     }
 
-    public static void enterDescription (String description) {
-        AndroidElement element = (AndroidElement) find(fieldDescription);
-        element.click();
-        element.clear();
-        element.sendKeys(description);
-        hideKeyboard();
-    }
-
     public static void clickActivityType() {
         find(buttonActivityType).click();
     }
@@ -135,10 +116,6 @@ public class ActivityManipulationsPage extends BasePage {
 
     public static void clickTime() {
         find(buttonTime).click();
-    }
-
-    public static void clickAccount() {
-        find(buttonAccount).click();
     }
 
     public static void clickContact() {
@@ -152,15 +129,6 @@ public class ActivityManipulationsPage extends BasePage {
 
     public static void clickUser() {
         find(buttonUser).click();
-    }
-
-    public static void clickCampaign() {
-        find(buttonCampaign).click();
-    }
-
-    public static void typeIntoNotes(String note) {
-        find(fieldNotes).clear();
-        find(fieldNotes).sendKeys(note);
     }
 
     public static String getActivityType() {
@@ -195,10 +163,6 @@ public class ActivityManipulationsPage extends BasePage {
         return campaign.getText();
     }
 
-    public static String getDefaultLabelDescription() {
-        return getText(defaultLabelDescription);
-    }
-
     public static void setDescription() {
         description = generateName(descriptionNamePrefix);
     }
@@ -207,11 +171,7 @@ public class ActivityManipulationsPage extends BasePage {
         return description;
     }
 
-    public static String getNotes() {
-        return getText(fieldNotes);
-    }
-
     public static boolean getNotesStartsWith(String start) {
-        return getText(fieldNotes).startsWith(start);
+        return getNotes().startsWith(start);
     }
 }

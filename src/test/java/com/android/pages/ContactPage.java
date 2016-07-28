@@ -12,7 +12,6 @@ public class ContactPage extends BasePage {
 
     private static final By contactName = MobileBy.id("contact_name");
     private static final By account = MobileBy.id("activity_contact");
-    private static final By buttonTools = MobileBy.id("save");
     private static final By title = MobileBy.id("contact_title");
     private static final By phone = MobileBy.id("phone");
     private static final By mobile = MobileBy.id("mobile");
@@ -70,10 +69,8 @@ public class ContactPage extends BasePage {
     }
 
     public static void clickBottomPopoverMessage() {
-        wait(bottomPopoverMessage);
         find(bottomPopoverMessage).click();
         getDriver().switchTo().alert().accept();
-//        By buttonOk = MobileBy.xpath("//UIAApplication[1]/UIAWindow[4]/UIAAlert[1]/UIACollectionView[1]/UIACollectionCell[1]");
     }
 
     public static void clickEditContact() {
@@ -106,10 +103,6 @@ public class ContactPage extends BasePage {
 
     public static void clickEmail() {
         find(email).click();
-    }
-
-    public static void clickTools() {
-        find(buttonTools).click();
     }
 
     public static String getContactName() {

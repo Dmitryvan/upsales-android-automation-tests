@@ -6,6 +6,7 @@ import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.SwipeElementDirection;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.ios.IOSElement;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
@@ -18,14 +19,20 @@ import static org.junit.Assert.assertEquals;
 
 public class BasePage extends Helpers {
 
-    protected static final By buttonLeftMenu = MobileBy.xpath("//android.widget.ImageButton[1]");
-    protected static final By buttonCancel = MobileBy.id("cancel");
-    protected static final By buttonSave = MobileBy.id("save");
+    private static final By buttonLeftMenu = MobileBy.xpath("//android.widget.ImageButton[1]");
+    private static final By buttonCancel = MobileBy.id("cancel");
+    private static final By buttonSave = MobileBy.id("save");
+    private static final By buttonTools = MobileBy.id("save");
     private static final By buttonFilter = MobileBy.id("filter_icon");
-    private static final By arrowBack = MobileBy.id("//android.widget.ImageButton[1]");
     private static final By buttonBack = MobileBy.id("back");
 
     private static final By title = MobileBy.id("title");
+    private static final By labelOtherInfo = MobileBy.xpath("//*[contains(@resource-id, 'title') and @index='0']");
+    private static final By fieldNotes = MobileBy.xpath("//*[contains(@resource-id, 'notes') and @index='2']");
+    private static final By fieldDescription = MobileBy.id("edit");
+
+    private static final By buttonAccount = MobileBy.id("account_field");
+    private static final By buttonCampaign = MobileBy.id("company_field");
 
     public static String getTitle() {
         wait(title);
@@ -38,10 +45,6 @@ public class BasePage extends Helpers {
 
     public static void checkPageTitle(String title) {
         assertEquals(title, getTitle());
-    }
-
-    public static void clickArrowBack() {
-        find(arrowBack).click();
     }
 
     public static void clickBack() {
@@ -106,6 +109,10 @@ public class BasePage extends Helpers {
         return find(MobileBy.xpath(start + index + end)).getText();
     }
 
+    public static void clickTools() {
+        find(buttonTools).click();
+    }
+
     public static void swipeFromTopToBottom() {
         Dimension size = getDriver().manage().window().getSize();
         int starty = (int) (size.height * 0.80);
@@ -143,5 +150,38 @@ public class BasePage extends Helpers {
         try {
             ((AndroidDriver) getDriver()).tap(1, 100, 100, 1);
         } catch (WebDriverException e) {}
+    }
+
+    public static void clickAccount() {
+        find(buttonAccount).click();
+    }
+
+    public static void clickCampaign() {
+        find(buttonCampaign).click();
+    }
+
+    public static String getLabelOtherInfo() {
+        return getText(labelOtherInfo);
+    }
+
+    public static void typeIntoNotes(String note) {
+        find(fieldNotes).clear();
+        find(fieldNotes).sendKeys(note);
+    }
+
+    public static String getNotes() {
+        return getText(fieldNotes);
+    }
+
+    public static void enterDescription (String description) {
+        AndroidElement element = (AndroidElement) find(fieldDescription);
+        element.click();
+        element.clear();
+        element.sendKeys(description);
+        hideKeyboard();
+    }
+
+    public static String getLabelDescription() {
+        return getText(fieldDescription);
     }
 }
