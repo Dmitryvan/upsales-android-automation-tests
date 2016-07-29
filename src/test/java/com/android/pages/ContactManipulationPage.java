@@ -131,4 +131,12 @@ public class ContactManipulationPage extends BasePage {
     public static void enterContactName(String contactName) {
         enterDescription(contactName);
     }
+
+    public static void typeIntoNotes(String note) {
+        find(fieldNotes).clear();
+        find(fieldNotes).sendKeys(note);
+    }
+
+    private static final By fieldNotes = MobileBy.id("notes");
+
 }

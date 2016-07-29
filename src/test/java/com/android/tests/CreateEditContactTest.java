@@ -197,10 +197,10 @@ public class CreateEditContactTest extends BaseTest {
 //        ContactPage.clickShowMore();
 //        softAssert.assertEquals(ContactPage.getExtraIDWithoutData(), extraID);
 //        softAssert.assertEquals(ContactPage.getChanceOfSuccessWithoutData(), chanceOfSuccess + " %");
-//        ContactPage.clickAccount();
-//        AccountPage.clickTabContacts();
+        ContactPage.clickAccount();
+        AccountPage.clickTabContacts();
 //        ContactPage.swipeFromTopToBottom();
-//        ContactsPage.clickSearch();
+        ContactsPage.clickSearch();
 //        ContactsPage.search(contactName);
 //        softAssert.assertEquals(ContactsPage.getFirstSearchResult(), contactName);
         softAssert.assertAll();
@@ -287,7 +287,7 @@ public class CreateEditContactTest extends BaseTest {
 //        softAssert.assertEquals(ContactPage.getExtraIDWithAllData(), newExtraID);
 //        softAssert.assertEquals(ContactPage.getChanceOfSuccessWithAllData(), newChanceOfSuccess + " %");
 //        ContactPage.clickShowLess();
-//        ContactPage.clickAccount();
+        ContactPage.clickAccount();
 //        AccountPage.clickTabContacts();
 //        ContactPage.swipeFromTopToBottom();
 //        ContactsPage.clickSearch();
@@ -345,7 +345,7 @@ public class CreateEditContactTest extends BaseTest {
 //        softAssert.assertEquals(ContactPage.getExtraIDWithAllData(), newExtraID);
 //        softAssert.assertEquals(ContactPage.getChanceOfSuccessWithAllData(), newChanceOfSuccess + " %");
 //        ContactPage.clickShowLess();
-//        ContactPage.clickAccount();
+        ContactPage.clickAccount();
 //        AccountPage.clickTabContacts();
 //        ContactPage.swipeFromTopToBottom();
 //        ContactsPage.clickSearch();
@@ -512,7 +512,7 @@ public class CreateEditContactTest extends BaseTest {
         ActivityManipulationsPage.scrollToLabel(labelOtherInfo.toUpperCase());
         BasePage.typeIntoNotes(notes);
         ActivityManipulationsPage.clickSave();
-        softAssert.assertEquals(ActivityPage.getTitle(), activityType);
+        softAssert.assertEquals(ActivityPage.getTitle(), activityType.toUpperCase());
         softAssert.assertEquals(ActivityPage.getActivityDescription(), activityDescription);
         softAssert.assertEquals(ActivityPage.getAccountName(), account);
         softAssert.assertEquals(ActivityPage.getUserName(), newUser);

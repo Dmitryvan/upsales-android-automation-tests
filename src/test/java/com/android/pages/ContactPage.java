@@ -17,9 +17,8 @@ public class ContactPage extends BasePage {
     private static final By mobile = MobileBy.id("mobile");
     private static final By email = MobileBy.id("email");
 
-    private static final List<WebElement> values = findElements(MobileBy.id("select"));
-    private static final WebElement campaign = values.get(0);
-    private static final WebElement category = values.get(1);
+    private static final By campaign = MobileBy.xpath("//android.support.v4.view.ViewPager[1]//android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]");
+    private static final By category = MobileBy.xpath("//android.support.v4.view.ViewPager[1]//android.widget.RelativeLayout[2]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]");
 
     private static final By campaignWithoutContact = MobileBy.IosUIAutomation(".tableViews()[0].cells()[1].staticTexts()[1]");
     private static final By campaignWithPhone = MobileBy.IosUIAutomation(".tableViews()[0].cells()[1].staticTexts()[1]");
@@ -122,7 +121,7 @@ public class ContactPage extends BasePage {
     }
 
     public static String getCampaign() {
-        return campaign.getText();
+        return getText(campaign);
     }
 
     public static String getCampaignWithPhone() {
@@ -134,7 +133,7 @@ public class ContactPage extends BasePage {
     }
 
     public static String getCategory() {
-        return category.getText();
+        return getText(category);
     }
 
     public static String getNotes() {

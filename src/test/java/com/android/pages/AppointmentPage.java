@@ -29,19 +29,11 @@ public class AppointmentPage extends BasePage {
 
     private static final By fifththCellValue = MobileBy.IosUIAutomation(".tableViews()[0].cells()[4]");
 
-    private static final List<WebElement> values = findElements(MobileBy.id("select"));
-    private static final WebElement campaignValue = values.get(0);
-    private static final WebElement opportunityValue = values.get(1);
+    private static final By campaign = MobileBy.xpath("//android.support.v4.view.ViewPager[1]//android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]");
+    private static final By opportunity = MobileBy.xpath("//android.support.v4.view.ViewPager[1]//android.widget.RelativeLayout[2]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]");
 
-    private static final List<WebElement> date = findElements(MobileBy.id("date"));
-    private static final WebElement startDateValue = date.get(0);
-    private static final WebElement endDateValue = date.get(1);
-
-    private static final List<WebElement> time = findElements(MobileBy.id("time"));
-    private static final WebElement startTimeValue = time.get(0);
-    private static final WebElement endTimeValue = time.get(1);
-
-    private static final List<WebElement> users = findElements(MobileBy.id("user_title"));
+    private static final By date = MobileBy.id("date");
+    private static final By time = MobileBy.id("time");
 
     public static String getFifthCellValue() {
         return getValue(fifththCellValue);
@@ -84,6 +76,7 @@ public class AppointmentPage extends BasePage {
     }
 
     public static String getContact() {
+        List<WebElement> users = findElements(MobileBy.id("user_title"));
         return users.get(1).getText();
     }
 
@@ -92,23 +85,23 @@ public class AppointmentPage extends BasePage {
     }
 
     public static String getStartDate() {
-        return startDateValue.getText();
+        return findElements(date).get(0).getText();
     }
 
     public static String getEndDate() {
-        return endDateValue.getText();
+        return findElements(date).get(1).getText();
     }
 
     public static String getStartTime() {
-        return startTimeValue.getText();
+        return findElements(time).get(0).getText();
     }
 
     public static String getEndTime() {
-        return endTimeValue.getText();
+        return findElements(time).get(1).getText();
     }
 
     public static String getCampaign() {
-        return campaignValue.getText();
+        return getText(campaign);
     }
 
     public static String getLocation() {
@@ -120,7 +113,7 @@ public class AppointmentPage extends BasePage {
     }
 
     public static String getOpportunity() {
-        return opportunityValue.getText();
+        return getText(opportunity);
     }
 
     public static String getMotesalternativ() {

@@ -19,15 +19,10 @@ public class ActivityPage extends BasePage {
     private static final By dateValue = MobileBy.id("date");
     private static final By timeValue = MobileBy.id("time");
     private static final By fieldNotesValue = MobileBy.id("notes");
+    private static final By buttonContact = MobileBy.id("contact_root");
 
-    private static final List<WebElement> users = findElements(MobileBy.id("user_title"));
-
-    private static final List<WebElement> values = findElements(MobileBy.id("select"));
-    private static final WebElement campaignValue = values.get(0);
-    private static final WebElement opportunityValue = values.get(1);
-
-    private static final By labelCampaignWithoutContactAndTime = MobileBy.xpath("//android.support.v4.view.ViewPager[1]//android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]");
-    private static final By labelOpportunityWithoutContactAndTime = MobileBy.xpath("//android.support.v4.view.ViewPager[1]//android.widget.RelativeLayout[2]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]");
+    private static final By campaign = MobileBy.xpath("//android.support.v4.view.ViewPager[1]//android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]");
+    private static final By opportunity = MobileBy.xpath("//android.support.v4.view.ViewPager[1]//android.widget.RelativeLayout[2]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]");
 
     private static final By popoverLabelEditActivity = MobileBy.xpath("//android.widget.LinearLayout[@index='0']/android.widget.TextView[@index='1']");
 
@@ -57,8 +52,7 @@ public class ActivityPage extends BasePage {
     }
 
     public static void clickEditActivity() {
-        waitByThread(1000);
-//        ((AndroidDriver)getDriver()).tap(1, 790, 300, 1);
+        waitByThread(500);
         find(popoverEditActivity).click();
     }
 
@@ -71,6 +65,7 @@ public class ActivityPage extends BasePage {
     }
 
     public static String getContact() {
+        List<WebElement> users = findElements(MobileBy.id("user_title"));
         return users.get(1).getText();
     }
 
@@ -87,20 +82,13 @@ public class ActivityPage extends BasePage {
     }
 
     public static String getCampaign() {
-        return campaignValue.getText();
-    }
-
-    public static String getCampaignWithoutContactAndTime() {
-        return getText(labelCampaignWithoutContactAndTime);
+        return getText(campaign);
     }
 
     public static String getOpportunity() {
-        return opportunityValue.getText();
+        return getText(opportunity);
     }
 
-    public static String getOpportunityWithoutContactAndTime() {
-        return getText(labelOpportunityWithoutContactAndTime);
-    }
 
     public static String getNotes() {
         return getText(fieldNotesValue);
@@ -118,6 +106,10 @@ public class ActivityPage extends BasePage {
 
     public static String getTextEditActivity() {
         return getText(popoverLabelEditActivity);
+    }
+
+    public static boolean checkThereIsNoContact() {
+        return checkIsDisplayed(buttonContact);
     }
 }
 

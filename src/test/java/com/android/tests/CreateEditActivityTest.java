@@ -138,7 +138,7 @@ public class CreateEditActivityTest extends BaseTest {
         ActivityManipulationsPage.enterDescription(description);
         ActivityManipulationsPage.clickAccount();
         AddSelectEntityPage.select(account);
-//        softAssert.assertEquals(account, ActivityManipulationsPage.getAccount());
+        softAssert.assertEquals(account, ActivityManipulationsPage.getAccount());
         ActivityManipulationsPage.clickSave();
         softAssert.assertEquals(description, ActivityPage.getActivityDescription());
         softAssert.assertEquals(account, ActivityPage.getAccountName());
@@ -182,9 +182,9 @@ public class CreateEditActivityTest extends BaseTest {
         ActivityManipulationsPage.clickCancel();
         softAssert.assertEquals(description, ActivityPage.getActivityDescription());
         softAssert.assertEquals(account, ActivityPage.getAccountName());
-//        softAssert.assertTrue(ActivityPage.checkThereIsNoContact());
-        softAssert.assertEquals(labelNone, ActivityPage.getCampaignWithoutContactAndTime());
-        softAssert.assertEquals(labelNone, ActivityPage.getOpportunityWithoutContactAndTime());
+        softAssert.assertFalse(ActivityPage.checkThereIsNoContact());
+        softAssert.assertEquals(labelNone, ActivityPage.getCampaign());
+        softAssert.assertEquals(labelNone, ActivityPage.getOpportunity());
         ActivityPage.checkPageTitle(defaultActivityType.toUpperCase());
         softAssert.assertAll();
     }

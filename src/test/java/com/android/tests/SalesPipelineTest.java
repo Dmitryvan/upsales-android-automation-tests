@@ -113,7 +113,7 @@ public class SalesPipelineTest extends BaseTest {
         softAssert.assertAll();
     }
 
-    @Test(priority = 7) //CASE 9
+    @Test(priority = 7, enabled = false) //CASE 9
     public void softOpportunitiesPerStageVerification() {
         SoftAssertExtended softAssert = new SoftAssertExtended();
         SalesPage.clickTabPipeline();

@@ -157,7 +157,7 @@ public class CreateEditAppointmentTest extends BaseTest {
         AppointmentManipulationsPage.clickAccount();
         AddSelectEntityPage.select(account);
         AppointmentManipulationsPage.clickSave();
-//        softAssert.assertEquals(account, AppointmentPage.getAccountName());
+        softAssert.assertEquals(account, AppointmentPage.getAccountName());
         softAssert.assertEquals(description, AppointmentPage.getAppointmentDescription());
         softAssert.assertAll();
     }
@@ -311,6 +311,7 @@ public class CreateEditAppointmentTest extends BaseTest {
         softAssert.assertEquals(newContact, AppointmentPage.getContact());
         softAssert.assertEquals(newCampaign, AppointmentPage.getCampaign());
         softAssert.assertEquals(opportunity, AppointmentPage.getOpportunity());
+        AppointmentPage.scrollToLabel("Other");
         softAssert.assertEquals(newNotes, AppointmentPage.getNotes());
         softAssert.assertAll();
     }

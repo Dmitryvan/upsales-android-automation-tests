@@ -15,6 +15,7 @@ public class OpportunityManipulationsPage extends BasePage {
     private static final String namePrefix = "opp_";
 
     private static final By probability = MobileBy.xpath("//android.widget.RelativeLayout[@index='5']//android.widget.EditText[@index='0']");
+    private static final By labelOtherInfo = MobileBy.xpath("//android.widget.RelativeLayout[7]/android.widget.LinearLayout[1]/android.widget.TextView[1]");
 
     private static final By labels = MobileBy.id("name");
     private static final By values = MobileBy.id("select");
@@ -182,6 +183,10 @@ public class OpportunityManipulationsPage extends BasePage {
 
     public static String getOpportunityName() {
         return opportunityName;
+    }
+
+    public static String getLabelOtherInfoInOpp() {
+        return getText(labelOtherInfo);
     }
 }
 

@@ -40,8 +40,8 @@ public class AccountPage extends BasePage {
     private static final By labelCampaignsValue = MobileBy.IosUIAutomation(".tableViews()[0].cells()[3].staticTexts()[1]");
     private static final By labelCategoriesValue = MobileBy.IosUIAutomation(".tableViews()[0].cells()[4].staticTexts()[1]");
 
-    private static final By tabHome = MobileBy.IosUIAutomation(".tabBars()[0].buttons()[0]");
-    private static final By tabContacts = MobileBy.IosUIAutomation(".tabBars()[0].buttons()[\"Contacts\"]");
+    private static final By tabHome = MobileBy.xpath(".tabBars()[0].buttons()[0]");
+    private static final By tabContacts = MobileBy.xpath("//*[@class='android.widget.TextView' and @text='Contacts']");
     private static final By tabActivity = MobileBy.IosUIAutomation(".tabBars()[0].buttons()[\"Activities\"]");
     private static final By tabOppotunities = MobileBy.IosUIAutomation(".tabBars()[0].buttons()[\"Opportunities\"]");
     private static final By tabSales = MobileBy.IosUIAutomation(".tabBars()[0].buttons()[\"Sales\"]");
