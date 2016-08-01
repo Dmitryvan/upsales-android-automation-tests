@@ -24,26 +24,26 @@ public class ActivityManipulationsPage extends BasePage {
     private static final By customFieldPickerWheel = MobileBy.IosUIAutomation(".tableViews()[0].cells()[12].pickers()[0].wheels()[0]");
     private static final By customFieldEttTillValue = MobileBy.IosUIAutomation(".tableViews()[0].cells()[11].staticTexts()[0]");
 
-    private static final List<WebElement> values = findElements(MobileBy.id("select"));
-    private static final WebElement activityType = values.get(0);
-    private static final WebElement date = values.get(1);
-    private static final WebElement time = values.get(2);
-    private static final WebElement account = values.get(3);
-    private static final WebElement contact = values.get(4);
-    private static final WebElement opportunity = values.get(5);
-    private static final WebElement user = values.get(6);
-    private static final WebElement campaign = values.get(7);
+    private static final By values = MobileBy.id("select");
+//    private static final WebElement activityType = values.get(0);
+//    private static final WebElement date = values.get(1);
+//    private static final WebElement time = values.get(2);
+//    private static final WebElement account = values.get(3);
+//    private static final WebElement contact = values.get(4);
+//    private static final WebElement opportunity = values.get(5);
+//    private static final WebElement user = values.get(6);
+//    private static final WebElement campaign = values.get(7);
 
-    private static final List<WebElement> labels = findElements(MobileBy.id("name"));
-    private static final WebElement labelActivityType = labels.get(0);
-    private static final WebElement labelDueDate = labels.get(1);
-    private static final WebElement labelTime = labels.get(2);
-    private static final WebElement labelAccount = labels.get(3);
-    private static final WebElement labelContact = labels.get(4);
-    private static final WebElement labelOpportunity = labels.get(5);
-    private static final WebElement labelUser = labels.get(6);
-    private static final WebElement labelCampaign = labels.get(7);
-    private static final WebElement labelNotes = labels.get(8);
+    private static final By labels = MobileBy.id("name");
+//    private static final WebElement labelActivityType = labels.get(0);
+//    private static final WebElement labelDueDate = labels.get(1);
+//    private static final WebElement labelTime = labels.get(2);
+//    private static final WebElement labelAccount = labels.get(3);
+//    private static final WebElement labelContact = labels.get(4);
+//    private static final WebElement labelOpportunity = labels.get(5);
+//    private static final WebElement labelUser = labels.get(6);
+//    private static final WebElement labelCampaign = labels.get(7);
+//    private static final WebElement labelNotes = labels.get(8);
 
 
     public static void clickCustomFieldEttTill() {
@@ -60,35 +60,35 @@ public class ActivityManipulationsPage extends BasePage {
     }
 
     public static String getLabelActivityType() {
-        return labelActivityType.getText();
+        return findElements(labels).get(0).getText();
     }
 
     public static String getLabelCampaign() {
-        return labelCampaign.getText();
+        return findElements(labels).get(7).getText();
     }
 
     public static String getLabelNotes() {
-        return labelNotes.getText();
+        return findElements(labels).get(8).getText();
     }
 
     public static String getLabelAccount() {
-        return labelAccount.getText();
+        return findElements(labels).get(3).getText();
     }
 
     public static String getLabelUser() {
-        return labelUser.getText();
+        return findElements(labels).get(6).getText();
     }
 
     public static String getLabelOpportunity() {
-        return labelOpportunity.getText();
+        return findElements(labels).get(5).getText();
     }
 
     public static String getLabelTime() {
-        return labelTime.getText();
+        return findElements(labels).get(2).getText();
     }
 
     public static String getLabelContact() {
-        return labelContact.getText();
+        return findElements(labels).get(4).getText();
     }
 
     public static String getAllActivityTypes() {
@@ -103,7 +103,7 @@ public class ActivityManipulationsPage extends BasePage {
     }
 
     public static String getDueDate() {
-        return date.getText();
+        return findElements(values).get(1).getText();
     }
 
     public static void clickActivityType() {
@@ -132,35 +132,35 @@ public class ActivityManipulationsPage extends BasePage {
     }
 
     public static String getActivityType() {
-        return activityType.getText();
+        return findElements(values).get(0).getText();
     }
 
     public static String getLabelDueDate() {
-        return labelDueDate.getText();
+        return findElements(labels).get(1).getText();
     }
 
     public static String getTime() {
-        return time.getText();
+        return findElements(values).get(2).getText();
     }
 
     public static String getAccount() {
-        return account.getText();
+        return findElements(values).get(3).getText();
     }
 
     public static String getContact() {
-        return contact.getText();
+        return findElements(values).get(4).getText();
     }
 
     public static String getOpportunity() {
-        return opportunity.getText();
+        return findElements(values).get(5).getText();
     }
 
     public static String getUser() {
-        return user.getText();
+        return findElements(values).get(6).getText();
     }
 
     public static String getCampaign() {
-        return campaign.getText();
+        return findElements(values).get(7).getText();
     }
 
     public static void setDescription() {

@@ -84,10 +84,8 @@ public class OpportunityManipulationsPage extends BasePage {
     }
 
     public static void clickProbability() {
-        WebElement el = find(buttonProbability);
-        el.click();
-        By clear = MobileBy.IosUIAutomation(".tableViews()[0].cells()[1].staticTexts()[1]");
-        find(clear).click();
+        find(probability).click();
+        find(probability).clear();
     }
 
     public static String getProbability() {
@@ -187,6 +185,10 @@ public class OpportunityManipulationsPage extends BasePage {
 
     public static String getLabelOtherInfoInOpp() {
         return getText(labelOtherInfo);
+    }
+
+    public static void enterProbability(String value) {
+        sendValues(value, probability);
     }
 }
 

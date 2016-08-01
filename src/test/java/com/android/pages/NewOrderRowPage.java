@@ -67,16 +67,11 @@ public class NewOrderRowPage extends BasePage {
     }
 
     public static void clickQuantity() {
-        find(buttonQuantity).click();
-        By clear = MobileBy.IosUIAutomation(".tableViews()[0].cells()[1].staticTexts()[1]");
-        find(clear).click();
+        find(quantity).click();
     }
 
     public static void clickPrice() {
         find(buttonPrice).click();
-        find(buttonPrice).click();
-//        By clear = MobileBy.IosUIAutomation(".tableViews()[0].cells()[2].staticTexts()[1]");
-//        find(clear).click();
     }
 
     public static void clickAdd() {
@@ -91,11 +86,9 @@ public class NewOrderRowPage extends BasePage {
         find(popupRemove).click();
     }
 
-    public static void enterPrice(String price) {
-        By clear = MobileBy.IosUIAutomation(".tableViews()[0].cells()[2].textFields()[0].buttons()[0]");
-        By fieldPrice = MobileBy.IosUIAutomation(".tableViews()[0].cells()[2].textFields()[0]");
-        find(clear).click();
-        find(fieldPrice).sendKeys(price);
+    public static void enterPrice(String value) {
+        find(price).clear();
+        sendValues(value, price);
     }
 
     public static String getQuantity() {
@@ -104,5 +97,10 @@ public class NewOrderRowPage extends BasePage {
 
     public static String getLabelAdd() {
         return getName(buttonAdd);
+    }
+
+    public static void enterQuantity(String value) {
+        find(quantity).clear();
+        sendValues(value, quantity);
     }
 }

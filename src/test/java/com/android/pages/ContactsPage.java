@@ -8,15 +8,16 @@ public class ContactsPage extends BasePage {
 
     private final static By tableContactCells = MobileBy.IosUIAutomation(".tableViews()[0].cells()");
     private static final By fieldSearch = MobileBy.id("search");
-    private static final By labelFirstSearchResult = MobileBy.IosUIAutomation(".tableViews()[0].cells()[0].staticTexts()[0]");
+    private static final By labelFirstSearchResult = MobileBy.xpath("//android.support.v7.widget.RecyclerView[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.TextView[1]");
 
     public static void search(String value) {
-        IOSElement element = (IOSElement) find(fieldSearch);
-        element.setValue(value);
+//        IOSElement element = (IOSElement) find(fieldSearch);
+//        element.setValue(value);
+        sendValues(value, fieldSearch);
     }
 
     public static String getFirstSearchResult() {
-        return find(labelFirstSearchResult).getAttribute("value");
+        return getText(labelFirstSearchResult);
     }
 
     public static void clickSearch() {
