@@ -5,13 +5,12 @@ import org.openqa.selenium.By;
 
 public class AccountPage extends BasePage {
 
-    private static final By arrowBack = MobileBy.IosUIAutomation(".navigationBar().buttons()[1]");
     private static final By buttonTools = MobileBy.IosUIAutomation(".navigationBars()[0].buttons()[2]");
     private static final By buttonParentAccount = MobileBy.IosUIAutomation(".tableViews()[0].buttons()[0]");
     private static final By buttonCampaign = MobileBy.IosUIAutomation(".tableViews()[0].cells()[3].staticTexts()[0]");
     private static final By buttonCateories = MobileBy.IosUIAutomation(".tableViews()[0].cells()[4].staticTexts()[0]");
 
-    private static final By popoverEditAccount = MobileBy.IosUIAutomation(".popover().tableViews()[0].cells()[0]");
+    private static final By popoverEditAccount = MobileBy.id("item_edit");
     private static final By popoverDeleteAccount = MobileBy.IosUIAutomation(".popover().tableViews()[0].cells()[1]");
     private static final By popoverLabelCreateNew = MobileBy.IosUIAutomation(".popover().tableViews()[0].cells()[2]");
     private static final By popoverActivity = MobileBy.IosUIAutomation(".popover().tableViews()[0].cells()[3]");
@@ -20,10 +19,10 @@ public class AccountPage extends BasePage {
     private static final By popoverOrder = MobileBy.IosUIAutomation(".popover().tableViews()[0].cells()[6]");
     private static final By popoverContact = MobileBy.IosUIAutomation(".popover().tableViews()[0].cells()[7]");
 
-    private static final By labelAccountName = MobileBy.IosUIAutomation(".tableViews()[0].staticTexts()[0]");
+    private static final By labelAccountName = MobileBy.id("contact_name");
     private static final By labelParent = MobileBy.IosUIAutomation(".tableViews()[0].staticTexts()[1]");
-    private static final By labelAccountManager = MobileBy.IosUIAutomation(".tableViews()[0].staticTexts()[2]");
-    private static final By labelAccountManagerValue = MobileBy.IosUIAutomation(".tableViews()[0].staticTexts()[3]");
+    private static final By labelAccountManager = MobileBy.id("user_title");
+    private static final By labelAccountManagerValue = MobileBy.id("user_name");
     private static final By labelNextActivity = MobileBy.IosUIAutomation(".tableViews()[0].staticTexts()[4]");
     private static final By labelNextActivityValue = MobileBy.IosUIAutomation(".tableViews()[0].staticTexts()[6]");
     private static final By labelActivitiesCount = MobileBy.IosUIAutomation(".tableViews()[0].staticTexts()[7]");
@@ -46,27 +45,23 @@ public class AccountPage extends BasePage {
     private static final By tabOppotunities = MobileBy.IosUIAutomation(".tabBars()[0].buttons()[\"Opportunities\"]");
     private static final By tabSales = MobileBy.IosUIAutomation(".tabBars()[0].buttons()[\"Sales\"]");
 
-    public static void clickBack() {
-        find(arrowBack).click();
-    }
-
     public static String getAccountName() {
 //        waitByThread(500);
-        return getValue(labelAccountName);
+        return getText(labelAccountName);
     }
 
     public static String getAccountMangerLabel() {
-        return getValue(labelAccountManager);
+        return getText(labelAccountManager);
     }
 
     public static String getAccountManagerValue() {
-        return getValue(labelAccountManagerValue);
+        return getText(labelAccountManagerValue);
     }
 
-    public static void clickTools() {
-        wait(buttonTools);
-        find(buttonTools).click();
-    }
+//    public static void clickTools() {
+//        wait(buttonTools);
+//        find(buttonTools).click();
+//    }
 
     public static void clickParentAccount() {
         find(buttonParentAccount).click();

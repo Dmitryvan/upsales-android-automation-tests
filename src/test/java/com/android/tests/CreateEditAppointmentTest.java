@@ -102,6 +102,7 @@ public class CreateEditAppointmentTest extends BaseTest {
         BasePage.clickLeftMenu();
         LeftMenuPage.clickCreate();
         CreateMenuPage.clickAppointment();
+        AppointmentManipulationsPage.hideKeyboard();
         AppointmentManipulationsPage.setAppointmentName();
         description = AppointmentManipulationsPage.getAppointmentName();
     }

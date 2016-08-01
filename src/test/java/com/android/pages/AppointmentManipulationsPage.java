@@ -31,21 +31,21 @@ public class AppointmentManipulationsPage extends BasePage {
     private static final WebElement labelUser = labels.get(7);
     private static final WebElement labelCampaign = labels.get(8);
 
-    private static final List<WebElement> dates = findElements(MobileBy.id("date"));
-    private static final WebElement startDate = dates.get(0);
-    private static final WebElement endDate = dates.get(1);
+//    private static final List<WebElement> dates = findElements(MobileBy.id("date"));
+    private static final By startDate = MobileBy.xpath("//android.widget.RelativeLayout[3]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.TextView[1]");
+    private static final By endDate = MobileBy.xpath("//android.widget.RelativeLayout[4]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.TextView[1]");
 
-    private static final List<WebElement> times = findElements(MobileBy.id("time"));
-    private static final WebElement startTime = times.get(0);
-    private static final WebElement endTime = times.get(1);
+//    private static final List<WebElement> times = findElements(MobileBy.id("time"));
+    private static final By startTime = MobileBy.xpath("//android.widget.RelativeLayout[3]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.TextView[2]");
+    private static final By endTime = MobileBy.xpath("//android.widget.RelativeLayout[4]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.TextView[2]");
 
-    private static final List<WebElement> values = findElements(MobileBy.id("select"));
-    private static final WebElement appointmentType = values.get(0);
-    private static final WebElement account = values.get(3);
-    private static final WebElement contact = values.get(4);
-    private static final WebElement opportunity = values.get(5);
-    private static final WebElement user = values.get(6);
-    private static final WebElement campaign = values.get(7);
+//    private static final List<WebElement> values = findElements(MobileBy.id("select"));
+    private static final By appointmentType = MobileBy.xpath("//android.widget.RelativeLayout[2]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]");
+    private static final By account = MobileBy.xpath("//android.widget.RelativeLayout[6]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]");
+    private static final By contact = MobileBy.xpath("//android.widget.RelativeLayout[7]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]");
+    private static final By opportunity = MobileBy.xpath("//android.widget.RelativeLayout[8]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]");
+    private static final By user = MobileBy.xpath("//android.widget.RelativeLayout[9]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]");
+    private static final By campaign = MobileBy.xpath("//android.widget.RelativeLayout[10]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]");
 
     private static final By pickerWheelOpportunity = MobileBy.IosUIAutomation(".tableViews()[0].cells()[8].pickers()[0].wheels()[0]");
 
@@ -61,15 +61,15 @@ public class AppointmentManipulationsPage extends BasePage {
     private static final By fieldMotetCustomfalt = MobileBy.IosUIAutomation(".tableViews()[0].cells()[12].textViews()[0]");
 
     public static String getStartDate() {
-        return startDate.getText();
+        return find(startDate).getText();
     }
 
     public static String getStartTime() {
-        return startTime.getText();
+        return find(startTime).getText();
     }
 
     public static String getEndTime() {
-        return endTime.getText();
+        return find(endTime).getText();
     }
 
     public static String getEndDateForAcc() {
@@ -81,7 +81,7 @@ public class AppointmentManipulationsPage extends BasePage {
     }
 
     public static String getEndDate() {
-        return endDate.getText();
+        return find(endDate).getText();
     }
 
     public static String getLocation() {
@@ -89,19 +89,19 @@ public class AppointmentManipulationsPage extends BasePage {
     }
 
     public static void clickStartsDate() {
-        startDate.click();
+        find(startDate).click();
     }
 
     public static void clickStartsTime() {
-        startTime.click();
+        find(startTime).click();
     }
 
     public static void clickEndsDate() {
-        endDate.click();
+        find(endDate).click();
     }
 
     public static void clickEndsTime() {
-        endTime.click();
+        find(endTime).click();
     }
 
     public static void clickLocation() {
@@ -166,7 +166,7 @@ public class AppointmentManipulationsPage extends BasePage {
     }
 
     public static String getAppointmentType() {
-        return appointmentType.getText();
+        return find(appointmentType).getText();
     }
 
     public static String getLabelEndDateTime() {
@@ -178,23 +178,23 @@ public class AppointmentManipulationsPage extends BasePage {
     }
 
     public static String getAccount() {
-        return account.getText();
+        return find(account).getText();
     }
 
     public static String getContact() {
-        return contact.getText();
+        return find(contact).getText();
     }
 
     public static String getOpportunity() {
-        return opportunity.getText();
+        return find(opportunity).getText();
     }
 
     public static String getUser() {
-        return user.getText();
+        return find(user).getText();
     }
 
     public static String getCampaign() {
-        return campaign.getText();
+        return find(campaign).getText();
     }
 
     public static String getMotesalternativ() {

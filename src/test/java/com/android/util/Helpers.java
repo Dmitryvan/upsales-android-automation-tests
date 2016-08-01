@@ -214,7 +214,7 @@ public class Helpers {
         MobileElement el = (MobileElement) find(pickerFirstField);
         while (!el.getText().equals(month)) {
             el.swipe(SwipeElementDirection.UP, 500);
-            waitByThread(100);
+            waitByThread(200);
         }
 //        el.clear();
 //        el.sendKeys(month);
@@ -270,7 +270,7 @@ public class Helpers {
             } else {
                 el.swipe(SwipeElementDirection.DOWN, 500);
             }
-            waitByThread(100);
+            waitByThread(200);
             currentValue = Integer.parseInt(el.getText());
         }
     }
@@ -438,7 +438,9 @@ public class Helpers {
     }
 
     public static void hideKeyboard() {
-        ((AppiumDriver) getDriver()).hideKeyboard();
+        try {
+            ((AppiumDriver) getDriver()).hideKeyboard();
+        } catch (Exception e) {}
     }
 
     public static void clickClearOnKeyBoard() {

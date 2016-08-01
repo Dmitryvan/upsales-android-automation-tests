@@ -177,6 +177,7 @@ public class FilterPage extends BasePage {
     }
 
     public static boolean checkFilter() {
+        waitByThread(200);
         return checkIsDisplayed(labelFilter);
     }
 

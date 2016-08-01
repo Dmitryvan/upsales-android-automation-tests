@@ -11,6 +11,7 @@ public class AddSelectEntityPage extends BasePage{
     private static final By labelResults = MobileBy.xpath("//*[@class='android.widget.TextView' and @text='Results']");
     private static final By buttonSelect = MobileBy.id("select");
     private static final By labelNone = MobileBy.xpath("//*[@class='android.widget.CheckBox' and @index='0']");
+    private static final By buttonCancel = MobileBy.id("cancel");
 
     public static String getTitle() {
         return BasePage.getTitle();
@@ -26,7 +27,7 @@ public class AddSelectEntityPage extends BasePage{
 
     public static String getResultsLabelValue() {
         wait(labelResults);
-        return getText(labelResults);
+        return getText(labelResults).toUpperCase();
     }
 
     public static String getSelectButtonValue() {
@@ -63,5 +64,9 @@ public class AddSelectEntityPage extends BasePage{
 
     public static String getLabelNone() {
         return getText(labelNone);
+    }
+
+    public static String getCancelButtonValue() {
+        return getText(buttonCancel);
     }
 }
