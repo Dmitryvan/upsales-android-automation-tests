@@ -27,6 +27,7 @@ public class ActivitiesPage extends BasePage {
     private static final String elementPathStart = "//android.support.v7.widget.RecyclerView[1]/android.widget.RelativeLayout[";
     private static final String activityNamePathEnd = "]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[2]/android.widget.TextView[1]";
     private static final String accountNamePathEnd = "]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[2]/android.widget.TextView[2]";
+    private static final String activityDatePathEnd = "]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.TextView[1]";
 
     public static String getFirstRowDate() {
         return getText(firstRowDate);
@@ -79,15 +80,57 @@ public class ActivitiesPage extends BasePage {
     }
 
     public static boolean searchActivity(String activity, String date) {
-        for(int i = 0; i < getTableSize(tableActivityCells); i++) {
-            String activityName = find(MobileBy.IosUIAutomation(
-                    ".tableViews()[0].cells()[" + i + "].staticTexts()[0]")).getAttribute("value");
-            String dateValue = find(MobileBy.IosUIAutomation(
-                    ".tableViews()[0].cells()[" + i + "].staticTexts()[2]")).getAttribute("value");
-            if(activityName.equals(activity) && dateValue.equals(date)) {
+        int counter = 0;
+        int lastValue;
+        int cellHeight;
+        int windowHeight = getDriver().manage().window().getSize().getWidth();
+        String activityName;
+        String accountName;
+        String activityDate;
+
+        List<WebElement> list = getDriver().findElements(MobileBy.id("description"));
+        for (WebElement aList : list) {
+            if(aList.getText().equals(activity))
                 return true;
-            }
         }
+        lastValue = list.size();
+
+        String previousDate = getTextByPath(elementPathStart, lastValue, activityDatePathEnd);
+        String previousActivity = getTextByPath(elementPathStart, lastValue, activityNamePathEnd);
+        String previousAccount = getTextByPath(elementPathStart, lastValue, accountNamePathEnd);
+
+        AndroidElement el = (AndroidElement) find(MobileBy.id("activity_item"));
+        cellHeight = el.getSize().height + 2;
+        do {
+            ((MobileDriver)getDriver()).swipe(0, windowHeight, 0, windowHeight - cellHeight, 500);
+            try{ Thread.sleep(500); } catch (Exception e) {}
+            try {
+                try {
+                    activityDate = getTextByPath(elementPathStart, (lastValue + 1), activityDatePathEnd);
+                    activityName = getTextByPath(elementPathStart, (lastValue + 1), activityNamePathEnd);
+                    accountName = getTextByPath(elementPathStart, (lastValue + 1), accountNamePathEnd);
+                }
+                catch (Exception e) {
+                    activityDate = getTextByPath(elementPathStart, lastValue, activityDatePathEnd);
+                    activityName = getTextByPath(elementPathStart, lastValue, activityNamePathEnd);
+                    accountName = getTextByPath(elementPathStart, lastValue, accountNamePathEnd);
+                }
+                if (activityName.equals(previousActivity) && accountName.equals(previousAccount)) {
+                    counter++;
+                    continue;
+                } else {
+                    counter = 0;
+                }
+                if (activityName.equals(activity) && activityDate.contains(date)) {
+                    return true;
+                }
+                previousDate = activityDate;
+                previousActivity = activityName;
+                previousAccount = accountName;
+            } catch (Exception e) {
+                break;
+            }
+        } while (counter < 2);
         return false;
     }
 

@@ -482,4 +482,10 @@ public class Helpers {
     public static void scrollToLabel(String text) {
         ((AndroidDriver)getDriver()).scrollTo(text);
     }
+
+    protected static void clearAndType(String accountName, By locator) {
+        find(locator).clear();
+        find(locator).sendKeys(accountName);
+        hideKeyboard();
+    }
 }

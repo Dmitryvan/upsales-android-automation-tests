@@ -1,8 +1,7 @@
 package com.android.pages;
 
-import com.android.util.Helpers;
 import io.appium.java_client.MobileBy;
-import io.appium.java_client.ios.IOSDriver;
+import io.appium.java_client.MobileDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -19,8 +18,8 @@ public class AccountManipulationsPage extends BasePage {
     private static final By buttonParentAccount = MobileBy.xpath("//android.widget.RelativeLayout[2]/android.widget.RelativeLayout[1]");
     private static final By fieldParentAccount = MobileBy.xpath("//android.widget.RelativeLayout[2]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]");
     private static final By buttonAccountManagers = MobileBy.xpath("//android.widget.RelativeLayout[3]/android.widget.RelativeLayout[1]");
-    private static final By fieldPhone = MobileBy.id("phone_container");
-    private static final By fieldWebsite = MobileBy.id("text_input_website");
+    private static final By fieldPhone = MobileBy.id("phone");
+    private static final By fieldWebsite = MobileBy.id("website");
     private static final By buttonPostal = MobileBy.xpath("//android.support.v7.app.ActionBar.Tab[1]/android.widget.TextView[1]");
     private static final By buttonVisit = MobileBy.xpath("//android.support.v7.app.ActionBar.Tab[2]/android.widget.TextView[1]");
     private static final By buttonBilling = MobileBy.xpath("//android.support.v7.app.ActionBar.Tab[3]/android.widget.TextView[1]");
@@ -40,6 +39,8 @@ public class AccountManipulationsPage extends BasePage {
     private static final By labelAccountManagers = MobileBy.xpath("//android.widget.RelativeLayout[3]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.TextView[1]");
     private static final By labelAccountManagersValue = MobileBy.xpath("//android.widget.RelativeLayout[3]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]");
     private static final By labelContactInformation = MobileBy.xpath("//android.widget.RelativeLayout[2]/android.widget.LinearLayout[1]/android.widget.LinearLayout[1]/android.widget.TextView[1]");
+    private static final By labelPhone = MobileBy.id("phone_container");
+    private static final By labelWebsite = MobileBy.id("text_input_website");
     private static final By labelAddress = MobileBy.xpath("//android.widget.RelativeLayout[3]/android.widget.LinearLayout[1]/android.widget.LinearLayout[1]/android.widget.TextView[1]");
     private static final By labelStreet = MobileBy.xpath("//*[contains(@resource-id, 'street')]/../../TextInputLayout[1]");
     private static final By labelZipcode = MobileBy.xpath("//*[contains(@resource-id, 'zipcode')]/../../TextInputLayout[2]");
@@ -72,49 +73,39 @@ public class AccountManipulationsPage extends BasePage {
     }
 
     public static void enterAccountName (String accountName) {
-        WebElement accName = find(fieldAccountName);
-//        accName.click();
-        accName.clear();
-        accName.sendKeys(accountName);
+        clearAndType(accountName, fieldAccountName);
     }
 
     public static void scrollToTheTop() {
-        ((IOSDriver)getDriver()).scrollTo("Account name");
+        ((MobileDriver)getDriver()).scrollTo("Account name");
     }
 
     public static void enterPhone (String phone) {
-        find(fieldPhone).sendKeys(phone);
-        hideKeyboard();
+        clearAndType(phone, fieldPhone);
     }
 
     public static void enterWebsite (String website) {
-        find(fieldWebsite).sendKeys(website);
-        hideKeyboard();
+        clearAndType(website, fieldWebsite);
     }
 
     public static void enterStreet (String street) {
-        find(fieldStreet).sendKeys(street);
-        hideKeyboard();
+        clearAndType(street, fieldStreet);
     }
 
     public static void enterZipcode (String zipcode) {
-        find(fieldZipcode).sendKeys(zipcode);
-        hideKeyboard();
+        clearAndType(zipcode, fieldZipcode);
     }
 
     public static void enterCity (String city) {
-        find(fieldCity).sendKeys(city);
-        hideKeyboard();
+        clearAndType(city, fieldCity);
     }
 
     public static void enterCountry (String country) {
-        find(fieldCountry).sendKeys(country);
-        hideKeyboard();
+        clearAndType(country, fieldCountry);
     }
 
     public static void enterNotes (String notes) {
-        find(fieldNotes).sendKeys(notes);
-        hideKeyboard();
+        clearAndType(notes, fieldNotes);
     }
 
     public static String getAccountNameLabelValue() {
@@ -142,11 +133,11 @@ public class AccountManipulationsPage extends BasePage {
     }
 
     public static String getPhoneFieldDefaultValue() {
-        return getText(fieldPhone);
+        return getText(labelPhone);
     }
 
     public static String getWebsiteFieldDefaultValue() {
-        return getText(fieldWebsite);
+        return getText(labelWebsite);
     }
 
     public static String getPhoneFieldValue() {
@@ -158,7 +149,7 @@ public class AccountManipulationsPage extends BasePage {
     }
 
     public static String getAddressLabelValue() {
-        return getText(labelAddress).toUpperCase();
+        return getText(labelAddress);
     }
 
     public static String getPostalTabValue() {
@@ -285,10 +276,10 @@ public class AccountManipulationsPage extends BasePage {
         return getName(popupButtonNoThanx);
     }
 
-    public static void clickBack() {
-        wait(buttonBack);
-        find(buttonBack).click();
-    }
+//    public static void clickBack() {
+//        wait(buttonBack);
+//        find(buttonBack).click();
+//    }
 
     public static void clickNext() {
         find(buttonNext).click();
