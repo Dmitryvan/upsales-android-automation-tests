@@ -24,27 +24,24 @@ public class ActivityManipulationsPage extends BasePage {
     private static final By customFieldPickerWheel = MobileBy.IosUIAutomation(".tableViews()[0].cells()[12].pickers()[0].wheels()[0]");
     private static final By customFieldEttTillValue = MobileBy.IosUIAutomation(".tableViews()[0].cells()[11].staticTexts()[0]");
 
-    private static final By values = MobileBy.id("select");
-//    private static final WebElement activityType = values.get(0);
-//    private static final WebElement date = values.get(1);
-//    private static final WebElement time = values.get(2);
-//    private static final WebElement account = values.get(3);
-//    private static final WebElement contact = values.get(4);
-//    private static final WebElement opportunity = values.get(5);
-//    private static final WebElement user = values.get(6);
-//    private static final WebElement campaign = values.get(7);
+    private static final By activityType = MobileBy.xpath("//*[contains(@resource-id, 'activity_type_field')]//*[contains(@resource-id, 'select')]");
+    private static final By date = MobileBy.xpath("//*[contains(@resource-id, 'date_field')]//*[contains(@resource-id, 'select')]");
+    private static final By time = MobileBy.xpath("//*[contains(@resource-id, 'time_field')]//*[contains(@resource-id, 'select')]");
+    private static final By account = MobileBy.xpath("//*[contains(@resource-id, 'account_field')]//*[contains(@resource-id, 'select')]");
+    private static final By contact = MobileBy.xpath("//*[contains(@resource-id, 'contact_field')]//*[contains(@resource-id, 'select')]");
+    private static final By opportunity = MobileBy.xpath("//*[contains(@resource-id, 'opportunity_field')]//*[contains(@resource-id, 'select')]");
+    private static final By user = MobileBy.xpath("//*[contains(@resource-id, 'user_field')]//*[contains(@resource-id, 'select')]");
+    private static final By campaign = MobileBy.xpath("//*[contains(@resource-id, 'company_field')]//*[contains(@resource-id, 'select')]");
 
-    private static final By labels = MobileBy.id("name");
-//    private static final WebElement labelActivityType = labels.get(0);
-//    private static final WebElement labelDueDate = labels.get(1);
-//    private static final WebElement labelTime = labels.get(2);
-//    private static final WebElement labelAccount = labels.get(3);
-//    private static final WebElement labelContact = labels.get(4);
-//    private static final WebElement labelOpportunity = labels.get(5);
-//    private static final WebElement labelUser = labels.get(6);
-//    private static final WebElement labelCampaign = labels.get(7);
-//    private static final WebElement labelNotes = labels.get(8);
-
+    private static final By labelActivityType = MobileBy.xpath("//*[contains(@resource-id, 'activity_type_field')]//*[contains(@resource-id, 'name')]");
+    private static final By labelDueDate = MobileBy.xpath("//*[contains(@resource-id, 'date_field')]//*[contains(@resource-id, 'name')]");
+    private static final By labelTime = MobileBy.xpath("//*[contains(@resource-id, 'time_field')]//*[contains(@resource-id, 'name')]");
+    private static final By labelAccount = MobileBy.xpath("//*[contains(@resource-id, 'account_field')]//*[contains(@resource-id, 'name')]");
+    private static final By labelContact = MobileBy.xpath("//*[contains(@resource-id, 'contact_field')]//*[contains(@resource-id, 'name')]");
+    private static final By labelOpportunity = MobileBy.xpath("//*[contains(@resource-id, 'opportunity_field')]//*[contains(@resource-id, 'name')]");
+    private static final By labelUser = MobileBy.xpath("//*[contains(@resource-id, 'user_field')]//*[contains(@resource-id, 'name')]");
+    private static final By labelCampaign = MobileBy.xpath("//*[contains(@resource-id, 'company_field')]//*[contains(@resource-id, 'name')]");
+    private static final By labelNotes = MobileBy.xpath("//*[contains(@resource-id, 'note_field')]//*[contains(@resource-id, 'name')]");
 
     public static void clickCustomFieldEttTill() {
         find(customFieldWheelEttTill).click();
@@ -60,35 +57,35 @@ public class ActivityManipulationsPage extends BasePage {
     }
 
     public static String getLabelActivityType() {
-        return findElements(labels).get(0).getText();
+        return getText(labelActivityType);
     }
 
     public static String getLabelCampaign() {
-        return findElements(labels).get(7).getText();
+        return getText(labelCampaign);
     }
 
     public static String getLabelNotes() {
-        return findElements(labels).get(8).getText();
+        return getText(labelNotes);
     }
 
     public static String getLabelAccount() {
-        return findElements(labels).get(3).getText();
+        return getText(labelAccount);
     }
 
     public static String getLabelUser() {
-        return findElements(labels).get(6).getText();
+        return getText(labelUser);
     }
 
     public static String getLabelOpportunity() {
-        return findElements(labels).get(5).getText();
+        return getText(labelOpportunity);
     }
 
     public static String getLabelTime() {
-        return findElements(labels).get(2).getText();
+        return getText(labelTime);
     }
 
     public static String getLabelContact() {
-        return findElements(labels).get(4).getText();
+        return getText(labelContact);
     }
 
     public static String getAllActivityTypes() {
@@ -103,7 +100,7 @@ public class ActivityManipulationsPage extends BasePage {
     }
 
     public static String getDueDate() {
-        return findElements(values).get(1).getText();
+        return getText(date);
     }
 
     public static void clickActivityType() {
@@ -132,35 +129,35 @@ public class ActivityManipulationsPage extends BasePage {
     }
 
     public static String getActivityType() {
-        return findElements(values).get(0).getText();
+        return getText(activityType);
     }
 
     public static String getLabelDueDate() {
-        return findElements(labels).get(1).getText();
+        return getText(labelDueDate);
     }
 
     public static String getTime() {
-        return findElements(values).get(2).getText();
+        return getText(time);
     }
 
     public static String getAccount() {
-        return findElements(values).get(3).getText();
+        return getText(account);
     }
 
     public static String getContact() {
-        return findElements(values).get(4).getText();
+        return getText(contact);
     }
 
     public static String getOpportunity() {
-        return findElements(values).get(5).getText();
+        return getText(opportunity);
     }
 
     public static String getUser() {
-        return findElements(values).get(6).getText();
+        return getText(user);
     }
 
     public static String getCampaign() {
-        return findElements(values).get(7).getText();
+        return getText(campaign);
     }
 
     public static void setDescription() {

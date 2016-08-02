@@ -41,6 +41,7 @@ public class CreateEditAccountTest extends BaseTest {
     private final String lblNone = PropertyLoader.loadProperty(commonPropertyPath, "labelNone");
     private final String addCampaignTitle = PropertyLoader.loadProperty(commonPropertyPath, "titleAddCampaign");
     private final String labelOtherInfo = PropertyLoader.loadProperty(commonPropertyPath, "labelOtherInfo");
+    private final String lblResults = PropertyLoader.loadProperty(commonPropertyPath, "labelResults");
 
     private final String activitiesPropertyPath = "src/test/resources/createEditActivity.properties";
     private final String defaultActivityType = PropertyLoader.loadProperty(activitiesPropertyPath, "defaultActivityType");
@@ -123,11 +124,11 @@ public class CreateEditAccountTest extends BaseTest {
     private final String chanceOfSuccess = PropertyLoader.loadProperty(contactPropertyPath, "chanceOfSuccess");
     private final String newExtraID = PropertyLoader.loadProperty(contactPropertyPath, "newExtraID");
     private final String newChanceOfSuccess = PropertyLoader.loadProperty(contactPropertyPath, "newChanceOfSuccess");
+    private final String lblCategories = PropertyLoader.loadProperty(contactPropertyPath, "labelCategories");
 
     private final String defaultDescription = PropertyLoader.loadProperty(createAccountPropertyPath, "defaultDescription");
     private final String lblAccountName = PropertyLoader.loadProperty(createAccountPropertyPath, "lblAccountName");
 
-    private final String lblResults = PropertyLoader.loadProperty(createAccountPropertyPath, "lblResults");
     private final String lblAccountManagers = PropertyLoader.loadProperty(createAccountPropertyPath, "lblAccountManagers");
     private final String lblAccountManagersDefault = PropertyLoader.loadProperty(createAccountPropertyPath, "lblAccountManagersDefault");
     private final String addAccountManagersTitle = PropertyLoader.loadProperty(createAccountPropertyPath, "addAccountManagersTitle");
@@ -146,7 +147,6 @@ public class CreateEditAccountTest extends BaseTest {
     private final String lblOther = PropertyLoader.loadProperty(createAccountPropertyPath, "lblOther");
     private final String lblInsertSignature = PropertyLoader.loadProperty(createAccountPropertyPath, "lblInsertSignature");
     private final String lblCampaigns = PropertyLoader.loadProperty(createAccountPropertyPath, "lblCampaigns");
-    private final String lblCategories = PropertyLoader.loadProperty(createAccountPropertyPath, "lblCategories");
     private final String categoriesTitle = PropertyLoader.loadProperty(createAccountPropertyPath, "categoriesTitle");
     private final String lblOtherInfo = PropertyLoader.loadProperty(createAccountPropertyPath, "lblOtherInfo");
     private final String dateToday = PropertyLoader.loadProperty(createAccountPropertyPath, "dateToday");

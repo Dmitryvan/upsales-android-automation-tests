@@ -27,7 +27,7 @@ public class AddSelectEntityPage extends BasePage{
 
     public static String getResultsLabelValue() {
         wait(labelResults);
-        return getText(labelResults).toUpperCase();
+        return getText(labelResults);
     }
 
     public static String getSelectButtonValue() {

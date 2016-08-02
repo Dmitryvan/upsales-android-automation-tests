@@ -126,7 +126,7 @@ public class CreateEditOpportunityTest extends BaseTest {
         softAssert.assertEquals(AddSelectEntityPage.getTitle(), titleSelectAccount);
         softAssert.assertEquals(AddSelectEntityPage.getSearchFieldValue(), labelSearch);
         softAssert.assertEquals(AddSelectEntityPage.getLabelCancel(), labelCancel);
-        softAssert.assertEquals(AddSelectEntityPage.getResultsLabelValue(), labelResults);
+        softAssert.assertEquals(AddSelectEntityPage.getResultsLabelValue(), labelResults.toUpperCase());
         AddSelectEntityPage.clickBack();
         softAssert.assertEquals(OpportunityManipulationsPage.getLabelContact(), labelContact);
         softAssert.assertEquals(OpportunityManipulationsPage.getContact(), defaultContact);
@@ -141,7 +141,7 @@ public class CreateEditOpportunityTest extends BaseTest {
         softAssert.assertEquals(OpportunityManipulationsPage.getLabelOrdersRow(), labelOrdersRow);
         softAssert.assertEquals(OpportunityManipulationsPage.getLabelNewOrderRow(), labelNewOrderRow);
         softAssert.assertEquals(OpportunityManipulationsPage.getLabelNotes(), labelNotes);
-        OpportunityManipulationsPage.scrollToLabel("Other info");
+        OpportunityManipulationsPage.scrollToLabel(labelOtherInfo);
         softAssert.assertEquals(OpportunityManipulationsPage.getLabelOtherInfoInOpp(), labelOtherInfo);
         OpportunityManipulationsPage.clickNewOrderRow();
         NewOrderRowPage.checkPageTitle(titleNewOrderRow);

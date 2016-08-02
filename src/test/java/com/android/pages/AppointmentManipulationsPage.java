@@ -41,11 +41,13 @@ public class AppointmentManipulationsPage extends BasePage {
 
 //    private static final List<WebElement> values = findElements(MobileBy.id("select"));
     private static final By appointmentType = MobileBy.xpath("//android.widget.RelativeLayout[2]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]");
-    private static final By account = MobileBy.xpath("//android.widget.RelativeLayout[6]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]");
-    private static final By contact = MobileBy.xpath("//android.widget.RelativeLayout[7]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]");
-    private static final By opportunity = MobileBy.xpath("//android.widget.RelativeLayout[8]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]");
-    private static final By user = MobileBy.xpath("//android.widget.RelativeLayout[9]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]");
-    private static final By campaign = MobileBy.xpath("//android.widget.RelativeLayout[10]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]");
+    private static final By account = MobileBy.xpath("//*[contains(@resource-id, 'account_field')]//*[contains(@resource-id, 'select')]");
+    private static final By contact = MobileBy.xpath("//*[contains(@resource-id, 'contact_field')]//*[contains(@resource-id, 'select')]");
+    private static final By opportunity = MobileBy.xpath("//*[contains(@resource-id, 'opportunity_field')]//*[contains(@resource-id, 'select')]");
+    private static final By user = MobileBy.xpath("//*[contains(@resource-id, 'user_field')]//*[contains(@resource-id, 'select')]");
+    private static final By campaign = MobileBy.xpath("//*[contains(@resource-id, 'company_field')]//*[contains(@resource-id, 'select')]");
+
+    private static final By labelNotes = MobileBy.xpath("//*[contains(@resource-id, 'note_field')]//*[contains(@resource-id, 'name')]");
 
     private static final By pickerWheelOpportunity = MobileBy.IosUIAutomation(".tableViews()[0].cells()[8].pickers()[0].wheels()[0]");
 
@@ -214,7 +216,7 @@ public class AppointmentManipulationsPage extends BasePage {
     }
 
     public static String getLabelNotes() {
-        By labelNotes = MobileBy.xpath("//android.widget.RelativeLayout[6]/android.widget.RelativeLayout[1]/android.widget.TextView[1]");
+//        By labelNotes = MobileBy.xpath("//android.widget.RelativeLayout[6]/android.widget.RelativeLayout[1]/android.widget.TextView[1]");
         return getText(labelNotes);
     }
 

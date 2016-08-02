@@ -34,6 +34,8 @@ public class OpportunityManipulationsPage extends BasePage {
     private static final By pickerWheelYear = MobileBy.IosUIAutomation(".tableViews()[0].cells()[3].pickers()[0].wheels()[2]");
     private static final By labelProduct = MobileBy.IosUIAutomation(".tableViews()[0].cells()[6].staticTexts()[0]");
 
+    private static final By labelNotes = MobileBy.xpath("//*[contains(@resource-id, 'note_field')]/android.widget.RelativeLayout[1]/android.widget.TextView[1]");
+
     public static void clickLabelProduct() {
         find(labelProduct).click();
     }
@@ -147,7 +149,7 @@ public class OpportunityManipulationsPage extends BasePage {
 
 
     public static String getLabelNotes() {
-        return findElements(labels).get(7).getText();
+        return getText(labelNotes);
     }
 
     public static String getAllStages() {

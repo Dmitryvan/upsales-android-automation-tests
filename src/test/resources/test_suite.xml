@@ -20,6 +20,7 @@
             <class name="com.android.tests.CreateEditAppointmentTest"/>
             <class name="com.android.tests.CreateEditContactTest"/>
             <!--<class name="com.android.tests.CreateEditOpportunityTest"/>-->
+            <!--<class name="com.android.tests.CreateEditOrderTest"/>-->
             <class name="com.android.tests.CreateEditAccountTest"/>
         </classes>
     </test>

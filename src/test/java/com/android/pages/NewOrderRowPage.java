@@ -27,14 +27,14 @@ public class NewOrderRowPage extends BasePage {
     private static final By quantity = MobileBy.xpath("//android.widget.RelativeLayout[@index='2']//android.widget.EditText[@index='0']");
     private static final By price = MobileBy.xpath("//android.widget.RelativeLayout[@index='3']//android.widget.EditText[@index='0']");
 
-    private static final By labelRowTotal = MobileBy.IosUIAutomation(".staticTexts()[0]");
+    private static final By labelRowTotal = MobileBy.id("view");
     private static final By buttonRemoveOrderRow = MobileBy.IosUIAutomation(
             ".tableViews()[0].cells().firstWithPredicate(\"staticTexts[1].label=='Remove order row'\")");
     private static final By popupRemove = MobileBy.IosUIAutomation(
             "target.frontMostApp().actionSheet().collectionViews()[0].cells()[0].buttons()[0]");
 
     public static String getLabelRowTotal() {
-        return getValue(labelRowTotal);
+        return getText(labelRowTotal);
     }
 
     public static String getLabelProduct() {
