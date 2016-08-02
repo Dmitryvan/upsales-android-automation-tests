@@ -20,36 +20,20 @@ public class AppointmentManipulationsPage extends BasePage {
     private static final By buttonOpportunity = MobileBy.id("opportunity_field");
     private static final By buttonUser = MobileBy.id("user_field");
 
-    private static final List<WebElement> labels = findElements(MobileBy.id("name"));
-    private static final WebElement labelAppointmentType = labels.get(0);
-    private static final WebElement labelStartDateTime = labels.get(1);
-    private static final WebElement labelEndDateTime = labels.get(2);
-    private static final WebElement labelLocation = labels.get(3);
-    private static final WebElement labelAccount = labels.get(4);
-    private static final WebElement labelContact = labels.get(5);
-    private static final WebElement labelOpportunity = labels.get(6);
-    private static final WebElement labelUser = labels.get(7);
-    private static final WebElement labelCampaign = labels.get(8);
+    private static final By labelAppointmentType = MobileBy.xpath("//*[contains(@resource-id, 'appointment_type_field')]//*[contains(@resource-id, 'name')]");
+    private static final By labelStartDateTime = MobileBy.xpath("//*[contains(@resource-id, 'starts_field')]//*[contains(@resource-id, 'name')]");
+    private static final By labelEndDateTime = MobileBy.xpath("//*[contains(@resource-id, 'ends_field')]//*[contains(@resource-id, 'name')]");
+    private static final By labelLocation = MobileBy.xpath("//*[contains(@resource-id, 'location')]//*[contains(@resource-id, 'name')]");
+    private static final By labelUser = MobileBy.xpath("//*[contains(@resource-id, 'user_field')]//*[contains(@resource-id, 'name')]");
 
-//    private static final List<WebElement> dates = findElements(MobileBy.id("date"));
-    private static final By startDate = MobileBy.xpath("//android.widget.RelativeLayout[3]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.TextView[1]");
-    private static final By endDate = MobileBy.xpath("//android.widget.RelativeLayout[4]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.TextView[1]");
+    private static final By startDate = MobileBy.xpath("//*[contains(@resource-id, 'starts_field')]//*[contains(@resource-id, 'date')]");
+    private static final By endDate = MobileBy.xpath("//*[contains(@resource-id, 'ends_field')]//*[contains(@resource-id, 'date')]");
 
-//    private static final List<WebElement> times = findElements(MobileBy.id("time"));
-    private static final By startTime = MobileBy.xpath("//android.widget.RelativeLayout[3]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.TextView[2]");
-    private static final By endTime = MobileBy.xpath("//android.widget.RelativeLayout[4]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.TextView[2]");
+    private static final By startTime = MobileBy.xpath("//*[contains(@resource-id, 'starts_field')]//*[contains(@resource-id, 'time')]");
+    private static final By endTime = MobileBy.xpath("//*[contains(@resource-id, 'ends_field')]//*[contains(@resource-id, 'time')]");
 
-//    private static final List<WebElement> values = findElements(MobileBy.id("select"));
-    private static final By appointmentType = MobileBy.xpath("//android.widget.RelativeLayout[2]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]");
-    private static final By account = MobileBy.xpath("//*[contains(@resource-id, 'account_field')]//*[contains(@resource-id, 'select')]");
-    private static final By contact = MobileBy.xpath("//*[contains(@resource-id, 'contact_field')]//*[contains(@resource-id, 'select')]");
-    private static final By opportunity = MobileBy.xpath("//*[contains(@resource-id, 'opportunity_field')]//*[contains(@resource-id, 'select')]");
+    private static final By appointmentType = MobileBy.xpath("//*[contains(@resource-id, 'appointment_type_field')]//*[contains(@resource-id, 'select')]");
     private static final By user = MobileBy.xpath("//*[contains(@resource-id, 'user_field')]//*[contains(@resource-id, 'select')]");
-    private static final By campaign = MobileBy.xpath("//*[contains(@resource-id, 'company_field')]//*[contains(@resource-id, 'select')]");
-
-    private static final By labelNotes = MobileBy.xpath("//*[contains(@resource-id, 'note_field')]//*[contains(@resource-id, 'name')]");
-
-    private static final By pickerWheelOpportunity = MobileBy.IosUIAutomation(".tableViews()[0].cells()[8].pickers()[0].wheels()[0]");
 
     private static final By buttonInsertSignature = MobileBy.IosUIAutomation(".tableViews()[0].cells()[10].staticTexts()[1]");
     private static final By startDateForAcc = MobileBy.IosUIAutomation(".tableViews()[0].cells()[2].staticTexts()[1]");
@@ -126,11 +110,6 @@ public class AppointmentManipulationsPage extends BasePage {
         find(buttonOpportunity).click();
     }
 
-    public static void spinOpportunityWheelTo(String value) {
-//        spinWheel(value, pickerWheelOpportunity, cellIndexOpportunity);
-        find(pickerWheelOpportunity).sendKeys(value);
-    }
-
     public static void clickUser() {
         find(buttonUser).click();
     }
@@ -160,11 +139,11 @@ public class AppointmentManipulationsPage extends BasePage {
     }
 
     public static String getLabelAppointmentType() {
-        return labelAppointmentType.getText();
+        return getText(labelAppointmentType);
     }
 
     public static String getLabelStartDateTime() {
-        return labelStartDateTime.getText();
+        return getText(labelStartDateTime);
     }
 
     public static String getAppointmentType() {
@@ -172,31 +151,15 @@ public class AppointmentManipulationsPage extends BasePage {
     }
 
     public static String getLabelEndDateTime() {
-        return labelEndDateTime.getText();
+        return getText(labelEndDateTime);
     }
 
     public static String getLabelLocation() {
-        return labelLocation.getText();
-    }
-
-    public static String getAccount() {
-        return find(account).getText();
-    }
-
-    public static String getContact() {
-        return find(contact).getText();
-    }
-
-    public static String getOpportunity() {
-        return find(opportunity).getText();
+        return getText(labelLocation);
     }
 
     public static String getUser() {
         return find(user).getText();
-    }
-
-    public static String getCampaign() {
-        return find(campaign).getText();
     }
 
     public static String getMotesalternativ() {
@@ -207,29 +170,8 @@ public class AppointmentManipulationsPage extends BasePage {
         return getValue(motetCustomfalt);
     }
 
-    public static String getLabelAccount() {
-        return labelAccount.getText();
-    }
-
-    public static String getLabelContact() {
-        return labelContact.getText();
-    }
-
-    public static String getLabelNotes() {
-//        By labelNotes = MobileBy.xpath("//android.widget.RelativeLayout[6]/android.widget.RelativeLayout[1]/android.widget.TextView[1]");
-        return getText(labelNotes);
-    }
-
-    public static String getLabelCampaign() {
-        return labelCampaign.getText();
-    }
-
     public static String getLabelUser() {
-        return labelUser.getText();
-    }
-
-    public static String getLabelOpportunity() {
-        return labelOpportunity.getText();
+        return getText(labelUser);
     }
 
     public static void spinWheelToAppointmentType(String appointmentType) {

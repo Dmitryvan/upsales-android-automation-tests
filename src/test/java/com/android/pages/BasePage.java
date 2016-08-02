@@ -19,6 +19,7 @@ import static org.junit.Assert.assertEquals;
 
 public class BasePage extends Helpers {
 
+    //headers
     private static final By buttonLeftMenu = MobileBy.xpath("//android.widget.ImageButton[1]");
     protected static final By buttonCancel = MobileBy.id("cancel");
     protected static final By buttonSave = MobileBy.id("save");
@@ -27,13 +28,31 @@ public class BasePage extends Helpers {
     private static final By buttonBack = MobileBy.id("back");
 
     private static final By title = MobileBy.id("title");
-    private static final By labelOtherInfo = MobileBy.xpath("//*[contains(@resource-id, 'title') and @index='0']");
+
+    //cells
+    private static final By buttonAccount = MobileBy.id("account_field");
+    private static final By buttonCampaign = MobileBy.id("company_field");
+    private static final By buttonContact = MobileBy.id("contact_field");
+
+    //fields
     private static final By fieldNotes = MobileBy.xpath("//*[contains(@resource-id, 'notes') and @index='2']");
     private static final By fieldDescription = MobileBy.id("edit");
 
-    private static final By buttonAccount = MobileBy.id("account_field");
-    private static final By buttonCampaign = MobileBy.id("company_field");
+    //labels
+    private static final By labelOtherInfo = MobileBy.xpath("//*[contains(@resource-id, 'list_custom_field')]//*[contains(@resource-id, 'title')]");
+    private static final By labelAccount = MobileBy.xpath("//*[contains(@resource-id, 'account_field')]//*[contains(@resource-id, 'name')]");
+    private static final By labelContact = MobileBy.xpath("//*[contains(@resource-id, 'contact_field')]//*[contains(@resource-id, 'name')]");
+    private static final By labelOpportunity = MobileBy.xpath("//*[contains(@resource-id, 'opportunity_field')]//*[contains(@resource-id, 'name')]");
+    private static final By labelCampaign = MobileBy.xpath("//*[contains(@resource-id, 'company_field')]//*[contains(@resource-id, 'name')]");
+    private static final By labelNotes = MobileBy.xpath("//*[contains(@resource-id, 'note_field')]//*[contains(@resource-id, 'name')]");
 
+    //values
+    private static final By account = MobileBy.xpath("//*[contains(@resource-id, 'account_field')]//*[contains(@resource-id, 'select')]");
+    private static final By contact = MobileBy.xpath("//*[contains(@resource-id, 'contact_field')]//*[contains(@resource-id, 'select')]");
+    private static final By opportunity = MobileBy.xpath("//*[contains(@resource-id, 'opportunity_field')]//*[contains(@resource-id, 'select')]");
+    private static final By campaign = MobileBy.xpath("//*[contains(@resource-id, 'company_field')]//*[contains(@resource-id, 'select')]");
+
+    //work with headers
     public static String getTitle() {
         wait(title);
         return getName(title);
@@ -83,18 +102,11 @@ public class BasePage extends Helpers {
         return getText(buttonCancel);
     }
 
-    public static String getValue(By by) {
-        return find(by).getAttribute("value");
+    public static void clickTools() {
+        find(buttonTools).click();
     }
 
-    public static String getLabel(By by) {
-        return find(by).getAttribute("label");
-    }
-
-    public static String getName(By by) {
-        return find(by).getAttribute("name");
-    }
-
+    //common methods
     protected static void sendValues(String value, By locator) {
         WebElement element = find(locator);
         element.clear();
@@ -109,10 +121,20 @@ public class BasePage extends Helpers {
         return find(MobileBy.xpath(start + index + end)).getText();
     }
 
-    public static void clickTools() {
-        find(buttonTools).click();
+    public static void selectValueFromPopUp(String value) {
+        waitByThread(500);
+        find(MobileBy.xpath(
+                "//*[@class='android.widget.CheckedTextView' and @text='" +
+                        value + "']")).click();
     }
 
+    public static void closePopUp() {
+        try {
+            ((AndroidDriver) getDriver()).tap(1, 100, 100, 1);
+        } catch (WebDriverException e) {}
+    }
+
+    //swipes
     public static void swipeFromTopToBottom() {
         Dimension size = getDriver().manage().window().getSize();
         int starty = (int) (size.height * 0.80);
@@ -139,19 +161,13 @@ public class BasePage extends Helpers {
         element.swipe(SwipeElementDirection.RIGHT, 70, 70, 500);
     }
 
-    public static void selectValueFromPopUp(String value) {
-        waitByThread(500);
-        find(MobileBy.xpath(
-                "//*[@class='android.widget.CheckedTextView' and @text='" +
-                        value + "']")).click();
+    //work with fields
+    public static void typeIntoNotes(String note) {
+        find(fieldNotes).clear();
+        find(fieldNotes).sendKeys(note);
     }
 
-    public static void closePopUp() {
-        try {
-            ((AndroidDriver) getDriver()).tap(1, 100, 100, 1);
-        } catch (WebDriverException e) {}
-    }
-
+    // work with cells
     public static void clickAccount() {
         find(buttonAccount).click();
     }
@@ -160,13 +176,14 @@ public class BasePage extends Helpers {
         find(buttonCampaign).click();
     }
 
-    public static String getLabelOtherInfo() {
-        return getText(labelOtherInfo);
+    public static void clickContact() {
+        waitByThread(1000);
+        find(buttonContact).click();
     }
 
-    public static void typeIntoNotes(String note) {
-        find(fieldNotes).clear();
-        find(fieldNotes).sendKeys(note);
+    //work with labels
+    public static String getLabelOtherInfo() {
+        return getText(labelOtherInfo);
     }
 
     public static String getNotes() {
@@ -184,4 +201,55 @@ public class BasePage extends Helpers {
     public static String getLabelDescription() {
         return getText(fieldDescription);
     }
+
+    public static String getLabelCampaign() {
+        return getText(labelCampaign);
+    }
+
+    public static String getLabelNotes() {
+        return getText(labelNotes);
+    }
+
+    public static String getLabelAccount() {
+        return getText(labelAccount);
+    }
+
+    public static String getLabelOpportunity() {
+        return getText(labelOpportunity);
+    }
+
+    public static String getLabelContact() {
+        return getText(labelContact);
+    }
+
+    //work with values
+    public static String getAccount() {
+        return getText(account);
+    }
+
+    public static String getContact() {
+        return getText(contact);
+    }
+
+    public static String getOpportunity() {
+        return getText(opportunity);
+    }
+
+    public static String getCampaign() {
+        return getText(campaign);
+    }
+
+    //need to remove
+    public static String getValue(By by) {
+        return find(by).getAttribute("value");
+    }
+
+    public static String getLabel(By by) {
+        return find(by).getAttribute("label");
+    }
+
+    public static String getName(By by) {
+        return find(by).getAttribute("name");
+    }
+
 }

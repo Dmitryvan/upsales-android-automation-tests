@@ -93,7 +93,8 @@ public class CreateEditAppointmentTest extends BaseTest {
     private final String newEndMonth = PropertyLoader.loadProperty(createAppointmentPropertyPath, "newEndMonth");
     private final String newEndDay = PropertyLoader.loadProperty(createAppointmentPropertyPath, "newEndDay");
     private final String newEndYear = PropertyLoader.loadProperty(createAppointmentPropertyPath, "newEndYear");
-
+    private final String labelStarts = PropertyLoader.loadProperty(createAppointmentPropertyPath, "labelStarts");
+    private final String labelEnds = PropertyLoader.loadProperty(createAppointmentPropertyPath, "labelEnds");
 
     @BeforeMethod
     public void setUp() throws Exception{
@@ -122,6 +123,8 @@ public class CreateEditAppointmentTest extends BaseTest {
         AppointmentManipulationsPage.closePopUp();
         softAssert.assertEquals(AppointmentManipulationsPage.getDefaultAppStartDate(), AppointmentManipulationsPage.getStartDate() + " " + AppointmentManipulationsPage.getStartTime());
         softAssert.assertEquals(AppointmentManipulationsPage.getDefaultAppEndDate(), AppointmentManipulationsPage.getEndDate() + " " + AppointmentManipulationsPage.getEndTime());
+        softAssert.assertEquals(AppointmentManipulationsPage.getLabelStartDateTime(), labelStarts);
+        softAssert.assertEquals(AppointmentManipulationsPage.getLabelEndDateTime(), labelEnds);
         softAssert.assertEquals(labelAccount, AppointmentManipulationsPage.getLabelAccount());
         softAssert.assertEquals(defaultAccount, AppointmentManipulationsPage.getAccount());
         AppointmentManipulationsPage.clickAccount();

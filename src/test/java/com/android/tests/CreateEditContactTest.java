@@ -144,8 +144,8 @@ public class CreateEditContactTest extends BaseTest {
         softAssert.assertEquals(ContactManipulationPage.getLabelCancel(), labelCancel);
         softAssert.assertEquals(ContactManipulationPage.getLabelDescription(), defaultLabelContactName);
         softAssert.assertEquals(ContactManipulationPage.getDefaultLabelTitle(), defaultLabelTitle);
-        softAssert.assertEquals(ContactManipulationPage.getLabelWorksAt(), labelWorksAt);
-        softAssert.assertEquals(ContactManipulationPage.getWorksAt(), defaultWorksAt);
+        softAssert.assertEquals(ContactManipulationPage.getLabelAccount(), labelWorksAt);
+        softAssert.assertEquals(ContactManipulationPage.getAccount(), defaultWorksAt);
         ContactManipulationPage.clickAccount();
         softAssert.assertEquals(AddSelectEntityPage.getTitle(), titleSelectAccount);
         softAssert.assertEquals(AddSelectEntityPage.getSearchFieldValue(), labelSearch);
@@ -153,8 +153,8 @@ public class CreateEditContactTest extends BaseTest {
         softAssert.assertEquals(AddSelectEntityPage.getResultsLabelValue(), labelResults);
         AddSelectEntityPage.clickBack();
         softAssert.assertEquals(ContactManipulationPage.getLabelContactInformation(), labelContactInformation.toUpperCase());
-        softAssert.assertEquals(ContactManipulationPage.getLabelCampaigns(), labelCampaigns);
-        softAssert.assertEquals(ContactManipulationPage.getCampaigns(), defaultCampaigns);
+        softAssert.assertEquals(ContactManipulationPage.getLabelCampaign(), labelCampaigns);
+        softAssert.assertEquals(ContactManipulationPage.getCampaign(), defaultCampaigns);
         ContactManipulationPage.clickCampaign();
         softAssert.assertEquals(AddSelectEntityPage.getTitle(), titleAddCampaign);
         softAssert.assertEquals(AddSelectEntityPage.getSearchFieldValue(), labelSearch);
@@ -412,10 +412,10 @@ public class CreateEditContactTest extends BaseTest {
         ContactManipulationPage.hideKeyboard();
         softAssert.assertEquals(defaultActivityType, ActivityManipulationsPage.getActivityType());
         softAssert.assertEquals(ActivityManipulationsPage.getCurrentDate(), ActivityManipulationsPage.getDueDate());
-        softAssert.assertEquals(account, ActivityManipulationsPage.getAccount());
-        softAssert.assertEquals(contactName, ActivityManipulationsPage.getContact());
+        softAssert.assertEquals(account, BasePage.getAccount());
+        softAssert.assertEquals(contactName, BasePage.getContact());
         softAssert.assertEquals(defaultUser, ActivityManipulationsPage.getUser());
-        softAssert.assertEquals(ActivityManipulationsPage.getOpportunity(), labelSelectOpportunity);
+        softAssert.assertEquals(BasePage.getOpportunity(), labelSelectOpportunity);
 //        ActivityManipulationsPage.clickDoneOnKeyboard();
 //        ActivityManipulationsPage.clickExpenses();
 //        ActivityManipulationsPage.enterValueFromKeyboard(expenses);

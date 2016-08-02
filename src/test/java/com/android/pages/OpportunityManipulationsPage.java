@@ -15,7 +15,6 @@ public class OpportunityManipulationsPage extends BasePage {
     private static final String namePrefix = "opp_";
 
     private static final By probability = MobileBy.xpath("//android.widget.RelativeLayout[@index='5']//android.widget.EditText[@index='0']");
-    private static final By labelOtherInfo = MobileBy.xpath("//android.widget.RelativeLayout[7]/android.widget.LinearLayout[1]/android.widget.TextView[1]");
 
     private static final By labels = MobileBy.id("name");
     private static final By values = MobileBy.id("select");
@@ -24,32 +23,13 @@ public class OpportunityManipulationsPage extends BasePage {
 
     private static final By buttonUser = MobileBy.id("sales_representative_field");
     private static final By buttonStage = MobileBy.id("stage_field");
-    private static final By buttonProbability = MobileBy.id("probability_field");
     private static final By buttonCloseDate = MobileBy.id("date_field");
-    private static final By buttonContact = MobileBy.id("contact_field");
     private static final By buttonNewOrderRow = MobileBy.id("new_oredr");
 
-    private static final By pickerWheelMonth = MobileBy.IosUIAutomation(".tableViews()[0].cells()[3].pickers()[0].wheels()[0]");
-    private static final By pickerWheelDay = MobileBy.IosUIAutomation(".tableViews()[0].cells()[3].pickers()[0].wheels()[1]");
-    private static final By pickerWheelYear = MobileBy.IosUIAutomation(".tableViews()[0].cells()[3].pickers()[0].wheels()[2]");
     private static final By labelProduct = MobileBy.IosUIAutomation(".tableViews()[0].cells()[6].staticTexts()[0]");
-
-    private static final By labelNotes = MobileBy.xpath("//*[contains(@resource-id, 'note_field')]/android.widget.RelativeLayout[1]/android.widget.TextView[1]");
 
     public static void clickLabelProduct() {
         find(labelProduct).click();
-    }
-
-    public static void selectMonth(String month) {
-        find(pickerWheelMonth).sendKeys(month);
-    }
-
-    public static void selectDay(String day) {
-        find(pickerWheelDay).sendKeys(day);
-    }
-
-    public static void selectYear(String year) {
-        find(pickerWheelYear).sendKeys(year);
     }
 
     public static String getLabelNewOrderRow() {
@@ -106,50 +86,12 @@ public class OpportunityManipulationsPage extends BasePage {
         return findElements(values).get(2).getText();
     }
 
-    public static String getLabelAccount() {
-        return findElements(labels).get(4).getText();
-    }
-
-    public static String getAccount() {
-        return findElements(values).get(3).getText();
-    }
-
-    public static void clickContact() {
-        find(buttonContact).click();
-    }
-
-    public static String getLabelContact() {
-        return findElements(labels).get(5).getText();
-    }
-
-    public static String getContact() {
-        return findElements(values).get(4).getText();
-    }
-
-    public static String getLabelCampaign() {
-        return findElements(labels).get(6).getText();
-    }
-
-    public static String getCampaign() {
-        return findElements(values).get(5).getText();
-    }
-
     public static String getLabelOrdersRow() {
         return findElements(titles).get(1).getText();
     }
 
     public static void clickNewOrderRow() {
         find(buttonNewOrderRow).click();
-    }
-
-//    public static String getLabelOtherInfo() {
-//        scrollToLabel("Other");
-//        return findElements(titles).get(2).getText();
-//    }
-
-
-    public static String getLabelNotes() {
-        return getText(labelNotes);
     }
 
     public static String getAllStages() {
@@ -163,30 +105,12 @@ public class OpportunityManipulationsPage extends BasePage {
         return string;
     }
 
-//    public static void spinWheelToTheStage(String value) {
-////        find(pickerWheelStages).sendKeys(value);
-//        spinWheel(value, pickerWheelStages, cellIndexStage);
-//    }
-//
-//    public static void selectUser(String user) {
-////        find(pickerWheelUsers).sendKeys(user);
-//        spinWheel(user, pickerWheelUsers, cellIndexUsers);
-//    }
-//
-//    public static void spinWheelToTheContact(String contact) {
-//        spinWheel(contact, pickerWheelContacts, cellIndexContact);
-//    }
-
     public static void setOpportunityName() {
         opportunityName = generateName(namePrefix);
     }
 
     public static String getOpportunityName() {
         return opportunityName;
-    }
-
-    public static String getLabelOtherInfoInOpp() {
-        return getText(labelOtherInfo);
     }
 
     public static void enterProbability(String value) {

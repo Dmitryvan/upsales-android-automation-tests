@@ -17,8 +17,8 @@ public class ContactManipulationPage extends BasePage {
     private static final By fieldMobile = MobileBy.id("mobile");
     private static final By fieldEmail = MobileBy.id("email");
 
-    protected static final By labels = MobileBy.id("name");
-    protected static final By values = MobileBy.id("select");
+    private static final By labelCategories = MobileBy.xpath("//*[contains(@resource-id, 'category_field')]//*[contains(@resource-id, 'name')]");
+    private static final By categories = MobileBy.xpath("//*[contains(@resource-id, 'category_field')]//*[contains(@resource-id, 'select')]");
 
     public static final By extraID = MobileBy.IosUIAutomation(".tableViews()[0].cells()[19]");
     public static final By fieldExtraID = MobileBy.IosUIAutomation(".tableViews()[0].cells()[19].textFields()[0]");
@@ -58,14 +58,6 @@ public class ContactManipulationPage extends BasePage {
         hideKeyboard();
     }
 
-    public static String getLabelWorksAt() {
-        return findElements(labels).get(0).getText();
-    }
-
-    public static String getWorksAt() {
-        return findElements(values).get(0).getText();
-    }
-
     public static String getLabelContactInformation() {
         return getText(labelContactInformation);
     }
@@ -87,24 +79,12 @@ public class ContactManipulationPage extends BasePage {
         hideKeyboard();
     }
 
-    public static String getLabelCampaigns() {
-        return findElements(labels).get(1).getText();
-    }
-
-    public static String getCampaigns() {
-        return findElements(values).get(1).getText();
-    }
-
     public static String getLabelCategories() {
-        return findElements(labels).get(2).getText();
+        return getText(labelCategories);
     }
 
     public static String getCategories() {
-        return findElements(values).get(2).getText();
-    }
-
-    public static String getLabelNotes() {
-        return findElements(labels).get(3).getText();
+        return getText(categories);
     }
 
     public static void setContactName() {
