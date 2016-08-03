@@ -480,7 +480,9 @@ public class Helpers {
     }
 
     public static void scrollToLabel(String text) {
-        ((AndroidDriver)getDriver()).scrollTo(text);
+        ((AndroidDriver)getDriver()).findElementByAndroidUIAutomator(
+                "new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().textContains(\""+text+"\").instance(0))");
+//        ((AndroidDriver)getDriver()).scrollTo(text);
     }
 
     protected static void clearAndType(String accountName, By locator) {
