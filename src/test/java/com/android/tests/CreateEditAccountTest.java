@@ -1059,18 +1059,18 @@ public class CreateEditAccountTest extends BaseTest {
 //        ContactManipulationPage.setContactName();
 //        contactName = ContactManipulationPage.getContactName();
 //        ContactManipulationPage.enterContactName(contactName);
-//        assertEquals(ContactManipulationPage.getWorksAt(), accountName);
+//        assertEquals(ContactManipulationPage.getAccount(), accountName);
 //        ContactManipulationPage.enterTitle(contactTitle);
-//        ContactManipulationPage.clickWorksAt();
+//        ContactManipulationPage.clickAccount();
 //        AddSelectEntityPage.select(parentAccount);
-//        ContactManipulationPage.clickCampaigns();
+//        ContactManipulationPage.clickCampaign();
 //        AddSelectEntityPage.select(campaign);
 //        AddSelectEntityPage.clickSelect();
 //        ContactManipulationPage.clickCategories();
 //        AddSelectEntityPage.select(contactCategory);
 //        AddSelectEntityPage.clickSelect();
 //        ContactManipulationPage.typeIntoNotes(notes);
-//        ContactManipulationPage.clickDoneOnKeyboard();
+//        ContactManipulationPage.hideKeyboard();
 //        ContactManipulationPage.clickChanceOfSuccess();
 //        ContactManipulationPage.enterValueFromKeyboard(chanceOfSuccess);
 //        ContactManipulationPage.clickExtraID();
@@ -1084,8 +1084,7 @@ public class CreateEditAccountTest extends BaseTest {
 //        contactName = ContactManipulationPage.getContactName();
 //        ContactManipulationPage.enterContactName(contactName);
 //        ContactManipulationPage.enterTitle(contactNewTitle);
-//        ContactManipulationPage.clickDoneOnKeyboard();
-//        ContactManipulationPage.clickCampaigns();
+//        ContactManipulationPage.clickCampaign();
 //        AddSelectEntityPage.select(campaign);
 //        AddSelectEntityPage.select(newCampaign);
 //        AddSelectEntityPage.clickSelect();
@@ -1094,14 +1093,13 @@ public class CreateEditAccountTest extends BaseTest {
 //        AddSelectEntityPage.select(contactNewCategory);
 //        AddSelectEntityPage.clickSelect();
 //        ContactManipulationPage.typeIntoNotes(newNotes);
-//        ContactManipulationPage.clickDoneOnKeyboard();
-//        ContactManipulationPage.clickExtraID();
-//        ContactManipulationPage.clickExtraID();
-//        Helpers.clearCustomField();
-//        ContactManipulationPage.enterValueFromKeyboard(newExtraID);
-//        ContactManipulationPage.clickChanceOfSuccess();
-//        Helpers.clearCustomField();
-//        ContactManipulationPage.enterValueFromKeyboard(newChanceOfSuccess);
+////        ContactManipulationPage.clickExtraID();
+////        ContactManipulationPage.clickExtraID();
+////        Helpers.clearCustomField();
+////        ContactManipulationPage.enterValueFromKeyboard(newExtraID);
+////        ContactManipulationPage.clickChanceOfSuccess();
+////        Helpers.clearCustomField();
+////        ContactManipulationPage.enterValueFromKeyboard(newChanceOfSuccess);
 //        ContactManipulationPage.clickSave();
 //        ContactPage.clickAddContactInfo();
 //        ContactManipulationPage.enterPhone(contactPhone);
@@ -1125,7 +1123,7 @@ public class CreateEditAccountTest extends BaseTest {
 //        softAssert.assertEquals(ContactPage.getChanceOfSuccessWithAllData(), newChanceOfSuccess + " %");
 //        softAssert.assertAll();
 //    }
-//
+
 //    @Test(priority = 18) // Case 54
 //    public void softCreateAccountCreateContactEditContactCancel() {
 //        SoftAssertExtended softAssert = new SoftAssertExtended();
