@@ -174,7 +174,7 @@ public class CreateEditContactTest extends BaseTest {
         softAssert.assertEquals(AddSelectEntityPage.getLabelNone(), labelNone);
         AddSelectEntityPage.clickBack();
         softAssert.assertEquals(ContactManipulationPage.getLabelNotes(), labelNotes);
-        ContactManipulationPage.scrollToLabel("Other info");
+        ContactManipulationPage.scrollToLabel(labelOtherInfo);
         softAssert.assertEquals(ContactManipulationPage.getLabelOtherInfo(), labelOtherInfo);
         softAssert.assertAll();
     }
@@ -778,32 +778,37 @@ public class CreateEditContactTest extends BaseTest {
         softAssert.assertAll();
     }
 
-//    @Test(priority = 16)
-//    public void softCreateContactCallAndSendMessage() {
-//        SoftAssertExtended softAssert = new SoftAssertExtended();
-//        ContactManipulationPage.enterContactName(contactName);
-//        ContactManipulationPage.clickAccount();
-//        AddSelectEntityPage.select(account);
-////        ContactManipulationPage.clickChanceOfSuccess();
-////        ContactManipulationPage.enterValueFromKeyboard(chanceOfSuccess);
-////        ContactManipulationPage.clickExtraID();
-////        ContactManipulationPage.enterValueFromKeyboard(extraID);
-//        ContactManipulationPage.clickSave();
-//        ContactManipulationPage.clickNoThanks();
-//        ContactPage.clickAddContactInfo();
-//        ContactManipulationPage.enterPhone(phone);
-//        ContactManipulationPage.enterMobile(mobile);
-//        ContactManipulationPage.enterEmail(email);
-//        ContactManipulationPage.clickSave();
-//        ContactPage.clickPhone();
-//        ContactPage.clickMobile();
-//        ContactPage.clickBottomPopoverCall();
-//        ContactPage.clickMobile();
-////        ContactPage.clickBottomPopoverMessage();
-////        ContactPage.clickMobile();
-//        ContactPage.clickBottomPopoverCancel();
-//        softAssert.assertAll();
-//    }
+    @Test(priority = 16)
+    public void softCreateContactCallAndSendMessage() throws InterruptedException {
+        SoftAssertExtended softAssert = new SoftAssertExtended();
+        ContactManipulationPage.enterContactName(contactName);
+        ContactManipulationPage.clickAccount();
+        AddSelectEntityPage.select(account);
+//        ContactManipulationPage.clickChanceOfSuccess();
+//        ContactManipulationPage.enterValueFromKeyboard(chanceOfSuccess);
+//        ContactManipulationPage.clickExtraID();
+//        ContactManipulationPage.enterValueFromKeyboard(extraID);
+        ContactManipulationPage.clickSave();
+        ContactManipulationPage.clickNoThanks();
+        ContactPage.clickAddContactInfo();
+        ContactManipulationPage.enterPhone(phone);
+        ContactManipulationPage.enterMobile(mobile);
+        ContactManipulationPage.enterEmail(email);
+        ContactManipulationPage.clickSave();
+        ContactPage.clickPhone();
+        ContactPage.clickBackOnDevice();
+        ContactPage.clickBackOnDevice();
+        ContactPage.clickBackOnDevice();
+        Thread.sleep(1000);
+        ContactPage.clickMobile();
+        ContactPage.clickBackOnDevice();
+        ContactPage.clickBackOnDevice();
+        ContactPage.clickBackOnDevice();
+        Thread.sleep(1000);
+        ContactPage.clickEmail();
+        softAssert.assertEquals(ContactPage.getAlertTitle(), "Select conversation");
+        softAssert.assertAll();
+    }
 
     @AfterMethod
     public void tearDown() {

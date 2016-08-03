@@ -94,13 +94,16 @@ public class ContactPage extends BasePage {
 
     public static void clickPhone() {
         find(phone).click();
+        find(phone).click();
     }
 
     public static void clickMobile() {
         find(mobile).click();
+        find(mobile).click();
     }
 
     public static void clickEmail() {
+        find(email).click();
         find(email).click();
     }
 
@@ -175,5 +178,15 @@ public class ContactPage extends BasePage {
         int endy = (int) (size.height * 0.20);
         int startx = size.width / 2;
         BaseTest.driver.swipe(startx, endy, startx, starty, 500);
+    }
+
+    public static String getAlertTitle() {
+        waitByThread(1000);
+        return find(MobileBy.id("alertTitle")).getText();
+    }
+
+    public static void clickBackOnDevice() {
+        waitByThread(1000);
+        getDriver().navigate().back();
     }
 }
