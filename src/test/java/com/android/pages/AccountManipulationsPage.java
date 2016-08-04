@@ -10,7 +10,6 @@ public class AccountManipulationsPage extends BasePage {
     private static String accountName;
     private static final String namePrefix = "acc_";
 
-    private static final By buttonBack = MobileBy.IosUIAutomation(".navigationBars()[0].buttons()[0]");
     private static final By buttonNext = MobileBy.IosUIAutomation(".navigationBars()[0].buttons()[2]");
     private static final By fieldSearchAccountName = MobileBy.IosUIAutomation(".textFields()[0]");
 
@@ -30,10 +29,7 @@ public class AccountManipulationsPage extends BasePage {
     private static final By fieldCity = MobileBy.id("city");
     private static final By fieldCountry = MobileBy.id("country");
     private static final By wheelCountry = MobileBy.IosUIAutomation(".tableViews()[0].cells()[8].pickers()[0].wheels()[0]");
-    private static final By fieldNotes = MobileBy.id("notes");
     private static final By buttonInsertSignature = MobileBy.id("insert");
-    private static final By buttonCampaigns = MobileBy.id("company_field");
-    private static final By buttonCategories = MobileBy.id("category_field");
 
     private static final By labelAccountName = MobileBy.xpath("//android.widget.RelativeLayout[2]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.TextView[1]");
     private static final By labelAccountManagers = MobileBy.xpath("//android.widget.RelativeLayout[3]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.TextView[1]");
@@ -46,14 +42,6 @@ public class AccountManipulationsPage extends BasePage {
     private static final By labelZipcode = MobileBy.xpath("//*[contains(@resource-id, 'zipcode')]/../../TextInputLayout[2]");
     private static final By labelCity = MobileBy.xpath("//*[contains(@resource-id, 'city')]/../../TextInputLayout[3]");
     private static final By labelCountry = MobileBy.xpath("//*[contains(@resource-id, 'country')]/../../TextInputLayout[4]");
-    private static final By labelNotesField = MobileBy.xpath("//*[contains(@resource-id, 'note_field')]/android.widget.RelativeLayout[1]/android.widget.TextView[1]");
-    private static final By labelCampaigns = MobileBy.xpath("//*[contains(@resource-id, 'company_field')]//android.widget.LinearLayout[1]/android.widget.TextView[1]");
-    private static final By valueCampaigns = MobileBy.xpath("//*[contains(@resource-id, 'company_field')]//android.widget.RelativeLayout[1]/android.widget.TextView[1]");
-    private static final By valueEditCampaigns = MobileBy.IosUIAutomation(".tableViews()[0].cells()[10].staticTexts()[0]");
-    private static final By labelCategories = MobileBy.xpath("//*[contains(@resource-id, 'category_field')]//android.widget.LinearLayout[1]/android.widget.TextView[1]");
-    private static final By valueCategories = MobileBy.xpath("//*[contains(@resource-id, 'category_field')]//android.widget.RelativeLayout[1]/android.widget.TextView[1]");
-    private static final By valueEditCategories = MobileBy.IosUIAutomation(".tableViews()[0].cells()[11].staticTexts()[0]");
-    private static final By labelOtherInfo = MobileBy.xpath("//*[contains(@resource-id, 'list_custom_field')]//*[contains(@resource-id, 'title')]");
 
     private static final By popupLabelAccountName = MobileBy.IosUIAutomation(".staticTexts()[1]");
     private static final By popupLabelSuccessCreated = MobileBy.IosUIAutomation(".staticTexts()[2]");
@@ -102,10 +90,6 @@ public class AccountManipulationsPage extends BasePage {
 
     public static void enterCountry (String country) {
         clearAndType(country, fieldCountry);
-    }
-
-    public static void enterNotes (String notes) {
-        clearAndType(notes, fieldNotes);
     }
 
     public static String getAccountNameLabelValue() {
@@ -204,44 +188,8 @@ public class AccountManipulationsPage extends BasePage {
         return getText(fieldCountry);
     }
 
-    public static String getNotesFieldLabelValue() {
-        return getText(labelNotesField);
-    }
-
-    public static String getNotesFieldValue() {
-        return getText(fieldNotes);
-    }
-
     public static String getInsertSignatureValue() {
         return getText(buttonInsertSignature);
-    }
-
-    public static String getCampaignsValue() {
-        return getText(valueCampaigns);
-    }
-
-    public static String getCampaignsLabelValue() {
-        return getText(labelCampaigns);
-    }
-
-    public static String getEditCampaignsValue() {
-        return getText(valueEditCampaigns);
-    }
-
-    public static String getCategoriesValue() {
-        return getText(valueCategories);
-    }
-
-    public static String getEditCategoriesValue() {
-        return getText(valueEditCategories);
-    }
-
-    public static String getCategoriesLabelValue() {
-        return getText(labelCategories);
-    }
-
-    public static String getOtherInfoLabelValue() {
-        return getText(labelOtherInfo);
     }
 
     public static String getPopupAccountNameValue() {
@@ -275,11 +223,6 @@ public class AccountManipulationsPage extends BasePage {
     public static String getNoThanxValue() {
         return getName(popupButtonNoThanx);
     }
-
-//    public static void clickBack() {
-//        wait(buttonBack);
-//        find(buttonBack).click();
-//    }
 
     public static void clickNext() {
         find(buttonNext).click();
@@ -316,14 +259,6 @@ public class AccountManipulationsPage extends BasePage {
 
     public static void clickInsertSignature() {
         find(buttonInsertSignature).click();
-    }
-
-    public static void clickCampaigns() {
-        find(buttonCampaigns).click();
-    }
-
-    public static void clickCategories() {
-        find(buttonCategories).click();
     }
 
     public static void clickPopUpActivity() {

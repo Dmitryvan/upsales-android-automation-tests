@@ -33,6 +33,7 @@ public class BasePage extends Helpers {
     private static final By buttonAccount = MobileBy.id("account_field");
     private static final By buttonCampaign = MobileBy.id("company_field");
     private static final By buttonContact = MobileBy.id("contact_field");
+    private static final By buttonCategories = MobileBy.id("category_field");
 
     //fields
     private static final By fieldNotes = MobileBy.xpath("//*[contains(@resource-id, 'notes') and @index='2']");
@@ -45,12 +46,14 @@ public class BasePage extends Helpers {
     private static final By labelOpportunity = MobileBy.xpath("//*[contains(@resource-id, 'opportunity_field')]//*[contains(@resource-id, 'name')]");
     private static final By labelCampaign = MobileBy.xpath("//*[contains(@resource-id, 'company_field')]//*[contains(@resource-id, 'name')]");
     private static final By labelNotes = MobileBy.xpath("//*[contains(@resource-id, 'note_field')]//*[contains(@resource-id, 'name')]");
+    private static final By labelCategories = MobileBy.xpath("//*[contains(@resource-id, 'category_field')]//*[contains(@resource-id, 'name')]");
 
     //values
     private static final By account = MobileBy.xpath("//*[contains(@resource-id, 'account_field')]//*[contains(@resource-id, 'select')]");
     private static final By contact = MobileBy.xpath("//*[contains(@resource-id, 'contact_field')]//*[contains(@resource-id, 'select')]");
     private static final By opportunity = MobileBy.xpath("//*[contains(@resource-id, 'opportunity_field')]//*[contains(@resource-id, 'select')]");
     private static final By campaign = MobileBy.xpath("//*[contains(@resource-id, 'company_field')]//*[contains(@resource-id, 'select')]");
+    private static final By categories = MobileBy.xpath("//*[contains(@resource-id, 'category_field')]//*[contains(@resource-id, 'select')]");
 
     //work with headers
     public static String getTitle() {
@@ -176,6 +179,10 @@ public class BasePage extends Helpers {
         find(buttonCampaign).click();
     }
 
+    public static void clickCategories() {
+        find(buttonCategories).click();
+    }
+
     public static void clickContact() {
         waitByThread(1000);
         find(buttonContact).click();
@@ -204,6 +211,14 @@ public class BasePage extends Helpers {
 
     public static String getLabelCampaign() {
         return getText(labelCampaign);
+    }
+
+    public static String getLabelCategories() {
+        return getText(labelCategories);
+    }
+
+    public static String getCategories() {
+        return getText(categories);
     }
 
     public static String getLabelNotes() {

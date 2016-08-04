@@ -9,16 +9,12 @@ public class ContactManipulationPage extends BasePage {
     private static String contactName;
     private static final String contactNamePrefix = "con_";
 
-    private static final By buttonCategories = MobileBy.id("category_field");
     private static final By labelContactInformation = MobileBy.xpath("//android.widget.RelativeLayout[2]//android.widget.TextView[1]");
 
     private static final By fieldTitle = MobileBy.xpath("//android.widget.RelativeLayout[2]//android.widget.EditText[1]");
     private static final By fieldPhone = MobileBy.id("phone");
     private static final By fieldMobile = MobileBy.id("mobile");
     private static final By fieldEmail = MobileBy.id("email");
-
-    private static final By labelCategories = MobileBy.xpath("//*[contains(@resource-id, 'category_field')]//*[contains(@resource-id, 'name')]");
-    private static final By categories = MobileBy.xpath("//*[contains(@resource-id, 'category_field')]//*[contains(@resource-id, 'select')]");
 
     public static final By extraID = MobileBy.IosUIAutomation(".tableViews()[0].cells()[19]");
     public static final By fieldExtraID = MobileBy.IosUIAutomation(".tableViews()[0].cells()[19].textFields()[0]");
@@ -62,10 +58,6 @@ public class ContactManipulationPage extends BasePage {
         return getText(labelContactInformation);
     }
 
-    public static void clickCategories() {
-        find(buttonCategories).click();
-    }
-
     public static void enterPhone(String phone) {
         sendValues(phone, fieldPhone);
     }
@@ -77,14 +69,6 @@ public class ContactManipulationPage extends BasePage {
     public static void enterEmail(String email) {
         sendValues(email, fieldEmail);
         hideKeyboard();
-    }
-
-    public static String getLabelCategories() {
-        return getText(labelCategories);
-    }
-
-    public static String getCategories() {
-        return getText(categories);
     }
 
     public static void setContactName() {

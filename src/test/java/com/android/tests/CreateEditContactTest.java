@@ -806,7 +806,7 @@ public class CreateEditContactTest extends BaseTest {
         ContactPage.clickBackOnDevice();
         Thread.sleep(1000);
         ContactPage.clickEmail();
-        softAssert.assertEquals(ContactPage.getAlertTitle(), "Select conversation");
+        softAssert.assertEquals(ContactPage.getAlertTitle(), "Share with");
         softAssert.assertAll();
     }
 
