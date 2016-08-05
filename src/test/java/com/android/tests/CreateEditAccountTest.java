@@ -1,7 +1,6 @@
 package com.android.tests;
 
 import com.android.pages.*;
-import com.android.util.Helpers;
 import com.android.util.PropertyLoader;
 import com.android.util.SoftAssertExtended;
 import org.testng.annotations.AfterMethod;
@@ -285,13 +284,13 @@ public class CreateEditAccountTest extends BaseTest {
 
         AccountManipulationsPage.scrollToLabel(labelOtherInfo);
 
-        softAssert.assertEquals(AccountManipulationsPage.getNotesFieldLabelValue(), lblNotes);
+        softAssert.assertEquals(AccountManipulationsPage.getLabelNotes(), lblNotes);
         softAssert.assertEquals(AccountManipulationsPage.getInsertSignatureValue(), lblInsertSignature);
 
-        softAssert.assertEquals(AccountManipulationsPage.getCampaignsLabelValue(), lblCampaigns);
-        softAssert.assertEquals(AccountManipulationsPage.getCampaignsValue(), lblNone);
+        softAssert.assertEquals(AccountManipulationsPage.getLabelCampaign(), lblCampaigns);
+        softAssert.assertEquals(AccountManipulationsPage.getCampaign(), lblNone);
 
-        AccountManipulationsPage.clickCampaigns();
+        AccountManipulationsPage.clickCampaign();
         softAssert.assertEquals(AddSelectEntityPage.getTitle(), addCampaignTitle);
         softAssert.assertEquals(AddSelectEntityPage.getSearchFieldValue(), lblSearch);
         softAssert.assertEquals(AddSelectEntityPage.getCancelButtonValue(), lblCancel);
@@ -299,8 +298,8 @@ public class CreateEditAccountTest extends BaseTest {
         softAssert.assertEquals(AddSelectEntityPage.getResultsLabelValue(), lblResults);
         AddSelectEntityPage.clickBack();
 
-        softAssert.assertEquals(AccountManipulationsPage.getCategoriesLabelValue(), lblCategories);
-        softAssert.assertEquals(AccountManipulationsPage.getCategoriesValue(), lblNone);
+        softAssert.assertEquals(AccountManipulationsPage.getLabelCategories(), lblCategories);
+        softAssert.assertEquals(AccountManipulationsPage.getCategories(), lblNone);
 
         AccountManipulationsPage.clickCategories();
         softAssert.assertEquals(AddSelectEntityPage.getTitle(), categoriesTitle);
@@ -367,8 +366,8 @@ public class CreateEditAccountTest extends BaseTest {
         AccountManipulationsPage.enterZipcode(otherZipcode);
         AccountManipulationsPage.enterCity(otherCity);
         AccountManipulationsPage.enterCountry(otherCountry);
-        AccountManipulationsPage.enterNotes(notes);
-        AccountManipulationsPage.clickCampaigns();
+        AccountManipulationsPage.typeIntoNotes(notes);
+        AccountManipulationsPage.clickCampaign();
         AddSelectEntityPage.select(campaign);
         AddSelectEntityPage.clickSelect();
         AccountManipulationsPage.clickCategories();
@@ -410,9 +409,9 @@ public class CreateEditAccountTest extends BaseTest {
         softAssert.assertEquals(AccountManipulationsPage.getCityFieldValue(), otherCity);
         softAssert.assertEquals(AccountManipulationsPage.getCountryFieldValue(), otherCountry);
         AccountManipulationsPage.scrollToLabel(lblOtherInfo);
-        softAssert.assertEquals(AccountManipulationsPage.getNotesFieldValue(), notes);
-        softAssert.assertEquals(AccountManipulationsPage.getCampaignsValue(), campaign);
-        softAssert.assertEquals(AccountManipulationsPage.getCategoriesValue(), category);
+        softAssert.assertEquals(AccountManipulationsPage.getNotes(), notes);
+        softAssert.assertEquals(AccountManipulationsPage.getCampaign(), campaign);
+        softAssert.assertEquals(AccountManipulationsPage.getCategories(), category);
 
         AccountManipulationsPage.setAccountName();
         accountName = AccountManipulationsPage.getAccountName();
@@ -448,8 +447,8 @@ public class CreateEditAccountTest extends BaseTest {
         AccountManipulationsPage.enterZipcode(newOtherZipcode);
         AccountManipulationsPage.enterCity(newOtherCity);
         AccountManipulationsPage.enterCountry(newOtherCountry);
-        AccountManipulationsPage.enterNotes(newNotes);
-        AccountManipulationsPage.clickCampaigns();
+        AccountManipulationsPage.typeIntoNotes(newNotes);
+        AccountManipulationsPage.clickCampaign();
         AddSelectEntityPage.clickResultsLabel();
         AddSelectEntityPage.select(campaign);
         AddSelectEntityPage.select(newCampaign);
@@ -502,9 +501,9 @@ public class CreateEditAccountTest extends BaseTest {
         softAssert.assertEquals(AccountManipulationsPage.getCityFieldValue(), newOtherCity);
         softAssert.assertEquals(AccountManipulationsPage.getCountryFieldValue(), newOtherCountry);
         AccountManipulationsPage.scrollToLabel(lblOtherInfo);
-        softAssert.assertEquals(AccountManipulationsPage.getNotesFieldValue(), newNotes);
-        softAssert.assertEquals(AccountManipulationsPage.getCampaignsValue(), newCampaign);
-        softAssert.assertEquals(AccountManipulationsPage.getCategoriesValue(), newCategory);
+        softAssert.assertEquals(AccountManipulationsPage.getNotes(), newNotes);
+        softAssert.assertEquals(AccountManipulationsPage.getCampaign(), newCampaign);
+        softAssert.assertEquals(AccountManipulationsPage.getCategories(), newCategory);
         softAssert.assertAll();
     }
 
@@ -540,8 +539,8 @@ public class CreateEditAccountTest extends BaseTest {
         AccountManipulationsPage.enterZipcode(otherZipcode);
         AccountManipulationsPage.enterCity(otherCity);
         AccountManipulationsPage.enterCountry(otherCountry);
-        AccountManipulationsPage.enterNotes(notes);
-        AccountManipulationsPage.clickCampaigns();
+        AccountManipulationsPage.typeIntoNotes(notes);
+        AccountManipulationsPage.clickCampaign();
         AddSelectEntityPage.select(campaign);
         AddSelectEntityPage.clickSelect();
         AccountManipulationsPage.clickCategories();
@@ -584,9 +583,9 @@ public class CreateEditAccountTest extends BaseTest {
         softAssert.assertEquals(AccountManipulationsPage.getCityFieldValue(), otherCity);
         softAssert.assertEquals(AccountManipulationsPage.getCountryFieldValue(), otherCountry);
         AccountManipulationsPage.scrollToLabel(lblOtherInfo);
-        softAssert.assertEquals(AccountManipulationsPage.getNotesFieldValue(), notes);
-        softAssert.assertEquals(AccountManipulationsPage.getCampaignsValue(), campaign);
-        softAssert.assertEquals(AccountManipulationsPage.getCategoriesValue(), category);
+        softAssert.assertEquals(AccountManipulationsPage.getNotes(), notes);
+        softAssert.assertEquals(AccountManipulationsPage.getCampaign(), campaign);
+        softAssert.assertEquals(AccountManipulationsPage.getCategories(), category);
 
         AccountManipulationsPage.scrollToTheTop();
         AccountManipulationsPage.enterAccountName(newAccountName);
@@ -620,8 +619,8 @@ public class CreateEditAccountTest extends BaseTest {
         AccountManipulationsPage.enterZipcode(newOtherZipcode);
         AccountManipulationsPage.enterCity(newOtherCity);
         AccountManipulationsPage.enterCountry(newOtherCountry);
-        AccountManipulationsPage.enterNotes(newNotes);
-        AccountManipulationsPage.clickCampaigns();
+        AccountManipulationsPage.typeIntoNotes(newNotes);
+        AccountManipulationsPage.clickCampaign();
         AddSelectEntityPage.clickResultsLabel();
         AddSelectEntityPage.select(campaign);
         AddSelectEntityPage.select(newCampaign);
@@ -674,9 +673,9 @@ public class CreateEditAccountTest extends BaseTest {
         softAssert.assertEquals(AccountManipulationsPage.getCityFieldValue(), otherCity);
         softAssert.assertEquals(AccountManipulationsPage.getCountryFieldValue(), otherCountry);
         AccountManipulationsPage.scrollToLabel(lblOtherInfo);
-        softAssert.assertEquals(AccountManipulationsPage.getNotesFieldValue(), notes);
-        softAssert.assertEquals(AccountManipulationsPage.getCampaignsValue(), campaign);
-        softAssert.assertEquals(AccountManipulationsPage.getCategoriesValue(), category);
+        softAssert.assertEquals(AccountManipulationsPage.getNotes(), notes);
+        softAssert.assertEquals(AccountManipulationsPage.getCampaign(), campaign);
+        softAssert.assertEquals(AccountManipulationsPage.getCategories(), category);
         softAssert.assertAll();
     }
 
@@ -739,8 +738,8 @@ public class CreateEditAccountTest extends BaseTest {
         AccountManipulationsPage.clickParentAccount();
         AddSelectEntityPage.select(parentAccount);
         AccountManipulationsPage.scrollToLabel(lblOtherInfo);
-        AccountManipulationsPage.enterNotes(notes);
-        AccountManipulationsPage.clickCampaigns();
+        AccountManipulationsPage.typeIntoNotes(notes);
+        AccountManipulationsPage.clickCampaign();
         AddSelectEntityPage.select(campaign);
         AddSelectEntityPage.clickSelect();
         AccountManipulationsPage.clickCategories();
@@ -1059,18 +1058,18 @@ public class CreateEditAccountTest extends BaseTest {
 //        ContactManipulationPage.setContactName();
 //        contactName = ContactManipulationPage.getContactName();
 //        ContactManipulationPage.enterContactName(contactName);
-//        assertEquals(ContactManipulationPage.getWorksAt(), accountName);
+//        assertEquals(ContactManipulationPage.getAccount(), accountName);
 //        ContactManipulationPage.enterTitle(contactTitle);
-//        ContactManipulationPage.clickWorksAt();
+//        ContactManipulationPage.clickAccount();
 //        AddSelectEntityPage.select(parentAccount);
-//        ContactManipulationPage.clickCampaigns();
+//        ContactManipulationPage.clickCampaign();
 //        AddSelectEntityPage.select(campaign);
 //        AddSelectEntityPage.clickSelect();
 //        ContactManipulationPage.clickCategories();
 //        AddSelectEntityPage.select(contactCategory);
 //        AddSelectEntityPage.clickSelect();
 //        ContactManipulationPage.typeIntoNotes(notes);
-//        ContactManipulationPage.clickDoneOnKeyboard();
+//        ContactManipulationPage.hideKeyboard();
 //        ContactManipulationPage.clickChanceOfSuccess();
 //        ContactManipulationPage.enterValueFromKeyboard(fieldChanceOfSuccess);
 //        ContactManipulationPage.clickExtraID();
@@ -1084,8 +1083,7 @@ public class CreateEditAccountTest extends BaseTest {
 //        contactName = ContactManipulationPage.getContactName();
 //        ContactManipulationPage.enterContactName(contactName);
 //        ContactManipulationPage.enterTitle(contactNewTitle);
-//        ContactManipulationPage.clickDoneOnKeyboard();
-//        ContactManipulationPage.clickCampaigns();
+//        ContactManipulationPage.clickCampaign();
 //        AddSelectEntityPage.select(campaign);
 //        AddSelectEntityPage.select(newCampaign);
 //        AddSelectEntityPage.clickSelect();
@@ -1094,14 +1092,13 @@ public class CreateEditAccountTest extends BaseTest {
 //        AddSelectEntityPage.select(contactNewCategory);
 //        AddSelectEntityPage.clickSelect();
 //        ContactManipulationPage.typeIntoNotes(newNotes);
-//        ContactManipulationPage.clickDoneOnKeyboard();
-//        ContactManipulationPage.clickExtraID();
-//        ContactManipulationPage.clickExtraID();
-//        Helpers.clearCustomField();
-//        ContactManipulationPage.enterValueFromKeyboard(newExtraID);
-//        ContactManipulationPage.clickChanceOfSuccess();
-//        Helpers.clearCustomField();
-//        ContactManipulationPage.enterValueFromKeyboard(newChanceOfSuccess);
+////        ContactManipulationPage.clickExtraID();
+////        ContactManipulationPage.clickExtraID();
+////        Helpers.clearCustomField();
+////        ContactManipulationPage.enterValueFromKeyboard(newExtraID);
+////        ContactManipulationPage.clickChanceOfSuccess();
+////        Helpers.clearCustomField();
+////        ContactManipulationPage.enterValueFromKeyboard(newChanceOfSuccess);
 //        ContactManipulationPage.clickSave();
 //        ContactPage.clickAddContactInfo();
 //        ContactManipulationPage.enterPhone(contactPhone);
@@ -1125,7 +1122,7 @@ public class CreateEditAccountTest extends BaseTest {
 //        softAssert.assertEquals(ContactPage.getChanceOfSuccessWithAllData(), newChanceOfSuccess + " %");
 //        softAssert.assertAll();
 //    }
-//
+
 //    @Test(priority = 18) // Case 54
 //    public void softCreateAccountCreateContactEditContactCancel() {
 //        SoftAssertExtended softAssert = new SoftAssertExtended();

@@ -182,7 +182,7 @@ public class ContactPage extends BasePage {
 
     public static String getAlertTitle() {
         waitByThread(1000);
-        return find(MobileBy.id("alertTitle")).getText();
+        return find(MobileBy.id("title")).getText();
     }
 
     public static void clickBackOnDevice() {

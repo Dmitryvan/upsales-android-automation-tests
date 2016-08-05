@@ -9,7 +9,6 @@ public class ContactManipulationPage extends BasePage {
     private static String contactName;
     private static final String contactNamePrefix = "con_";
 
-    private static final By buttonCategories = MobileBy.id("category_field");
     private static final By labelContactInformation = MobileBy.xpath("//android.widget.RelativeLayout[2]//android.widget.TextView[1]");
 
     private static final By fieldTitle = MobileBy.xpath("//android.widget.RelativeLayout[2]//android.widget.EditText[1]");
@@ -61,10 +60,6 @@ public class ContactManipulationPage extends BasePage {
         return getText(labelContactInformation);
     }
 
-    public static void clickCategories() {
-        find(buttonCategories).click();
-    }
-
     public static void enterPhone(String phone) {
         sendValues(phone, fieldPhone);
     }
@@ -76,14 +71,6 @@ public class ContactManipulationPage extends BasePage {
     public static void enterEmail(String email) {
         sendValues(email, fieldEmail);
         hideKeyboard();
-    }
-
-    public static String getLabelCategories() {
-        return getText(labelCategories);
-    }
-
-    public static String getCategories() {
-        return getText(categories);
     }
 
     public static void setContactName() {
