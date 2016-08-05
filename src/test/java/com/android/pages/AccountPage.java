@@ -112,7 +112,6 @@ public class AccountPage extends BasePage {
     }
 
     public static void clickTabActivities() {
-        wait(labelAccountName);
         find(tabActivity).click();
     }
 

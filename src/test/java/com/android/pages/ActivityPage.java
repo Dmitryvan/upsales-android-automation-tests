@@ -63,7 +63,7 @@ public class ActivityPage extends BasePage {
     }
 
     public static String getActivityDescription() {
-        return findElements(activityDescriptionValue).get(1).getText();
+        return findElements(activityDescriptionValue).get(0).getText();
     }
 
     public static String getAccountName() {

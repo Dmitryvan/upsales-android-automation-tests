@@ -151,6 +151,7 @@ public class CreateEditActivityTest extends BaseTest {
 //        softAssert.assertEquals(ActivityManipulationsPage.getExpenses(), expenses);
         ActivityManipulationsPage.clickSave();
         softAssert.assertEquals(ActivityPage.getActivityDescription(), description);
+        softAssert.assertEquals(ActivityPage.getTitleOnView(), defaultActivityType.toUpperCase());
         softAssert.assertEquals(ActivityPage.getAccountName(), account);
 //        ActivityPage.scrollToLabel("Expenses");
 //        softAssert.assertEquals(ActivityPage.getExpenses(), expenses + " SEK");
@@ -191,7 +192,7 @@ public class CreateEditActivityTest extends BaseTest {
         ActivityManipulationsPage.enterDescription(newDescription);
         ActivityManipulationsPage.clickActivityType();
         ActivityManipulationsPage.selectValueFromPopUp(newActivityType);
-        BasePage.clickContact();
+        ActivityManipulationsPage.clickContact();
         AddSelectEntityPage.select(contact);
         ActivityManipulationsPage.clickOpportunity();
         ActivityManipulationsPage.selectValueFromPopUp(opportunity);
@@ -201,7 +202,7 @@ public class CreateEditActivityTest extends BaseTest {
         softAssert.assertFalse(ActivityPage.checkThereIsNoContact());
         softAssert.assertEquals(labelNone, ActivityPage.getCampaign());
         softAssert.assertEquals(labelNone, ActivityPage.getOpportunity());
-        ActivityPage.checkPageTitle(defaultActivityType.toUpperCase());
+        softAssert.assertEquals(ActivityPage.getTitleOnView(), defaultActivityType.toUpperCase());
         softAssert.assertAll();
     }
 
@@ -278,7 +279,7 @@ public class CreateEditActivityTest extends BaseTest {
 //        ActivityManipulationsPage.enterExpenses(newExpenses);
         ActivityManipulationsPage.clickSave();
         softAssert.assertEquals(newDescription, ActivityPage.getActivityDescription());
-        softAssert.assertEquals(ActivityPage.getTitle(), newActivityType.toUpperCase());
+        softAssert.assertEquals(ActivityPage.getTitleOnView(), newActivityType.toUpperCase());
         softAssert.assertEquals(ActivityPage.getUserName(), newUser);
         softAssert.assertEquals(ActivityPage.getAccountName(), account);
         softAssert.assertEquals(ActivityPage.getDate(), newDate);

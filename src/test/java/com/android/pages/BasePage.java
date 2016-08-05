@@ -57,8 +57,11 @@ public class BasePage extends Helpers {
 
     //work with headers
     public static String getTitle() {
-        wait(title);
-        return getName(title);
+        return getText(title);
+    }
+
+    public static String getTitleOnView() {
+        return findElements(title).get(1).getText();
     }
 
     public static void clickFilter() {

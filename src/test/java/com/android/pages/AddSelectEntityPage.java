@@ -40,7 +40,7 @@ public class AddSelectEntityPage extends BasePage{
 
     public static void select(String value) {
         waitByThread(1000);
-//        hideKeyboard();
+        hideKeyboard();
         find(MobileBy.xpath("//*[@class='android.widget.CheckBox' and @text='" + value + "']")).click();
     }
 

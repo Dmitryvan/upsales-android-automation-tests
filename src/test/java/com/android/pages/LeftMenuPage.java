@@ -23,7 +23,7 @@ public class LeftMenuPage extends BasePage {
     private static final By buttonSignOut = MobileBy.id("sign_out");
     private static final By fieldSearch = MobileBy.id("search_backgraund");
 
-    private static final By hiddenPageTitle = MobileBy.id("title");
+    private static final By hiddenPageTitle = MobileBy.id("header_title");
 
     public static boolean checkSearch() {
         try {
