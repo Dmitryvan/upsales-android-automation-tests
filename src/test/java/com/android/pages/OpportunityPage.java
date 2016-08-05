@@ -7,9 +7,9 @@ public class OpportunityPage extends BasePage {
 
     private static final By leftMenuOnCreatedOpp = MobileBy.IosUIAutomation(".navigationBars()[0].buttons()[0]");
 
-    private static final By description = MobileBy.IosUIAutomation(".tableViews()[0].staticTexts()[0]");
-    private static final By account = MobileBy.IosUIAutomation(".tableViews()[0].buttons()[0]");
-    private static final By stage = MobileBy.IosUIAutomation(".tableViews()[0].cells()[0].staticTexts()[1]");
+    private static final By description = MobileBy.id("header_title");
+    private static final By account = MobileBy.id("account_name");
+    private static final By stage = MobileBy.xpath("//*[contains(@resource-id, 'stage_order_field')]//*[contains(@resource-id, 'select')]");
     private static final By user = MobileBy.IosUIAutomation(".tableViews()[0].staticTexts()[2]");
     private static final By contact = MobileBy.IosUIAutomation(".tableViews()[0].cells()[1].staticTexts()[2]");
     private static final By campaign = MobileBy.IosUIAutomation(".tableViews()[0].cells()[2].staticTexts()[1]");
@@ -21,7 +21,7 @@ public class OpportunityPage extends BasePage {
     private static final By price = MobileBy.IosUIAutomation(".tableViews()[0].cells()[3].staticTexts()[2]");
     private static final By buttonStage = MobileBy.IosUIAutomation(".tableViews()[0].cells()[0]");
 
-    private static final By popoverEditOpportunity = MobileBy.IosUIAutomation(".popover().tableViews()[0].cells()[1]");
+    private static final By popoverEditOpportunity = MobileBy.id("item_edit");
     private static final By popoverAddProductRow = MobileBy.IosUIAutomation(".popover().tableViews()[0].cells()[0]");
     private static final By popoverDeleteOpportunity = MobileBy.IosUIAutomation(".popover().tableViews()[0].cells()[2]");
     private static final By popoverEditSale = MobileBy.IosUIAutomation(".popover().tableViews()[0].cells()[0]");
@@ -80,17 +80,15 @@ public class OpportunityPage extends BasePage {
     }
 
     public static String getDescription() {
-        wait(description);
-        return getValue(description);
+        return findElements(description).get(0).getText();
     }
 
     public static String getAccount() {
-        wait(account);
-        return getLabel(account);
+        return getText(account);
     }
 
     public static String getStage() {
-        return getValue(stage);
+        return getText(stage);
     }
 
     public static String getUser() {

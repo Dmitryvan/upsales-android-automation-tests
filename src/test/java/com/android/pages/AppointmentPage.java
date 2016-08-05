@@ -11,10 +11,10 @@ public class AppointmentPage extends BasePage {
     private static final By buttonLeftMenu = MobileBy.IosUIAutomation(".navigationBar().buttons()[2]");
     private static final By buttonLeftMenuInFollowUp = MobileBy.IosUIAutomation(".navigationBar().buttons()[1]");
 
-    private static final By appointmentDescriptionValue = MobileBy.id("activity_title");
-    private static final By buttonAccount = MobileBy.id("activity_contact");
+    private static final By appointmentDescriptionValue = MobileBy.id("header_title");
+    private static final By buttonAccount = MobileBy.id("account_name");
     private static final By userValue = MobileBy.id("user_name");
-    private static final By locationValue = MobileBy.xpath("//android.widget.LinearLayout[2]/android.widget.RelativeLayout[4]/android.widget.RelativeLayout[1]/android.widget.TextView[2]");
+    private static final By locationValue = MobileBy.xpath("//*[contains(@resource-id, 'location')]//*[contains(@resource-id, 'name')]");
     private static final By notes = MobileBy.id("notes");
     private static final By labelShowMore = MobileBy.IosUIAutomation(".tableViews()[0].cells()[8]");
 
@@ -67,7 +67,7 @@ public class AppointmentPage extends BasePage {
     }
 
     public static String getAppointmentDescription() {
-        return getText(appointmentDescriptionValue);
+        return findElements(appointmentDescriptionValue).get(0).getText();
     }
 
     public static String getAccountName() {

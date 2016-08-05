@@ -135,6 +135,7 @@ public class CreateEditAppointmentTest extends BaseTest {
         softAssert.assertEquals(labelCancel, AddSelectEntityPage.getLabelCancel());
         softAssert.assertEquals(labelResults, AddSelectEntityPage.getResultsLabelValue());
         AddSelectEntityPage.clickBack();
+        AppointmentManipulationsPage.hideKeyboard();
         softAssert.assertEquals(labelContact, AppointmentManipulationsPage.getLabelContact());
         softAssert.assertEquals(defaultContact, AppointmentManipulationsPage.getContact());
         softAssert.assertEquals(labelOpportunity, AppointmentManipulationsPage.getLabelOpportunity());
@@ -149,6 +150,7 @@ public class CreateEditAppointmentTest extends BaseTest {
         softAssert.assertEquals(labelCancel, AddSelectEntityPage.getLabelCancel());
         softAssert.assertEquals(labelResults, AddSelectEntityPage.getResultsLabelValue());
         AddSelectEntityPage.clickBack();
+        AppointmentManipulationsPage.hideKeyboard();
         AppointmentManipulationsPage.scrollToLabel(labelOtherInfo);
         softAssert.assertEquals(labelNotes, AppointmentManipulationsPage.getLabelNotes());
         ActivityManipulationsPage.scrollToLabel(labelOtherInfo);
@@ -208,7 +210,7 @@ public class CreateEditAppointmentTest extends BaseTest {
         AppointmentManipulationsPage.clickCancel();
         softAssert.assertEquals(account, AppointmentPage.getAccountName());
         softAssert.assertEquals(description, AppointmentPage.getAppointmentDescription());
-        softAssert.assertEquals(defaultAppointmentType.toUpperCase(), AppointmentPage.getTitle());
+        softAssert.assertEquals(defaultAppointmentType.toUpperCase(), AppointmentPage.getTitleOnView());
         softAssert.assertEquals(labelNone, AppointmentPage.getCampaign());
         softAssert.assertEquals(labelNone, AppointmentPage.getOpportunity());
         softAssert.assertAll();
@@ -325,7 +327,7 @@ public class CreateEditAppointmentTest extends BaseTest {
 
         softAssert.assertEquals(account, AppointmentPage.getAccountName());
         softAssert.assertEquals(newDescription, AppointmentPage.getAppointmentDescription());
-        softAssert.assertEquals(AppointmentPage.getTitle(), newAppointmentType.toUpperCase());
+        softAssert.assertEquals(AppointmentPage.getTitleOnView(), newAppointmentType.toUpperCase());
         softAssert.assertEquals(yourUser, AppointmentPage.getUserName());
         softAssert.assertEquals(newStartFullDate, AppointmentPage.getStartDate());
         softAssert.assertEquals(newStartTime, AppointmentPage.getStartTime());

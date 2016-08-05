@@ -14,11 +14,11 @@ public class OpportunityManipulationsPage extends BasePage {
     private static String opportunityName;
     private static final String namePrefix = "opp_";
 
-    private static final By probability = MobileBy.xpath("//android.widget.RelativeLayout[@index='5']//android.widget.EditText[@index='0']");
+    private static final By probability = MobileBy.xpath("//*[contains(@resource-id, 'probability_field')]//*[contains(@resource-id, 'edit_field')]");
 
     private static final By labels = MobileBy.id("name");
     private static final By values = MobileBy.id("select");
-    private static final By titles = MobileBy.id("title");
+    private static final By labelOrdersRow = MobileBy.xpath("//*[contains(@resource-id, 'order_field')]//*[contains(@resource-id, 'header_title')]");
     private static final By listStages = MobileBy.id("text1");
 
     private static final By buttonUser = MobileBy.id("sales_representative_field");
@@ -27,6 +27,8 @@ public class OpportunityManipulationsPage extends BasePage {
     private static final By buttonNewOrderRow = MobileBy.id("new_oredr");
 
     private static final By labelProduct = MobileBy.IosUIAutomation(".tableViews()[0].cells()[6].staticTexts()[0]");
+    private static final By buttonNewOrderRowWithProduct = MobileBy.xpath("//*[contains(@resource-id, 'order_field')]//*[contains(@resource-id, 'name')]");
+
 
     public static void clickLabelProduct() {
         find(labelProduct).click();
@@ -87,7 +89,7 @@ public class OpportunityManipulationsPage extends BasePage {
     }
 
     public static String getLabelOrdersRow() {
-        return findElements(titles).get(1).getText();
+        return getText(labelOrdersRow);
     }
 
     public static void clickNewOrderRow() {
@@ -115,6 +117,10 @@ public class OpportunityManipulationsPage extends BasePage {
 
     public static void enterProbability(String value) {
         sendValues(value, probability);
+    }
+
+    public static void clickNewOrderRowWithProduct() {
+        find(buttonNewOrderRowWithProduct).click();
     }
 }
 

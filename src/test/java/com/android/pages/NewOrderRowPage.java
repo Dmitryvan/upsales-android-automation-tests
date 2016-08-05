@@ -21,8 +21,7 @@ public class NewOrderRowPage extends BasePage {
     private static final List<WebElement> values = findElements(MobileBy.id("select"));
     private static final WebElement product = values.get(0);
 
-    private static final List<WebElement> titles = findElements(MobileBy.id("title"));
-    private static final WebElement labelOtherInfo = titles.get(1);
+    private static final By labelOtherInfo = MobileBy.xpath("//*[contains(@resource-id, 'list_custom_field')]//*[contains(@resource-id, 'header_title')]");
 
     private static final By quantity = MobileBy.xpath("//android.widget.RelativeLayout[@index='2']//android.widget.EditText[@index='0']");
     private static final By price = MobileBy.xpath("//android.widget.RelativeLayout[@index='3']//android.widget.EditText[@index='0']");
@@ -63,7 +62,7 @@ public class NewOrderRowPage extends BasePage {
     }
 
     public static String getLabelOtherInfo() {
-        return labelOtherInfo.getText();
+        return getText(labelOtherInfo);
     }
 
     public static void clickQuantity() {

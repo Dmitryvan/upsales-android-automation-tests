@@ -42,7 +42,7 @@ public class AccountPage extends BasePage {
     private static final By tabHome = MobileBy.xpath(".tabBars()[0].buttons()[0]");
     private static final By tabContacts = MobileBy.xpath("//*[@class='android.widget.TextView' and @text='Contacts']");
     private static final By tabActivity = MobileBy.xpath("//*[@class='android.widget.TextView' and @text='Activities']");
-    private static final By tabOppotunities = MobileBy.IosUIAutomation(".tabBars()[0].buttons()[\"Opportunities\"]");
+    private static final By tabOpportunities = MobileBy.xpath("//*[@class='android.widget.TextView' and @text='Opportunities']");
     private static final By tabSales = MobileBy.IosUIAutomation(".tabBars()[0].buttons()[\"Sales\"]");
 
     public static String getAccountName() {
@@ -116,7 +116,7 @@ public class AccountPage extends BasePage {
     }
 
     public static void clickTabOpportunities() {
-        find(tabOppotunities).click();
+        find(tabOpportunities).click();
     }
 
     public static void clickTabSales() {

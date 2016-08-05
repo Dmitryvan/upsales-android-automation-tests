@@ -112,6 +112,7 @@ public class CreateEditOrderTest extends BaseTest {
         OpportunityManipulationsPage.clickStage();
         softAssert.assertEquals(OpportunityManipulationsPage.getAllStages(), allStages);
         OpportunityManipulationsPage.closePopUp();
+        OpportunityManipulationsPage.hideKeyboard();
         softAssert.assertEquals(OpportunityManipulationsPage.getLabelProbability(), labelProbability);
         softAssert.assertEquals(OpportunityManipulationsPage.getProbability(), defaultProbability);
         softAssert.assertEquals(OpportunityManipulationsPage.getLabelCloseDate(), labelCloseDate);
@@ -124,6 +125,7 @@ public class CreateEditOrderTest extends BaseTest {
         softAssert.assertEquals(AddSelectEntityPage.getLabelCancel(), labelCancel);
         softAssert.assertEquals(AddSelectEntityPage.getResultsLabelValue(), labelResults);
         AddSelectEntityPage.clickBack();
+        OpportunityManipulationsPage.hideKeyboard();
         softAssert.assertEquals(OpportunityManipulationsPage.getLabelContact(), labelContact);
         softAssert.assertEquals(OpportunityManipulationsPage.getContact(), defaultContact);
         softAssert.assertEquals(OpportunityManipulationsPage.getLabelCampaign(), labelCampaign);
@@ -134,6 +136,7 @@ public class CreateEditOrderTest extends BaseTest {
         softAssert.assertEquals(AddSelectEntityPage.getLabelCancel(), labelCancel);
         softAssert.assertEquals(AddSelectEntityPage.getLabelNone(), labelNone);
         AddSelectEntityPage.clickBack();
+        OpportunityManipulationsPage.hideKeyboard();
         softAssert.assertEquals(OpportunityManipulationsPage.getLabelOrdersRow(), labelOrdersRow);
         softAssert.assertEquals(OpportunityManipulationsPage.getLabelNewOrderRow(), labelNewOrderRow);
         softAssert.assertEquals(OpportunityManipulationsPage.getLabelNotes(), labelNotes);
