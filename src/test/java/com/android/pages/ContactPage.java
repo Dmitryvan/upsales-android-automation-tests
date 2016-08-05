@@ -27,8 +27,8 @@ public class ContactPage extends BasePage {
     private static final By notesWithoutContact = MobileBy.IosUIAutomation(".tableViews()[0].cells()[4].textViews()[0]");
     private static final By buttonAddContactInfo = MobileBy.id("add_contact_info_title");
     private static final By categoryWithPhone = MobileBy.IosUIAutomation(".tableViews()[0].cells()[2].staticTexts()[1]");
-    private static final By extraIDWithoutData = MobileBy.IosUIAutomation(".tableViews()[0].cells()[4].textFields()[0]");
-    private static final By chanceOfSuccessWithoutData = MobileBy.IosUIAutomation(".tableViews()[0].cells()[3].textFields()[0]");
+    private static final By extraIDWithoutData = MobileBy.xpath("//android.widget.RelativeLayout[@index='8']//android.widget.EditText[@index='0']");
+    private static final By chanceOfSuccessWithoutData = MobileBy.xpath("//android.widget.RelativeLayout[@index='9']//android.widget.EditText[@index='0']");
     private static final By extraIDWithAllData = MobileBy.IosUIAutomation(".tableViews()[0].cells()[6].textFields()[0]");
     private static final By chanceOfSuccessWithAllData = MobileBy.IosUIAutomation(".tableViews()[0].cells()[5].textFields()[0]");
     private static final By labelShowMore = MobileBy.IosUIAutomation(".tableViews()[0].cells().firstWithPredicate(\"staticTexts[0].name=='Show more (2)'\")");
@@ -50,11 +50,11 @@ public class ContactPage extends BasePage {
     }
 
     public static String getExtraIDWithoutData() {
-        return getValue(extraIDWithoutData);
+        return getText(extraIDWithoutData);
     }
 
     public static String getChanceOfSuccessWithoutData() {
-        return getValue(chanceOfSuccessWithoutData);
+        return getText(chanceOfSuccessWithoutData);
     }
 
     public static void clickBottomPopoverCancel() {

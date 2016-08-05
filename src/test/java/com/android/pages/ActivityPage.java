@@ -13,8 +13,8 @@ public class ActivityPage extends BasePage {
 
     private static final By buttonLeftMenu = MobileBy.IosUIAutomation(".navigationBar().buttons()[1]");
 
-    private static final By activityDescriptionValue = MobileBy.id("activity_title");
-    private static final By buttonAccount = MobileBy.id("activity_contact");
+    private static final By activityDescriptionValue = MobileBy.id("header_title");
+    private static final By buttonAccount = MobileBy.id("account_name");
     private static final By userValue = MobileBy.id("user_name");
     private static final By dateValue = MobileBy.id("date");
     private static final By timeValue = MobileBy.id("time");
@@ -30,6 +30,12 @@ public class ActivityPage extends BasePage {
     private static final By popoverFollowUpActivity = MobileBy.IosUIAutomation(".popover().tableViews()[0].cells()[3]");
 
     private static final By labelShowMore = MobileBy.IosUIAutomation(".scrollViews()[0].tableViews()[0].cells()[5]");
+
+    private static final By fieldExpanses = MobileBy.xpath("//android.widget.RelativeLayout[@index='8']//android.widget.EditText[@index='0']");
+
+    public static String getExpenses() {
+        return getText(fieldExpanses);
+    }
 
     public static void clickShowMore() {
         find(labelShowMore).click();
@@ -57,7 +63,7 @@ public class ActivityPage extends BasePage {
     }
 
     public static String getActivityDescription() {
-        return getText(activityDescriptionValue);
+        return findElements(activityDescriptionValue).get(1).getText();
     }
 
     public static String getAccountName() {

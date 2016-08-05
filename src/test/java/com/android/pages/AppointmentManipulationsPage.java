@@ -39,12 +39,7 @@ public class AppointmentManipulationsPage extends BasePage {
     private static final By startDateForAcc = MobileBy.IosUIAutomation(".tableViews()[0].cells()[2].staticTexts()[1]");
     private static final By endDateForAcc = MobileBy.IosUIAutomation(".tableViews()[0].cells()[3].staticTexts()[1]");
 
-    private static final By motesalternativ = MobileBy.IosUIAutomation(".tableViews()[0].cells()[11].staticTexts()[0]");
-    private static final By labelMotesalternativ = MobileBy.IosUIAutomation(".tableViews()[0].cells()[11].staticTexts()[1]");
-    private static final By pickerWheelMotesalternativ = MobileBy.IosUIAutomation(".tableViews()[0].cells()[12].pickers()[0].wheels()[0]");
-    private static final By motetCustomfalt = MobileBy.IosUIAutomation(".tableViews()[0].cells()[12].staticTexts()[0]");
-    private static final By labelMotetCustomfalt = MobileBy.IosUIAutomation(".tableViews()[0].cells()[12].staticTexts()[0]");
-    private static final By fieldMotetCustomfalt = MobileBy.IosUIAutomation(".tableViews()[0].cells()[12].textViews()[0]");
+    private static final By hoursInPreparation = MobileBy.xpath("//android.widget.RelativeLayout[@index='4']//android.widget.EditText[@index='0']");
 
     public static String getStartDate() {
         return find(startDate).getText();
@@ -118,22 +113,6 @@ public class AppointmentManipulationsPage extends BasePage {
         find(buttonInsertSignature).click();
     }
 
-    public static void clickMotesalternativ() {
-        find(labelMotesalternativ).click();
-    }
-
-    public static void spinMotesalternativWheelTo(String value) {
-        find(pickerWheelMotesalternativ).sendKeys(value);
-    }
-
-    public static void clickMotetCustomfalt() {
-        find(labelMotetCustomfalt).click();
-    }
-
-    public static void enterMotetCustomfalt(String value) {
-        sendValues(value, fieldMotetCustomfalt);
-    }
-
     public static void clickAppointmentType() {
         find(buttonAppointmentType).click();
     }
@@ -162,14 +141,6 @@ public class AppointmentManipulationsPage extends BasePage {
         return find(user).getText();
     }
 
-    public static String getMotesalternativ() {
-        return getValue(motesalternativ);
-    }
-
-    public static String getMotetCustomfalt() {
-        return getValue(motetCustomfalt);
-    }
-
     public static String getLabelUser() {
         return getText(labelUser);
     }
@@ -195,5 +166,17 @@ public class AppointmentManipulationsPage extends BasePage {
 
     public static String getAppointmentName() {
         return appointmentName;
+    }
+
+    public static void clickHoursInPreparation() {
+        find(hoursInPreparation).click();
+    }
+
+    public static void enterHoursInPreparation(String value) {
+        sendValues(value, hoursInPreparation);
+    }
+
+    public static void clearHoursInPreparation() {
+        find(hoursInPreparation).clear();
     }
 }

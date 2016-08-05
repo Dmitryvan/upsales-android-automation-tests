@@ -95,6 +95,8 @@ public class CreateEditAppointmentTest extends BaseTest {
     private final String newEndYear = PropertyLoader.loadProperty(createAppointmentPropertyPath, "newEndYear");
     private final String labelStarts = PropertyLoader.loadProperty(createAppointmentPropertyPath, "labelStarts");
     private final String labelEnds = PropertyLoader.loadProperty(createAppointmentPropertyPath, "labelEnds");
+    private final String hoursInPreparation = PropertyLoader.loadProperty(createAppointmentPropertyPath, "hoursInPreparation");
+    private final String newHoursInPreparation = PropertyLoader.loadProperty(createAppointmentPropertyPath, "newHoursInPreparation");
 
     @BeforeMethod
     public void setUp() throws Exception{
@@ -160,9 +162,14 @@ public class CreateEditAppointmentTest extends BaseTest {
         AppointmentManipulationsPage.enterDescription(description);
         AppointmentManipulationsPage.clickAccount();
         AddSelectEntityPage.select(account);
+//        AppointmentManipulationsPage.scrollToLabel("Hours");
+//        AppointmentManipulationsPage.clickHoursInPreparation();
+//        AppointmentManipulationsPage.enterHoursInPreparation(hoursInPreparation);
         AppointmentManipulationsPage.clickSave();
-        softAssert.assertEquals(account, AppointmentPage.getAccountName());
-        softAssert.assertEquals(description, AppointmentPage.getAppointmentDescription());
+        softAssert.assertEquals(AppointmentPage.getAccountName(), account);
+        softAssert.assertEquals(AppointmentPage.getAppointmentDescription(), description);
+//        AppointmentManipulationsPage.scrollToLabel("Logged");
+//        softAssert.assertEquals(AppointmentPage.getHoursOfPreparation(), hoursInPreparation);
         softAssert.assertAll();
     }
 
@@ -182,6 +189,9 @@ public class CreateEditAppointmentTest extends BaseTest {
         AppointmentManipulationsPage.enterDescription(description);
         AppointmentManipulationsPage.clickAccount();
         AddSelectEntityPage.select(account);
+//        AppointmentManipulationsPage.scrollToLabel("Hours");
+//        AppointmentManipulationsPage.clickHoursInPreparation();
+//        AppointmentManipulationsPage.enterHoursInPreparation(hoursInPreparation);
         AppointmentManipulationsPage.clickSave();
         AppointmentPage.clickTools();
         AppointmentPage.clickEditAppointment();
@@ -256,6 +266,10 @@ public class CreateEditAppointmentTest extends BaseTest {
         AddSelectEntityPage.select(campaign);
         ActivityManipulationsPage.scrollToLabel(labelOtherInfo);
         AppointmentManipulationsPage.typeIntoNotes(notes);
+
+        AppointmentManipulationsPage.scrollToLabel("Hours");
+        AppointmentManipulationsPage.clickHoursInPreparation();
+        AppointmentManipulationsPage.enterHoursInPreparation(hoursInPreparation);
         AppointmentManipulationsPage.clickSave();
 
         AppointmentPage.clickTools();
@@ -301,6 +315,12 @@ public class CreateEditAppointmentTest extends BaseTest {
         AddSelectEntityPage.select(newCampaign);
         ActivityManipulationsPage.scrollToLabel(labelOtherInfo);
         AppointmentManipulationsPage.typeIntoNotes(newNotes);
+
+//        AppointmentManipulationsPage.scrollToLabel("Hours");
+//        AppointmentManipulationsPage.clickHoursInPreparation();
+//        AppointmentManipulationsPage.clearHoursInPreparation();
+//        AppointmentManipulationsPage.enterHoursInPreparation(newHoursInPreparation);
+
         AppointmentManipulationsPage.clickSave();
 
         softAssert.assertEquals(account, AppointmentPage.getAccountName());
@@ -317,6 +337,8 @@ public class CreateEditAppointmentTest extends BaseTest {
         softAssert.assertEquals(opportunity, AppointmentPage.getOpportunity());
         AppointmentPage.scrollToLabel(labelOtherInfo);
         softAssert.assertEquals(newNotes, AppointmentPage.getNotes());
+//        AppointmentManipulationsPage.scrollToLabel("Logged");
+//        softAssert.assertEquals(AppointmentPage.getHoursOfPreparation(), newHoursInPreparation);
         softAssert.assertAll();
     }
 

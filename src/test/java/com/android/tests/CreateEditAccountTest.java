@@ -1023,10 +1023,10 @@ public class CreateEditAccountTest extends BaseTest {
         ContactManipulationPage.hideKeyboard();
         assertEquals(ContactManipulationPage.getAccount(), accountName);
 //        ContactManipulationPage.clickExtraID();
-//        ContactManipulationPage.enterValueFromKeyboard(extraID);
+//        ContactManipulationPage.enterValueFromKeyboard(fieldExtraID);
 //        ContactManipulationPage.clickChanceOfSuccess();
 //        ContactManipulationPage.clickChanceOfSuccess();
-//        ContactManipulationPage.enterValueFromKeyboard(chanceOfSuccess);
+//        ContactManipulationPage.enterValueFromKeyboard(fieldChanceOfSuccess);
         ContactManipulationPage.clickSave();
         ContactManipulationPage.clickNoThanks();
         assertEquals(ContactPage.getAccount(), accountName);
@@ -1072,9 +1072,9 @@ public class CreateEditAccountTest extends BaseTest {
 //        ContactManipulationPage.typeIntoNotes(notes);
 //        ContactManipulationPage.clickDoneOnKeyboard();
 //        ContactManipulationPage.clickChanceOfSuccess();
-//        ContactManipulationPage.enterValueFromKeyboard(chanceOfSuccess);
+//        ContactManipulationPage.enterValueFromKeyboard(fieldChanceOfSuccess);
 //        ContactManipulationPage.clickExtraID();
-//        ContactManipulationPage.enterValueFromKeyboard(extraID);
+//        ContactManipulationPage.enterValueFromKeyboard(fieldExtraID);
 //        ContactManipulationPage.clickSave();
 //        ContactManipulationPage.clickNoThanks();
 //
@@ -1147,9 +1147,9 @@ public class CreateEditAccountTest extends BaseTest {
 //        ContactManipulationPage.typeIntoNotes(notes);
 //        ContactManipulationPage.clickDoneOnKeyboard();
 //        ContactManipulationPage.clickChanceOfSuccess();
-//        ContactManipulationPage.enterValueFromKeyboard(chanceOfSuccess);
+//        ContactManipulationPage.enterValueFromKeyboard(fieldChanceOfSuccess);
 //        ContactManipulationPage.clickExtraID();
-//        ContactManipulationPage.enterValueFromKeyboard(extraID);
+//        ContactManipulationPage.enterValueFromKeyboard(fieldExtraID);
 //        ContactManipulationPage.clickSave();
 //        ContactManipulationPage.clickNoThanks();
 //
@@ -1224,9 +1224,9 @@ public class CreateEditAccountTest extends BaseTest {
 //        ContactManipulationPage.typeIntoNotes(notes);
 //        ContactManipulationPage.clickDoneOnKeyboard();
 //        ContactManipulationPage.clickChanceOfSuccess();
-//        ContactManipulationPage.enterValueFromKeyboard(chanceOfSuccess);
+//        ContactManipulationPage.enterValueFromKeyboard(fieldChanceOfSuccess);
 //        ContactManipulationPage.clickExtraID();
-//        ContactManipulationPage.enterValueFromKeyboard(extraID);
+//        ContactManipulationPage.enterValueFromKeyboard(fieldExtraID);
 //        ContactManipulationPage.clickSave();
 //
 //        ContactManipulationPage.clickActivity();
@@ -1300,9 +1300,9 @@ public class CreateEditAccountTest extends BaseTest {
 //        ContactManipulationPage.typeIntoNotes(notes);
 //        ContactManipulationPage.clickDoneOnKeyboard();
 //        ContactManipulationPage.clickChanceOfSuccess();
-//        ContactManipulationPage.enterValueFromKeyboard(chanceOfSuccess);
+//        ContactManipulationPage.enterValueFromKeyboard(fieldChanceOfSuccess);
 //        ContactManipulationPage.clickExtraID();
-//        ContactManipulationPage.enterValueFromKeyboard(extraID);
+//        ContactManipulationPage.enterValueFromKeyboard(fieldExtraID);
 //        ContactManipulationPage.clickSave();
 //
 //        ContactManipulationPage.clickAppointment();
@@ -1364,8 +1364,8 @@ public class CreateEditAccountTest extends BaseTest {
 //        ContactPage.clickShowNotes();
 //        softAssert.assertEquals(ContactPage.getNotes(), notes);
 //        ContactPage.clickShowMore();
-//        softAssert.assertEquals(ContactPage.getExtraIDWithAllData(), extraID);
-//        softAssert.assertEquals(ContactPage.getChanceOfSuccessWithAllData(), chanceOfSuccess + " %");
+//        softAssert.assertEquals(ContactPage.getExtraIDWithAllData(), fieldExtraID);
+//        softAssert.assertEquals(ContactPage.getChanceOfSuccessWithAllData(), fieldChanceOfSuccess + " %");
 //
 //        softAssert.assertAll();
 //    }
@@ -1395,9 +1395,9 @@ public class CreateEditAccountTest extends BaseTest {
 //        ContactManipulationPage.typeIntoNotes(notes);
 //        ContactManipulationPage.clickDoneOnKeyboard();
 //        ContactManipulationPage.clickChanceOfSuccess();
-//        ContactManipulationPage.enterValueFromKeyboard(chanceOfSuccess);
+//        ContactManipulationPage.enterValueFromKeyboard(fieldChanceOfSuccess);
 //        ContactManipulationPage.clickExtraID();
-//        ContactManipulationPage.enterValueFromKeyboard(extraID);
+//        ContactManipulationPage.enterValueFromKeyboard(fieldExtraID);
 //        ContactManipulationPage.clickSave();
 //
 //        ContactManipulationPage.clickOpportunity();

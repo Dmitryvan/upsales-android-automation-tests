@@ -20,9 +20,8 @@ public class ContactManipulationPage extends BasePage {
     private static final By labelCategories = MobileBy.xpath("//*[contains(@resource-id, 'category_field')]//*[contains(@resource-id, 'name')]");
     private static final By categories = MobileBy.xpath("//*[contains(@resource-id, 'category_field')]//*[contains(@resource-id, 'select')]");
 
-    public static final By extraID = MobileBy.IosUIAutomation(".tableViews()[0].cells()[19]");
-    public static final By fieldExtraID = MobileBy.IosUIAutomation(".tableViews()[0].cells()[19].textFields()[0]");
-    public static final By chanceOfSuccess = MobileBy.IosUIAutomation(".tableViews()[0].cells()[10]");
+    public static final By fieldExtraID = MobileBy.xpath("//android.widget.RelativeLayout[7]/android.widget.LinearLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.EditText[1]");
+    public static final By fieldChanceOfSuccess = MobileBy.xpath("//android.widget.RelativeLayout[8]/android.widget.LinearLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.EditText[1]");
 
     private static final By buttonNoThanks = MobileBy.id("no_thanks");
     private static final By buttonActivity = MobileBy.id("activity");
@@ -96,16 +95,28 @@ public class ContactManipulationPage extends BasePage {
     }
 
     public static void clickExtraID() {
-        find(extraID).click();
+        find(fieldExtraID).click();
     }
 
-//    public static void enterExtraID(String id) {
-//        setValues(id, fieldExtraID);
-//        clickDoneOnKeyboard();
-//    }
+    public static void enterExtraID(String id) {
+        sendValues(id, fieldExtraID);
+        hideKeyboard();
+    }
+
+    public static void clearExtraID() {
+        find(fieldExtraID).clear();
+    }
 
     public static void clickChanceOfSuccess() {
-        find(chanceOfSuccess).click();
+        find(fieldChanceOfSuccess).click();
+    }
+
+    public static void enterChanceOfSuccess(String value) {
+        sendValues(value, fieldChanceOfSuccess);
+    }
+
+    public static void clearChanceOfSuccess() {
+        find(fieldChanceOfSuccess).clear();
     }
 
     public static void enterContactName(String contactName) {

@@ -18,9 +18,6 @@ public class ActivityManipulationsPage extends BasePage {
     private static final By buttonTime = MobileBy.id("time_field");
     private static final By buttonOpportunity = MobileBy.id("opportunity_field");
     private static final By buttonUser = MobileBy.id("user_field");
-    private static final By customFieldWheelEttTill = MobileBy.IosUIAutomation(".tableViews()[0].cells()[11]");
-    private static final By customFieldPickerWheel = MobileBy.IosUIAutomation(".tableViews()[0].cells()[12].pickers()[0].wheels()[0]");
-    private static final By customFieldEttTillValue = MobileBy.IosUIAutomation(".tableViews()[0].cells()[11].staticTexts()[0]");
 
     private static final By activityType = MobileBy.xpath("//*[contains(@resource-id, 'activity_type_field')]//*[contains(@resource-id, 'select')]");
     private static final By date = MobileBy.xpath("//*[contains(@resource-id, 'date_field')]//*[contains(@resource-id, 'select')]");
@@ -32,17 +29,10 @@ public class ActivityManipulationsPage extends BasePage {
     private static final By labelTime = MobileBy.xpath("//*[contains(@resource-id, 'time_field')]//*[contains(@resource-id, 'name')]");
     private static final By labelUser = MobileBy.xpath("//*[contains(@resource-id, 'user_field')]//*[contains(@resource-id, 'name')]");
 
-    public static void clickCustomFieldEttTill() {
-        find(customFieldWheelEttTill).click();
-    }
+    private static final By fieldExpanses = MobileBy.xpath("//android.widget.RelativeLayout[@index='7']//android.widget.EditText[@index='0']");
 
-    public static void spinCustomWheelEttTill(String value) {
-//        spinWheel(value, customFieldPickerWheel, cellIndexCustom);
-        find(customFieldPickerWheel).sendKeys(value);
-    }
-
-    public static String getCustomFieldEttTill() {
-        return getText(customFieldEttTillValue);
+    public static void clickExpenses() {
+        find(fieldExpanses).click();
     }
 
     public static String getLabelActivityType() {
@@ -118,5 +108,17 @@ public class ActivityManipulationsPage extends BasePage {
 
     public static boolean getNotesStartsWith(String start) {
         return getNotes().startsWith(start);
+    }
+
+    public static String getExpenses() {
+        return getText(fieldExpanses);
+    }
+
+    public static void enterExpenses(String value) {
+        sendValues(value, fieldExpanses);
+    }
+
+    public static void clearExpenses() {
+        find(fieldExpanses).clear();
     }
 }

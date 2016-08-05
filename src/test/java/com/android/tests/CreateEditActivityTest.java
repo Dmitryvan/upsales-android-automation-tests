@@ -76,6 +76,8 @@ public class CreateEditActivityTest extends BaseTest {
     private final String defaultTime = PropertyLoader.loadProperty(createActivityPropertyPath, "defaultTime");
     private final String labelTime = PropertyLoader.loadProperty(createActivityPropertyPath, "labelTime");
     private final String labelActivityType = PropertyLoader.loadProperty(createActivityPropertyPath, "labelActivityType");
+    private final String expenses = PropertyLoader.loadProperty(createActivityPropertyPath, "expenses");
+    private final String newExpenses = PropertyLoader.loadProperty(createActivityPropertyPath, "newExpenses");
 
     @BeforeMethod
     public void setUp() throws Exception{
@@ -92,9 +94,10 @@ public class CreateEditActivityTest extends BaseTest {
     public void softContentOfCreateActivityPage() {
         SoftAssertExtended softAssert = new SoftAssertExtended();
         ActivityManipulationsPage.checkPageTitle(titleCreate);
+        ActivityManipulationsPage.hideKeyboard();
         softAssert.assertEquals(ActivityManipulationsPage.getLabelSave(), labelSave);
         softAssert.assertEquals(ActivityManipulationsPage.getLabelCancel(), labelCancel);
-        softAssert.assertEquals(defaultLabelDescription, BasePage.getLabelDescription());
+        softAssert.assertEquals(defaultLabelDescription, ActivityManipulationsPage.getLabelDescription());
         softAssert.assertEquals(labelActivityType, ActivityManipulationsPage.getLabelActivityType());
         softAssert.assertEquals(defaultActivityType, ActivityManipulationsPage.getActivityType());
         ActivityManipulationsPage.clickActivityType();
@@ -104,31 +107,34 @@ public class CreateEditActivityTest extends BaseTest {
         softAssert.assertEquals(ActivityManipulationsPage.getCurrentDate(), ActivityManipulationsPage.getDueDate());
         softAssert.assertEquals(defaultTime, ActivityManipulationsPage.getTime());
         assertEquals(labelTime, ActivityManipulationsPage.getLabelTime());
-        softAssert.assertEquals(labelAccount, BasePage.getLabelAccount());
-        softAssert.assertEquals(defaultAccount, BasePage.getAccount());
-        BasePage.clickAccount();
+        softAssert.assertEquals(labelAccount, ActivityManipulationsPage.getLabelAccount());
+        softAssert.assertEquals(defaultAccount, ActivityManipulationsPage.getAccount());
+        ActivityManipulationsPage.clickAccount();
+        AddSelectEntityPage.hideKeyboard();
         softAssert.assertEquals(labelResults, AddSelectEntityPage.getResultsLabelValue());
         softAssert.assertEquals(titleSelectAccount, AddSelectEntityPage.getTitle());
         softAssert.assertEquals(labelSearch, AddSelectEntityPage.getSearchFieldValue());
         softAssert.assertEquals(labelCancel, AddSelectEntityPage.getLabelCancel());
         AddSelectEntityPage.clickBack();
-        softAssert.assertEquals(labelContact, BasePage.getLabelContact());
-        softAssert.assertEquals(defaultContact, BasePage.getContact());
-        softAssert.assertEquals(labelOpportunity, BasePage.getLabelOpportunity());
-        softAssert.assertEquals(defaultOpportunity, BasePage.getOpportunity());
+        AddSelectEntityPage.hideKeyboard();
+        softAssert.assertEquals(labelContact, ActivityManipulationsPage.getLabelContact());
+        softAssert.assertEquals(defaultContact, ActivityManipulationsPage.getContact());
+        softAssert.assertEquals(labelOpportunity, ActivityManipulationsPage.getLabelOpportunity());
+        softAssert.assertEquals(defaultOpportunity, ActivityManipulationsPage.getOpportunity());
         softAssert.assertEquals(labelUser, ActivityManipulationsPage.getLabelUser());
         softAssert.assertEquals(defaultUser, ActivityManipulationsPage.getUser());
-        softAssert.assertEquals(labelCampaign, BasePage.getLabelCampaign());
-        softAssert.assertEquals(defaultCampaign, BasePage.getCampaign());
-        BasePage.clickCampaign();
+        softAssert.assertEquals(labelCampaign, ActivityManipulationsPage.getLabelCampaign());
+        softAssert.assertEquals(defaultCampaign, ActivityManipulationsPage.getCampaign());
+        ActivityManipulationsPage.clickCampaign();
         AddSelectEntityPage.checkPageTitle(titleAddCampaign);
         softAssert.assertEquals(labelSearch, AddSelectEntityPage.getSearchFieldValue());
         softAssert.assertEquals(labelCancel, AddSelectEntityPage.getLabelCancel());
         softAssert.assertEquals(labelResults, AddSelectEntityPage.getResultsLabelValue());
         AddSelectEntityPage.clickBack();
-        softAssert.assertEquals(labelNotes, BasePage.getLabelNotes());
+        AddSelectEntityPage.hideKeyboard();
+        softAssert.assertEquals(labelNotes, ActivityManipulationsPage.getLabelNotes());
         ActivityManipulationsPage.scrollToLabel(labelOtherInfo);
-        softAssert.assertEquals(labelOtherInfo, BasePage.getLabelOtherInfo());
+        softAssert.assertEquals(labelOtherInfo, ActivityManipulationsPage.getLabelOtherInfo());
         softAssert.assertAll();
     }
 
@@ -138,13 +144,20 @@ public class CreateEditActivityTest extends BaseTest {
         ActivityManipulationsPage.enterDescription(description);
         ActivityManipulationsPage.clickAccount();
         AddSelectEntityPage.select(account);
-        softAssert.assertEquals(account, BasePage.getAccount());
+        softAssert.assertEquals(ActivityManipulationsPage.getAccount(), account);
+//        ActivityManipulationsPage.scrollToLabel("Expenses");
+//        ActivityManipulationsPage.clickExpenses();
+//        ActivityManipulationsPage.enterExpenses(expenses);
+//        softAssert.assertEquals(ActivityManipulationsPage.getExpenses(), expenses);
         ActivityManipulationsPage.clickSave();
-        softAssert.assertEquals(description, ActivityPage.getActivityDescription());
-        softAssert.assertEquals(account, ActivityPage.getAccountName());
-//        ActivityPage.clickAccount();
-//        AccountPage.clickTabActivities();
-//        ActivitiesPage.searchActivity(description, today);
+        softAssert.assertEquals(ActivityPage.getActivityDescription(), description);
+        softAssert.assertEquals(ActivityPage.getAccountName(), account);
+//        ActivityPage.scrollToLabel("Expenses");
+//        softAssert.assertEquals(ActivityPage.getExpenses(), expenses + " SEK");
+//        ActivityPage.scrollToLabel("Campaign");
+        ActivityPage.clickAccount();
+        AccountPage.clickTabActivities();
+        ActivitiesPage.searchActivity(description, today);
         softAssert.assertAll();
     }
 
@@ -166,6 +179,9 @@ public class CreateEditActivityTest extends BaseTest {
         ActivityManipulationsPage.enterDescription(description);
         ActivityManipulationsPage.clickAccount();
         AddSelectEntityPage.select(account);
+//        ActivityManipulationsPage.scrollToLabel("Expenses");
+//        ActivityManipulationsPage.clickExpenses();
+//        ActivityManipulationsPage.enterExpenses(expenses);
         ActivityManipulationsPage.clickSave();
         ActivityPage.clickTools();
         ActivityPage.clickEditActivity();
@@ -210,21 +226,24 @@ public class CreateEditActivityTest extends BaseTest {
         softAssert.assertEquals(time, ActivityManipulationsPage.getTime());
         ActivityManipulationsPage.clickAccount();
         AddSelectEntityPage.select(account);
-        softAssert.assertEquals(account, BasePage.getAccount());
-        BasePage.clickContact();
+        softAssert.assertEquals(account, ActivityManipulationsPage.getAccount());
+        ActivityManipulationsPage.clickContact();
         AddSelectEntityPage.select(contact);
-        softAssert.assertEquals(contact, BasePage.getContact());
+        softAssert.assertEquals(contact, ActivityManipulationsPage.getContact());
         ActivityManipulationsPage.clickOpportunity();
         ActivityManipulationsPage.selectValueFromPopUp(opportunity);
-        softAssert.assertEquals(opportunity, BasePage.getOpportunity());
+        softAssert.assertEquals(opportunity, ActivityManipulationsPage.getOpportunity());
         ActivityManipulationsPage.clickUser();
         AddSelectEntityPage.select(user);
         softAssert.assertEquals(user, ActivityManipulationsPage.getUser());
         ActivityManipulationsPage.clickCampaign();
         AddSelectEntityPage.select(campaign);
-        softAssert.assertEquals(campaign, BasePage.getCampaign());
+        softAssert.assertEquals(campaign, ActivityManipulationsPage.getCampaign());
         ActivityManipulationsPage.scrollToLabel(labelOtherInfo.toUpperCase());
         ActivityManipulationsPage.typeIntoNotes(notes);
+//        ActivityManipulationsPage.scrollToLabel("Expenses");
+//        ActivityManipulationsPage.clickExpenses();
+//        ActivityManipulationsPage.enterExpenses(expenses);
         ActivityManipulationsPage.clickSave();
         ActivityPage.clickTools();
         ActivityPage.clickEditActivity();
@@ -242,7 +261,7 @@ public class CreateEditActivityTest extends BaseTest {
         ActivityManipulationsPage.selectTimeHours(newHours);
         ActivityManipulationsPage.selectTimeMinutes(newMinutes);
         ActivityManipulationsPage.closePicker();
-        BasePage.clickContact();
+        ActivityManipulationsPage.clickContact();
         AddSelectEntityPage.select(newContact);
 //        ActivityManipulationsPage.clickOpportunity();
 //        ActivityManipulationsPage.selectValueFromPopUp(opportunity);
@@ -253,17 +272,22 @@ public class CreateEditActivityTest extends BaseTest {
         AddSelectEntityPage.select(newCampaign);
         ActivityManipulationsPage.scrollToLabel(labelOtherInfo);
         ActivityManipulationsPage.typeIntoNotes(newNotes);
+//        ActivityManipulationsPage.scrollToLabel("Expenses");
+//        ActivityManipulationsPage.clickExpenses();
+//        ActivityManipulationsPage.clearExpenses();
+//        ActivityManipulationsPage.enterExpenses(newExpenses);
         ActivityManipulationsPage.clickSave();
         softAssert.assertEquals(newDescription, ActivityPage.getActivityDescription());
         softAssert.assertEquals(ActivityPage.getTitle(), newActivityType.toUpperCase());
-        softAssert.assertEquals(newUser, ActivityPage.getUserName());
-        softAssert.assertEquals(account, ActivityPage.getAccountName());
-        softAssert.assertEquals(newDate, ActivityPage.getDate());
-        softAssert.assertEquals(newTime, ActivityPage.getTime());
-        softAssert.assertEquals(newContact, ActivityPage.getContact());
-        softAssert.assertEquals(newCampaign, ActivityPage.getCampaign());
-        softAssert.assertEquals(opportunity, ActivityPage.getOpportunity());
-        softAssert.assertEquals(newNotes, ActivityPage.getNotes());
+        softAssert.assertEquals(ActivityPage.getUserName(), newUser);
+        softAssert.assertEquals(ActivityPage.getAccountName(), account);
+        softAssert.assertEquals(ActivityPage.getDate(), newDate);
+        softAssert.assertEquals(ActivityPage.getTime(), newTime);
+        softAssert.assertEquals(ActivityPage.getContact(), newContact);
+        softAssert.assertEquals(ActivityPage.getCampaign(), newCampaign);
+        softAssert.assertEquals(ActivityPage.getOpportunity(), opportunity);
+        softAssert.assertEquals(ActivityPage.getNotes(), newNotes);
+//        softAssert.assertEquals(expenses, );
         softAssert.assertAll();
     }
 

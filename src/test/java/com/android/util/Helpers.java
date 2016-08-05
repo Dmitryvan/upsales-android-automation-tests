@@ -216,21 +216,21 @@ public class Helpers {
             el.swipe(SwipeElementDirection.UP, 500);
             waitByThread(200);
         }
-//        el.clear();
+//        el.enterExpenses();
 //        el.sendKeys(month);
     }
 
     public static void selectDateDay(String day) {
         MobileElement el = (MobileElement) find(pickerSecondField);
         spinNumericField(el, day);
-//        el.clear();
+//        el.enterExpenses();
 //        el.sendKeys(day);
     }
 
     public static void selectDateYear(String year) {
         MobileElement el = (MobileElement) find(pickerThirdField);
         spinNumericField(el, year);
-//        el.clear();
+//        el.enterExpenses();
 //        el.sendKeys(year);
 //        hideKeyboard();
     }
@@ -238,14 +238,14 @@ public class Helpers {
     public static void selectTimeHours(String hours) {
         MobileElement el = (MobileElement) find(pickerFirstField);
         spinNumericField(el, hours);
-//        el.clear();
+//        el.enterExpenses();
 //        el.sendKeys(hours);
     }
 
     public static void selectTimeMinutes(String minutes) {
         MobileElement el = (MobileElement) find(pickerSecondField);
         spinNumericField(el, minutes);
-//        el.clear();
+//        el.enterExpenses();
 //        el.sendKeys(minutes);
     }
 
@@ -256,7 +256,7 @@ public class Helpers {
             el.swipe(SwipeElementDirection.UP, 500);
         else if (currentValue.startsWith("p") && aMpM.toLowerCase().startsWith("a"))
             el.swipe(SwipeElementDirection.DOWN, 500);
-//        el.clear();
+//        el.enterExpenses();
 //        el.sendKeys(aMpM);
 //        hideKeyboard();
     }

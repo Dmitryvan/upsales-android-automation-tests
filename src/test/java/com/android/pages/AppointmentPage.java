@@ -18,9 +18,6 @@ public class AppointmentPage extends BasePage {
     private static final By notes = MobileBy.id("notes");
     private static final By labelShowMore = MobileBy.IosUIAutomation(".tableViews()[0].cells()[8]");
 
-    private static final By motesalternativ = MobileBy.IosUIAutomation(".tableViews()[0].cells()[8].staticTexts()[1]");
-    private static final By motetCustomfalt = MobileBy.IosUIAutomation(".tableViews()[0].cells()[9].textFields()[0]");
-
     private static final By popoverEditAppointment = MobileBy.id("item_edit");
     private static final By popoverFollowUpActivity = MobileBy.id("item_follow");
     private static final By popoverFollowUpAppointment = MobileBy.id("item_follow_appointment");
@@ -34,6 +31,8 @@ public class AppointmentPage extends BasePage {
 
     private static final By date = MobileBy.id("date");
     private static final By time = MobileBy.id("time");
+
+    private static final By hoursOfPreparation = MobileBy.xpath("//android.widget.RelativeLayout[4]/android.widget.LinearLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.EditText[1]");
 
     public static String getFifthCellValue() {
         return getValue(fifththCellValue);
@@ -116,16 +115,12 @@ public class AppointmentPage extends BasePage {
         return getText(opportunity);
     }
 
-    public static String getMotesalternativ() {
-        return getValue(motesalternativ);
-    }
-
-    public static String getMotetCustomfalt() {
-//        ((IOSDriver)getDriver()).scrollTo("OTHER INFO");
-        return getValue(motetCustomfalt);
-    }
-
     public static String getTextEditAppointment() {
         return getText(popoverLabelEditAppointment);
     }
+
+    public static String getHoursOfPreparation() {
+        return getText(hoursOfPreparation);
+    }
+
 }

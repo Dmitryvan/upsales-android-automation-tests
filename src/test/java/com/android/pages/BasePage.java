@@ -27,7 +27,7 @@ public class BasePage extends Helpers {
     private static final By buttonFilter = MobileBy.id("filter_icon");
     private static final By buttonBack = MobileBy.id("back");
 
-    private static final By title = MobileBy.id("title");
+    private static final By title = MobileBy.id("header_title");
 
     //cells
     private static final By buttonAccount = MobileBy.id("account_field");
