@@ -20,7 +20,7 @@ import static org.junit.Assert.assertEquals;
 public class BasePage extends Helpers {
 
     //headers
-    private static final By buttonLeftMenu = MobileBy.xpath("//android.widget.ImageButton[1]");
+    private static final By buttonLeftMenu = MobileBy.id("left_icon");
     protected static final By buttonCancel = MobileBy.id("cancel");
     protected static final By buttonSave = MobileBy.id("save");
     private static final By buttonTools = MobileBy.id("save");

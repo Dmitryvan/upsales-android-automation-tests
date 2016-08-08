@@ -83,7 +83,7 @@ public class CreateEditActivityTest extends BaseTest {
     public void setUp() throws Exception{
         super.setUp();
         LoginPage.login();
-        BasePage.clickLeftMenu();
+        DashboardPage.clickLeftMenu();
         LeftMenuPage.clickCreate();
         CreateMenuPage.clickActivity();
         ActivityManipulationsPage.setDescription();
