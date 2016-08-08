@@ -5,10 +5,7 @@ import io.appium.java_client.MobileElement;
 import io.appium.java_client.SwipeElementDirection;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -39,8 +36,8 @@ public class DashboardPage extends BasePage {
     private static final List<WebElement> labelsTodayEvents = findElements(MobileBy.id("text"));
     private static final List<WebElement> cells = findElements(MobileBy.id("content"));
 
-    private static final WebElement labelMyAppointmentsToday = labelsTodayEvents.get(0);
-    private static final WebElement labelMyActivitiesToday = labelsTodayEvents.get(1);
+    private static final By labelMyAppointmentsToday = MobileBy.xpath("//*[starts-with(@text, \"MY APPOINTMENTS\")]");
+    private static final By labelMyActivitiesToday = MobileBy.xpath("//*[starts-with(@text, \"MY OPEN\")]");
     private static final By entityTable = MobileBy.IosUIAutomation(".tableViews()[0].cells()");
     private static final By salesPipelinePanel = MobileBy.xpath("//android.support.v4.view.ViewPager[1]/android.widget.LinearLayout[1]");
     private static final By labelShowAllActivities = MobileBy.id("show_all_activities");
@@ -78,7 +75,7 @@ public class DashboardPage extends BasePage {
     }
 
     public static String getMyAppointmentsTodayLabel() {
-        return labelMyAppointmentsToday.getText();
+        return getText(labelMyAppointmentsToday);
     }
 
     public static int getMyAppointmentsTodayCount() {
@@ -87,7 +84,8 @@ public class DashboardPage extends BasePage {
     }
 
     public static String getMyActivitiesTodayLabel() {
-        return labelMyActivitiesToday.getText();
+        scrollToLabel("MY OPEN");
+        return getText(labelMyActivitiesToday);
     }
 
     public static int getMyOpenActivitiesCount() {
@@ -263,7 +261,9 @@ public class DashboardPage extends BasePage {
     }
 
     public static String getFirstActivityType(int count) {
-        cells.get(count).click();
+//        cells.get(count).click();
+        scrollToLabel("MY OPEN");
+        find(MobileBy.xpath("//*[starts-with(@text, \"MY OPEN\")]/../following-sibling::android.widget.RelativeLayout[1]")).click();
         ActivityPage.clickTools();
         return ActivityPage.getTextEditActivity();
     }
