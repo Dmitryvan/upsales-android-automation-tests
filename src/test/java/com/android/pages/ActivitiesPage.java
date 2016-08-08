@@ -2,6 +2,7 @@ package com.android.pages;
 
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileDriver;
+import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
@@ -208,7 +209,7 @@ public class ActivitiesPage extends BasePage {
     }
 
     public static void selectActivity(String activity) {
-//        ((IOSDriver)getDriver()).scrollTo(activity);
+        ((AndroidDriver)getDriver()).scrollTo(activity);
         try {
             find(MobileBy.IosUIAutomation(
                     ".tableViews()[0].cells().firstWithPredicate(\"staticTexts[0].name=='" + activity + "'\")")).click();

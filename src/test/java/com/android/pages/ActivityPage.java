@@ -27,7 +27,7 @@ public class ActivityPage extends BasePage {
     private static final By popoverLabelEditActivity = MobileBy.xpath("//android.widget.LinearLayout[@index='0']/android.widget.TextView[@index='1']");
 
     private static final By popoverEditActivity = MobileBy.id("item_edit");
-    private static final By popoverFollowUpActivity = MobileBy.IosUIAutomation(".popover().tableViews()[0].cells()[3]");
+    private static final By popoverFollowUpActivity = MobileBy.id("item_follow");
 
     private static final By labelShowMore = MobileBy.IosUIAutomation(".scrollViews()[0].tableViews()[0].cells()[5]");
 
