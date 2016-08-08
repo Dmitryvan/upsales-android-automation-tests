@@ -38,6 +38,7 @@ public class ContactManipulationPage extends BasePage {
     }
 
     public static void clickOpportunity() {
+        wait(buttonOpportunity);
         find(buttonOpportunity).click();
     }
 

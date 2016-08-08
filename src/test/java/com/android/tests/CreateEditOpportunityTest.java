@@ -183,7 +183,7 @@ public class CreateEditOpportunityTest extends BaseTest {
         softAssert.assertEquals(OpportunityManipulationsPage.getTitleOnView(), titleOpportunity.toUpperCase());
         OpportunityPage.clickAccount();
         AccountPage.clickTabOpportunities();
-//        softAssert.assertTrue(OpportunitiesPage.searchOpportunity(opportunityName, today.toUpperCase()));
+        softAssert.assertTrue(OpportunitiesPage.searchOpportunity(opportunityName, today.toUpperCase()));
         softAssert.assertAll();
     }
 
@@ -205,7 +205,7 @@ public class CreateEditOpportunityTest extends BaseTest {
         softAssert.assertAll();
     }
 
-    @Test(priority = 4, enabled = false) //CASE 16
+    @Test(priority = 4) //CASE 16
     public void softCancelAfterSelectEditOpportunity() {
         SoftAssertExtended softAssert = new SoftAssertExtended();
         OpportunityManipulationsPage.enterDescription(opportunityName);
@@ -213,8 +213,8 @@ public class CreateEditOpportunityTest extends BaseTest {
         OpportunityManipulationsPage.selectValueFromPopUp(stage);
         OpportunityManipulationsPage.clickAccount();
         AddSelectEntityPage.select(account);
-//        OpportunityManipulationsPage.clickContact();
-//        AddSelectEntityPage.select(contact);
+        OpportunityManipulationsPage.clickContact();
+        AddSelectEntityPage.select(contact);
         OpportunityManipulationsPage.clickNewOrderRow();
         NewOrderRowPage.clickProduct();
         AddSelectEntityPage.select(product);
@@ -227,24 +227,23 @@ public class CreateEditOpportunityTest extends BaseTest {
         OpportunityManipulationsPage.setOpportunityName();
         String newOppName = OpportunityManipulationsPage.getOpportunityName();
         OpportunityManipulationsPage.enterDescription(newOppName);
-//        OpportunityManipulationsPage.clickDoneOnKeyboard();
         OpportunityManipulationsPage.clickUser();
         OpportunityManipulationsPage.selectValueFromPopUp(firstUser);
         OpportunityManipulationsPage.clickStage();
         OpportunityManipulationsPage.selectValueFromPopUp(newStage);
         OpportunityManipulationsPage.clickProbability();
         OpportunityManipulationsPage.enterProbability(newProbability);
-//        OpportunityManipulationsPage.clickDoneOnKeyboard();
         OpportunityManipulationsPage.clickCloseDate();
         OpportunityManipulationsPage.selectDateMonth(month);
         OpportunityManipulationsPage.selectDateDay(day);
         OpportunityManipulationsPage.selectDateYear(year);
         OpportunityManipulationsPage.closePicker();
-//        OpportunityManipulationsPage.clickContact();
-//        AddSelectEntityPage.select(newContact);
+        OpportunityManipulationsPage.clickContact();
+        AddSelectEntityPage.select(newContact);
         OpportunityManipulationsPage.clickCampaign();
         AddSelectEntityPage.select(newCampaign);
-        OpportunityManipulationsPage.clickNewOrderRowWithProduct();
+        OpportunityManipulationsPage.scrollToLabel(labelOtherInfo);
+        OpportunityManipulationsPage.clickNewOrderRow();
         NewOrderRowPage.clickProduct();
         AddSelectEntityPage.select(newProduct);
         NewOrderRowPage.clickQuantity();
@@ -258,14 +257,15 @@ public class CreateEditOpportunityTest extends BaseTest {
         softAssert.assertEquals(OpportunityPage.getUser(), yourUser);
         softAssert.assertEquals(OpportunityPage.getStage(), stageInOpp);
         softAssert.assertEquals(OpportunityPage.getCloseDateInOpportunity(), OpportunityPage.getCurrentDate());
-//        softAssert.assertEquals(OpportunityPage.getContact(), contact);
-        softAssert.assertEquals(OpportunityPage.getCampaign(), defaultCampaign);
+        softAssert.assertEquals(OpportunityPage.getContact(), contact);
+        softAssert.assertEquals(OpportunityPage.getCampaign(), labelNone);
+        OpportunityManipulationsPage.scrollToLabel(labelOtherInfo);
         softAssert.assertEquals(OpportunityPage.getProduct(), product);
         softAssert.assertEquals(OpportunityPage.getNotes(), notes);
         softAssert.assertAll();
     }
 
-    @Test(priority = 5, enabled = false) //CASE 15
+    @Test(priority = 5) //CASE 15
     public void softEditOpportunity() {
         SoftAssertExtended softAssert = new SoftAssertExtended();
         OpportunityManipulationsPage.enterDescription(opportunityName);
@@ -287,9 +287,9 @@ public class CreateEditOpportunityTest extends BaseTest {
         OpportunityManipulationsPage.clickAccount();
         AddSelectEntityPage.select(account);
         softAssert.assertEquals(OpportunityManipulationsPage.getAccount(), account);
-        OpportunityManipulationsPage.clickContact();
-        AddSelectEntityPage.select(contact);
-        softAssert.assertEquals(OpportunityManipulationsPage.getContact(), contact);
+//        OpportunityManipulationsPage.clickContact();
+//        AddSelectEntityPage.select(contact);
+//        softAssert.assertEquals(OpportunityManipulationsPage.getContact(), contact);
         OpportunityManipulationsPage.clickCampaign();
         AddSelectEntityPage.select(campaign);
         softAssert.assertEquals(OpportunityManipulationsPage.getCampaign(), campaign);
@@ -302,28 +302,27 @@ public class CreateEditOpportunityTest extends BaseTest {
         NewOrderRowPage.clickPrice();
         NewOrderRowPage.enterPrice(price);
         NewOrderRowPage.clickAdd();
-//        OpportunityManipulationsPage.typeIntoNotes(notes);
+        OpportunityManipulationsPage.scrollToLabel(labelOtherInfo);
+        OpportunityManipulationsPage.typeIntoNotes(notes);
         OpportunityManipulationsPage.clickSave();
         OpportunityPage.clickTools();
         OpportunityPage.clickEditOpportunity();
         OpportunityManipulationsPage.setOpportunityName();
         String newOppName = OpportunityManipulationsPage.getOpportunityName();
         OpportunityManipulationsPage.enterDescription(newOppName);
-//        OpportunityManipulationsPage.clickDoneOnKeyboard();
         OpportunityManipulationsPage.clickUser();
         OpportunityManipulationsPage.selectValueFromPopUp(secondUser);
         OpportunityManipulationsPage.clickStage();
         OpportunityManipulationsPage.selectValueFromPopUp(newStage);
         OpportunityManipulationsPage.clickProbability();
         OpportunityManipulationsPage.enterProbability(newProbability);
-//        OpportunityManipulationsPage.clickDoneOnKeyboard();
         OpportunityManipulationsPage.clickCloseDate();
         OpportunityManipulationsPage.selectDateMonth(newMonth);
         OpportunityManipulationsPage.selectDateDay(newDay);
         OpportunityManipulationsPage.selectDateYear(newYear);
         OpportunityManipulationsPage.closePicker();
-        OpportunityManipulationsPage.clickContact();
-        AddSelectEntityPage.select(newContact);
+//        OpportunityManipulationsPage.clickContact();
+//        AddSelectEntityPage.select(newContact);
         OpportunityManipulationsPage.clickCampaign();
         AddSelectEntityPage.select(newCampaign);
         OpportunityManipulationsPage.clickLabelProduct();
@@ -334,6 +333,7 @@ public class CreateEditOpportunityTest extends BaseTest {
         NewOrderRowPage.clickPrice();
         NewOrderRowPage.enterPrice(newPrice);
         NewOrderRowPage.clickSave();
+        OpportunityManipulationsPage.scrollToLabel(labelOtherInfo);
         OpportunityManipulationsPage.typeIntoNotes(newNotes);
         OpportunityManipulationsPage.clickSave();
         softAssert.assertEquals(OpportunityPage.getDescription(), newOppName);
@@ -341,15 +341,19 @@ public class CreateEditOpportunityTest extends BaseTest {
         softAssert.assertEquals(OpportunityPage.getUser(), secondUser);
         softAssert.assertEquals(OpportunityPage.getStage(), newChangedStageInOpp);
         softAssert.assertEquals(OpportunityPage.getCloseDateInOpportunity(), newCloseDate);
-        softAssert.assertEquals(OpportunityPage.getContact(), newContact);
+//        softAssert.assertEquals(OpportunityPage.getContact(), newContact);
         softAssert.assertEquals(OpportunityPage.getCampaign(), newCampaign);
-        softAssert.assertEquals(OpportunityPage.getProduct(), newProduct);
         softAssert.assertEquals(OpportunityPage.getNotes(), newNotes);
+        OpportunityManipulationsPage.scrollToLabel(labelOtherInfo);
+        softAssert.assertEquals(OpportunityPage.getProduct(), newProduct);
         softAssert.assertEquals(OpportunityPage.getQuantity(), newQuantity);
         softAssert.assertEquals(OpportunityPage.getPrice(), newPrice);
-        OpportunityPage.clickAccount();
+        OpportunityPage.clickBack();
+        LeftMenuPage.clickSearch();
+        SearchPage.search(account);
+        SearchPage.clickOnFirstSearchResult();
         AccountPage.clickTabOpportunities();
-//        softAssert.assertTrue(OpportunitiesPage.searchOpportunity(newOppName, closeDateInOpps));
+        softAssert.assertTrue(OpportunitiesPage.searchOpportunity(newOppName, closeDateInOpps));
         softAssert.assertAll();
     }
 

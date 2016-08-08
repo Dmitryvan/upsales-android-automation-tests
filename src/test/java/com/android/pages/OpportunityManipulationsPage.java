@@ -26,9 +26,7 @@ public class OpportunityManipulationsPage extends BasePage {
     private static final By buttonCloseDate = MobileBy.id("date_field");
     private static final By buttonNewOrderRow = MobileBy.id("new_oredr");
 
-    private static final By labelProduct = MobileBy.IosUIAutomation(".tableViews()[0].cells()[6].staticTexts()[0]");
-    private static final By buttonNewOrderRowWithProduct = MobileBy.xpath("//*[contains(@resource-id, 'order_field')]//*[contains(@resource-id, 'name')]");
-
+    private static final By labelProduct = MobileBy.id("order_content");
 
     public static void clickLabelProduct() {
         find(labelProduct).click();
@@ -117,11 +115,9 @@ public class OpportunityManipulationsPage extends BasePage {
 
     public static void enterProbability(String value) {
         sendValues(value, probability);
+        hideKeyboard();
     }
 
-    public static void clickNewOrderRowWithProduct() {
-        find(buttonNewOrderRowWithProduct).click();
-    }
 }
 
 

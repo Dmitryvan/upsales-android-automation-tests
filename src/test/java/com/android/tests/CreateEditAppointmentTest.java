@@ -164,14 +164,14 @@ public class CreateEditAppointmentTest extends BaseTest {
         AppointmentManipulationsPage.enterDescription(description);
         AppointmentManipulationsPage.clickAccount();
         AddSelectEntityPage.select(account);
-//        AppointmentManipulationsPage.scrollToLabel("Hours");
-//        AppointmentManipulationsPage.clickHoursInPreparation();
-//        AppointmentManipulationsPage.enterHoursInPreparation(hoursInPreparation);
+        AppointmentManipulationsPage.scrollToLabel("Hours");
+        AppointmentManipulationsPage.clickHoursInPreparation();
+        AppointmentManipulationsPage.enterHoursInPreparation(hoursInPreparation);
         AppointmentManipulationsPage.clickSave();
         softAssert.assertEquals(AppointmentPage.getAccountName(), account);
         softAssert.assertEquals(AppointmentPage.getAppointmentDescription(), description);
-//        AppointmentManipulationsPage.scrollToLabel("Logged");
-//        softAssert.assertEquals(AppointmentPage.getHoursOfPreparation(), hoursInPreparation);
+        AppointmentManipulationsPage.scrollToLabel("Hours");
+        softAssert.assertEquals(AppointmentPage.getHoursOfPreparation(), hoursInPreparation);
         softAssert.assertAll();
     }
 
@@ -191,9 +191,9 @@ public class CreateEditAppointmentTest extends BaseTest {
         AppointmentManipulationsPage.enterDescription(description);
         AppointmentManipulationsPage.clickAccount();
         AddSelectEntityPage.select(account);
-//        AppointmentManipulationsPage.scrollToLabel("Hours");
-//        AppointmentManipulationsPage.clickHoursInPreparation();
-//        AppointmentManipulationsPage.enterHoursInPreparation(hoursInPreparation);
+        AppointmentManipulationsPage.scrollToLabel("Hours");
+        AppointmentManipulationsPage.clickHoursInPreparation();
+        AppointmentManipulationsPage.enterHoursInPreparation(hoursInPreparation);
         AppointmentManipulationsPage.clickSave();
         AppointmentPage.clickTools();
         AppointmentPage.clickEditAppointment();
@@ -213,6 +213,8 @@ public class CreateEditAppointmentTest extends BaseTest {
         softAssert.assertEquals(defaultAppointmentType.toUpperCase(), AppointmentPage.getTitleOnView());
         softAssert.assertEquals(labelNone, AppointmentPage.getCampaign());
         softAssert.assertEquals(labelNone, AppointmentPage.getOpportunity());
+        AppointmentPage.scrollToLabel("Hours");
+        softAssert.assertEquals(AppointmentPage.getHoursOfPreparation(), hoursInPreparation);
         softAssert.assertAll();
     }
 
@@ -318,10 +320,10 @@ public class CreateEditAppointmentTest extends BaseTest {
         ActivityManipulationsPage.scrollToLabel(labelOtherInfo);
         AppointmentManipulationsPage.typeIntoNotes(newNotes);
 
-//        AppointmentManipulationsPage.scrollToLabel("Hours");
-//        AppointmentManipulationsPage.clickHoursInPreparation();
-//        AppointmentManipulationsPage.clearHoursInPreparation();
-//        AppointmentManipulationsPage.enterHoursInPreparation(newHoursInPreparation);
+        AppointmentManipulationsPage.scrollToLabel("Hours");
+        AppointmentManipulationsPage.clickHoursInPreparation();
+        AppointmentManipulationsPage.clearHoursInPreparation();
+        AppointmentManipulationsPage.enterHoursInPreparation(newHoursInPreparation);
 
         AppointmentManipulationsPage.clickSave();
 
@@ -339,8 +341,8 @@ public class CreateEditAppointmentTest extends BaseTest {
         softAssert.assertEquals(opportunity, AppointmentPage.getOpportunity());
         AppointmentPage.scrollToLabel(labelOtherInfo);
         softAssert.assertEquals(newNotes, AppointmentPage.getNotes());
-//        AppointmentManipulationsPage.scrollToLabel("Logged");
-//        softAssert.assertEquals(AppointmentPage.getHoursOfPreparation(), newHoursInPreparation);
+        AppointmentManipulationsPage.scrollToLabel("Hours");
+        softAssert.assertEquals(AppointmentPage.getHoursOfPreparation(), newHoursInPreparation);
         softAssert.assertAll();
     }
 
