@@ -735,7 +735,6 @@ public class CreateEditContactTest extends BaseTest {
         NewOrderRowPage.clickProduct();
         AddSelectEntityPage.select(product);
         NewOrderRowPage.clickAdd();
-//        OpportunityManipulationsPage.waitForLabelAccount();
         OpportunityManipulationsPage.clickSave();
         softAssert.assertEquals(OpportunityPage.getDescription(), defaultDescription);
         softAssert.assertEquals(OpportunityPage.getAccount(), account);

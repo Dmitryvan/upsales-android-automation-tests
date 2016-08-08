@@ -10,15 +10,14 @@ public class OpportunityPage extends BasePage {
     private static final By description = MobileBy.id("header_title");
     private static final By account = MobileBy.id("account_name");
     private static final By stage = MobileBy.xpath("//*[contains(@resource-id, 'stage_order_field')]//*[contains(@resource-id, 'select')]");
-    private static final By user = MobileBy.IosUIAutomation(".tableViews()[0].staticTexts()[2]");
-    private static final By contact = MobileBy.IosUIAutomation(".tableViews()[0].cells()[1].staticTexts()[2]");
-    private static final By campaign = MobileBy.IosUIAutomation(".tableViews()[0].cells()[2].staticTexts()[1]");
-    private static final By product = MobileBy.IosUIAutomation(".tableViews()[0].cells()[3].staticTexts()[0]");
-    private static final By notes = MobileBy.IosUIAutomation(".tableViews()[0].cells()[5].textViews()[0]");
-    private static final By closeDateInOpportunity = MobileBy.IosUIAutomation(".tableViews()[0].staticTexts()[9]");
+    private static final By user = MobileBy.xpath("//*[contains(@resource-id, 'user')]//*[contains(@resource-id, 'user_name')]");
+    private static final By contact = MobileBy.xpath("//*[contains(@resource-id, 'contact_field')]//*[contains(@resource-id, 'select')]");
+    private static final By campaign = MobileBy.xpath("//*[contains(@resource-id, 'company_field')]//*[contains(@resource-id, 'select')]");
+    private static final By product = MobileBy.xpath("//*[contains(@resource-id, 'order_content')]//*[contains(@resource-id, 'name')]");
+    private static final By notes = MobileBy.id("notes");
+    private static final By closeDateInOpportunity = MobileBy.xpath("//android.widget.LinearLayout[@index='4']//android.widget.TextView[@index='0']");
     private static final By closeDateInOrder = MobileBy.IosUIAutomation(".tableViews()[0].staticTexts()[5]");
-    private static final By quantity = MobileBy.IosUIAutomation(".tableViews()[0].cells()[3].staticTexts()[1]");
-    private static final By price = MobileBy.IosUIAutomation(".tableViews()[0].cells()[3].staticTexts()[2]");
+    private static final By quantityPrice = MobileBy.id("formula");
     private static final By buttonStage = MobileBy.IosUIAutomation(".tableViews()[0].cells()[0]");
 
     private static final By popoverEditOpportunity = MobileBy.id("item_edit");
@@ -48,7 +47,7 @@ public class OpportunityPage extends BasePage {
     }
 
     public static String getCloseDateInOpportunity() {
-        return getValue(closeDateInOpportunity);
+        return getText(closeDateInOpportunity);
     }
 
     public static String getCloseDateInOrder() {
@@ -56,19 +55,19 @@ public class OpportunityPage extends BasePage {
     }
 
     public static String getNotes() {
-        return getValue(notes);
+        return getText(notes);
     }
 
     public static String getContact() {
-        return getValue(contact);
+        return getText(contact);
     }
 
     public static String getCampaign() {
-        return getValue(campaign);
+        return getText(campaign);
     }
 
     public static String getProduct() {
-        return getValue(product);
+        return getText(product);
     }
 
     public static void clickLeftMenuOnCreatedOpp() {
@@ -92,17 +91,17 @@ public class OpportunityPage extends BasePage {
     }
 
     public static String getUser() {
-        return getValue(user);
+        return getText(user);
     }
 
     public static String getQuantity() {
-        String value = getValue(quantity);
-        return value.substring(0, value.length()-3);
+        String value = getText(quantityPrice);
+        return value.substring(0, 1);
     }
 
     public static String getPrice() {
-        String value = getValue(price);
-        return value.substring(0, value.length()-4);
+        String value = getText(quantityPrice);
+        return value.substring(4, 6);
     }
 
     public static void clickStage() {

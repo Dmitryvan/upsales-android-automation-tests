@@ -43,10 +43,9 @@ public class AccountPage extends BasePage {
     private static final By tabContacts = MobileBy.xpath("//*[@class='android.widget.TextView' and @text='Contacts']");
     private static final By tabActivity = MobileBy.xpath("//*[@class='android.widget.TextView' and @text='Activities']");
     private static final By tabOpportunities = MobileBy.xpath("//*[@class='android.widget.TextView' and @text='Opportunities']");
-    private static final By tabSales = MobileBy.IosUIAutomation(".tabBars()[0].buttons()[\"Sales\"]");
+    private static final By tabSales = MobileBy.xpath("//*[@class='android.widget.TextView' and @text='Sales']");
 
     public static String getAccountName() {
-//        waitByThread(500);
         return getText(labelAccountName);
     }
 
@@ -57,11 +56,6 @@ public class AccountPage extends BasePage {
     public static String getAccountManagerValue() {
         return getText(labelAccountManagerValue);
     }
-
-//    public static void clickTools() {
-//        wait(buttonTools);
-//        find(buttonTools).click();
-//    }
 
     public static void clickParentAccount() {
         find(buttonParentAccount).click();
@@ -112,6 +106,7 @@ public class AccountPage extends BasePage {
     }
 
     public static void clickTabActivities() {
+        wait(tabActivity);
         find(tabActivity).click();
     }
 
@@ -120,6 +115,7 @@ public class AccountPage extends BasePage {
     }
 
     public static void clickTabSales() {
+        wait(tabSales);
         find(tabSales).click();
     }
 }

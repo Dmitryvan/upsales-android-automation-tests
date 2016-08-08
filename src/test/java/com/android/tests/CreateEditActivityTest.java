@@ -145,17 +145,17 @@ public class CreateEditActivityTest extends BaseTest {
         ActivityManipulationsPage.clickAccount();
         AddSelectEntityPage.select(account);
         softAssert.assertEquals(ActivityManipulationsPage.getAccount(), account);
-//        ActivityManipulationsPage.scrollToLabel("Expenses");
-//        ActivityManipulationsPage.clickExpenses();
-//        ActivityManipulationsPage.enterExpenses(expenses);
-//        softAssert.assertEquals(ActivityManipulationsPage.getExpenses(), expenses);
+        ActivityManipulationsPage.scrollToLabel("Expenses");
+        ActivityManipulationsPage.clickExpenses();
+        ActivityManipulationsPage.enterExpenses(expenses);
+        softAssert.assertEquals(ActivityManipulationsPage.getExpenses(), expenses);
         ActivityManipulationsPage.clickSave();
         softAssert.assertEquals(ActivityPage.getActivityDescription(), description);
         softAssert.assertEquals(ActivityPage.getTitleOnView(), defaultActivityType.toUpperCase());
         softAssert.assertEquals(ActivityPage.getAccountName(), account);
-//        ActivityPage.scrollToLabel("Expenses");
-//        softAssert.assertEquals(ActivityPage.getExpenses(), expenses + " SEK");
-//        ActivityPage.scrollToLabel("Campaign");
+        ActivityPage.scrollToLabel("Expenses");
+        softAssert.assertEquals(ActivityPage.getExpenses(), expenses + " SEK");
+        ActivityPage.scrollToLabel("Campaign");
         ActivityPage.clickAccount();
         AccountPage.clickTabActivities();
         ActivitiesPage.searchActivity(description, today);
@@ -180,9 +180,9 @@ public class CreateEditActivityTest extends BaseTest {
         ActivityManipulationsPage.enterDescription(description);
         ActivityManipulationsPage.clickAccount();
         AddSelectEntityPage.select(account);
-//        ActivityManipulationsPage.scrollToLabel("Expenses");
-//        ActivityManipulationsPage.clickExpenses();
-//        ActivityManipulationsPage.enterExpenses(expenses);
+        ActivityManipulationsPage.scrollToLabel("Expenses");
+        ActivityManipulationsPage.clickExpenses();
+        ActivityManipulationsPage.enterExpenses(expenses);
         ActivityManipulationsPage.clickSave();
         ActivityPage.clickTools();
         ActivityPage.clickEditActivity();
@@ -242,9 +242,9 @@ public class CreateEditActivityTest extends BaseTest {
         softAssert.assertEquals(campaign, ActivityManipulationsPage.getCampaign());
         ActivityManipulationsPage.scrollToLabel(labelOtherInfo.toUpperCase());
         ActivityManipulationsPage.typeIntoNotes(notes);
-//        ActivityManipulationsPage.scrollToLabel("Expenses");
-//        ActivityManipulationsPage.clickExpenses();
-//        ActivityManipulationsPage.enterExpenses(expenses);
+        ActivityManipulationsPage.scrollToLabel("Expenses");
+        ActivityManipulationsPage.clickExpenses();
+        ActivityManipulationsPage.enterExpenses(expenses);
         ActivityManipulationsPage.clickSave();
         ActivityPage.clickTools();
         ActivityPage.clickEditActivity();
@@ -273,10 +273,10 @@ public class CreateEditActivityTest extends BaseTest {
         AddSelectEntityPage.select(newCampaign);
         ActivityManipulationsPage.scrollToLabel(labelOtherInfo);
         ActivityManipulationsPage.typeIntoNotes(newNotes);
-//        ActivityManipulationsPage.scrollToLabel("Expenses");
-//        ActivityManipulationsPage.clickExpenses();
-//        ActivityManipulationsPage.clearExpenses();
-//        ActivityManipulationsPage.enterExpenses(newExpenses);
+        ActivityManipulationsPage.scrollToLabel("Expenses");
+        ActivityManipulationsPage.clickExpenses();
+        ActivityManipulationsPage.clearExpenses();
+        ActivityManipulationsPage.enterExpenses(newExpenses);
         ActivityManipulationsPage.clickSave();
         softAssert.assertEquals(newDescription, ActivityPage.getActivityDescription());
         softAssert.assertEquals(ActivityPage.getTitleOnView(), newActivityType.toUpperCase());
@@ -288,7 +288,8 @@ public class CreateEditActivityTest extends BaseTest {
         softAssert.assertEquals(ActivityPage.getCampaign(), newCampaign);
         softAssert.assertEquals(ActivityPage.getOpportunity(), opportunity);
         softAssert.assertEquals(ActivityPage.getNotes(), newNotes);
-//        softAssert.assertEquals(expenses, );
+        ActivityPage.scrollToLabel("Expenses");
+        softAssert.assertEquals(ActivityPage.getExpenses(), newExpenses + " SEK");
         softAssert.assertAll();
     }
 
