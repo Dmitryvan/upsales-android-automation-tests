@@ -93,6 +93,8 @@ public class CreateEditAccountTest extends BaseTest {
     private final String newEndMonth = PropertyLoader.loadProperty(createAppPropertyPath, "newEndMonth");
     private final String newEndDay = PropertyLoader.loadProperty(createAppPropertyPath, "newEndDay");
     private final String newEndYear = PropertyLoader.loadProperty(createAppPropertyPath, "newEndYear");
+    private final String hoursInPreparation = PropertyLoader.loadProperty(createAppPropertyPath, "hoursInPreparation");
+    private final String newHoursInPreparation = PropertyLoader.loadProperty(createAppPropertyPath, "newHoursInPreparation");
 
     private final String createOppPropertyPath = "src/test/resources/opportunity.properties";
     private final String oppCreateTitle = PropertyLoader.loadProperty(createOppPropertyPath, "titleCreate");
@@ -699,8 +701,9 @@ public class CreateEditAccountTest extends BaseTest {
         softAssert.assertEquals(ActivityManipulationsPage.getUser(), defaultUser);
         softAssert.assertEquals(ActivityManipulationsPage.getCampaign(), defaultCampaign);
 
-//        ActivityManipulationsPage.clickExpenses();
-//        ActivityManipulationsPage.enterValueFromKeyboard(expenses);
+        ActivityManipulationsPage.scrollToLabel("Expenses");
+        ActivityManipulationsPage.clickExpenses();
+        ActivityManipulationsPage.enterExpenses(expenses);
         ActivityManipulationsPage.clickSave();
 
         softAssert.assertEquals(ActivityPage.getActivityDescription(), defaultDescription);
@@ -712,7 +715,8 @@ public class CreateEditAccountTest extends BaseTest {
         softAssert.assertEquals(ActivityPage.getOpportunity(), lblNone);
 
 //        ActivityPage.clickShowMore();
-//        softAssert.assertEquals(ActivityPage.getExpensesWithoutContact(), expenses);
+        ActivityPage.scrollToLabel("Expenses");
+        softAssert.assertEquals(ActivityPage.getExpenses(), expenses + " SEK");
 
         ActivityPage.clickBack();
 //        AccountManipulationsPage.clickBack();
@@ -753,8 +757,11 @@ public class CreateEditAccountTest extends BaseTest {
         ActivityManipulationsPage.setDescription();
         activityDescription = ActivityManipulationsPage.getDescription();
         ActivityManipulationsPage.enterDescription(activityDescription);
-//        ActivityManipulationsPage.clickExpenses();
-//        ActivityManipulationsPage.enterValueFromKeyboard(expenses);
+
+        ActivityManipulationsPage.scrollToLabel("Expenses");
+        ActivityManipulationsPage.clickExpenses();
+        ActivityManipulationsPage.enterExpenses(expenses);
+
         ActivityManipulationsPage.clickSave();
         ActivityPage.clickTools();
         ActivityPage.clickEditActivity();
@@ -779,9 +786,10 @@ public class CreateEditAccountTest extends BaseTest {
         AddSelectEntityPage.select(campaign);
         ActivityManipulationsPage.scrollToLabel(labelOtherInfo.toUpperCase());
         ActivityManipulationsPage.typeIntoNotes(notes);
-//        ActivityManipulationsPage.clickExpenses();
-//        ActivityManipulationsPage.clearCustomField();
-//        ActivityManipulationsPage.enterValueFromKeyboard(newExpenses);
+
+        ActivityManipulationsPage.scrollToLabel("Expenses");
+        ActivityManipulationsPage.clickExpenses();
+        ActivityManipulationsPage.enterExpenses(newExpenses);
         ActivityManipulationsPage.clickSave();
 
         softAssert.assertEquals(ActivityPage.getTitleOnView(), activityType.toUpperCase());
@@ -794,7 +802,8 @@ public class CreateEditAccountTest extends BaseTest {
         softAssert.assertEquals(ActivityPage.getCampaign(), campaign);
         softAssert.assertEquals(ActivityPage.getOpportunity(), lblNone);
 //        ActivityPage.clickShowMore();
-//        softAssert.assertEquals(ActivityPage.getExpensesWithoutContact(), newExpenses);
+        ActivityManipulationsPage.scrollToLabel("Expenses");
+        softAssert.assertEquals(ActivityPage.getExpenses(), newExpenses + " SEK");
         softAssert.assertEquals(ActivityPage.getNotes(), notes);
         softAssert.assertAll();
     }
@@ -818,6 +827,9 @@ public class CreateEditAccountTest extends BaseTest {
         softAssert.assertEquals(AppointmentManipulationsPage.getOpportunity(), appDefaultOpp);
         softAssert.assertEquals(AppointmentManipulationsPage.getUser(), defaultUser);
         softAssert.assertEquals(AppointmentManipulationsPage.getCampaign(), defaultCampaign);
+        AppointmentManipulationsPage.scrollToLabel("Hours");
+        AppointmentManipulationsPage.clickHoursInPreparation();
+        AppointmentManipulationsPage.enterHoursInPreparation(hoursInPreparation);
         AppointmentManipulationsPage.clickSave();
         softAssert.assertEquals(AppointmentPage.getTitleOnView(), appDefaultType.toUpperCase());
         softAssert.assertEquals(AppointmentPage.getAppointmentDescription(), defaultDescription);
@@ -857,7 +869,13 @@ public class CreateEditAccountTest extends BaseTest {
         AddSelectEntityPage.select(campaign);
         AppointmentManipulationsPage.scrollToLabel(lblOtherInfo);
         AppointmentManipulationsPage.typeIntoNotes(notes);
+
+        AppointmentManipulationsPage.scrollToLabel("Hours");
+        AppointmentManipulationsPage.clickHoursInPreparation();
+        AppointmentManipulationsPage.enterHoursInPreparation(hoursInPreparation);
+
         AppointmentManipulationsPage.clickSave();
+
         AppointmentPage.clickTools();
         AppointmentPage.clickEditAppointment();
         softAssert.assertEquals(AppointmentManipulationsPage.getTitle(), appEditTitle);
@@ -896,7 +914,13 @@ public class CreateEditAccountTest extends BaseTest {
         AddSelectEntityPage.select(newCampaign);
         AppointmentManipulationsPage.scrollToLabel(labelOtherInfo);
         AppointmentManipulationsPage.typeIntoNotes(newNotes);
+
+        AppointmentManipulationsPage.scrollToLabel("Hours");
+        AppointmentManipulationsPage.clickHoursInPreparation();
+        AppointmentManipulationsPage.enterHoursInPreparation(newHoursInPreparation);
+
         AppointmentManipulationsPage.clickSave();
+
         softAssert.assertEquals(AppointmentPage.getTitle(), newAppointmentType.toUpperCase());
         softAssert.assertEquals(AppointmentPage.getAppointmentDescription(), appointmentName);
         softAssert.assertEquals(AppointmentPage.getAccountName(), accountName);
@@ -909,6 +933,9 @@ public class CreateEditAccountTest extends BaseTest {
         softAssert.assertEquals(AppointmentPage.getCampaign(), newCampaign);
         softAssert.assertEquals(AppointmentPage.getOpportunity(), lblNone);
         softAssert.assertEquals(AppointmentPage.getNotes(), newNotes);
+
+        AppointmentPage.scrollToLabel("Hours");
+        softAssert.assertEquals(AppointmentPage.getHoursOfPreparation(), newHoursInPreparation);
         softAssert.assertAll();
     }
 

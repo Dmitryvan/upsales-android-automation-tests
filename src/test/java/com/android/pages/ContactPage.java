@@ -12,7 +12,7 @@ public class ContactPage extends BasePage {
 
     private static final By contactName = MobileBy.id("header_title");
     private static final By account = MobileBy.id("account_name");
-    private static final By title = MobileBy.id("contact_title");
+    private static final By title = MobileBy.id("header_subtitle");
     private static final By phone = MobileBy.id("phone");
     private static final By mobile = MobileBy.id("mobile");
     private static final By email = MobileBy.id("email");

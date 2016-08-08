@@ -174,9 +174,11 @@ public class Helpers {
             calendar.set(Calendar.MINUTE, 30);
         else if (minutes > 30 && minutes <= 45)
             calendar.set(Calendar.MINUTE, 45);
-        else {
+        else if (minutes > 45){
             calendar.set(Calendar.MINUTE, 0);
             calendar.add(Calendar.HOUR, 1);
+        } else {
+            calendar.set(Calendar.MINUTE, 0);
         }
         return calendar;
     }

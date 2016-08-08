@@ -107,6 +107,8 @@ public class CreateEditContactTest extends BaseTest {
     private final String newStartTime = PropertyLoader.loadProperty(createAppointmentPropertyPath, "newStartTime");
     private final String newEndFullDate = PropertyLoader.loadProperty(createAppointmentPropertyPath, "newEndFullDate");
     private final String newEndTime = PropertyLoader.loadProperty(createAppointmentPropertyPath, "newEndTime");
+    private final String hoursInPreparation = PropertyLoader.loadProperty(createAppointmentPropertyPath, "hoursInPreparation");
+    private final String newHoursInPreparation = PropertyLoader.loadProperty(createAppointmentPropertyPath, "newHoursInPreparation");
 
     private final String opportunityPropertyPath = "src/test/resources/opportunity.properties";
     private final String stage = PropertyLoader.loadProperty(opportunityPropertyPath, "stage");
@@ -425,9 +427,11 @@ public class CreateEditContactTest extends BaseTest {
         softAssert.assertEquals(contactName, BasePage.getContact());
         softAssert.assertEquals(defaultUser, ActivityManipulationsPage.getUser());
         softAssert.assertEquals(BasePage.getOpportunity(), labelSelectOpportunity);
-//        ActivityManipulationsPage.clickDoneOnKeyboard();
-//        ActivityManipulationsPage.clickExpenses();
-//        ActivityManipulationsPage.enterValueFromKeyboard(expenses);
+
+        ActivityManipulationsPage.scrollToLabel("Expenses");
+        ActivityManipulationsPage.clickExpenses();
+        ActivityManipulationsPage.enterExpenses(expenses);
+
         ActivityManipulationsPage.clickSave();
         softAssert.assertEquals(ActivityPage.getActivityDescription(), defaultDescription);
         softAssert.assertEquals(ActivityPage.getTitleOnView(), defaultActivityType.toUpperCase());
@@ -437,9 +441,10 @@ public class CreateEditContactTest extends BaseTest {
         softAssert.assertEquals(ActivityPage.getContact(), contactName);
         softAssert.assertEquals(ActivityPage.getCampaign(), labelNone);
         softAssert.assertEquals(ActivityPage.getOpportunity(), labelNone);
-//        ActivityPage.scrollToLabel("Show more (1)");
-//        ActivityPage.clickShowMore();
-//        softAssert.assertEquals(ActivityPage.getExpensesWithAllData(), expenses);
+
+        ActivityManipulationsPage.scrollToLabel("Expenses");
+        softAssert.assertEquals(ActivityPage.getExpenses(), expenses + " SEK");
+
         ActivityPage.clickBack();
         LeftMenuPage.clickActivities();
 //        softAssert.assertTrue(ActivitiesPage.searchActivity(defaultDescription, dateToday));
@@ -488,10 +493,14 @@ public class CreateEditContactTest extends BaseTest {
         ContactManipulationPage.clickActivity();
         ActivityManipulationsPage.setDescription();
         activityDescription = ActivityManipulationsPage.getDescription();
-        ContactManipulationPage.enterContactName(activityDescription);
-//        ActivityManipulationsPage.clickExpenses();
-//        ActivityManipulationsPage.enterValueFromKeyboard(expenses);
+        ActivityManipulationsPage.enterDescription(activityDescription);
+
+        ActivityManipulationsPage.scrollToLabel("Expenses");
+        ActivityManipulationsPage.clickExpenses();
+        ActivityManipulationsPage.enterExpenses(expenses);
+
         ActivityManipulationsPage.clickSave();
+
         ActivityPage.clickTools();
         ActivityPage.clickEditActivity();
         ActivityManipulationsPage.setDescription();
@@ -517,7 +526,13 @@ public class CreateEditContactTest extends BaseTest {
         AddSelectEntityPage.select(campaign);
         ActivityManipulationsPage.scrollToLabel(labelOtherInfo.toUpperCase());
         BasePage.typeIntoNotes(notes);
+
+        ActivityManipulationsPage.scrollToLabel("Expenses");
+        ActivityManipulationsPage.clickExpenses();
+        ActivityManipulationsPage.enterExpenses(newExpenses);
+
         ActivityManipulationsPage.clickSave();
+
         softAssert.assertEquals(ActivityPage.getTitleOnView(), activityType.toUpperCase());
         softAssert.assertEquals(ActivityPage.getActivityDescription(), activityDescription);
         softAssert.assertEquals(ActivityPage.getAccountName(), account);
@@ -528,6 +543,9 @@ public class CreateEditContactTest extends BaseTest {
         softAssert.assertEquals(ActivityPage.getCampaign(), campaign);
         softAssert.assertEquals(ActivityPage.getOpportunity(), opportunity);
         softAssert.assertEquals(ActivityPage.getNotes(), notes);
+
+        ActivityPage.scrollToLabel("email");
+        softAssert.assertEquals(ActivityPage.getExpenses(), newExpenses + " SEK");
         softAssert.assertAll();
     }
 
@@ -552,11 +570,18 @@ public class CreateEditContactTest extends BaseTest {
         softAssert.assertEquals(account, AppointmentManipulationsPage.getAccount());
         softAssert.assertEquals(AppointmentManipulationsPage.getContact(), contactName);
         softAssert.assertEquals(AppointmentManipulationsPage.getUser(), defaultUser);
+
+        AppointmentManipulationsPage.scrollToLabel("Hours");
+        AppointmentManipulationsPage.clickHoursInPreparation();
+        AppointmentManipulationsPage.enterHoursInPreparation(hoursInPreparation);
+
         AppointmentManipulationsPage.clickSave();
         softAssert.assertEquals(AppointmentPage.getTitleOnView(), defaultAppointmentType.toUpperCase());
         softAssert.assertEquals(AppointmentPage.getAppointmentDescription(), defaultDescription);
         softAssert.assertEquals(AppointmentPage.getAccountName(), account);
         softAssert.assertEquals(AppointmentPage.getContact(), contactName);
+        AppointmentManipulationsPage.scrollToLabel("Hours");
+        softAssert.assertEquals(AppointmentPage.getHoursOfPreparation(), hoursInPreparation);
         softAssert.assertAll();
     }
 
@@ -573,8 +598,8 @@ public class CreateEditContactTest extends BaseTest {
 //        ContactManipulationPage.enterValueFromKeyboard(fieldExtraID);
         ContactManipulationPage.clickSave();
         ContactManipulationPage.clickAppointment();
-        ActivityManipulationsPage.checkPageTitle(titleCreateApp);
-        ActivityManipulationsPage.clickCancel();
+        AppointmentManipulationsPage.checkPageTitle(titleCreateApp);
+        AppointmentManipulationsPage.clickCancel();
         softAssert.assertTrue(LeftMenuPage.checkSearch());
         softAssert.assertEquals(LeftMenuPage.getHiddenPageTitle(), titleDashboard);
         LeftMenuPage.clickSearch();
@@ -611,7 +636,13 @@ public class CreateEditContactTest extends BaseTest {
         AddSelectEntityPage.select(campaign);
         ActivityManipulationsPage.scrollToLabel(labelOtherInfo);
         AppointmentManipulationsPage.typeIntoNotes(notes);
+
+        AppointmentManipulationsPage.scrollToLabel("Hours");
+        AppointmentManipulationsPage.clickHoursInPreparation();
+        AppointmentManipulationsPage.enterHoursInPreparation(hoursInPreparation);
+
         AppointmentManipulationsPage.clickSave();
+
         AppointmentPage.clickTools();
         AppointmentPage.clickEditAppointment();
         softAssert.assertEquals(AppointmentManipulationsPage.getTitle(), appEditTitle);
@@ -653,7 +684,13 @@ public class CreateEditContactTest extends BaseTest {
         AddSelectEntityPage.select(newCampaign);
         ActivityManipulationsPage.scrollToLabel(labelOtherInfo);
         AppointmentManipulationsPage.typeIntoNotes(newNotes);
+
+        AppointmentManipulationsPage.scrollToLabel("Hours");
+        AppointmentManipulationsPage.clickHoursInPreparation();
+        AppointmentManipulationsPage.enterHoursInPreparation(newHoursInPreparation);
+
         AppointmentManipulationsPage.clickSave();
+
         softAssert.assertEquals(AppointmentPage.getTitleOnView(), newAppointmentType.toUpperCase());
         softAssert.assertEquals(AppointmentPage.getAppointmentDescription(), appointmentName);
         softAssert.assertEquals(AppointmentPage.getAccountName(), account);
@@ -668,6 +705,10 @@ public class CreateEditContactTest extends BaseTest {
         softAssert.assertEquals(AppointmentPage.getOpportunity(), opportunity);
         ActivityManipulationsPage.scrollToLabel(labelOtherInfo);
         softAssert.assertEquals(AppointmentPage.getNotes(), newNotes);
+
+        AppointmentManipulationsPage.scrollToLabel("Hours");
+        softAssert.assertEquals(AppointmentPage.getHoursOfPreparation(), newHoursInPreparation);
+
         softAssert.assertAll();
     }
 
@@ -734,7 +775,7 @@ public class CreateEditContactTest extends BaseTest {
     }
 
     @Test(priority = 15, enabled = false)
-    public void softCreateContactAndCreateOpportunityAndEditOpportunity() throws InterruptedException {
+    public void softCreateContactAndCreateOpportunityAndEditOpportunity() {
         SoftAssertExtended softAssert = new SoftAssertExtended();
         ContactManipulationPage.enterContactName(contactName);
         ContactManipulationPage.clickAccount();
