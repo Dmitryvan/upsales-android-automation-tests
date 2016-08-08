@@ -54,7 +54,7 @@ public class AddSelectEntityPage extends BasePage{
     }
 
     public static void clickBack() {
-//        hideKeyboard();
+        hideKeyboard();
         find(buttonBack).click();
     }
 

@@ -19,7 +19,7 @@ public class AccountPage extends BasePage {
     private static final By popoverOrder = MobileBy.IosUIAutomation(".popover().tableViews()[0].cells()[6]");
     private static final By popoverContact = MobileBy.IosUIAutomation(".popover().tableViews()[0].cells()[7]");
 
-    private static final By labelAccountName = MobileBy.id("contact_name");
+    private static final By labelAccountName = MobileBy.xpath("//*[contains(@resource-id, 'container_header')]/android.widget.RelativeLayout[1]/android.widget.TextView[1]");
     private static final By labelParent = MobileBy.IosUIAutomation(".tableViews()[0].staticTexts()[1]");
     private static final By labelAccountManager = MobileBy.id("user_title");
     private static final By labelAccountManagerValue = MobileBy.id("user_name");

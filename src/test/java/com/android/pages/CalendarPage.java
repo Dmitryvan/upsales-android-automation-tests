@@ -115,6 +115,9 @@ public class CalendarPage extends BasePage {
 //        }
         total = iterator = list.size();
         int lastValue = iterator;
+        if(lastValue == 5) {
+            ((AndroidElement)list.get(3)).swipe(SwipeElementDirection.UP, 500);
+        }
         String previousActivity = getTextByPath("//android.support.v7.widget.RecyclerView[1]/android.widget.RelativeLayout[", lastValue, "]/android.widget.RelativeLayout[1]/android.widget.TextView[1]");
         String previousAccount = getTextByPath("//android.support.v7.widget.RecyclerView[1]/android.widget.RelativeLayout[", lastValue, "]/android.widget.RelativeLayout[1]/android.widget.TextView[2]");
         String activity;
@@ -147,6 +150,7 @@ public class CalendarPage extends BasePage {
                 total++;
 //                System.out.println(total);
                 previousAccount = account;
+                previousActivity = activity;
             } catch (Exception e) {
                 break;
             }

@@ -447,6 +447,7 @@ public class CreateEditAccountTest extends BaseTest {
         AccountManipulationsPage.enterZipcode(newOtherZipcode);
         AccountManipulationsPage.enterCity(newOtherCity);
         AccountManipulationsPage.enterCountry(newOtherCountry);
+        AccountManipulationsPage.scrollToLabel(lblOtherInfo);
         AccountManipulationsPage.typeIntoNotes(newNotes);
         AccountManipulationsPage.clickCampaign();
         AddSelectEntityPage.clickResultsLabel();
@@ -539,6 +540,7 @@ public class CreateEditAccountTest extends BaseTest {
         AccountManipulationsPage.enterZipcode(otherZipcode);
         AccountManipulationsPage.enterCity(otherCity);
         AccountManipulationsPage.enterCountry(otherCountry);
+        AccountManipulationsPage.scrollToLabel(lblOtherInfo);
         AccountManipulationsPage.typeIntoNotes(notes);
         AccountManipulationsPage.clickCampaign();
         AddSelectEntityPage.select(campaign);
@@ -619,6 +621,7 @@ public class CreateEditAccountTest extends BaseTest {
         AccountManipulationsPage.enterZipcode(newOtherZipcode);
         AccountManipulationsPage.enterCity(newOtherCity);
         AccountManipulationsPage.enterCountry(newOtherCountry);
+        AccountManipulationsPage.scrollToLabel(lblOtherInfo);
         AccountManipulationsPage.typeIntoNotes(newNotes);
         AccountManipulationsPage.clickCampaign();
         AddSelectEntityPage.clickResultsLabel();
@@ -673,9 +676,9 @@ public class CreateEditAccountTest extends BaseTest {
         softAssert.assertEquals(AccountManipulationsPage.getCityFieldValue(), otherCity);
         softAssert.assertEquals(AccountManipulationsPage.getCountryFieldValue(), otherCountry);
         AccountManipulationsPage.scrollToLabel(lblOtherInfo);
-        softAssert.assertEquals(AccountManipulationsPage.getNotes(), notes);
         softAssert.assertEquals(AccountManipulationsPage.getCampaign(), campaign);
         softAssert.assertEquals(AccountManipulationsPage.getCategories(), category);
+        softAssert.assertEquals(AccountManipulationsPage.getNotes(), notes);
         softAssert.assertAll();
     }
 
@@ -701,7 +704,7 @@ public class CreateEditAccountTest extends BaseTest {
         ActivityManipulationsPage.clickSave();
 
         softAssert.assertEquals(ActivityPage.getActivityDescription(), defaultDescription);
-        softAssert.assertEquals(ActivityPage.getTitle(), defaultActivityType.toUpperCase());
+        softAssert.assertEquals(ActivityPage.getTitleOnView(), defaultActivityType.toUpperCase());
         softAssert.assertEquals(ActivityPage.getAccountName(), accountName);
         softAssert.assertEquals(ActivityPage.getUserName(), currentUser);
         softAssert.assertEquals(ActivityPage.getDate(), ActivityPage.getCurrentDate());
@@ -781,7 +784,7 @@ public class CreateEditAccountTest extends BaseTest {
 //        ActivityManipulationsPage.enterValueFromKeyboard(newExpenses);
         ActivityManipulationsPage.clickSave();
 
-        softAssert.assertEquals(ActivityPage.getTitle(), activityType.toUpperCase());
+        softAssert.assertEquals(ActivityPage.getTitleOnView(), activityType.toUpperCase());
         softAssert.assertEquals(ActivityPage.getActivityDescription(), activityDescription);
         softAssert.assertEquals(ActivityPage.getAccountName(), accountName);
         softAssert.assertEquals(ActivityPage.getUserName(), user);
@@ -816,7 +819,7 @@ public class CreateEditAccountTest extends BaseTest {
         softAssert.assertEquals(AppointmentManipulationsPage.getUser(), defaultUser);
         softAssert.assertEquals(AppointmentManipulationsPage.getCampaign(), defaultCampaign);
         AppointmentManipulationsPage.clickSave();
-        softAssert.assertEquals(AppointmentPage.getTitle(), appDefaultType.toUpperCase());
+        softAssert.assertEquals(AppointmentPage.getTitleOnView(), appDefaultType.toUpperCase());
         softAssert.assertEquals(AppointmentPage.getAppointmentDescription(), defaultDescription);
         softAssert.assertEquals(AppointmentPage.getAccountName(), accountName);
 //        AppointmentPage.clickBack();

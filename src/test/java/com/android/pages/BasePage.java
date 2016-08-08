@@ -171,6 +171,7 @@ public class BasePage extends Helpers {
     public static void typeIntoNotes(String note) {
         find(fieldNotes).clear();
         find(fieldNotes).sendKeys(note);
+        hideKeyboard();
     }
 
     // work with cells
