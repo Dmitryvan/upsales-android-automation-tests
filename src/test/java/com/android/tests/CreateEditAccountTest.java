@@ -935,7 +935,7 @@ public class CreateEditAccountTest extends BaseTest {
         softAssert.assertEquals(AppointmentPage.getNotes(), newNotes);
 
         AppointmentPage.scrollToLabel("Hours");
-        softAssert.assertEquals(AppointmentPage.getHoursOfPreparation(), newHoursInPreparation);
+        softAssert.assertEquals(AppointmentPage.getHoursInPreparation(), newHoursInPreparation);
         softAssert.assertAll();
     }
 

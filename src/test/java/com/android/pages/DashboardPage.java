@@ -198,13 +198,14 @@ public class DashboardPage extends BasePage {
 
     public static void selectAppointment(String app) {
         wait(labelMyAppointmentsToday);
-        try {
-            find(MobileBy.IosUIAutomation(".tableViews()[0].cells()['" + app + "']")).click();
-        }
-        catch(NoSuchElementException e) {
-            find(MobileBy.IosUIAutomation(
-                    ".tableViews()[0].cells().firstWithPredicate(\"staticTexts[2].value=='" + app + "'\")")).click();
-        }
+        find(MobileBy.xpath("//*[contains(@resource-id, 'description') and @text='" + app + "']")).click();
+//        try {
+//            find(MobileBy.IosUIAutomation(".tableViews()[0].cells()['" + app + "']")).click();
+//        }
+//        catch(NoSuchElementException e) {
+//            find(MobileBy.IosUIAutomation(
+//                    ".tableViews()[0].cells().firstWithPredicate(\"staticTexts[2].value=='" + app + "'\")")).click();
+//        }
     }
 
     public static void selectActivity(String act) {

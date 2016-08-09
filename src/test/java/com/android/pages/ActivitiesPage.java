@@ -211,12 +211,17 @@ public class ActivitiesPage extends BasePage {
     public static void selectActivity(String activity) {
         ((AndroidDriver)getDriver()).scrollTo(activity);
         try {
-            find(MobileBy.IosUIAutomation(
-                    ".tableViews()[0].cells().firstWithPredicate(\"staticTexts[0].name=='" + activity + "'\")")).click();
+            find(MobileBy.xpath("//*[contains(@resource-id, 'descriptionTxt') and @text='" + activity + "']")).click();
         } catch (NoSuchElementException e) {
-            find(MobileBy.IosUIAutomation(
-                    ".tableViews()[0].cells().firstWithPredicate(\"staticTexts[2].name=='" + activity + "'\")")).click();
+            find(MobileBy.xpath("//*[contains(@resource-id, 'description') and @text='" + activity + "']")).click();
         }
+//        try {
+//            find(MobileBy.IosUIAutomation(
+//                    ".tableViews()[0].cells().firstWithPredicate(\"staticTexts[0].name=='" + activity + "'\")")).click();
+//        } catch (NoSuchElementException e) {
+//            find(MobileBy.IosUIAutomation(
+//                    ".tableViews()[0].cells().firstWithPredicate(\"staticTexts[2].name=='" + activity + "'\")")).click();
+//        }
     }
 
 //    public static boolean countActivities(String num) {

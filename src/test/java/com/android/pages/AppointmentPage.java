@@ -119,7 +119,7 @@ public class AppointmentPage extends BasePage {
         return getText(popoverLabelEditAppointment);
     }
 
-    public static String getHoursOfPreparation() {
+    public static String getHoursInPreparation() {
         return getText(hoursOfPreparation);
     }
 

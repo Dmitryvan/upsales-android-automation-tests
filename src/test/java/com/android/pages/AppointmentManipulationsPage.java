@@ -145,10 +145,6 @@ public class AppointmentManipulationsPage extends BasePage {
         return getText(labelUser);
     }
 
-    public static void spinWheelToAppointmentType(String appointmentType) {
-//        find(pickerWheelAppointmentType).sendKeys(appointmentType);
-    }
-
     public static String getAllAppointmentTypes() {
         String string = "";
         List<WebElement> accTypes = getDriver().findElements(listAppointmentType);
@@ -158,6 +154,10 @@ public class AppointmentManipulationsPage extends BasePage {
                 string += ", ";
         }
         return string;
+    }
+
+    public static String getHoursInPreparation() {
+        return getText(hoursInPreparation);
     }
 
     public static void setAppointmentName() {

@@ -171,7 +171,7 @@ public class CreateEditAppointmentTest extends BaseTest {
         softAssert.assertEquals(AppointmentPage.getAccountName(), account);
         softAssert.assertEquals(AppointmentPage.getAppointmentDescription(), description);
         AppointmentManipulationsPage.scrollToLabel("Hours");
-        softAssert.assertEquals(AppointmentPage.getHoursOfPreparation(), hoursInPreparation);
+        softAssert.assertEquals(AppointmentPage.getHoursInPreparation(), hoursInPreparation);
         softAssert.assertAll();
     }
 
@@ -214,7 +214,7 @@ public class CreateEditAppointmentTest extends BaseTest {
         softAssert.assertEquals(labelNone, AppointmentPage.getCampaign());
         softAssert.assertEquals(labelNone, AppointmentPage.getOpportunity());
         AppointmentPage.scrollToLabel("Hours");
-        softAssert.assertEquals(AppointmentPage.getHoursOfPreparation(), hoursInPreparation);
+        softAssert.assertEquals(AppointmentPage.getHoursInPreparation(), hoursInPreparation);
         softAssert.assertAll();
     }
 
@@ -342,7 +342,7 @@ public class CreateEditAppointmentTest extends BaseTest {
         AppointmentPage.scrollToLabel(labelOtherInfo);
         softAssert.assertEquals(newNotes, AppointmentPage.getNotes());
         AppointmentManipulationsPage.scrollToLabel("Hours");
-        softAssert.assertEquals(AppointmentPage.getHoursOfPreparation(), newHoursInPreparation);
+        softAssert.assertEquals(AppointmentPage.getHoursInPreparation(), newHoursInPreparation);
         softAssert.assertAll();
     }
 

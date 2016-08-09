@@ -41,11 +41,14 @@ public class AddSelectEntityPage extends BasePage{
     public static void select(String value) {
         waitByThread(1000);
         hideKeyboard();
+        scrollToLabel(value);
         find(MobileBy.xpath("//*[@class='android.widget.CheckBox' and @text='" + value + "']")).click();
     }
 
     public static void unselect(String value) {
         waitByThread(1000);
+        hideKeyboard();
+        scrollToLabel(value);
         find(MobileBy.xpath("//*[@class='android.widget.CheckBox' and @text='" + value + "']")).click();
     }
 
