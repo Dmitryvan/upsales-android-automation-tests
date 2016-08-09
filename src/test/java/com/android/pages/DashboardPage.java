@@ -210,7 +210,7 @@ public class DashboardPage extends BasePage {
 
     public static void selectActivity(String act) {
         wait(labelMyAppointmentsToday);
-        find(MobileBy.IosUIAutomation(".tableViews()[0].cells()['" + act + "']")).click();
+        find(MobileBy.xpath("//*[contains(@resource-id, 'description') and @text='" + act + "']")).click();
     }
 
     public static float getSalesValue() {

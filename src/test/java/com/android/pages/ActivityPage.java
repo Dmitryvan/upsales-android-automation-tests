@@ -107,7 +107,7 @@ public class ActivityPage extends BasePage {
     }
 
     public static boolean getNotesStartsWith(String start) {
-        return getValue(fieldNotesValue).startsWith(start);
+        return getText(fieldNotesValue).startsWith(start);
     }
 
     public static String getTextEditActivity() {

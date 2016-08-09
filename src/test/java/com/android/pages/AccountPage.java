@@ -102,6 +102,7 @@ public class AccountPage extends BasePage {
     }
 
     public static void clickTabContacts() {
+        wait(tabContacts);
         find(tabContacts).click();
     }
 
@@ -111,6 +112,7 @@ public class AccountPage extends BasePage {
     }
 
     public static void clickTabOpportunities() {
+        wait(tabOpportunities);
         find(tabOpportunities).click();
     }
 
