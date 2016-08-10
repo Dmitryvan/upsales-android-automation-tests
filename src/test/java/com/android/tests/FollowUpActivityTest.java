@@ -160,7 +160,7 @@ public class FollowUpActivityTest extends BaseTest {
 //        ActivityPage.clickShowMore();
         ActivityManipulationsPage.scrollToLabel("Expenses");
         softAssert.assertEquals(ActivityPage.getExpenses(), newExpenses + " SEK");
-        ActivityManipulationsPage.scrollToLabel("Campaign");
+        ActivityPage.clickBack();
         ActivityPage.clickAccount();
         AccountPage.clickTabActivities();
         ActivitiesPage.searchActivity(description, today);
@@ -224,7 +224,7 @@ public class FollowUpActivityTest extends BaseTest {
 //        softAssert.assertTrue(ActivitiesPage.searchActivityByName(newDescription));
 //        softAssert.assertAll();
 //    }
-//
+
 //    @Test //CASE 3
 //    public void softFollowUpActivityFromDashboard() {
 //        SoftAssertExtended softAssert = new SoftAssertExtended();
@@ -385,7 +385,7 @@ public class FollowUpActivityTest extends BaseTest {
         softAssert.assertEquals(ActivityManipulationsPage.getTime(), defaultTime);
         softAssert.assertEquals(ActivityManipulationsPage.getAccount(), accountName);
         softAssert.assertEquals(ActivityManipulationsPage.getContact(), selectContact);
-        softAssert.assertEquals(ActivityManipulationsPage.getOpportunity(), selectOpportunity);
+        softAssert.assertEquals(ActivityManipulationsPage.getOpportunity(), labelSelectOpportunity);
         softAssert.assertEquals(ActivityManipulationsPage.getUser(), user);
         softAssert.assertEquals(ActivityManipulationsPage.getCampaign(), campaign);
         ActivityManipulationsPage.setDescription();
@@ -420,7 +420,6 @@ public class FollowUpActivityTest extends BaseTest {
         ActivityManipulationsPage.scrollToLabel("Campaign");
         ActivityPage.clickAccount();
         AccountPage.clickTabActivities();
-        System.out.println(description + " : new " + newDescription);
         softAssert.assertTrue(ActivitiesPage.searchActivity(description, today));
         softAssert.assertTrue(ActivitiesPage.searchActivityByName(newDescription));
         softAssert.assertAll();
@@ -479,7 +478,7 @@ public class FollowUpActivityTest extends BaseTest {
         softAssert.assertEquals(ActivityManipulationsPage.getTime(), defaultTime);
         softAssert.assertEquals(ActivityManipulationsPage.getAccount(), accountName);
         softAssert.assertEquals(ActivityManipulationsPage.getContact(), contactName);
-        softAssert.assertEquals(ActivityManipulationsPage.getOpportunity(), selectOpportunity);
+        softAssert.assertEquals(ActivityManipulationsPage.getOpportunity(), labelSelectOpportunity);
         softAssert.assertEquals(ActivityManipulationsPage.getUser(), user);
         softAssert.assertEquals(ActivityManipulationsPage.getCampaign(), campaign);
         ActivityManipulationsPage.setDescription();

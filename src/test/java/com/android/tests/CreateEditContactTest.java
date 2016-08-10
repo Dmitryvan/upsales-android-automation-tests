@@ -567,7 +567,7 @@ public class CreateEditContactTest extends BaseTest {
         softAssert.assertEquals(defaultAppointmentType, AppointmentManipulationsPage.getAppointmentType());
         softAssert.assertEquals(AppointmentManipulationsPage.getCurrentDate(), AppointmentManipulationsPage.getStartDate());
         softAssert.assertEquals(AppointmentManipulationsPage.getCurrentDate(), AppointmentManipulationsPage.getEndDate());
-        softAssert.assertEquals(account, AppointmentManipulationsPage.getAccount());
+        softAssert.assertEquals(AppointmentManipulationsPage.getAccount(), account);
         softAssert.assertEquals(AppointmentManipulationsPage.getContact(), contactName);
         softAssert.assertEquals(AppointmentManipulationsPage.getUser(), defaultUser);
 
@@ -712,7 +712,7 @@ public class CreateEditContactTest extends BaseTest {
         softAssert.assertAll();
     }
 
-    @Test(priority = 13, enabled = false)
+    @Test(priority = 13)
     public void softCreateContactAndCreateOpportunity() {
         SoftAssertExtended softAssert = new SoftAssertExtended();
         ContactManipulationPage.enterContactName(contactName);
@@ -725,6 +725,7 @@ public class CreateEditContactTest extends BaseTest {
         ContactManipulationPage.clickSave();
         ContactManipulationPage.clickOpportunity();
         softAssert.assertEquals(OpportunityManipulationsPage.getTitle(), oppCreateTitle);
+        OpportunityManipulationsPage.hideKeyboard();
         softAssert.assertEquals(OpportunityManipulationsPage.getUser(), defaultUser);
         softAssert.assertEquals(OpportunityManipulationsPage.getCloseDate(), Helpers.getCurrentDate());
         softAssert.assertEquals(OpportunityManipulationsPage.getAccount(), account);
@@ -739,16 +740,17 @@ public class CreateEditContactTest extends BaseTest {
         softAssert.assertEquals(OpportunityPage.getDescription(), defaultDescription);
         softAssert.assertEquals(OpportunityPage.getAccount(), account);
         softAssert.assertEquals(OpportunityPage.getUser(), currentUser);
-        softAssert.assertEquals(OpportunityPage.getTitle(), titleOpportunity.toUpperCase());
+        softAssert.assertEquals(OpportunityPage.getTitleOnView(), titleOpportunity.toUpperCase());
         softAssert.assertEquals(OpportunityPage.getCloseDateInOpportunity(), Helpers.getCurrentDate());
         softAssert.assertEquals(OpportunityPage.getStage(), stageInOpp);
         softAssert.assertEquals(OpportunityPage.getContact(), contactName);
-        softAssert.assertEquals(OpportunityPage.getCampaign(), defaultCampaign);
+        softAssert.assertEquals(OpportunityPage.getCampaign(), labelNone);
+        OpportunityManipulationsPage.scrollToLabel(labelOtherInfo);
         softAssert.assertEquals(OpportunityPage.getProduct(), product);
         softAssert.assertAll();
     }
 
-    @Test(priority = 14, enabled = false)
+    @Test(priority = 14)
     public void softCreateContactAndCreateOpportunityAndCancel() {
         SoftAssertExtended softAssert = new SoftAssertExtended();
         ContactManipulationPage.enterContactName(contactName);
@@ -760,20 +762,20 @@ public class CreateEditContactTest extends BaseTest {
 //        ContactManipulationPage.enterValueFromKeyboard(fieldExtraID);
         ContactManipulationPage.clickSave();
         ContactManipulationPage.clickOpportunity();
+        OpportunityManipulationsPage.hideKeyboard();
         OpportunityManipulationsPage.clickStage();
         OpportunityManipulationsPage.selectValueFromPopUp(stage);
         OpportunityManipulationsPage.clickNewOrderRow();
         NewOrderRowPage.clickProduct();
         AddSelectEntityPage.select(product);
         NewOrderRowPage.clickAdd();
-//        OpportunityManipulationsPage.waitForLabelAccount();
         OpportunityManipulationsPage.clickCancel();
         softAssert.assertTrue(LeftMenuPage.checkSearch());
         softAssert.assertEquals(LeftMenuPage.getHiddenPageTitle(), titleDashboard);
         softAssert.assertAll();
     }
 
-    @Test(priority = 15, enabled = false)
+    @Test(priority = 15)
     public void softCreateContactAndCreateOpportunityAndEditOpportunity() {
         SoftAssertExtended softAssert = new SoftAssertExtended();
         ContactManipulationPage.enterContactName(contactName);
@@ -784,9 +786,11 @@ public class CreateEditContactTest extends BaseTest {
 //        ContactManipulationPage.clickExtraID();
 //        ContactManipulationPage.enterValueFromKeyboard(fieldExtraID);
         ContactManipulationPage.clickSave();
+        OpportunityManipulationsPage.hideKeyboard();
         ContactManipulationPage.clickOpportunity();
         OpportunityManipulationsPage.clickStage();
         OpportunityManipulationsPage.selectValueFromPopUp(stage);
+        OpportunityManipulationsPage.scrollToLabel(labelOtherInfo);
         OpportunityManipulationsPage.clickNewOrderRow();
         NewOrderRowPage.clickProduct();
         AddSelectEntityPage.select(product);
@@ -798,7 +802,7 @@ public class CreateEditContactTest extends BaseTest {
         String newOppName = OpportunityManipulationsPage.getOpportunityName();
         OpportunityManipulationsPage.enterDescription(newOppName);
         OpportunityManipulationsPage.clickUser();
-        AddSelectEntityPage.select(secondUser);
+        OpportunityManipulationsPage.selectValueFromPopUp(secondUser);
         OpportunityManipulationsPage.clickStage();
         OpportunityManipulationsPage.selectValueFromPopUp(newStage);
         OpportunityManipulationsPage.clickCloseDate();
@@ -812,7 +816,7 @@ public class CreateEditContactTest extends BaseTest {
         NewOrderRowPage.clickProduct();
         AddSelectEntityPage.select(newProduct);
         NewOrderRowPage.clickSave();
-//        OpportunityManipulationsPage.waitForLabelAccount();
+        OpportunityManipulationsPage.scrollToLabel(labelOtherInfo);
         OpportunityManipulationsPage.typeIntoNotes(newNotes);
         OpportunityManipulationsPage.clickSave();
         softAssert.assertEquals(OpportunityPage.getDescription(), newOppName);
@@ -822,8 +826,9 @@ public class CreateEditContactTest extends BaseTest {
         softAssert.assertEquals(OpportunityPage.getCloseDateInOpportunity(), newCloseDate);
         softAssert.assertEquals(OpportunityPage.getContact(), contactName);
         softAssert.assertEquals(OpportunityPage.getCampaign(), newCampaign);
-        softAssert.assertEquals(OpportunityPage.getProduct(), newProduct);
         softAssert.assertEquals(OpportunityPage.getNotes(), newNotes);
+        OpportunityManipulationsPage.scrollToLabel(labelOtherInfo);
+        softAssert.assertEquals(OpportunityPage.getProduct(), newProduct);
         softAssert.assertAll();
     }
 

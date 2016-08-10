@@ -180,7 +180,7 @@ public class CreateEditOpportunityTest extends BaseTest {
         softAssert.assertEquals(OpportunityPage.getAccount(), account);
         softAssert.assertEquals(OpportunityPage.getDescription(), opportunityName);
         softAssert.assertEquals(OpportunityPage.getStage(), stageInOpp);
-        softAssert.assertEquals(OpportunityManipulationsPage.getTitleOnView(), titleOpportunity.toUpperCase());
+        softAssert.assertEquals(OpportunityPage.getTitleOnView(), titleOpportunity.toUpperCase());
         OpportunityPage.clickAccount();
         AccountPage.clickTabOpportunities();
         softAssert.assertTrue(OpportunitiesPage.searchOpportunity(opportunityName, today.toUpperCase()));
@@ -287,9 +287,9 @@ public class CreateEditOpportunityTest extends BaseTest {
         OpportunityManipulationsPage.clickAccount();
         AddSelectEntityPage.select(account);
         softAssert.assertEquals(OpportunityManipulationsPage.getAccount(), account);
-//        OpportunityManipulationsPage.clickContact();
-//        AddSelectEntityPage.select(contact);
-//        softAssert.assertEquals(OpportunityManipulationsPage.getContact(), contact);
+        OpportunityManipulationsPage.clickContact();
+        AddSelectEntityPage.select(contact);
+        softAssert.assertEquals(OpportunityManipulationsPage.getContact(), contact);
         OpportunityManipulationsPage.clickCampaign();
         AddSelectEntityPage.select(campaign);
         softAssert.assertEquals(OpportunityManipulationsPage.getCampaign(), campaign);
@@ -321,8 +321,8 @@ public class CreateEditOpportunityTest extends BaseTest {
         OpportunityManipulationsPage.selectDateDay(newDay);
         OpportunityManipulationsPage.selectDateYear(newYear);
         OpportunityManipulationsPage.closePicker();
-//        OpportunityManipulationsPage.clickContact();
-//        AddSelectEntityPage.select(newContact);
+        OpportunityManipulationsPage.clickContact();
+        AddSelectEntityPage.select(newContact);
         OpportunityManipulationsPage.clickCampaign();
         AddSelectEntityPage.select(newCampaign);
         OpportunityManipulationsPage.clickLabelProduct();
@@ -341,7 +341,7 @@ public class CreateEditOpportunityTest extends BaseTest {
         softAssert.assertEquals(OpportunityPage.getUser(), secondUser);
         softAssert.assertEquals(OpportunityPage.getStage(), newChangedStageInOpp);
         softAssert.assertEquals(OpportunityPage.getCloseDateInOpportunity(), newCloseDate);
-//        softAssert.assertEquals(OpportunityPage.getContact(), newContact);
+        softAssert.assertEquals(OpportunityPage.getContact(), newContact);
         softAssert.assertEquals(OpportunityPage.getCampaign(), newCampaign);
         softAssert.assertEquals(OpportunityPage.getNotes(), newNotes);
         OpportunityManipulationsPage.scrollToLabel(labelOtherInfo);

@@ -23,6 +23,7 @@
             <class name="com.android.tests.CreateEditOrderTest"/>
             <class name="com.android.tests.CreateEditAccountTest"/>
             <class name="com.android.tests.FollowUpActivityTest"/>
+            <class name="com.android.tests.FollowUpAppointmentTest"/>
         </classes>
     </test>
 </suite>
