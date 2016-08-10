@@ -284,7 +284,7 @@ public class CreateEditAccountTest extends BaseTest {
         softAssert.assertEquals(AccountManipulationsPage.getCityLabelValue(), lblCity);
         softAssert.assertEquals(AccountManipulationsPage.getCountryLabelValue(), lblCountry);
 
-        AccountManipulationsPage.scrollToLabel(labelOtherInfo);
+        AccountManipulationsPage.scrollToLabel(lblNotes);
 
         softAssert.assertEquals(AccountManipulationsPage.getLabelNotes(), lblNotes);
         softAssert.assertEquals(AccountManipulationsPage.getInsertSignatureValue(), lblInsertSignature);
@@ -368,6 +368,7 @@ public class CreateEditAccountTest extends BaseTest {
         AccountManipulationsPage.enterZipcode(otherZipcode);
         AccountManipulationsPage.enterCity(otherCity);
         AccountManipulationsPage.enterCountry(otherCountry);
+        AccountManipulationsPage.scrollToLabel(lblOtherInfo);
         AccountManipulationsPage.typeIntoNotes(notes);
         AccountManipulationsPage.clickCampaign();
         AddSelectEntityPage.select(campaign);
@@ -503,7 +504,7 @@ public class CreateEditAccountTest extends BaseTest {
         softAssert.assertEquals(AccountManipulationsPage.getZipcodeFieldValue(), newOtherZipcode);
         softAssert.assertEquals(AccountManipulationsPage.getCityFieldValue(), newOtherCity);
         softAssert.assertEquals(AccountManipulationsPage.getCountryFieldValue(), newOtherCountry);
-        AccountManipulationsPage.scrollToLabel(lblOtherInfo);
+        AccountManipulationsPage.scrollToLabel(lblCampaigns);
         softAssert.assertEquals(AccountManipulationsPage.getNotes(), newNotes);
         softAssert.assertEquals(AccountManipulationsPage.getCampaign(), newCampaign);
         softAssert.assertEquals(AccountManipulationsPage.getCategories(), newCategory);
@@ -542,7 +543,7 @@ public class CreateEditAccountTest extends BaseTest {
         AccountManipulationsPage.enterZipcode(otherZipcode);
         AccountManipulationsPage.enterCity(otherCity);
         AccountManipulationsPage.enterCountry(otherCountry);
-        AccountManipulationsPage.scrollToLabel(lblOtherInfo);
+        AccountManipulationsPage.scrollToLabel(lblCampaigns);
         AccountManipulationsPage.typeIntoNotes(notes);
         AccountManipulationsPage.clickCampaign();
         AddSelectEntityPage.select(campaign);
@@ -586,7 +587,7 @@ public class CreateEditAccountTest extends BaseTest {
         softAssert.assertEquals(AccountManipulationsPage.getZipcodeFieldValue(), otherZipcode);
         softAssert.assertEquals(AccountManipulationsPage.getCityFieldValue(), otherCity);
         softAssert.assertEquals(AccountManipulationsPage.getCountryFieldValue(), otherCountry);
-        AccountManipulationsPage.scrollToLabel(lblOtherInfo);
+        AccountManipulationsPage.scrollToLabel(lblCampaigns);
         softAssert.assertEquals(AccountManipulationsPage.getNotes(), notes);
         softAssert.assertEquals(AccountManipulationsPage.getCampaign(), campaign);
         softAssert.assertEquals(AccountManipulationsPage.getCategories(), category);
@@ -623,7 +624,7 @@ public class CreateEditAccountTest extends BaseTest {
         AccountManipulationsPage.enterZipcode(newOtherZipcode);
         AccountManipulationsPage.enterCity(newOtherCity);
         AccountManipulationsPage.enterCountry(newOtherCountry);
-        AccountManipulationsPage.scrollToLabel(lblOtherInfo);
+        AccountManipulationsPage.scrollToLabel(lblCampaigns);
         AccountManipulationsPage.typeIntoNotes(newNotes);
         AccountManipulationsPage.clickCampaign();
         AddSelectEntityPage.clickResultsLabel();
@@ -677,7 +678,7 @@ public class CreateEditAccountTest extends BaseTest {
         softAssert.assertEquals(AccountManipulationsPage.getZipcodeFieldValue(), otherZipcode);
         softAssert.assertEquals(AccountManipulationsPage.getCityFieldValue(), otherCity);
         softAssert.assertEquals(AccountManipulationsPage.getCountryFieldValue(), otherCountry);
-        AccountManipulationsPage.scrollToLabel(lblOtherInfo);
+        AccountManipulationsPage.scrollToLabel(lblCampaigns);
         softAssert.assertEquals(AccountManipulationsPage.getCampaign(), campaign);
         softAssert.assertEquals(AccountManipulationsPage.getCategories(), category);
         softAssert.assertEquals(AccountManipulationsPage.getNotes(), notes);
@@ -921,7 +922,7 @@ public class CreateEditAccountTest extends BaseTest {
 
         AppointmentManipulationsPage.clickSave();
 
-        softAssert.assertEquals(AppointmentPage.getTitle(), newAppointmentType.toUpperCase());
+        softAssert.assertEquals(AppointmentPage.getTitleOnView(), newAppointmentType.toUpperCase());
         softAssert.assertEquals(AppointmentPage.getAppointmentDescription(), appointmentName);
         softAssert.assertEquals(AppointmentPage.getAccountName(), accountName);
         softAssert.assertEquals(AppointmentPage.getUserName(), user);

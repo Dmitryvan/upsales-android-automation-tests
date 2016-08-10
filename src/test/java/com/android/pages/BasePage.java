@@ -36,7 +36,7 @@ public class BasePage extends Helpers {
     private static final By buttonCategories = MobileBy.id("category_field");
 
     //fields
-    private static final By fieldNotes = MobileBy.xpath("//*[contains(@resource-id, 'notes') and @index='2']");
+    private static final By fieldNotes = MobileBy.id("notes");
     private static final By fieldDescription = MobileBy.id("edit");
 
     //labels
@@ -198,6 +198,7 @@ public class BasePage extends Helpers {
     }
 
     public static String getNotes() {
+        wait(fieldNotes);
         return getText(fieldNotes);
     }
 
