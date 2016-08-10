@@ -21,8 +21,8 @@ public class ActivityPage extends BasePage {
     private static final By fieldNotesValue = MobileBy.id("notes");
     private static final By buttonContact = MobileBy.id("contact_root");
 
-    private static final By campaign = MobileBy.xpath("//android.support.v4.view.ViewPager[1]//android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]");
-    private static final By opportunity = MobileBy.xpath("//android.support.v4.view.ViewPager[1]//android.widget.RelativeLayout[2]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]");
+    private static final By campaign = MobileBy.xpath("//*[contains(@resource-id, 'company_field')]//*[contains(@resource-id, 'select')]");
+    private static final By opportunity = MobileBy.xpath("//*[contains(@resource-id, 'opportunity_field')]//*[contains(@resource-id, 'select')]");
 
     private static final By popoverLabelEditActivity = MobileBy.xpath("//android.widget.LinearLayout[@index='0']/android.widget.TextView[@index='1']");
 
