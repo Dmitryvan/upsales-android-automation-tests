@@ -5,6 +5,8 @@ import org.openqa.selenium.By;
 
 public class AccountPage extends BasePage {
 
+    private static final By buttonLeftMenu = MobileBy.xpath("//android.view.ViewGroup[1]/android.widget.ImageButton[1]");
+
     private static final By buttonTools = MobileBy.IosUIAutomation(".navigationBars()[0].buttons()[2]");
     private static final By buttonParentAccount = MobileBy.IosUIAutomation(".tableViews()[0].buttons()[0]");
     private static final By buttonCampaign = MobileBy.IosUIAutomation(".tableViews()[0].cells()[3].staticTexts()[0]");
@@ -55,6 +57,10 @@ public class AccountPage extends BasePage {
 
     public static String getAccountManagerValue() {
         return getText(labelAccountManagerValue);
+    }
+
+    public static void clickLeftMenu() {
+        find(buttonLeftMenu).click();
     }
 
     public static void clickParentAccount() {

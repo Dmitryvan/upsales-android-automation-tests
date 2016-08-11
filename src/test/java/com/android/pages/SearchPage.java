@@ -9,6 +9,8 @@ import org.openqa.selenium.Point;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.internal.Locatable;
 
+import java.util.concurrent.TimeUnit;
+
 public class SearchPage extends BasePage {
 
     private static final By fieldSearch = MobileBy.id("search");
@@ -19,6 +21,7 @@ public class SearchPage extends BasePage {
     }
 
     public static String getFirstSearchResult() {
+        getDriver().manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         return getText(labelFirstSearchResult);
     }
 

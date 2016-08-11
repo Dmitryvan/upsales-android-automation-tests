@@ -322,7 +322,7 @@ public class CreateEditAccountTest extends BaseTest {
         AccountManipulationsPage.clickPopUpNoThanx();
         softAssert.assertEquals(AccountPage.getAccountName(), accountName);
         softAssert.assertEquals(AccountPage.getAccountManagerValue(), currentUser);
-        AccountPage.clickBack();
+        AccountPage.clickLeftMenu();
         LeftMenuPage.clickSearch();
         SearchPage.search(accountName);
         softAssert.assertEquals(SearchPage.getFirstSearchResult(), accountName);
