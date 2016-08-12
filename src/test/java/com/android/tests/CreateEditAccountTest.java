@@ -368,7 +368,7 @@ public class CreateEditAccountTest extends BaseTest {
         AccountManipulationsPage.enterZipcode(otherZipcode);
         AccountManipulationsPage.enterCity(otherCity);
         AccountManipulationsPage.enterCountry(otherCountry);
-        AccountManipulationsPage.scrollToLabel(lblOtherInfo);
+        AccountManipulationsPage.scrollToLabel(lblCampaigns);
         AccountManipulationsPage.typeIntoNotes(notes);
         AccountManipulationsPage.clickCampaign();
         AddSelectEntityPage.select(campaign);
@@ -464,7 +464,7 @@ public class CreateEditAccountTest extends BaseTest {
         AccountManipulationsPage.clickSave();
 
         softAssert.assertEquals(AccountPage.getAccountName(), accountName);
-        AccountPage.clickBack();
+        AccountPage.clickLeftMenu();
         LeftMenuPage.clickSearch();
         SearchPage.search(accountName);
         softAssert.assertEquals(SearchPage.getFirstSearchResult(), accountName);
@@ -638,7 +638,7 @@ public class CreateEditAccountTest extends BaseTest {
         AccountManipulationsPage.clickCancel();
 
         assertEquals(AccountPage.getAccountName(), accountName);
-        AccountPage.clickBack();
+        AccountPage.clickLeftMenu();
         LeftMenuPage.clickSearch();
         SearchPage.search(accountName);
         assertEquals(SearchPage.getFirstSearchResult(), accountName);
@@ -719,7 +719,7 @@ public class CreateEditAccountTest extends BaseTest {
         ActivityPage.scrollToLabel("Expenses");
         softAssert.assertEquals(ActivityPage.getExpenses(), expenses + " SEK");
 
-        ActivityPage.clickBack();
+        ActivityPage.clickLeftMenu();
 //        AccountManipulationsPage.clickBack();
         LeftMenuPage.clickActivities();
         softAssert.assertTrue(ActivitiesPage.searchActivity(defaultDescription, dateToday));
@@ -732,8 +732,8 @@ public class CreateEditAccountTest extends BaseTest {
         AccountManipulationsPage.clickSave();
         AccountManipulationsPage.clickPopUpActivity();
         assertEquals(ActivityPage.getTitle(), createActivityTitle);
-        ActivityPage.clickCancel();
-//        AccountManipulationsPage.clickBack();
+        ActivityManipulationsPage.clickCancel();
+//        AccountPage.clickBack();
         LeftMenuPage.clickSearch();
         SearchPage.search(accountName);
         assertEquals(SearchPage.getFirstSearchResult(), accountName);

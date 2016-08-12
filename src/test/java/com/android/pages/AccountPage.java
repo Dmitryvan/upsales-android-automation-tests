@@ -48,6 +48,7 @@ public class AccountPage extends BasePage {
     private static final By tabSales = MobileBy.xpath("//*[@class='android.widget.TextView' and @text='Sales']");
 
     public static String getAccountName() {
+        wait(labelAccountName);
         return getText(labelAccountName);
     }
 
