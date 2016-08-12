@@ -13,16 +13,12 @@ public class ActivityPage extends BasePage {
 
     private static final By buttonLeftMenu = MobileBy.IosUIAutomation(".navigationBar().buttons()[1]");
 
-    private static final By activityDescriptionValue = MobileBy.id("header_title");
     private static final By buttonAccount = MobileBy.id("account_name");
     private static final By userValue = MobileBy.id("user_name");
     private static final By dateValue = MobileBy.id("date");
     private static final By timeValue = MobileBy.id("time");
     private static final By fieldNotesValue = MobileBy.id("notes");
     private static final By buttonContact = MobileBy.id("contact_root");
-
-    private static final By campaign = MobileBy.xpath("//*[contains(@resource-id, 'company_field')]//*[contains(@resource-id, 'select')]");
-    private static final By opportunity = MobileBy.xpath("//*[contains(@resource-id, 'opportunity_field')]//*[contains(@resource-id, 'select')]");
 
     private static final By popoverLabelEditActivity = MobileBy.xpath("//android.widget.LinearLayout[@index='0']/android.widget.TextView[@index='1']");
 
@@ -62,10 +58,6 @@ public class ActivityPage extends BasePage {
         find(popoverEditActivity).click();
     }
 
-    public static String getActivityDescription() {
-        return findElements(activityDescriptionValue).get(1).getText();
-    }
-
     public static String getAccountName() {
         return getText(buttonAccount);
     }
@@ -86,15 +78,6 @@ public class ActivityPage extends BasePage {
     public static String getTime() {
         return getText(timeValue);
     }
-
-    public static String getCampaign() {
-        return getText(campaign);
-    }
-
-    public static String getOpportunity() {
-        return getText(opportunity);
-    }
-
 
     public static String getNotes() {
         return getText(fieldNotesValue);

@@ -8,7 +8,7 @@ public class ContactsPage extends BasePage {
 
     private final static By tableContactCells = MobileBy.IosUIAutomation(".tableViews()[0].cells()");
     private static final By fieldSearch = MobileBy.id("search");
-    private static final By labelFirstSearchResult = MobileBy.xpath("//android.support.v7.widget.RecyclerView[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.TextView[1]");
+    private static final By labelFirstSearchResult = MobileBy.xpath("//*[contains(@resource-id, 'text_container')]//*[contains(@resource-id, 'header_title')]");
 
     public static void search(String value) {
 //        IOSElement element = (IOSElement) find(fieldSearch);

@@ -707,7 +707,7 @@ public class CreateEditAccountTest extends BaseTest {
         ActivityManipulationsPage.enterExpenses(expenses);
         ActivityManipulationsPage.clickSave();
 
-        softAssert.assertEquals(ActivityPage.getActivityDescription(), defaultDescription);
+        softAssert.assertEquals(BasePage.getDescriptionOnView(), defaultDescription);
         softAssert.assertEquals(ActivityPage.getTitleOnView(), defaultActivityType.toUpperCase());
         softAssert.assertEquals(ActivityPage.getAccountName(), accountName);
         softAssert.assertEquals(ActivityPage.getUserName(), currentUser);
@@ -794,7 +794,7 @@ public class CreateEditAccountTest extends BaseTest {
         ActivityManipulationsPage.clickSave();
 
         softAssert.assertEquals(ActivityPage.getTitleOnView(), activityType.toUpperCase());
-        softAssert.assertEquals(ActivityPage.getActivityDescription(), activityDescription);
+        softAssert.assertEquals(BasePage.getDescriptionOnView(), activityDescription);
         softAssert.assertEquals(ActivityPage.getAccountName(), accountName);
         softAssert.assertEquals(ActivityPage.getUserName(), user);
         softAssert.assertEquals(ActivityPage.getDate(), dueDate);
@@ -833,7 +833,7 @@ public class CreateEditAccountTest extends BaseTest {
         AppointmentManipulationsPage.enterHoursInPreparation(hoursInPreparation);
         AppointmentManipulationsPage.clickSave();
         softAssert.assertEquals(AppointmentPage.getTitleOnView(), appDefaultType.toUpperCase());
-        softAssert.assertEquals(AppointmentPage.getAppointmentDescription(), defaultDescription);
+        softAssert.assertEquals(AppointmentPage.getDescriptionOnView(), defaultDescription);
         softAssert.assertEquals(AppointmentPage.getAccountName(), accountName);
 //        AppointmentPage.clickBack();
 //        AccountManipulationsPage.clickBack();
@@ -923,7 +923,7 @@ public class CreateEditAccountTest extends BaseTest {
         AppointmentManipulationsPage.clickSave();
 
         softAssert.assertEquals(AppointmentPage.getTitleOnView(), newAppointmentType.toUpperCase());
-        softAssert.assertEquals(AppointmentPage.getAppointmentDescription(), appointmentName);
+        softAssert.assertEquals(AppointmentPage.getDescriptionOnView(), appointmentName);
         softAssert.assertEquals(AppointmentPage.getAccountName(), accountName);
         softAssert.assertEquals(AppointmentPage.getUserName(), user);
         softAssert.assertEquals(AppointmentPage.getStartDate(), newStartFullDate);
@@ -1279,7 +1279,7 @@ public class CreateEditAccountTest extends BaseTest {
 //        ActivityManipulationsPage.clickSave();
 //
 //        softAssert.assertEquals(ActivityPage.getTitle(), defaultActivityType.toUpperCase());
-//        softAssert.assertEquals(ActivityPage.getActivityDescription(), activityDescription);
+//        softAssert.assertEquals(ActivityPage.getDescriptionOnView(), activityDescription);
 //        softAssert.assertEquals(ActivityPage.getAccountName(), parentAccount);
 //        softAssert.assertEquals(ActivityPage.getUserName(), user);
 //        softAssert.assertEquals(ActivityPage.getDate(), ActivityPage.getCurrentDate());

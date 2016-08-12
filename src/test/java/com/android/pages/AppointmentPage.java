@@ -11,7 +11,6 @@ public class AppointmentPage extends BasePage {
     private static final By buttonLeftMenu = MobileBy.IosUIAutomation(".navigationBar().buttons()[2]");
     private static final By buttonLeftMenuInFollowUp = MobileBy.IosUIAutomation(".navigationBar().buttons()[1]");
 
-    private static final By appointmentDescriptionValue = MobileBy.id("header_title");
     private static final By buttonAccount = MobileBy.id("account_name");
     private static final By userValue = MobileBy.id("user_name");
     private static final By locationValue = MobileBy.xpath("//*[contains(@resource-id, 'location')]//*[contains(@resource-id, 'name')]");
@@ -26,13 +25,10 @@ public class AppointmentPage extends BasePage {
 
     private static final By fifththCellValue = MobileBy.IosUIAutomation(".tableViews()[0].cells()[4]");
 
-    private static final By campaign = MobileBy.xpath("//android.support.v4.view.ViewPager[1]//android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]");
-    private static final By opportunity = MobileBy.xpath("//android.support.v4.view.ViewPager[1]//android.widget.RelativeLayout[2]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]");
-
     private static final By date = MobileBy.id("date");
     private static final By time = MobileBy.id("time");
 
-    private static final By hoursOfPreparation = MobileBy.xpath("//android.widget.RelativeLayout[4]/android.widget.LinearLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.EditText[1]");
+    private static final By hoursOfPreparation = MobileBy.xpath("//android.support.v4.view.ViewPager[1]/android.widget.LinearLayout[1]/android.widget.RelativeLayout[3]/android.widget.LinearLayout[1]/android.widget.RelativeLayout[4]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.EditText[1]");
 
     public static String getFifthCellValue() {
         return getValue(fifththCellValue);
@@ -66,10 +62,6 @@ public class AppointmentPage extends BasePage {
         find(popoverFollowUpAppointment).click();
     }
 
-    public static String getAppointmentDescription() {
-        return findElements(appointmentDescriptionValue).get(0).getText();
-    }
-
     public static String getAccountName() {
         return getText(buttonAccount);
     }
@@ -99,20 +91,12 @@ public class AppointmentPage extends BasePage {
         return findElements(time).get(1).getText();
     }
 
-    public static String getCampaign() {
-        return getText(campaign);
-    }
-
     public static String getLocation() {
         return getText(locationValue);
     }
 
     public static String getNotes() {
         return getText(notes);
-    }
-
-    public static String getOpportunity() {
-        return getText(opportunity);
     }
 
     public static String getTextEditAppointment() {

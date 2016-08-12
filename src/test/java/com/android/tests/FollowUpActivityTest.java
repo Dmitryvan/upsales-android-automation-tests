@@ -147,7 +147,7 @@ public class FollowUpActivityTest extends BaseTest {
         ActivityManipulationsPage.clearExpenses();
         ActivityManipulationsPage.enterExpenses(newExpenses);
         ActivityManipulationsPage.clickSave();
-        softAssert.assertEquals(newDescription, ActivityPage.getActivityDescription());
+        softAssert.assertEquals(newDescription, BasePage.getDescriptionOnView());
         softAssert.assertEquals(ActivityPage.getTitleOnView(), activityType.toUpperCase());
         softAssert.assertEquals(ActivityPage.getDate(), newDate);
         softAssert.assertEquals(ActivityPage.getTime(), newTime);
@@ -206,7 +206,7 @@ public class FollowUpActivityTest extends BaseTest {
 //        ActivityManipulationsPage.clickExpenses();
 //        ActivityManipulationsPage.enterExpenses(expenses);
 //        ActivityManipulationsPage.clickSave();
-//        softAssert.assertEquals(newDescription, ActivityPage.getActivityDescription());
+//        softAssert.assertEquals(newDescription, ActivityPage.getDescriptionOnView());
 //        softAssert.assertEquals(ActivityPage.getTitleOnView(), testActivityType.toUpperCase());
 //        softAssert.assertEquals(ActivityPage.getDate(), newDate);
 //        softAssert.assertEquals(ActivityPage.getTime(), newTime);
@@ -263,7 +263,7 @@ public class FollowUpActivityTest extends BaseTest {
 //        ActivityManipulationsPage.enterValueFromKeyboard(expenses);
 //        ActivityManipulationsPage.clickDoneOnKeyboard();
 //        ActivityManipulationsPage.clickSave();
-//        softAssert.assertEquals(newDescription, ActivityPage.getActivityDescription());
+//        softAssert.assertEquals(newDescription, ActivityPage.getDescriptionOnView());
 //        softAssert.assertEquals(ActivityPage.getTitle(), testActivityType.toUpperCase());
 //        softAssert.assertEquals(ActivityPage.getDate(), newDate);
 //        softAssert.assertEquals(ActivityPage.getTime(), newTime);
@@ -322,7 +322,7 @@ public class FollowUpActivityTest extends BaseTest {
         ActivityManipulationsPage.clickExpenses();
         ActivityManipulationsPage.enterExpenses(expenses);
         ActivityManipulationsPage.clickSave();
-        softAssert.assertEquals(newDescription, ActivityPage.getActivityDescription());
+        softAssert.assertEquals(newDescription, BasePage.getDescriptionOnView());
         softAssert.assertEquals(ActivityPage.getTitleOnView(), testActivityType.toUpperCase());
         softAssert.assertEquals(ActivityPage.getDate(), newDate);
         softAssert.assertEquals(ActivityPage.getTime(), newTime);
@@ -408,7 +408,7 @@ public class FollowUpActivityTest extends BaseTest {
         ActivityManipulationsPage.clearExpenses();
         ActivityManipulationsPage.enterExpenses(newExpenses);
         ActivityManipulationsPage.clickSave();
-        softAssert.assertEquals(newDescription, ActivityPage.getActivityDescription());
+        softAssert.assertEquals(newDescription, BasePage.getDescriptionOnView());
         softAssert.assertEquals(ActivityPage.getTitleOnView(), activityType.toUpperCase());
         softAssert.assertEquals(ActivityPage.getDate(), newDate);
         softAssert.assertEquals(ActivityPage.getTime(), newTime);
@@ -501,7 +501,7 @@ public class FollowUpActivityTest extends BaseTest {
         ActivityManipulationsPage.clearExpenses();
         ActivityManipulationsPage.enterExpenses(newExpenses);
         ActivityManipulationsPage.clickSave();
-        softAssert.assertEquals(newDescription, ActivityPage.getActivityDescription());
+        softAssert.assertEquals(newDescription, BasePage.getDescriptionOnView());
         softAssert.assertEquals(ActivityPage.getTitleOnView(), activityType.toUpperCase());
         softAssert.assertEquals(ActivityPage.getAccountName(), accountName);
         softAssert.assertEquals(ActivityPage.getDate(), newDate);

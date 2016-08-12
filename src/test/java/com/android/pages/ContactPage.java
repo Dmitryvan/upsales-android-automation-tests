@@ -10,7 +10,7 @@ import java.util.List;
 
 public class ContactPage extends BasePage {
 
-    private static final By contactName = MobileBy.id("header_title");
+//    private static final By contactName = MobileBy.id("header_title");
     private static final By account = MobileBy.id("account_name");
     private static final By title = MobileBy.id("header_subtitle");
     private static final By phone = MobileBy.id("phone");
@@ -108,7 +108,7 @@ public class ContactPage extends BasePage {
     }
 
     public static String getContactName() {
-        return findElements(contactName).get(0).getText();
+        return getDescriptionOnView();
     }
 
     public static String getAccount() {

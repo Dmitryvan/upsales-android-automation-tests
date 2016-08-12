@@ -7,7 +7,6 @@ import io.appium.java_client.MobileElement;
 import io.appium.java_client.SwipeElementDirection;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
-import io.appium.java_client.ios.IOSElement;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriverException;
@@ -54,6 +53,7 @@ public class BasePage extends Helpers {
     private static final By opportunity = MobileBy.xpath("//*[contains(@resource-id, 'opportunity_field')]//*[contains(@resource-id, 'select')]");
     private static final By campaign = MobileBy.xpath("//*[contains(@resource-id, 'company_field')]//*[contains(@resource-id, 'select')]");
     private static final By categories = MobileBy.xpath("//*[contains(@resource-id, 'category_field')]//*[contains(@resource-id, 'select')]");
+    private static final By description = MobileBy.xpath("//*[contains(@resource-id, 'container_header')]//*[contains(@resource-id, 'header_title')]");
 
     //work with headers
     public static String getTitle() {
@@ -245,6 +245,10 @@ public class BasePage extends Helpers {
     //work with values
     public static String getAccount() {
         return getText(account);
+    }
+
+    public static String getDescriptionOnView() {
+        return getText(description);
     }
 
     public static String getContact() {

@@ -258,7 +258,7 @@ public class FollowUpAppointmentTest extends BaseTest {
         AppointmentManipulationsPage.clickSave();
 
         softAssert.assertEquals(AppointmentPage.getTitleOnView(), newAppointmentType.toUpperCase());
-        softAssert.assertEquals(AppointmentPage.getAppointmentDescription(), description);
+        softAssert.assertEquals(AppointmentPage.getDescriptionOnView(), description);
         softAssert.assertEquals(AppointmentPage.getAccountName(), account);
         softAssert.assertEquals(AppointmentPage.getUserName(), user);
         softAssert.assertEquals(AppointmentPage.getStartDate(), newStartFullDate);
@@ -365,7 +365,7 @@ public class FollowUpAppointmentTest extends BaseTest {
         ActivityManipulationsPage.clickSave();
 
         softAssert.assertEquals(ActivityPage.getTitleOnView(), activityType.toUpperCase());
-        softAssert.assertEquals(ActivityPage.getActivityDescription(), activityDescription);
+        softAssert.assertEquals(BasePage.getDescriptionOnView(), activityDescription);
         softAssert.assertEquals(ActivityPage.getUserName(), user);
         softAssert.assertEquals(ActivityPage.getDate(), activityDate);
         softAssert.assertEquals(ActivityPage.getContact(), contact);
@@ -450,7 +450,7 @@ public class FollowUpAppointmentTest extends BaseTest {
         AppointmentManipulationsPage.clickSave();
 
         softAssert.assertEquals(AppointmentPage.getTitle(), newAppointmentType.toUpperCase());
-        softAssert.assertEquals(AppointmentPage.getAppointmentDescription(), description);
+        softAssert.assertEquals(AppointmentPage.getDescriptionOnView(), description);
         softAssert.assertEquals(AppointmentPage.getAccountName(), appAccount);
         softAssert.assertEquals(AppointmentPage.getUserName(), yourUser);
         softAssert.assertEquals(AppointmentPage.getStartDate(), newStartFullDate);
@@ -512,7 +512,7 @@ public class FollowUpAppointmentTest extends BaseTest {
         ActivityManipulationsPage.clickSave();
 
         softAssert.assertEquals(ActivityPage.getTitle(), activityType.toUpperCase());
-        softAssert.assertEquals(ActivityPage.getActivityDescription(), activityDescription);
+        softAssert.assertEquals(BasePage.getDescriptionOnView(), activityDescription);
         softAssert.assertEquals(ActivityPage.getAccountName(), appAccount);
         softAssert.assertEquals(ActivityPage.getUserName(), yourUser);
         softAssert.assertEquals(ActivityPage.getDate(), activityDate);
@@ -605,7 +605,7 @@ public class FollowUpAppointmentTest extends BaseTest {
         AppointmentManipulationsPage.clickSave();
 
         softAssert.assertEquals(AppointmentPage.getTitleOnView(), newAppointmentType.toUpperCase());
-        softAssert.assertEquals(AppointmentPage.getAppointmentDescription(), description);
+        softAssert.assertEquals(AppointmentPage.getDescriptionOnView(), description);
         softAssert.assertEquals(AppointmentPage.getAccountName(), appActAccount);
         softAssert.assertEquals(AppointmentPage.getUserName(), yourUser);
         softAssert.assertEquals(AppointmentPage.getStartDate(), newStartFullDate);
@@ -678,7 +678,7 @@ public class FollowUpAppointmentTest extends BaseTest {
         ActivityManipulationsPage.clickSave();
 
         softAssert.assertEquals(ActivityPage.getTitleOnView(), activityType.toUpperCase());
-        softAssert.assertEquals(ActivityPage.getActivityDescription(), activityDescription);
+        softAssert.assertEquals(BasePage.getDescriptionOnView(), activityDescription);
         softAssert.assertEquals(ActivityPage.getAccountName(), appActAccount);
         softAssert.assertEquals(ActivityPage.getUserName(), yourUser);
         softAssert.assertEquals(ActivityPage.getDate(), activityDate);
