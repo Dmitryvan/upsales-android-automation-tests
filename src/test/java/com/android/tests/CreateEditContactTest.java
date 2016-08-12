@@ -218,11 +218,11 @@ public class CreateEditContactTest extends BaseTest {
         ContactManipulationPage.enterContactName(contactName);
         ContactManipulationPage.clickAccount();
         AddSelectEntityPage.select(account);
-//        ContactManipulationPage.scrollToLabel("Chance");
-//        ContactManipulationPage.clickExtraID();
-//        ContactManipulationPage.enterExtraID(extraID);
-//        ContactManipulationPage.clickChanceOfSuccess();
-//        ContactManipulationPage.enterChanceOfSuccess(chanceOfSuccess);
+        ContactManipulationPage.scrollToLabel("Chance");
+        ContactManipulationPage.clickExtraID();
+        ContactManipulationPage.enterExtraID(extraID);
+        ContactManipulationPage.clickChanceOfSuccess();
+        ContactManipulationPage.enterChanceOfSuccess(chanceOfSuccess);
         ContactManipulationPage.clickCancel();
         softAssert.assertTrue(LeftMenuPage.checkSearch());
         softAssert.assertEquals(LeftMenuPage.getHiddenPageTitle(), titleDashboard);
@@ -246,12 +246,12 @@ public class CreateEditContactTest extends BaseTest {
         AddSelectEntityPage.select(category);
         AddSelectEntityPage.clickSelect();
         ContactManipulationPage.typeIntoNotes(notes);
-//
-//        ContactManipulationPage.scrollToLabel("Chance");
-//        ContactManipulationPage.clickExtraID();
-//        ContactManipulationPage.enterExtraID(extraID);
-//        ContactManipulationPage.clickChanceOfSuccess();
-//        ContactManipulationPage.enterChanceOfSuccess(chanceOfSuccess);
+
+        ContactManipulationPage.scrollToLabel("Chance");
+        ContactManipulationPage.clickExtraID();
+        ContactManipulationPage.enterExtraID(extraID);
+        ContactManipulationPage.clickChanceOfSuccess();
+        ContactManipulationPage.enterChanceOfSuccess(chanceOfSuccess);
 
         ContactManipulationPage.clickSave();
         ContactManipulationPage.clickNoThanks();
@@ -274,13 +274,13 @@ public class CreateEditContactTest extends BaseTest {
         AddSelectEntityPage.clickSelect();
         ContactManipulationPage.typeIntoNotes(newNotes);
 
-//        ContactManipulationPage.scrollToLabel("Chance");
-//        ContactManipulationPage.clickExtraID();
-//        ContactManipulationPage.clearExtraID();
-//        ContactManipulationPage.enterExtraID(newExtraID);
-//        ContactManipulationPage.clickChanceOfSuccess();
-//        ContactManipulationPage.clearChanceOfSuccess();
-//        ContactManipulationPage.enterChanceOfSuccess(newChanceOfSuccess);
+        ContactManipulationPage.scrollToLabel("Chance");
+        ContactManipulationPage.clickExtraID();
+        ContactManipulationPage.clearExtraID();
+        ContactManipulationPage.enterExtraID(newExtraID);
+        ContactManipulationPage.clickChanceOfSuccess();
+        ContactManipulationPage.clearChanceOfSuccess();
+        ContactManipulationPage.enterChanceOfSuccess(newChanceOfSuccess);
 
         ContactManipulationPage.clickSave();
         softAssert.assertEquals(ContactPage.getContactName(), newContactName);
@@ -294,14 +294,16 @@ public class CreateEditContactTest extends BaseTest {
 //        ContactPage.clickShowNotes();
         softAssert.assertEquals(ContactPage.getNotes(), newNotes);
 //        ContactPage.clickShowMore();
-//        softAssert.assertEquals(ContactPage.getExtraIDWithAllData(), newExtraID);
-//        softAssert.assertEquals(ContactPage.getChanceOfSuccessWithAllData(), newChanceOfSuccess + " %");
+        ContactPage.scrollToLabel("Chance");
+        softAssert.assertEquals(ContactPage.getExtraID(), newExtraID);
+        softAssert.assertEquals(ContactPage.getChanceOfSuccess(), newChanceOfSuccess + "%");
 //        ContactPage.clickShowLess();
-//        ContactPage.clickAccount();
-//        AccountPage.clickTabContacts();
-//        ContactsPage.clickSearch();
-//        ContactsPage.search(newContactName);
-//        softAssert.assertEquals(ContactsPage.getFirstSearchResult(), newContactName);
+        ContactPage.scrollToLabel("Campaign");
+        ContactPage.clickAccount();
+        AccountPage.clickTabContacts();
+        ContactsPage.clickSearch();
+        ContactsPage.search(newContactName);
+        softAssert.assertEquals(ContactsPage.getFirstSearchResult(), newContactName);
         softAssert.assertAll();
     }
 
@@ -311,11 +313,13 @@ public class CreateEditContactTest extends BaseTest {
         ContactManipulationPage.enterContactName(contactName);
         ContactManipulationPage.clickAccount();
         AddSelectEntityPage.select(account);
-//        ContactManipulationPage.waitForLabelWorksAt();
-//        ContactManipulationPage.clickChanceOfSuccess();
-//        ContactManipulationPage.enterValueFromKeyboard(fieldChanceOfSuccess);
-//        ContactManipulationPage.clickExtraID();
-//        ContactManipulationPage.enterValueFromKeyboard(fieldExtraID);
+
+        ContactManipulationPage.scrollToLabel("Chance");
+        ContactManipulationPage.clickExtraID();
+        ContactManipulationPage.enterExtraID(extraID);
+        ContactManipulationPage.clickChanceOfSuccess();
+        ContactManipulationPage.enterChanceOfSuccess(chanceOfSuccess);
+
         ContactManipulationPage.clickSave();
         ContactManipulationPage.clickNoThanks();
         ContactPage.clickAddContactInfo();
@@ -333,12 +337,15 @@ public class CreateEditContactTest extends BaseTest {
         AddSelectEntityPage.select(category);
         AddSelectEntityPage.clickSelect();
         ContactManipulationPage.typeIntoNotes(notes);
-//        ContactManipulationPage.clickChanceOfSuccess();
-//        Helpers.clearCustomField();
-//        ContactManipulationPage.enterValueFromKeyboard(newChanceOfSuccess);
-//        ContactManipulationPage.clickExtraID();
-//        Helpers.clearCustomField();
-//        ContactManipulationPage.enterValueFromKeyboard(newExtraID);
+
+        ContactManipulationPage.scrollToLabel("Chance");
+        ContactManipulationPage.clickExtraID();
+        ContactManipulationPage.clearExtraID();
+        ContactManipulationPage.enterExtraID(newExtraID);
+        ContactManipulationPage.clickChanceOfSuccess();
+        ContactManipulationPage.clearChanceOfSuccess();
+        ContactManipulationPage.enterChanceOfSuccess(newChanceOfSuccess);
+
         ContactManipulationPage.clickSave();
         softAssert.assertEquals(ContactPage.getContactName(), newContactName);
         softAssert.assertEquals(ContactPage.getAccount(), account);
@@ -351,9 +358,11 @@ public class CreateEditContactTest extends BaseTest {
 //        ContactPage.clickShowNotes();
         softAssert.assertEquals(ContactPage.getNotes(), notes);
 //        ContactPage.clickShowMore();
-//        softAssert.assertEquals(ContactPage.getExtraIDWithAllData(), newExtraID);
-//        softAssert.assertEquals(ContactPage.getChanceOfSuccessWithAllData(), newChanceOfSuccess + " %");
+        ContactPage.scrollToLabel("Extra ID");
+        softAssert.assertEquals(ContactPage.getExtraID(), newExtraID);
+        softAssert.assertEquals(ContactPage.getChanceOfSuccess(), newChanceOfSuccess + "%");
 //        ContactPage.clickShowLess();
+        ContactPage.scrollToLabel("Campaign");
         ContactPage.clickAccount();
         AccountPage.clickTabContacts();
         ContactsPage.clickSearch();
@@ -369,10 +378,13 @@ public class CreateEditContactTest extends BaseTest {
         ContactManipulationPage.clickAccount();
         AddSelectEntityPage.select(account);
         ContactManipulationPage.enterPhone(newPhone);
-//        ContactManipulationPage.clickChanceOfSuccess();
-//        ContactManipulationPage.enterValueFromKeyboard(fieldChanceOfSuccess);
-//        ContactManipulationPage.clickExtraID();
-//        ContactManipulationPage.enterValueFromKeyboard(fieldExtraID);
+
+        ContactManipulationPage.scrollToLabel("Chance");
+        ContactManipulationPage.clickExtraID();
+        ContactManipulationPage.enterExtraID(extraID);
+        ContactManipulationPage.clickChanceOfSuccess();
+        ContactManipulationPage.enterChanceOfSuccess(chanceOfSuccess);
+
         ContactManipulationPage.clickSave();
         ContactManipulationPage.clickNoThanks();
         ContactManipulationPage.clickTools();
@@ -391,19 +403,26 @@ public class CreateEditContactTest extends BaseTest {
         AddSelectEntityPage.select(category);
         AddSelectEntityPage.clickSelect();
         ContactManipulationPage.typeIntoNotes(notes);
-//        ContactManipulationPage.clickDoneOnKeyboard();
-//        ContactManipulationPage.clickChanceOfSuccess();
-//        Helpers.clearCustomField();
-//        ContactManipulationPage.enterValueFromKeyboard(newChanceOfSuccess);
-//        ContactManipulationPage.clickExtraID();
-//        Helpers.clearCustomField();
-//        ContactManipulationPage.enterValueFromKeyboard(newExtraID);
+
+        ContactManipulationPage.scrollToLabel("Chance");
+        ContactManipulationPage.clickExtraID();
+        ContactManipulationPage.clearExtraID();
+        ContactManipulationPage.enterExtraID(newExtraID);
+        ContactManipulationPage.clickChanceOfSuccess();
+        ContactManipulationPage.clearChanceOfSuccess();
+        ContactManipulationPage.enterChanceOfSuccess(newChanceOfSuccess);
+
         ContactManipulationPage.clickCancel();
         softAssert.assertEquals(ContactPage.getContactName(), contactName);
         softAssert.assertFalse(ContactPage.checkTitle());
         softAssert.assertEquals(ContactPage.getPhone(), newPhone);
         softAssert.assertEquals(ContactPage.getCampaign(), labelNone);
         softAssert.assertEquals(ContactPage.getCategory(), labelNone);
+
+//        ContactPage.scrollToLabel("Extra ID");
+//        softAssert.assertEquals(ContactPage.getExtraID(), extraID);
+//        softAssert.assertEquals(ContactPage.getChanceOfSuccess(), chanceOfSuccess + "%");
+
         softAssert.assertAll();
     }
 
@@ -413,11 +432,13 @@ public class CreateEditContactTest extends BaseTest {
         ContactManipulationPage.enterContactName(contactName);
         ContactManipulationPage.clickAccount();
         AddSelectEntityPage.select(account);
-//        ContactManipulationPage.waitForLabelWorksAt();
-//        ContactManipulationPage.clickChanceOfSuccess();
-//        ContactManipulationPage.enterValueFromKeyboard(fieldChanceOfSuccess);
-//        ContactManipulationPage.clickExtraID();
-//        ContactManipulationPage.enterValueFromKeyboard(fieldExtraID);
+
+        ContactManipulationPage.scrollToLabel("Chance");
+        ContactManipulationPage.clickExtraID();
+        ContactManipulationPage.enterExtraID(extraID);
+        ContactManipulationPage.clickChanceOfSuccess();
+        ContactManipulationPage.enterChanceOfSuccess(chanceOfSuccess);
+
         ContactManipulationPage.clickSave();
         ContactManipulationPage.clickActivity();
         ContactManipulationPage.hideKeyboard();
@@ -445,7 +466,7 @@ public class CreateEditContactTest extends BaseTest {
         ActivityManipulationsPage.scrollToLabel("Expenses");
         softAssert.assertEquals(ActivityPage.getExpenses(), expenses + " SEK");
 
-        ActivityPage.clickBack();
+        ActivityPage.clickLeftMenu();
         LeftMenuPage.clickActivities();
 //        softAssert.assertTrue(ActivitiesPage.searchActivity(defaultDescription, dateToday));
         softAssert.assertAll();
@@ -457,11 +478,13 @@ public class CreateEditContactTest extends BaseTest {
         ContactManipulationPage.enterContactName(contactName);
         ContactManipulationPage.clickAccount();
         AddSelectEntityPage.select(account);
-//        ContactManipulationPage.waitForLabelWorksAt();
-//        ContactManipulationPage.clickChanceOfSuccess();
-//        ContactManipulationPage.enterValueFromKeyboard(fieldChanceOfSuccess);
-//        ContactManipulationPage.clickExtraID();
-//        ContactManipulationPage.enterValueFromKeyboard(fieldExtraID);
+
+        ContactManipulationPage.scrollToLabel("Chance");
+        ContactManipulationPage.clickExtraID();
+        ContactManipulationPage.enterExtraID(extraID);
+        ContactManipulationPage.clickChanceOfSuccess();
+        ContactManipulationPage.enterChanceOfSuccess(chanceOfSuccess);
+
         ContactManipulationPage.clickSave();
         ContactManipulationPage.clickActivity();
         ActivityManipulationsPage.checkPageTitle(titleCreate);
@@ -484,11 +507,13 @@ public class CreateEditContactTest extends BaseTest {
         ContactManipulationPage.enterContactName(contactName);
         ContactManipulationPage.clickAccount();
         AddSelectEntityPage.select(account);
-//        ContactManipulationPage.waitForLabelWorksAt();
-//        ContactManipulationPage.clickChanceOfSuccess();
-//        ContactManipulationPage.enterValueFromKeyboard(fieldChanceOfSuccess);
-//        ContactManipulationPage.clickExtraID();
-//        ContactManipulationPage.enterValueFromKeyboard(fieldExtraID);
+
+        ContactManipulationPage.scrollToLabel("Chance");
+        ContactManipulationPage.clickExtraID();
+        ContactManipulationPage.enterExtraID(extraID);
+        ContactManipulationPage.clickChanceOfSuccess();
+        ContactManipulationPage.enterChanceOfSuccess(chanceOfSuccess);
+
         ContactManipulationPage.clickSave();
         ContactManipulationPage.clickActivity();
         ActivityManipulationsPage.setDescription();
@@ -555,11 +580,13 @@ public class CreateEditContactTest extends BaseTest {
         ContactManipulationPage.enterContactName(contactName);
         ContactManipulationPage.clickAccount();
         AddSelectEntityPage.select(account);
-//        ContactManipulationPage.waitForLabelWorksAt();
-//        ContactManipulationPage.clickChanceOfSuccess();
-//        ContactManipulationPage.enterValueFromKeyboard(fieldChanceOfSuccess);
-//        ContactManipulationPage.clickExtraID();
-//        ContactManipulationPage.enterValueFromKeyboard(fieldExtraID);
+
+        ContactManipulationPage.scrollToLabel("Chance");
+        ContactManipulationPage.clickExtraID();
+        ContactManipulationPage.enterExtraID(extraID);
+        ContactManipulationPage.clickChanceOfSuccess();
+        ContactManipulationPage.enterChanceOfSuccess(chanceOfSuccess);
+
         ContactManipulationPage.clickSave();
         ContactManipulationPage.clickAppointment();
         ContactManipulationPage.hideKeyboard();
@@ -591,11 +618,13 @@ public class CreateEditContactTest extends BaseTest {
         ContactManipulationPage.enterContactName(contactName);
         ContactManipulationPage.clickAccount();
         AddSelectEntityPage.select(account);
-//        ContactManipulationPage.waitForLabelWorksAt();
-//        ContactManipulationPage.clickChanceOfSuccess();
-//        ContactManipulationPage.enterValueFromKeyboard(fieldChanceOfSuccess);
-//        ContactManipulationPage.clickExtraID();
-//        ContactManipulationPage.enterValueFromKeyboard(fieldExtraID);
+
+        ContactManipulationPage.scrollToLabel("Chance");
+        ContactManipulationPage.clickExtraID();
+        ContactManipulationPage.enterExtraID(extraID);
+        ContactManipulationPage.clickChanceOfSuccess();
+        ContactManipulationPage.enterChanceOfSuccess(chanceOfSuccess);
+
         ContactManipulationPage.clickSave();
         ContactManipulationPage.clickAppointment();
         AppointmentManipulationsPage.checkPageTitle(titleCreateApp);
@@ -618,11 +647,13 @@ public class CreateEditContactTest extends BaseTest {
         ContactManipulationPage.enterContactName(contactName);
         ContactManipulationPage.clickAccount();
         AddSelectEntityPage.select(account);
-//        ContactManipulationPage.waitForLabelWorksAt();
-//        ContactManipulationPage.clickChanceOfSuccess();
-//        ContactManipulationPage.enterValueFromKeyboard(fieldChanceOfSuccess);
-//        ContactManipulationPage.clickExtraID();
-//        ContactManipulationPage.enterValueFromKeyboard(fieldExtraID);
+
+        ContactManipulationPage.scrollToLabel("Chance");
+        ContactManipulationPage.clickExtraID();
+        ContactManipulationPage.enterExtraID(extraID);
+        ContactManipulationPage.clickChanceOfSuccess();
+        ContactManipulationPage.enterChanceOfSuccess(chanceOfSuccess);
+
         ContactManipulationPage.clickSave();
         ContactManipulationPage.clickAppointment();
         ContactManipulationPage.hideKeyboard();
@@ -705,9 +736,8 @@ public class CreateEditContactTest extends BaseTest {
         softAssert.assertEquals(AppointmentPage.getOpportunity(), opportunity);
         ActivityManipulationsPage.scrollToLabel(labelOtherInfo);
         softAssert.assertEquals(AppointmentPage.getNotes(), newNotes);
-
-        AppointmentManipulationsPage.scrollToLabel("Hours");
-        softAssert.assertEquals(AppointmentPage.getHoursInPreparation(), newHoursInPreparation);
+//        AppointmentManipulationsPage.scrollToLabel("Hours");
+//        softAssert.assertEquals(AppointmentPage.getHoursInPreparation(), newHoursInPreparation);
 
         softAssert.assertAll();
     }
@@ -718,10 +748,13 @@ public class CreateEditContactTest extends BaseTest {
         ContactManipulationPage.enterContactName(contactName);
         ContactManipulationPage.clickAccount();
         AddSelectEntityPage.select(account);
-//        ContactManipulationPage.clickChanceOfSuccess();
-//        ContactManipulationPage.enterValueFromKeyboard(fieldChanceOfSuccess);
-//        ContactManipulationPage.clickExtraID();
-//        ContactManipulationPage.enterValueFromKeyboard(fieldExtraID);
+
+        ContactManipulationPage.scrollToLabel("Chance");
+        ContactManipulationPage.clickExtraID();
+        ContactManipulationPage.enterExtraID(extraID);
+        ContactManipulationPage.clickChanceOfSuccess();
+        ContactManipulationPage.enterChanceOfSuccess(chanceOfSuccess);
+
         ContactManipulationPage.clickSave();
         ContactManipulationPage.clickOpportunity();
         softAssert.assertEquals(OpportunityManipulationsPage.getTitle(), oppCreateTitle);
@@ -737,7 +770,7 @@ public class CreateEditContactTest extends BaseTest {
         AddSelectEntityPage.select(product);
         NewOrderRowPage.clickAdd();
         OpportunityManipulationsPage.clickSave();
-        softAssert.assertEquals(OpportunityPage.getDescription(), defaultDescription);
+        softAssert.assertEquals(OpportunityPage.getDescriptionOnView(), defaultDescription);
         softAssert.assertEquals(OpportunityPage.getAccount(), account);
         softAssert.assertEquals(OpportunityPage.getUser(), currentUser);
         softAssert.assertEquals(OpportunityPage.getTitleOnView(), titleOpportunity.toUpperCase());
@@ -756,10 +789,13 @@ public class CreateEditContactTest extends BaseTest {
         ContactManipulationPage.enterContactName(contactName);
         ContactManipulationPage.clickAccount();
         AddSelectEntityPage.select(account);
-//        ContactManipulationPage.clickChanceOfSuccess();
-//        ContactManipulationPage.enterValueFromKeyboard(fieldChanceOfSuccess);
-//        ContactManipulationPage.clickExtraID();
-//        ContactManipulationPage.enterValueFromKeyboard(fieldExtraID);
+
+        ContactManipulationPage.scrollToLabel("Chance");
+        ContactManipulationPage.clickExtraID();
+        ContactManipulationPage.enterExtraID(extraID);
+        ContactManipulationPage.clickChanceOfSuccess();
+        ContactManipulationPage.enterChanceOfSuccess(chanceOfSuccess);
+
         ContactManipulationPage.clickSave();
         ContactManipulationPage.clickOpportunity();
         OpportunityManipulationsPage.hideKeyboard();
@@ -781,10 +817,13 @@ public class CreateEditContactTest extends BaseTest {
         ContactManipulationPage.enterContactName(contactName);
         ContactManipulationPage.clickAccount();
         AddSelectEntityPage.select(account);
-//        ContactManipulationPage.clickChanceOfSuccess();
-//        ContactManipulationPage.enterValueFromKeyboard(fieldChanceOfSuccess);
-//        ContactManipulationPage.clickExtraID();
-//        ContactManipulationPage.enterValueFromKeyboard(fieldExtraID);
+
+        ContactManipulationPage.scrollToLabel("Chance");
+        ContactManipulationPage.clickExtraID();
+        ContactManipulationPage.enterExtraID(extraID);
+        ContactManipulationPage.clickChanceOfSuccess();
+        ContactManipulationPage.enterChanceOfSuccess(chanceOfSuccess);
+
         ContactManipulationPage.clickSave();
         OpportunityManipulationsPage.hideKeyboard();
         ContactManipulationPage.clickOpportunity();
@@ -819,7 +858,7 @@ public class CreateEditContactTest extends BaseTest {
         OpportunityManipulationsPage.scrollToLabel(labelOtherInfo);
         OpportunityManipulationsPage.typeIntoNotes(newNotes);
         OpportunityManipulationsPage.clickSave();
-        softAssert.assertEquals(OpportunityPage.getDescription(), newOppName);
+        softAssert.assertEquals(OpportunityPage.getDescriptionOnView(), newOppName);
         softAssert.assertEquals(OpportunityPage.getAccount(), account);
         softAssert.assertEquals(OpportunityPage.getUser(), secondUser);
         softAssert.assertEquals(OpportunityPage.getStage(), newStageInOpp);
@@ -838,10 +877,13 @@ public class CreateEditContactTest extends BaseTest {
         ContactManipulationPage.enterContactName(contactName);
         ContactManipulationPage.clickAccount();
         AddSelectEntityPage.select(account);
-//        ContactManipulationPage.clickChanceOfSuccess();
-//        ContactManipulationPage.enterValueFromKeyboard(fieldChanceOfSuccess);
-//        ContactManipulationPage.clickExtraID();
-//        ContactManipulationPage.enterValueFromKeyboard(fieldExtraID);
+
+        ContactManipulationPage.scrollToLabel("Chance");
+        ContactManipulationPage.clickExtraID();
+        ContactManipulationPage.enterExtraID(extraID);
+        ContactManipulationPage.clickChanceOfSuccess();
+        ContactManipulationPage.enterChanceOfSuccess(chanceOfSuccess);
+
         ContactManipulationPage.clickSave();
         ContactManipulationPage.clickNoThanks();
         ContactPage.clickAddContactInfo();

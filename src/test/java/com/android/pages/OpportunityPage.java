@@ -6,8 +6,8 @@ import org.openqa.selenium.By;
 public class OpportunityPage extends BasePage {
 
     private static final By leftMenuOnCreatedOpp = MobileBy.IosUIAutomation(".navigationBars()[0].buttons()[0]");
+    private static final By buttonLeftMenu = MobileBy.className("android.widget.ImageButton");
 
-    private static final By description = MobileBy.id("header_title");
     private static final By orderName = MobileBy.id("order_name");
     private static final By account = MobileBy.id("account_name");
     private static final By stage = MobileBy.xpath("//*[contains(@resource-id, 'stage_order_field')]//*[contains(@resource-id, 'select')]");
@@ -89,10 +89,6 @@ public class OpportunityPage extends BasePage {
         find(account).click();
     }
 
-    public static String getDescription() {
-        return findElements(description).get(0).getText();
-    }
-
     public static String getAccount() {
         return getText(account);
     }
@@ -122,5 +118,9 @@ public class OpportunityPage extends BasePage {
 
     public static String getOrderTitle() {
         return getText(orderTitle);
+    }
+
+    public static void clickLeftMenu() {
+        find(buttonLeftMenu).click();
     }
 }

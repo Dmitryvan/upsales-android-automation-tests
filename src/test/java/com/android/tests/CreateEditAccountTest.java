@@ -1149,8 +1149,8 @@ public class CreateEditAccountTest extends BaseTest {
 //        ContactPage.clickShowNotes();
 //        softAssert.assertEquals(ContactPage.getNotes(), newNotes);
 //        ContactPage.clickShowMore();
-//        softAssert.assertEquals(ContactPage.getExtraIDWithAllData(), newExtraID);
-//        softAssert.assertEquals(ContactPage.getChanceOfSuccessWithAllData(), newChanceOfSuccess + " %");
+//        softAssert.assertEquals(ContactPage.getExtraID(), newExtraID);
+//        softAssert.assertEquals(ContactPage.getChanceOfSuccess(), newChanceOfSuccess + " %");
 //        softAssert.assertAll();
 //    }
 
@@ -1392,8 +1392,8 @@ public class CreateEditAccountTest extends BaseTest {
 //        ContactPage.clickShowNotes();
 //        softAssert.assertEquals(ContactPage.getNotes(), notes);
 //        ContactPage.clickShowMore();
-//        softAssert.assertEquals(ContactPage.getExtraIDWithAllData(), fieldExtraID);
-//        softAssert.assertEquals(ContactPage.getChanceOfSuccessWithAllData(), fieldChanceOfSuccess + " %");
+//        softAssert.assertEquals(ContactPage.getExtraID(), fieldExtraID);
+//        softAssert.assertEquals(ContactPage.getChanceOfSuccess(), fieldChanceOfSuccess + " %");
 //
 //        softAssert.assertAll();
 //    }

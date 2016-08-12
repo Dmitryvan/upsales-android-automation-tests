@@ -178,7 +178,7 @@ public class CreateEditOpportunityTest extends BaseTest {
         NewOrderRowPage.clickAdd();
         OpportunityManipulationsPage.clickSave();
         softAssert.assertEquals(OpportunityPage.getAccount(), account);
-        softAssert.assertEquals(OpportunityPage.getDescription(), opportunityName);
+        softAssert.assertEquals(OpportunityPage.getDescriptionOnView(), opportunityName);
         softAssert.assertEquals(OpportunityPage.getStage(), stageInOpp);
         softAssert.assertEquals(OpportunityPage.getTitleOnView(), titleOpportunity.toUpperCase());
         OpportunityPage.clickAccount();
@@ -252,7 +252,7 @@ public class CreateEditOpportunityTest extends BaseTest {
         NewOrderRowPage.enterPrice(newPrice);
         NewOrderRowPage.clickAdd();
         OpportunityManipulationsPage.clickCancel();
-        softAssert.assertEquals(OpportunityPage.getDescription(), opportunityName);
+        softAssert.assertEquals(OpportunityPage.getDescriptionOnView(), opportunityName);
         softAssert.assertEquals(OpportunityPage.getAccount(), account);
         softAssert.assertEquals(OpportunityPage.getUser(), yourUser);
         softAssert.assertEquals(OpportunityPage.getStage(), stageInOpp);
@@ -336,7 +336,7 @@ public class CreateEditOpportunityTest extends BaseTest {
         OpportunityManipulationsPage.scrollToLabel(labelOtherInfo);
         OpportunityManipulationsPage.typeIntoNotes(newNotes);
         OpportunityManipulationsPage.clickSave();
-        softAssert.assertEquals(OpportunityPage.getDescription(), newOppName);
+        softAssert.assertEquals(OpportunityPage.getDescriptionOnView(), newOppName);
         softAssert.assertEquals(OpportunityPage.getAccount(), account);
         softAssert.assertEquals(OpportunityPage.getUser(), secondUser);
         softAssert.assertEquals(OpportunityPage.getStage(), newChangedStageInOpp);
@@ -348,7 +348,7 @@ public class CreateEditOpportunityTest extends BaseTest {
         softAssert.assertEquals(OpportunityPage.getProduct(), newProduct);
         softAssert.assertEquals(OpportunityPage.getQuantity(), newQuantity);
         softAssert.assertEquals(OpportunityPage.getPrice(), newPrice);
-        OpportunityPage.clickBack();
+        OpportunityPage.clickLeftMenu();
         LeftMenuPage.clickSearch();
         SearchPage.search(account);
         SearchPage.clickOnFirstSearchResult();

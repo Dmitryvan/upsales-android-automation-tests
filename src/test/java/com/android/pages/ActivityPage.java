@@ -11,7 +11,7 @@ import java.util.List;
 
 public class ActivityPage extends BasePage {
 
-    private static final By buttonLeftMenu = MobileBy.IosUIAutomation(".navigationBar().buttons()[1]");
+    private static final By buttonLeftMenu = MobileBy.className("android.widget.ImageButton");
 
     private static final By buttonAccount = MobileBy.id("account_name");
     private static final By userValue = MobileBy.id("user_name");

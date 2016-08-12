@@ -4,13 +4,9 @@ import com.android.tests.BaseTest;
 import io.appium.java_client.MobileBy;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
-import org.openqa.selenium.WebElement;
-
-import java.util.List;
 
 public class ContactPage extends BasePage {
 
-//    private static final By contactName = MobileBy.id("header_title");
     private static final By account = MobileBy.id("account_name");
     private static final By title = MobileBy.id("header_subtitle");
     private static final By phone = MobileBy.id("phone");
@@ -29,8 +25,8 @@ public class ContactPage extends BasePage {
     private static final By categoryWithPhone = MobileBy.IosUIAutomation(".tableViews()[0].cells()[2].staticTexts()[1]");
     private static final By extraIDWithoutData = MobileBy.xpath("//android.widget.RelativeLayout[@index='8']//android.widget.EditText[@index='0']");
     private static final By chanceOfSuccessWithoutData = MobileBy.xpath("//android.widget.RelativeLayout[@index='9']//android.widget.EditText[@index='0']");
-    private static final By extraIDWithAllData = MobileBy.IosUIAutomation(".tableViews()[0].cells()[6].textFields()[0]");
-    private static final By chanceOfSuccessWithAllData = MobileBy.IosUIAutomation(".tableViews()[0].cells()[5].textFields()[0]");
+    private static final By extraID = MobileBy.xpath("//android.widget.RelativeLayout[@index='6']//android.widget.RelativeLayout[@index='8']//android.widget.EditText[@index='0']");
+    private static final By chanceOfSuccess = MobileBy.xpath("//android.widget.RelativeLayout[@index='6']//android.widget.RelativeLayout[@index='9']//android.widget.EditText[@index='0']");
     private static final By labelShowMore = MobileBy.IosUIAutomation(".tableViews()[0].cells().firstWithPredicate(\"staticTexts[0].name=='Show more (2)'\")");
     private static final By labelShowNotes = MobileBy.IosUIAutomation(".tableViews()[0].cells().firstWithPredicate(\"staticTexts[0].name=='Notes'\").buttons()[0]");
     private static final By labelShowLess = MobileBy.IosUIAutomation(".tableViews()[0].cells().firstWithPredicate(\"staticTexts[0].name=='Show less'\")");
@@ -41,12 +37,12 @@ public class ContactPage extends BasePage {
     private static final By bottomPopoverCancel = MobileBy.xpath("//UIAApplication[1]/UIAWindow[1]/UIAActionSheet[1]/UIAButton[1]");
     private static final By bottomPopoverMessage = MobileBy.xpath("//UIAApplication[1]/UIAWindow[1]/UIAActionSheet[1]/UIACollectionView[1]/UIACollectionCell[2]");
 
-    public static String getChanceOfSuccessWithAllData() {
-        return getValue(chanceOfSuccessWithAllData);
+    public static String getChanceOfSuccess() {
+        return getText(chanceOfSuccess);
     }
 
-    public static String getExtraIDWithAllData() {
-        return getValue(extraIDWithAllData);
+    public static String getExtraID() {
+        return getText(extraID);
     }
 
     public static String getExtraIDWithoutData() {

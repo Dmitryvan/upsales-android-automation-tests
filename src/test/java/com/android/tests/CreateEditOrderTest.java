@@ -331,10 +331,10 @@ public class CreateEditOrderTest extends BaseTest {
         softAssert.assertEquals(OpportunityPage.getCloseDateInOrder(), newCloseDate);
         softAssert.assertEquals(OpportunityPage.getContact(), newContact);
         softAssert.assertEquals(OpportunityPage.getCampaign(), newCampaign);
-        softAssert.assertEquals(OpportunityPage.getProduct(), newProduct);
-        OpportunityPage.scrollToLabel(labelOtherInfo);
         softAssert.assertEquals(OpportunityPage.getNotes(), newNotes);
-        OpportunityPage.clickBack();
+        OpportunityPage.scrollToLabel(labelOtherInfo);
+        softAssert.assertEquals(OpportunityPage.getProduct(), newProduct);
+        OpportunityPage.clickLeftMenu();
         LeftMenuPage.clickSearch();
         SearchPage.search(account);
         SearchPage.clickOnFirstSearchResult();
