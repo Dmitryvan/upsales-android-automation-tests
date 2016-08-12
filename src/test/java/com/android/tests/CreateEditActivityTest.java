@@ -90,77 +90,77 @@ public class CreateEditActivityTest extends BaseTest {
         description = ActivityManipulationsPage.getDescription();
     }
 
-    @Test(priority = 1) //CASE 2
-    public void softContentOfCreateActivityPage() {
-        SoftAssertExtended softAssert = new SoftAssertExtended();
-        ActivityManipulationsPage.checkPageTitle(titleCreate);
-        ActivityManipulationsPage.hideKeyboard();
-        softAssert.assertEquals(ActivityManipulationsPage.getLabelSave(), labelSave);
-        softAssert.assertEquals(ActivityManipulationsPage.getLabelCancel(), labelCancel);
-        softAssert.assertEquals(defaultLabelDescription, ActivityManipulationsPage.getLabelDescription());
-        softAssert.assertEquals(labelActivityType, ActivityManipulationsPage.getLabelActivityType());
-        softAssert.assertEquals(defaultActivityType, ActivityManipulationsPage.getActivityType());
-        ActivityManipulationsPage.clickActivityType();
-        softAssert.assertEquals(activityTypes, ActivityManipulationsPage.getAllActivityTypes());
-        ActivityManipulationsPage.closePopUp();
-        softAssert.assertEquals(labelDueDate, ActivityManipulationsPage.getLabelDueDate());
-        softAssert.assertEquals(ActivityManipulationsPage.getCurrentDate(), ActivityManipulationsPage.getDueDate());
-        softAssert.assertEquals(defaultTime, ActivityManipulationsPage.getTime());
-        assertEquals(labelTime, ActivityManipulationsPage.getLabelTime());
-        softAssert.assertEquals(labelAccount, ActivityManipulationsPage.getLabelAccount());
-        softAssert.assertEquals(defaultAccount, ActivityManipulationsPage.getAccount());
-        ActivityManipulationsPage.clickAccount();
-        AddSelectEntityPage.hideKeyboard();
-        softAssert.assertEquals(labelResults, AddSelectEntityPage.getResultsLabelValue());
-        softAssert.assertEquals(titleSelectAccount, AddSelectEntityPage.getTitle());
-        softAssert.assertEquals(labelSearch, AddSelectEntityPage.getSearchFieldValue());
-        softAssert.assertEquals(labelCancel, AddSelectEntityPage.getLabelCancel());
-        AddSelectEntityPage.clickBack();
-        AddSelectEntityPage.hideKeyboard();
-        softAssert.assertEquals(labelContact, ActivityManipulationsPage.getLabelContact());
-        softAssert.assertEquals(defaultContact, ActivityManipulationsPage.getContact());
-        softAssert.assertEquals(labelOpportunity, ActivityManipulationsPage.getLabelOpportunity());
-        softAssert.assertEquals(defaultOpportunity, ActivityManipulationsPage.getOpportunity());
-        softAssert.assertEquals(labelUser, ActivityManipulationsPage.getLabelUser());
-        softAssert.assertEquals(defaultUser, ActivityManipulationsPage.getUser());
-        softAssert.assertEquals(labelCampaign, ActivityManipulationsPage.getLabelCampaign());
-        softAssert.assertEquals(defaultCampaign, ActivityManipulationsPage.getCampaign());
-        ActivityManipulationsPage.clickCampaign();
-        AddSelectEntityPage.checkPageTitle(titleAddCampaign);
-        softAssert.assertEquals(labelSearch, AddSelectEntityPage.getSearchFieldValue());
-        softAssert.assertEquals(labelCancel, AddSelectEntityPage.getLabelCancel());
-        softAssert.assertEquals(labelResults, AddSelectEntityPage.getResultsLabelValue());
-        AddSelectEntityPage.clickBack();
-        AddSelectEntityPage.hideKeyboard();
-        softAssert.assertEquals(labelNotes, ActivityManipulationsPage.getLabelNotes());
-        ActivityManipulationsPage.scrollToLabel(labelOtherInfo);
-        softAssert.assertEquals(labelOtherInfo, ActivityManipulationsPage.getLabelOtherInfo());
-        softAssert.assertAll();
-    }
-
-    @Test(priority = 2) //CASE 3
-    public void softCreateActivity() {
-        SoftAssertExtended softAssert = new SoftAssertExtended();
-        ActivityManipulationsPage.enterDescription(description);
-        ActivityManipulationsPage.clickAccount();
-        AddSelectEntityPage.select(account);
-        softAssert.assertEquals(ActivityManipulationsPage.getAccount(), account);
-        ActivityManipulationsPage.scrollToLabel("Expenses");
-        ActivityManipulationsPage.clickExpenses();
-        ActivityManipulationsPage.enterExpenses(expenses);
-        softAssert.assertEquals(ActivityManipulationsPage.getExpenses(), expenses);
-        ActivityManipulationsPage.clickSave();
-        softAssert.assertEquals(ActivityPage.getActivityDescription(), description);
-        softAssert.assertEquals(ActivityPage.getTitleOnView(), defaultActivityType.toUpperCase());
-        softAssert.assertEquals(ActivityPage.getAccountName(), account);
-        ActivityPage.scrollToLabel("Expenses");
-        softAssert.assertEquals(ActivityPage.getExpenses(), expenses + " SEK");
-        ActivityPage.scrollToLabel("Campaign");
-        ActivityPage.clickAccount();
-        AccountPage.clickTabActivities();
-        ActivitiesPage.searchActivity(description, today);
-        softAssert.assertAll();
-    }
+//    @Test(priority = 1) //CASE 2
+//    public void softContentOfCreateActivityPage() {
+//        SoftAssertExtended softAssert = new SoftAssertExtended();
+//        ActivityManipulationsPage.checkPageTitle(titleCreate);
+//        ActivityManipulationsPage.hideKeyboard();
+//        softAssert.assertEquals(ActivityManipulationsPage.getLabelSave(), labelSave);
+//        softAssert.assertEquals(ActivityManipulationsPage.getLabelCancel(), labelCancel);
+//        softAssert.assertEquals(defaultLabelDescription, ActivityManipulationsPage.getLabelDescription());
+//        softAssert.assertEquals(labelActivityType, ActivityManipulationsPage.getLabelActivityType());
+//        softAssert.assertEquals(defaultActivityType, ActivityManipulationsPage.getActivityType());
+//        ActivityManipulationsPage.clickActivityType();
+//        softAssert.assertEquals(activityTypes, ActivityManipulationsPage.getAllActivityTypes());
+//        ActivityManipulationsPage.closePopUp();
+//        softAssert.assertEquals(labelDueDate, ActivityManipulationsPage.getLabelDueDate());
+//        softAssert.assertEquals(ActivityManipulationsPage.getCurrentDate(), ActivityManipulationsPage.getDueDate());
+//        softAssert.assertEquals(defaultTime, ActivityManipulationsPage.getTime());
+//        assertEquals(labelTime, ActivityManipulationsPage.getLabelTime());
+//        softAssert.assertEquals(labelAccount, ActivityManipulationsPage.getLabelAccount());
+//        softAssert.assertEquals(defaultAccount, ActivityManipulationsPage.getAccount());
+//        ActivityManipulationsPage.clickAccount();
+//        AddSelectEntityPage.hideKeyboard();
+//        softAssert.assertEquals(labelResults, AddSelectEntityPage.getResultsLabelValue());
+//        softAssert.assertEquals(titleSelectAccount, AddSelectEntityPage.getTitle());
+//        softAssert.assertEquals(labelSearch, AddSelectEntityPage.getSearchFieldValue());
+//        softAssert.assertEquals(labelCancel, AddSelectEntityPage.getLabelCancel());
+//        AddSelectEntityPage.clickBack();
+//        AddSelectEntityPage.hideKeyboard();
+//        softAssert.assertEquals(labelContact, ActivityManipulationsPage.getLabelContact());
+//        softAssert.assertEquals(defaultContact, ActivityManipulationsPage.getContact());
+//        softAssert.assertEquals(labelOpportunity, ActivityManipulationsPage.getLabelOpportunity());
+//        softAssert.assertEquals(defaultOpportunity, ActivityManipulationsPage.getOpportunity());
+//        softAssert.assertEquals(labelUser, ActivityManipulationsPage.getLabelUser());
+//        softAssert.assertEquals(defaultUser, ActivityManipulationsPage.getUser());
+//        softAssert.assertEquals(labelCampaign, ActivityManipulationsPage.getLabelCampaign());
+//        softAssert.assertEquals(defaultCampaign, ActivityManipulationsPage.getCampaign());
+//        ActivityManipulationsPage.clickCampaign();
+//        AddSelectEntityPage.checkPageTitle(titleAddCampaign);
+//        softAssert.assertEquals(labelSearch, AddSelectEntityPage.getSearchFieldValue());
+//        softAssert.assertEquals(labelCancel, AddSelectEntityPage.getLabelCancel());
+//        softAssert.assertEquals(labelResults, AddSelectEntityPage.getResultsLabelValue());
+//        AddSelectEntityPage.clickBack();
+//        AddSelectEntityPage.hideKeyboard();
+//        softAssert.assertEquals(labelNotes, ActivityManipulationsPage.getLabelNotes());
+//        ActivityManipulationsPage.scrollToLabel(labelOtherInfo);
+//        softAssert.assertEquals(labelOtherInfo, ActivityManipulationsPage.getLabelOtherInfo());
+//        softAssert.assertAll();
+//    }
+//
+//    @Test(priority = 2) //CASE 3
+//    public void softCreateActivity() {
+//        SoftAssertExtended softAssert = new SoftAssertExtended();
+//        ActivityManipulationsPage.enterDescription(description);
+//        ActivityManipulationsPage.clickAccount();
+//        AddSelectEntityPage.select(account);
+//        softAssert.assertEquals(ActivityManipulationsPage.getAccount(), account);
+//        ActivityManipulationsPage.scrollToLabel("Expenses");
+//        ActivityManipulationsPage.clickExpenses();
+//        ActivityManipulationsPage.enterExpenses(expenses);
+//        softAssert.assertEquals(ActivityManipulationsPage.getExpenses(), expenses);
+//        ActivityManipulationsPage.clickSave();
+//        softAssert.assertEquals(ActivityPage.getActivityDescription(), description);
+//        softAssert.assertEquals(ActivityPage.getTitleOnView(), defaultActivityType.toUpperCase());
+//        softAssert.assertEquals(ActivityPage.getAccountName(), account);
+//        ActivityPage.scrollToLabel("Expenses");
+//        softAssert.assertEquals(ActivityPage.getExpenses(), expenses + " SEK");
+//        ActivityPage.scrollToLabel("Campaign");
+//        ActivityPage.clickAccount();
+//        AccountPage.clickTabActivities();
+//        ActivitiesPage.searchActivity(description, today);
+//        softAssert.assertAll();
+//    }
 
     @Test(priority = 3) //CASE 4
     public void softCancelActivityBeforeSave() {

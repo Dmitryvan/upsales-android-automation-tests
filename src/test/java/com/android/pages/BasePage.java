@@ -61,7 +61,7 @@ public class BasePage extends Helpers {
     }
 
     public static String getTitleOnView() {
-        return findElements(title).get(1).getText();
+        return findElements(title).get(0).getText();
     }
 
     public static void clickFilter() {

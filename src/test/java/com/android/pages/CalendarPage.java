@@ -118,25 +118,25 @@ public class CalendarPage extends BasePage {
         if(lastValue == 5) {
             ((AndroidElement)list.get(3)).swipe(SwipeElementDirection.UP, 500);
         }
-        String previousActivity = getTextByPath("//android.support.v7.widget.RecyclerView[1]/android.widget.RelativeLayout[", lastValue, "]/android.widget.RelativeLayout[1]/android.widget.TextView[1]");
-        String previousAccount = getTextByPath("//android.support.v7.widget.RecyclerView[1]/android.widget.RelativeLayout[", lastValue, "]/android.widget.RelativeLayout[1]/android.widget.TextView[2]");
+        String previousActivity = getTextByPath("//android.support.v7.widget.RecyclerView[1]/android.widget.RelativeLayout[", lastValue, "]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]");
+        String previousAccount = getTextByPath("//android.support.v7.widget.RecyclerView[1]/android.widget.RelativeLayout[", lastValue, "]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[2]");
         String activity;
         String account;
         int counter = 0;
         do {
             AndroidElement el = (AndroidElement) find(MobileBy.xpath(
                     "//android.support.v7.widget.RecyclerView[1]/android.widget.RelativeLayout[" +
-                            (iterator - 1) + "]/android.widget.RelativeLayout[1]"));
+                            (iterator - 1) + "]/android.widget.FrameLayout[1]"));
             el.swipe(SwipeElementDirection.UP, 500);
             waitByThread(500);
             try {
                 try {
-                    activity = getTextByPath("//android.support.v7.widget.RecyclerView[1]/android.widget.RelativeLayout[", (lastValue + 1), "]/android.widget.RelativeLayout[1]/android.widget.TextView[1]");
-                    account = getTextByPath("//android.support.v7.widget.RecyclerView[1]/android.widget.RelativeLayout[", (lastValue + 1), "]/android.widget.RelativeLayout[1]/android.widget.TextView[2]");
+                    activity = getTextByPath("//android.support.v7.widget.RecyclerView[1]/android.widget.RelativeLayout[", (lastValue + 1), "]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]");
+                    account = getTextByPath("//android.support.v7.widget.RecyclerView[1]/android.widget.RelativeLayout[", (lastValue + 1), "]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[2]");
                 }
                 catch (Exception e) {
-                    activity = getTextByPath("//android.support.v7.widget.RecyclerView[1]/android.widget.RelativeLayout[", lastValue, "]/android.widget.RelativeLayout[1]/android.widget.TextView[1]");
-                    account = getTextByPath("//android.support.v7.widget.RecyclerView[1]/android.widget.RelativeLayout[", lastValue, "]/android.widget.RelativeLayout[1]/android.widget.TextView[2]");
+                    activity = getTextByPath("//android.support.v7.widget.RecyclerView[1]/android.widget.RelativeLayout[", lastValue, "]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]");
+                    account = getTextByPath("//android.support.v7.widget.RecyclerView[1]/android.widget.RelativeLayout[", lastValue, "]android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[2]");
                 }
 //                System.out.println(account);
                 if (account.equals(previousAccount) && activity.equals(previousActivity)) {
