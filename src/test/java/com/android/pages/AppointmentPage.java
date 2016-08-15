@@ -28,7 +28,7 @@ public class AppointmentPage extends BasePage {
     private static final By date = MobileBy.id("date");
     private static final By time = MobileBy.id("time");
 
-    private static final By hoursOfPreparation = MobileBy.xpath("//android.widget.RelativeLayout[@index='4']//android.widget.EditText[@index='0']");
+    private static final By hoursOfPreparation = MobileBy.xpath("//android.widget.RelativeLayout[4]//android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.EditText[1]");
 
     public static String getFifthCellValue() {
         return getValue(fifththCellValue);

@@ -179,6 +179,7 @@ public class CreateEditOrderTest extends BaseTest {
         softAssert.assertEquals(OpportunityPage.getOrderName(), orderName);
         softAssert.assertEquals(OpportunityPage.getStage(), stageInOrder);
         softAssert.assertEquals(OpportunityPage.getOrderTitle(), titleOrder.toUpperCase());
+        OpportunityPage.clickLeftMenu();
         LeftMenuPage.clickSearch();
         SearchPage.search(account);
         SearchPage.clickOnFirstSearchResult();

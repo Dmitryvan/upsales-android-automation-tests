@@ -468,7 +468,7 @@ public class CreateEditContactTest extends BaseTest {
 
         ActivityPage.clickLeftMenu();
         LeftMenuPage.clickActivities();
-//        softAssert.assertTrue(ActivitiesPage.searchActivity(defaultDescription, dateToday));
+        softAssert.assertTrue(ActivitiesPage.searchActivity(defaultDescription, dateToday));
         softAssert.assertAll();
     }
 
@@ -487,6 +487,7 @@ public class CreateEditContactTest extends BaseTest {
 
         ContactManipulationPage.clickSave();
         ContactManipulationPage.clickActivity();
+        ContactManipulationPage.hideKeyboard();
         ActivityManipulationsPage.checkPageTitle(titleCreate);
         ActivityManipulationsPage.clickCancel();
         softAssert.assertTrue(LeftMenuPage.checkSearch());

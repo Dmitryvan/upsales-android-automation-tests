@@ -147,7 +147,7 @@ public class FollowUpActivityTest extends BaseTest {
         ActivityManipulationsPage.clearExpenses();
         ActivityManipulationsPage.enterExpenses(newExpenses);
         ActivityManipulationsPage.clickSave();
-        softAssert.assertEquals(newDescription, BasePage.getDescriptionOnView());
+        softAssert.assertEquals(newDescription, ActivityPage.getDescriptionOnView());
         softAssert.assertEquals(ActivityPage.getTitleOnView(), activityType.toUpperCase());
         softAssert.assertEquals(ActivityPage.getDate(), newDate);
         softAssert.assertEquals(ActivityPage.getTime(), newTime);
@@ -157,11 +157,13 @@ public class FollowUpActivityTest extends BaseTest {
         softAssert.assertEquals(ActivityPage.getCampaign(), campaign);
         softAssert.assertEquals(ActivityPage.getNotes(), notes);
         softAssert.assertEquals(ActivityPage.getOpportunity(), opportunity);
-//        ActivityPage.clickShowMore();
+        ActivityPage.clickShowMore();
         ActivityManipulationsPage.scrollToLabel("Expenses");
         softAssert.assertEquals(ActivityPage.getExpenses(), newExpenses + " SEK");
-        ActivityPage.clickBack();
-        ActivityPage.clickAccount();
+        ActivityPage.clickLeftMenu();
+        LeftMenuPage.clickSearch();
+        SearchPage.search(account);
+        SearchPage.clickOnFirstSearchResult();
         AccountPage.clickTabActivities();
         ActivitiesPage.searchActivity(description, today);
         ActivitiesPage.searchActivityByName(newDescription);
@@ -314,6 +316,7 @@ public class FollowUpActivityTest extends BaseTest {
         ActivityManipulationsPage.selectTimeMinutes(newMinutes);
         ActivityManipulationsPage.selectTimeAmPm(timeAmPm);
         ActivityManipulationsPage.closePicker();
+        ActivityManipulationsPage.hideKeyboard();
         ActivityManipulationsPage.clickOpportunity();
         ActivityManipulationsPage.selectValueFromPopUp(testOpp);
         ActivityManipulationsPage.scrollToLabel(labelOtherInfo);
@@ -334,7 +337,6 @@ public class FollowUpActivityTest extends BaseTest {
         ActivityManipulationsPage.scrollToLabel(labelOtherInfo);
         softAssert.assertTrue(ActivityPage.getNotesStartsWith(testNoteStart));
         ActivityPage.clickBack();
-        ActivityPage.clickAccount();
         AccountPage.clickTabActivities();
         System.out.println(newDescription);
         softAssert.assertTrue(ActivitiesPage.searchActivityByName(testActivityDescription));
