@@ -440,12 +440,11 @@ public class FollowUpActivityTest extends BaseTest {
         ContactManipulationPage.setContactName();
         String contactName = ContactManipulationPage.getContactName();
         ContactManipulationPage.enterContactName(contactName);
-//        ContactManipulationPage.clickDoneOnKeyboard();
-//        ContactManipulationPage.clickChanceOfSuccess();
-//        ContactManipulationPage.enterValueFromKeyboard(chanceOfSuccess);
-//        ContactManipulationPage.clickDoneOnKeyboard();
-//        ContactManipulationPage.clickExtraID();
-//        ContactManipulationPage.enterValueFromKeyboard(extraID);
+        ContactManipulationPage.scrollToLabel("Chance");
+        ContactManipulationPage.clickExtraID();
+        ContactManipulationPage.enterExtraID(extraID);
+        ContactManipulationPage.clickChanceOfSuccess();
+        ContactManipulationPage.enterChanceOfSuccess(chanceOfSuccess);
         ContactManipulationPage.clickSave();
         ContactManipulationPage.clickActivity();
         ActivityManipulationsPage.enterDescription(description);
