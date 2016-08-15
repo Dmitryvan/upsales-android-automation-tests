@@ -1052,11 +1052,11 @@ public class CreateEditAccountTest extends BaseTest {
         ContactManipulationPage.enterContactName(contactName);
         ContactManipulationPage.hideKeyboard();
         assertEquals(ContactManipulationPage.getAccount(), accountName);
-//        ContactManipulationPage.clickExtraID();
-//        ContactManipulationPage.enterValueFromKeyboard(fieldExtraID);
-//        ContactManipulationPage.clickChanceOfSuccess();
-//        ContactManipulationPage.clickChanceOfSuccess();
-//        ContactManipulationPage.enterValueFromKeyboard(fieldChanceOfSuccess);
+        ContactManipulationPage.scrollToLabel("Chance");
+        ContactManipulationPage.clickExtraID();
+        ContactManipulationPage.enterExtraID(extraID);
+        ContactManipulationPage.clickChanceOfSuccess();
+        ContactManipulationPage.enterChanceOfSuccess(chanceOfSuccess);
         ContactManipulationPage.clickSave();
         ContactManipulationPage.clickNoThanks();
         assertEquals(ContactPage.getAccount(), accountName);

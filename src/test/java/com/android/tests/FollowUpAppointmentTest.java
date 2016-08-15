@@ -270,7 +270,7 @@ public class FollowUpAppointmentTest extends BaseTest {
         softAssert.assertEquals(AppointmentPage.getCampaign(), campaign);
 //        softAssert.assertEquals(AppointmentPage.getOpportunity(), opportunity);
         softAssert.assertEquals(AppointmentPage.getNotes(), notes);
-        AppointmentPage.scrollToLabel(labelOtherInfo);
+        AppointmentPage.scrollToLabel("Hours");
         softAssert.assertEquals(AppointmentPage.getHoursInPreparation(), hoursInPreparation);
         softAssert.assertAll();
     }
@@ -372,6 +372,7 @@ public class FollowUpAppointmentTest extends BaseTest {
         softAssert.assertEquals(ActivityPage.getCampaign(), campaign);
         softAssert.assertEquals(ActivityPage.getOpportunity(), opportunity);
         softAssert.assertEquals(ActivityPage.getNotes(), notes);
+        ActivityPage.swipeFromBottomToTop();
         ActivityPage.scrollToLabel("Expenses");
         softAssert.assertEquals(ActivityPage.getExpenses(), expenses);
 
