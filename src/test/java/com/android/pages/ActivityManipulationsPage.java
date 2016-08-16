@@ -115,6 +115,7 @@ public class ActivityManipulationsPage extends BasePage {
     }
 
     public static void enterExpenses(String value) {
+        waitByThread(600);
         sendValues(value, fieldExpanses);
     }
 
