@@ -66,11 +66,6 @@ public class AppointmentPage extends BasePage {
         return getText(buttonAccount);
     }
 
-    public static String getContact() {
-        List<WebElement> users = findElements(MobileBy.id("user_title"));
-        return users.get(1).getText();
-    }
-
     public static String getUserName() {
         return getText(userValue);
     }

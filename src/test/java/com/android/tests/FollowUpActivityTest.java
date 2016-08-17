@@ -337,12 +337,12 @@ public class FollowUpActivityTest extends BaseTest {
         softAssert.assertEquals(ActivityPage.getOpportunity(), testOpp);
         softAssert.assertEquals(ActivityPage.getCampaign(), newCampaign);
         softAssert.assertEquals(ActivityPage.getUserName(), currentUser);
-//        ActivityManipulationsPage.scrollToLabel(labelOtherInfo);
-//        softAssert.assertTrue(ActivityPage.getNotesStartsWith(testNoteStart));
-//        ActivityPage.clickBack();
-//        AccountPage.clickTabActivities();
-//        softAssert.assertTrue(ActivitiesPage.searchActivityByName(testActivityDescription));
-//        softAssert.assertTrue(ActivitiesPage.searchActivityByName(newDescription));
+        ActivityManipulationsPage.scrollToLabel(labelOtherInfo);
+        softAssert.assertTrue(ActivityPage.getNotesStartsWith(testNoteStart));
+        ActivityPage.clickBack();
+        AccountPage.clickTabActivities();
+        softAssert.assertTrue(ActivitiesPage.searchActivityByName(testActivityDescription));
+        softAssert.assertTrue(ActivitiesPage.searchActivityByName(newDescription));
         softAssert.assertAll();
     }
 
