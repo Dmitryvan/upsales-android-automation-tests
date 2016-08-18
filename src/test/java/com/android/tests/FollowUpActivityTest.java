@@ -50,6 +50,7 @@ public class FollowUpActivityTest extends BaseTest {
     private final String time = Helpers.timeLabelValue(timeHours, timeMinutes, timeAmPm);
     private final String selectOpportunity = PropertyLoader.loadProperty(createActivityPropertyPath, "selectOpportunity");
     private final String defaultOpportunity = PropertyLoader.loadProperty(createActivityPropertyPath, "defaultOpportunity");
+    private final String defaultContact = PropertyLoader.loadProperty(createActivityPropertyPath, "defaultContact");
     private final String selectContact = PropertyLoader.loadProperty(createActivityPropertyPath, "selectContact");
     private final String defaultTime = PropertyLoader.loadProperty(createActivityPropertyPath, "defaultTime");
     private final String labelSelectOpportunity = PropertyLoader.loadProperty(createActivityPropertyPath, "labelSelectOpportunity");
@@ -222,7 +223,9 @@ public class FollowUpActivityTest extends BaseTest {
         softAssert.assertEquals(ActivityPage.getUserName(), currentUser);
         ActivityManipulationsPage.scrollToLabel(labelOtherInfo);
         softAssert.assertTrue(ActivityPage.getNotesStartsWith(testNoteStart2));
-        ActivityPage.clickBack();
+//        ActivityPage.clickBack();   ???
+        ActivityPage.swipeFromTopToBottom();
+        ActivityPage.swipeFromTopToBottom();
         ActivityPage.clickAccount();
         AccountPage.clickTabActivities();
         softAssert.assertTrue(ActivitiesPage.searchActivityByName(testActivityDescription2));
@@ -388,8 +391,8 @@ public class FollowUpActivityTest extends BaseTest {
         softAssert.assertEquals(ActivityManipulationsPage.getCurrentDate(), ActivityManipulationsPage.getDueDate());
         softAssert.assertEquals(ActivityManipulationsPage.getTime(), defaultTime);
         softAssert.assertEquals(ActivityManipulationsPage.getAccount(), accountName);
-        softAssert.assertEquals(ActivityManipulationsPage.getContact(), selectContact);
-        softAssert.assertEquals(ActivityManipulationsPage.getOpportunity(), labelSelectOpportunity);
+        softAssert.assertEquals(ActivityManipulationsPage.getContact(), "No contacts");
+        softAssert.assertEquals(ActivityManipulationsPage.getOpportunity(), defaultOpportunity);
         softAssert.assertEquals(ActivityManipulationsPage.getUser(), user);
         softAssert.assertEquals(ActivityManipulationsPage.getCampaign(), campaign);
         ActivityManipulationsPage.setDescription();
@@ -442,7 +445,7 @@ public class FollowUpActivityTest extends BaseTest {
         ContactManipulationPage.setContactName();
         String contactName = ContactManipulationPage.getContactName();
         ContactManipulationPage.enterContactName(contactName);
-        ContactManipulationPage.scrollToLabel("Chance");
+        ContactManipulationPage.scrollToLabel("extra ID");
         ContactManipulationPage.clickExtraID();
         ContactManipulationPage.enterExtraID(extraID);
         ContactManipulationPage.clickChanceOfSuccess();
@@ -481,7 +484,7 @@ public class FollowUpActivityTest extends BaseTest {
         softAssert.assertEquals(ActivityManipulationsPage.getTime(), defaultTime);
         softAssert.assertEquals(ActivityManipulationsPage.getAccount(), accountName);
         softAssert.assertEquals(ActivityManipulationsPage.getContact(), contactName);
-        softAssert.assertEquals(ActivityManipulationsPage.getOpportunity(), labelSelectOpportunity);
+        softAssert.assertEquals(ActivityManipulationsPage.getOpportunity(), defaultOpportunity);
         softAssert.assertEquals(ActivityManipulationsPage.getUser(), user);
         softAssert.assertEquals(ActivityManipulationsPage.getCampaign(), campaign);
         ActivityManipulationsPage.setDescription();
@@ -517,7 +520,9 @@ public class FollowUpActivityTest extends BaseTest {
 //        ActivityPage.clickShowMore();
         ActivityPage.scrollToLabel("Expenses");
         softAssert.assertEquals(ActivityPage.getExpenses(), newExpenses + " SEK");
-        ActivityPage.clickBack();
+//        ActivityPage.clickBack(); ???
+        ActivityPage.swipeFromTopToBottom();
+        ActivityPage.swipeFromTopToBottom();
         ActivityPage.clickAccount();
         AccountPage.clickTabActivities();
         softAssert.assertTrue(ActivitiesPage.searchActivityByName(description));

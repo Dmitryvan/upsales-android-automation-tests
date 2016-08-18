@@ -607,7 +607,7 @@ public class CreateEditContactTest extends BaseTest {
         softAssert.assertEquals(AppointmentPage.getTitleOnView(), defaultAppointmentType.toUpperCase());
         softAssert.assertEquals(AppointmentPage.getDescriptionOnView(), defaultDescription);
         softAssert.assertEquals(AppointmentPage.getAccountName(), account);
-        softAssert.assertEquals(AppointmentPage.getContact(), contactName);
+        softAssert.assertEquals(AppointmentPage.getContactOnView(), contactName);
         AppointmentManipulationsPage.scrollToLabel("Hours");
         softAssert.assertEquals(AppointmentPage.getHoursInPreparation(), hoursInPreparation);
         softAssert.assertAll();
@@ -732,7 +732,7 @@ public class CreateEditContactTest extends BaseTest {
         softAssert.assertEquals(AppointmentPage.getEndDate(), newEndFullDate);
         softAssert.assertEquals(AppointmentPage.getEndTime(), newEndTime);
         softAssert.assertEquals(AppointmentPage.getLocation(), location);
-        softAssert.assertEquals(AppointmentPage.getContact(), contactName);
+        softAssert.assertEquals(AppointmentPage.getContactOnView(), contactName);
         softAssert.assertEquals(AppointmentPage.getCampaign(), newCampaign);
         softAssert.assertEquals(AppointmentPage.getOpportunity(), opportunity);
         ActivityManipulationsPage.scrollToLabel(labelOtherInfo);
@@ -778,7 +778,7 @@ public class CreateEditContactTest extends BaseTest {
         softAssert.assertEquals(OpportunityPage.getCloseDateInOpportunity(), Helpers.getCurrentDate());
         softAssert.assertEquals(OpportunityPage.getStage(), stageInOpp);
         softAssert.assertEquals(OpportunityPage.getContact(), contactName);
-        softAssert.assertEquals(OpportunityPage.getCampaign(), labelNone);
+        softAssert.assertEquals(OpportunityPage.getCampaign(), defaultCampaign);
         OpportunityManipulationsPage.scrollToLabel(labelOtherInfo);
         softAssert.assertEquals(OpportunityPage.getProduct(), product);
         softAssert.assertAll();
@@ -830,6 +830,7 @@ public class CreateEditContactTest extends BaseTest {
         ContactManipulationPage.clickOpportunity();
         OpportunityManipulationsPage.clickStage();
         OpportunityManipulationsPage.selectValueFromPopUp(stage);
+        OpportunityManipulationsPage.hideKeyboard();
         OpportunityManipulationsPage.scrollToLabel(labelOtherInfo);
         OpportunityManipulationsPage.clickNewOrderRow();
         NewOrderRowPage.clickProduct();

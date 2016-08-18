@@ -258,7 +258,7 @@ public class CreateEditOpportunityTest extends BaseTest {
         softAssert.assertEquals(OpportunityPage.getStage(), stageInOpp);
         softAssert.assertEquals(OpportunityPage.getCloseDateInOpportunity(), OpportunityPage.getCurrentDate());
         softAssert.assertEquals(OpportunityPage.getContact(), contact);
-        softAssert.assertEquals(OpportunityPage.getCampaign(), labelNone);
+        softAssert.assertEquals(OpportunityPage.getCampaign(), defaultCampaign);
         OpportunityManipulationsPage.scrollToLabel(labelOtherInfo);
         softAssert.assertEquals(OpportunityPage.getProduct(), product);
         softAssert.assertEquals(OpportunityPage.getNotes(), notes);

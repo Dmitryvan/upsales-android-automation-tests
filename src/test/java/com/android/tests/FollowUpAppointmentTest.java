@@ -459,11 +459,12 @@ public class FollowUpAppointmentTest extends BaseTest {
         softAssert.assertEquals(AppointmentPage.getEndDate(), newEndFullDate);
         softAssert.assertEquals(AppointmentPage.getEndTime(), newEndTime);
         softAssert.assertEquals(AppointmentPage.getLocation(), newLocation);
-        softAssert.assertEquals(AppointmentPage.getContact(), appContact);
+        softAssert.assertEquals(AppointmentPage.getContactOnView(), appContact);
         softAssert.assertEquals(AppointmentPage.getCampaign(), labelNone);
 //        softAssert.assertEquals(AppointmentPage.getOpportunity(), labelNone);
         softAssert.assertTrue(AppointmentPage.getNotes().startsWith(yourUser));
-        AppointmentPage.clickShowMore();
+        AppointmentPage.swipeFromBottomToTop();
+        AppointmentPage.swipeFromBottomToTop();
         softAssert.assertEquals(AppointmentPage.getHoursInPreparation(), hoursInPreparation);
         softAssert.assertAll();
     }
@@ -478,6 +479,7 @@ public class FollowUpAppointmentTest extends BaseTest {
         AppointmentPage.alertConfirm();
 
         AppointmentManipulationsPage.setDefaultAppStartEndDates();
+        AppointmentManipulationsPage.hideKeyboard();
         softAssert.assertEquals(ActivityManipulationsPage.getTitle(), titleCreateActivity);
         softAssert.assertEquals(ActivityManipulationsPage.getLabelDescription(), defaultLabelDescription);
         softAssert.assertEquals(ActivityManipulationsPage.getActivityType(), defaultActivityType);
@@ -508,6 +510,7 @@ public class FollowUpAppointmentTest extends BaseTest {
 //        ActivityManipulationsPage.clickOpportunity();
 //        ActivityManipulationsPage.spinOpportunityWheelTo(appOpportunity);
 //        ActivityManipulationsPage.clickOpportunity();
+        ActivityPage.scrollToLabel("Expenses");
         ActivityManipulationsPage.clickExpenses();
         ActivityManipulationsPage.enterExpenses(expenses);
         ActivityManipulationsPage.clickSave();
@@ -521,18 +524,20 @@ public class FollowUpAppointmentTest extends BaseTest {
         softAssert.assertEquals(ActivityPage.getCampaign(), labelNone);
         softAssert.assertEquals(ActivityPage.getOpportunity(), labelNone);
         softAssert.assertTrue(ActivityPage.getNotes().startsWith(yourUser));
+        ActivityPage.swipeFromBottomToTop();
+        ActivityPage.swipeFromBottomToTop();
         ActivityPage.scrollToLabel("Expenses");
         softAssert.assertEquals(ActivityPage.getExpenses(), expenses);
 
         ActivityPage.clickBack();
-        AppointmentPage.clickLeftMenuInFollowUp();
-        DashboardPage.clickLeftMenu();
-        LeftMenuPage.clickActivities();
-//        ActivitiesPage.clickFilter();
-//        FilterPage.clickDate();
-//        FilterPage.select(dateOneYear);
-//        FilterPage.clickClose();
-        softAssert.assertTrue(ActivitiesPage.searchActivityByName(activityDescription));
+//        AppointmentPage.clickLeftMenuInFollowUp();
+//        DashboardPage.clickLeftMenu();
+//        LeftMenuPage.clickActivities();
+////        ActivitiesPage.clickFilter();
+////        FilterPage.clickDate();
+////        FilterPage.select(dateOneYear);
+////        FilterPage.clickClose();
+//        softAssert.assertTrue(ActivitiesPage.searchActivityByName(activityDescription));
 
         softAssert.assertAll();
     }
@@ -544,6 +549,7 @@ public class FollowUpAppointmentTest extends BaseTest {
         LeftMenuPage.clickSearch();
         SearchPage.search(appActAccount);
         SearchPage.clickOnFirstSearchResult();
+        Thread.sleep(500);
         AccountPage.clickTabActivities();
         Thread.sleep(500);
         ActivitiesPage.selectActivity(appActAppointment);
@@ -614,11 +620,12 @@ public class FollowUpAppointmentTest extends BaseTest {
         softAssert.assertEquals(AppointmentPage.getEndDate(), newEndFullDate);
         softAssert.assertEquals(AppointmentPage.getEndTime(), newEndTime);
         softAssert.assertEquals(AppointmentPage.getLocation(), newLocation);
-        softAssert.assertEquals(AppointmentPage.getContact(), appActContact);
+        softAssert.assertEquals(AppointmentPage.getContactOnView(), appActContact);
         softAssert.assertEquals(AppointmentPage.getCampaign(), appActCampaign);
 //        softAssert.assertEquals(AppointmentPage.getOpportunity(), labelNone);
         softAssert.assertTrue(AppointmentPage.getNotes().startsWith(appActNotes));
-        AppointmentPage.scrollToLabel(labelOtherInfo.toUpperCase());
+        AppointmentPage.swipeFromBottomToTop();
+        AppointmentPage.swipeFromBottomToTop();
         AppointmentPage.scrollToLabel("Hours in");
         softAssert.assertEquals(AppointmentPage.getHoursInPreparation(), hoursInPreparation);
 
@@ -687,25 +694,27 @@ public class FollowUpAppointmentTest extends BaseTest {
         softAssert.assertEquals(ActivityPage.getCampaign(), appActCampaign);
         softAssert.assertEquals(ActivityPage.getOpportunity(), labelNone);
         softAssert.assertTrue(ActivityPage.getNotes().startsWith(appActNotes));
+        ActivityPage.swipeFromBottomToTop();
+        ActivityPage.swipeFromBottomToTop();
         ActivityPage.scrollToLabel("Expenses");
         softAssert.assertEquals(ActivityPage.getExpenses(), expenses);
 
         ActivityPage.clickBack();
-        AppointmentPage.clickLeftMenu();
-        ActivitiesPage.clickBack();
-        AccountPage.clickBack();
-        Thread.sleep(1000);
-        SearchPage.clickCancel();
-        LeftMenuPage.clickActivities();
-        ActivitiesPage.clickFilter();
-        FilterPage.clickDate();
-        FilterPage.select(dateOneYear);
-        FilterPage.clickClose();
-//        softAssert.assertTrue(
-//                ActivitiesPage.searchActivity(
-//                        activityDescription,
-//                        dueDateDay + " " + dueDateMonth.substring(0, 3),
-//                        time));
+//        AppointmentPage.clickLeftMenu();
+//        ActivitiesPage.clickBack();
+//        AccountPage.clickBack();
+//        Thread.sleep(1000);
+//        SearchPage.clickCancel();
+//        LeftMenuPage.clickActivities();
+//        ActivitiesPage.clickFilter();
+//        FilterPage.clickDate();
+//        FilterPage.select(dateOneYear);
+//        FilterPage.clickClose();
+////        softAssert.assertTrue(
+////                ActivitiesPage.searchActivity(
+////                        activityDescription,
+////                        dueDateDay + " " + dueDateMonth.substring(0, 3),
+////                        time));
 
         softAssert.assertAll();
     }

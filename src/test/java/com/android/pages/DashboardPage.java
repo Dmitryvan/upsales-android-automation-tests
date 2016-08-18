@@ -210,6 +210,7 @@ public class DashboardPage extends BasePage {
 
     public static void selectActivity(String act) {
         wait(labelMyAppointmentsToday);
+        scrollToLabel(act);
         find(MobileBy.xpath("//*[contains(@resource-id, 'description') and @text='" + act + "']")).click();
     }
 

@@ -39,7 +39,7 @@ public class AppointmentManipulationsPage extends BasePage {
     private static final By startDateForAcc = MobileBy.IosUIAutomation(".tableViews()[0].cells()[2].staticTexts()[1]");
     private static final By endDateForAcc = MobileBy.IosUIAutomation(".tableViews()[0].cells()[3].staticTexts()[1]");
 
-    private static final By hoursInPreparation = MobileBy.xpath("//android.widget.RelativeLayout[@index='4']//android.widget.EditText[@index='0']");
+    private static final By hoursInPreparation = MobileBy.xpath("//*[@text='Hours in preparation']/..//*[contains(@resource-id, 'edit_field')]");
 
     public static String getStartDate() {
         return find(startDate).getText();

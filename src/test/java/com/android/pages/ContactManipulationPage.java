@@ -16,8 +16,8 @@ public class ContactManipulationPage extends BasePage {
     private static final By fieldMobile = MobileBy.id("mobile");
     private static final By fieldEmail = MobileBy.id("email");
 
-    public static final By fieldExtraID = MobileBy.xpath("//android.widget.RelativeLayout[@index='9']//android.widget.RelativeLayout[@index='8']//android.widget.EditText[@index='0']");
-    public static final By fieldChanceOfSuccess = MobileBy.xpath("//android.widget.RelativeLayout[@index='9']//android.widget.RelativeLayout[@index='9']//android.widget.EditText[@index='0']");
+    public static final By fieldExtraID = MobileBy.xpath("//*[@text='extra ID']/..//*[contains(@resource-id, 'edit_field')]");
+    public static final By fieldChanceOfSuccess = MobileBy.xpath("//*[@text='Chance of success']/..//*[contains(@resource-id, 'edit_field')]");
 
     private static final By buttonNoThanks = MobileBy.id("no_thanks");
     private static final By buttonActivity = MobileBy.id("activity");

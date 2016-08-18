@@ -336,7 +336,7 @@ public class CreateEditAppointmentTest extends BaseTest {
         softAssert.assertEquals(newEndFullDate, AppointmentPage.getEndDate());
         softAssert.assertEquals(newEndTime, AppointmentPage.getEndTime());
         softAssert.assertEquals(newLocation, AppointmentPage.getLocation());
-        softAssert.assertEquals(newContact, AppointmentPage.getContact());
+        softAssert.assertEquals(newContact, BasePage.getContactOnView());
         softAssert.assertEquals(newCampaign, AppointmentPage.getCampaign());
         softAssert.assertEquals(opportunity, AppointmentPage.getOpportunity());
 //        AppointmentPage.scrollToLabel(labelOtherInfo);

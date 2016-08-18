@@ -42,10 +42,10 @@ public class AccountPage extends BasePage {
     private static final By labelCategoriesValue = MobileBy.IosUIAutomation(".tableViews()[0].cells()[4].staticTexts()[1]");
 
     private static final By tabHome = MobileBy.xpath(".tabBars()[0].buttons()[0]");
-    private static final By tabContacts = MobileBy.xpath("//*[@class='android.widget.TextView' and @text='Contacts']");
-    private static final By tabActivity = MobileBy.xpath("//*[@class='android.widget.TextView' and @text='Activities']");
-    private static final By tabOpportunities = MobileBy.xpath("//*[@class='android.widget.TextView' and @text='Opportunities']");
-    private static final By tabSales = MobileBy.xpath("//*[@class='android.widget.TextView' and @text='Sales']");
+    private static final By tabContacts = MobileBy.xpath("//*[@class='android.widget.TextView' and @text='Contacts']/../..");
+    private static final By tabActivity = MobileBy.xpath("//*[@class='android.widget.TextView' and @text='Activities']/../..");
+    private static final By tabOpportunities = MobileBy.xpath("//*[@class='android.widget.TextView' and @text='Opportunities']/../..");
+    private static final By tabSales = MobileBy.xpath("//*[@class='android.widget.TextView' and @text='Sales']/../..");
 
     public static String getAccountName() {
         wait(labelAccountName);

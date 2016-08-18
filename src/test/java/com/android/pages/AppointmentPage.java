@@ -2,9 +2,6 @@ package com.android.pages;
 
 import io.appium.java_client.MobileBy;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-
-import java.util.List;
 
 public class AppointmentPage extends BasePage {
 
@@ -28,7 +25,7 @@ public class AppointmentPage extends BasePage {
     private static final By date = MobileBy.id("date");
     private static final By time = MobileBy.id("time");
 
-    private static final By hoursOfPreparation = MobileBy.xpath("//android.widget.RelativeLayout[4]//android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.EditText[1]");
+    private static final By hoursOfPreparation = MobileBy.xpath("//*[@text='Hours in preparation']/..//*[contains(@resource-id, 'edit_field')]");
 
     public static String getFifthCellValue() {
         return getValue(fifththCellValue);

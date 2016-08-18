@@ -42,6 +42,7 @@ public class BasePage extends Helpers {
     private static final By labelOtherInfo = MobileBy.xpath("//*[contains(@resource-id, 'list_custom_field')]//*[contains(@resource-id, 'title')]");
     private static final By labelAccount = MobileBy.xpath("//*[contains(@resource-id, 'account_field')]//*[contains(@resource-id, 'name')]");
     private static final By labelContact = MobileBy.xpath("//*[contains(@resource-id, 'contact_field')]//*[contains(@resource-id, 'name')]");
+    private static final By contactOnView = MobileBy.xpath("//*[contains(@resource-id, 'contacts_container')]//*[contains(@resource-id, 'user_title')]");
     private static final By labelOpportunity = MobileBy.xpath("//*[contains(@resource-id, 'opportunity_field')]//*[contains(@resource-id, 'name')]");
     private static final By labelCampaign = MobileBy.xpath("//*[contains(@resource-id, 'company_field')]//*[contains(@resource-id, 'name')]");
     private static final By labelNotes = MobileBy.xpath("//*[contains(@resource-id, 'note_field')]//*[contains(@resource-id, 'name')]");
@@ -190,6 +191,10 @@ public class BasePage extends Helpers {
     public static void clickContact() {
         waitByThread(1000);
         find(buttonContact).click();
+    }
+
+    public static String getContactOnView() {
+        return getText(contactOnView);
     }
 
     //work with labels
