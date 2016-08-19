@@ -49,6 +49,7 @@ public class OpportunityManipulationsPage extends BasePage {
     }
 
     public static void clickStage() {
+        wait(buttonStage);
         find(buttonStage).click();
         waitByThread(1000);
     }
