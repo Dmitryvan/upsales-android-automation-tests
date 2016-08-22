@@ -19,7 +19,7 @@ public class NewOrderRowPage extends BasePage {
     private static final WebElement labelPrice = labels.get(2);
 
     private static final List<WebElement> values = findElements(MobileBy.id("select"));
-    private static final WebElement product = values.get(0);
+    private static final By product = MobileBy.xpath("//*[@text='Product']/../..//*[contains(@resource-id, 'select')]");
 
     private static final By labelOtherInfo = MobileBy.xpath("//*[contains(@resource-id, 'list_custom_field')]//*[contains(@resource-id, 'header_title')]");
 
@@ -39,7 +39,8 @@ public class NewOrderRowPage extends BasePage {
     }
 
     public static String getProductName() {
-        return product.getText();
+        wait(product);
+        return getText(product);
     }
 
     public static void clickProduct() {

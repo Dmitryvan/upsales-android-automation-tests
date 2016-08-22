@@ -257,13 +257,16 @@ public class DashboardPage extends BasePage {
     }
 
     public static String getLastAppType(int count) {
-        cells.get(count - 1).click();
+//        cells.get(count - 1).click();
+        scrollToLabel("MY OPEN");
+        find(MobileBy.xpath("//*[starts-with(@text, \"MY OPEN\")]/../preceding-sibling::android.widget.RelativeLayout[1]")).click();
         AppointmentPage.clickTools();
         return AppointmentPage.getTextEditAppointment();
     }
 
     public static String getFirstActivityType(int count) {
 //        cells.get(count).click();
+        swipeFromBottomToTop();
         scrollToLabel("MY OPEN");
         find(MobileBy.xpath("//*[starts-with(@text, \"MY OPEN\")]/../following-sibling::android.widget.RelativeLayout[1]")).click();
         ActivityPage.clickTools();

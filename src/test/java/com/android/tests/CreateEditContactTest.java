@@ -117,7 +117,7 @@ public class CreateEditContactTest extends BaseTest {
     private final String secondUser = PropertyLoader.loadProperty(opportunityPropertyPath, "secondUser");
     private final String newMonth = PropertyLoader.loadProperty(opportunityPropertyPath, "newMonth");
     private final String newDay = PropertyLoader.loadProperty(opportunityPropertyPath, "newDay");
-    private final String newYear = PropertyLoader.loadProperty(opportunityPropertyPath,"newYear");
+    private final String newYear = PropertyLoader.loadProperty(opportunityPropertyPath, "newYear");
     private final String newProduct = PropertyLoader.loadProperty(opportunityPropertyPath, "newProduct");
     private final String newStage = PropertyLoader.loadProperty(opportunityPropertyPath, "newStage");
     private final String newCloseDate = PropertyLoader.loadProperty(opportunityPropertyPath, "newCloseDate");
@@ -127,7 +127,7 @@ public class CreateEditContactTest extends BaseTest {
     private final String product = PropertyLoader.loadProperty(newOrderPropertyPath, "product");
 
     @BeforeMethod
-    public void setUp() throws Exception{
+    public void setUp() throws Exception {
         super.setUp();
         LoginPage.login();
         DashboardPage.clickLeftMenu();
@@ -594,7 +594,8 @@ public class CreateEditContactTest extends BaseTest {
         AppointmentManipulationsPage.setDefaultAppStartEndDates();
         softAssert.assertEquals(defaultAppointmentType, AppointmentManipulationsPage.getAppointmentType());
         softAssert.assertEquals(AppointmentManipulationsPage.getCurrentDate(), AppointmentManipulationsPage.getStartDate());
-        softAssert.assertEquals(AppointmentManipulationsPage.getCurrentDate(), AppointmentManipulationsPage.getEndDate());
+        System.out.println(AppointmentManipulationsPage.getEndDate());
+        softAssert.assertEquals(AppointmentManipulationsPage.getAppEndDate(), AppointmentManipulationsPage.getEndDate());
         softAssert.assertEquals(AppointmentManipulationsPage.getAccount(), account);
         softAssert.assertEquals(AppointmentManipulationsPage.getContact(), contactName);
         softAssert.assertEquals(AppointmentManipulationsPage.getUser(), defaultUser);

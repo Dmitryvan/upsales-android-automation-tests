@@ -193,6 +193,13 @@ public class Helpers {
         return appDateFormatWithDoW.format(calendar.getTime());
     }
 
+    public static String getAppEndDate() {
+        Calendar calendar = getCalendar();
+        DateFormat df = new SimpleDateFormat("d MMM yyyy");
+        calendar.add(Calendar.HOUR, 1);
+        return df.format(calendar.getTime());
+    }
+
     public static String calendarTodayDate() {
         Date date = new Date();
         return ("Today " + calendarDateFormat.format(date));

@@ -29,10 +29,10 @@ public class ActivityManipulationsPage extends BasePage {
     private static final By labelTime = MobileBy.xpath("//*[contains(@resource-id, 'time_field')]//*[contains(@resource-id, 'name')]");
     private static final By labelUser = MobileBy.xpath("//*[contains(@resource-id, 'user_field')]//*[contains(@resource-id, 'name')]");
 
-    private static final By fieldExpanses = MobileBy.xpath("//android.widget.RelativeLayout[@index='7']//android.widget.EditText[@index='0']");
+    private static final By fieldExpenses = MobileBy.xpath("//*[@text='Expenses']/..//*[contains(@resource-id, 'edit_field')]");
 
     public static void clickExpenses() {
-        find(fieldExpanses).click();
+        find(fieldExpenses).click();
     }
 
     public static String getLabelActivityType() {
@@ -111,15 +111,15 @@ public class ActivityManipulationsPage extends BasePage {
     }
 
     public static String getExpenses() {
-        return getText(fieldExpanses);
+        return getText(fieldExpenses);
     }
 
     public static void enterExpenses(String value) {
         waitByThread(600);
-        sendValues(value, fieldExpanses);
+        sendValues(value, fieldExpenses);
     }
 
     public static void clearExpenses() {
-        find(fieldExpanses).clear();
+        find(fieldExpenses).clear();
     }
 }

@@ -184,6 +184,7 @@ public class CreateEditOrderTest extends BaseTest {
         SearchPage.search(account);
         SearchPage.clickOnFirstSearchResult();
         AccountPage.clickTabSales();
+        OpportunitiesPage.scrollToLabel(orderName);
         softAssert.assertTrue(OpportunitiesPage.searchOpportunity(orderName, today.toUpperCase()));
         softAssert.assertAll();
     }

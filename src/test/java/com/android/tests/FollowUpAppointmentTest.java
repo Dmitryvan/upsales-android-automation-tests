@@ -266,11 +266,12 @@ public class FollowUpAppointmentTest extends BaseTest {
         softAssert.assertEquals(AppointmentPage.getEndDate(), newEndFullDate);
         softAssert.assertEquals(AppointmentPage.getEndTime(), newEndTime);
         softAssert.assertEquals(AppointmentPage.getLocation(), newLocation);
-        softAssert.assertEquals(AppointmentPage.getContact(), contact);
+        softAssert.assertEquals(AppointmentPage.getContactOnView(), contact);
         softAssert.assertEquals(AppointmentPage.getCampaign(), campaign);
 //        softAssert.assertEquals(AppointmentPage.getOpportunity(), opportunity);
         softAssert.assertEquals(AppointmentPage.getNotes(), notes);
-        AppointmentPage.scrollToLabel("Hours");
+//        AppointmentPage.scrollToLabel("Hours");
+        AppointmentPage.swipeFromBottomToTop();
         softAssert.assertEquals(AppointmentPage.getHoursInPreparation(), hoursInPreparation);
         softAssert.assertAll();
     }
@@ -377,17 +378,17 @@ public class FollowUpAppointmentTest extends BaseTest {
         softAssert.assertEquals(ActivityPage.getExpenses(), expenses);
 
         ActivityPage.clickBack();
-        AppointmentPage.clickLeftMenu();
-        LeftMenuPage.clickActivities();
-        ActivitiesPage.clickFilter();
-        FilterPage.clickUsers();
-        FilterPage.select(yourUser);
-        FilterPage.select(user);
-        FilterPage.clickBack();
-        FilterPage.clickDate();
-        FilterPage.select(dateOneYear);
-        FilterPage.clickClose();
-        softAssert.assertTrue(ActivitiesPage.searchActivityByName(activityDescription));
+//        AppointmentPage.clickLeftMenu();
+//        LeftMenuPage.clickActivities();
+//        ActivitiesPage.clickFilter();
+//        FilterPage.clickUsers();
+//        FilterPage.select(yourUser);
+//        FilterPage.select(user);
+//        FilterPage.clickBack();
+//        FilterPage.clickDate();
+//        FilterPage.select(dateOneYear);
+//        FilterPage.clickClose();
+//        softAssert.assertTrue(ActivitiesPage.searchActivityByName(activityDescription));
         softAssert.assertAll();
     }
 

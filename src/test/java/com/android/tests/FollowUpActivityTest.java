@@ -56,10 +56,11 @@ public class FollowUpActivityTest extends BaseTest {
     private final String labelSelectOpportunity = PropertyLoader.loadProperty(createActivityPropertyPath, "labelSelectOpportunity");
     private final String customEttTill = PropertyLoader.loadProperty(createActivityPropertyPath, "customEttTill");
     private final String testContact = PropertyLoader.loadProperty(createActivityPropertyPath, "testContact");
-    private final String testActivityType = PropertyLoader.loadProperty(createActivityPropertyPath, "testActivityType");
+    private final String testActivityType2 = PropertyLoader.loadProperty(createActivityPropertyPath, "testActivityType2");
     private final String testActivityDescription = PropertyLoader.loadProperty(createActivityPropertyPath, "testActivityDescription");
     private final String testNoteStart = PropertyLoader.loadProperty(createActivityPropertyPath, "testNoteStart");
     private final String testEttTill = PropertyLoader.loadProperty(createActivityPropertyPath, "testEttTill");
+    private final String testActivityType = PropertyLoader.loadProperty(createActivityPropertyPath, "testActivityType");
     private final String testActivityDescription2 = PropertyLoader.loadProperty(createActivityPropertyPath, "testActivityDescription2");
     private final String testContact2 = PropertyLoader.loadProperty(createActivityPropertyPath, "testContact2");
     private final String testCampaign = PropertyLoader.loadProperty(createActivityPropertyPath, "testCampaign");
@@ -164,7 +165,9 @@ public class FollowUpActivityTest extends BaseTest {
 //        ActivityPage.clickShowMore();
         ActivityManipulationsPage.scrollToLabel("Expenses");
         softAssert.assertEquals(ActivityPage.getExpenses(), newExpenses + " SEK");
-        ActivityPage.clickLeftMenu();
+//        ActivityPage.clickLeftMenu(); ????
+        ActivityPage.clickBack(); // ???
+        AccountPage.clickLeftMenu(); // ???
         LeftMenuPage.clickSearch();
         SearchPage.search(account);
         SearchPage.clickOnFirstSearchResult();
@@ -184,7 +187,7 @@ public class FollowUpActivityTest extends BaseTest {
         ActivityPage.alertConfirm();
         softAssert.assertEquals(ActivityManipulationsPage.getLabelDescription(), defaultLabelDescription);
         ActivityManipulationsPage.hideKeyboard();
-        softAssert.assertEquals(ActivityManipulationsPage.getActivityType(), testActivityType);
+        softAssert.assertEquals(ActivityManipulationsPage.getActivityType(), testActivityType2);
         softAssert.assertEquals(ActivityManipulationsPage.getCurrentDate(), ActivityManipulationsPage.getDueDate());
         softAssert.assertEquals(ActivityManipulationsPage.getTime(), defaultTime);
         softAssert.assertEquals(ActivityManipulationsPage.getAccount(), testAccount2);
@@ -192,9 +195,11 @@ public class FollowUpActivityTest extends BaseTest {
         softAssert.assertEquals(ActivityManipulationsPage.getOpportunity(), labelSelectOpportunity);
         softAssert.assertEquals(ActivityManipulationsPage.getUser(), defaultUser);
         softAssert.assertEquals(ActivityManipulationsPage.getCampaign(), testCampaign);
+        ActivityManipulationsPage.swipeFromBottomToTop();
         softAssert.assertTrue(ActivityManipulationsPage.getNotesStartsWith(testNoteStart2));
         ActivityManipulationsPage.setDescription();
         String newDescription = ActivityManipulationsPage.getDescription();
+        ActivityManipulationsPage.scrollToLabel("Description");
         ActivityManipulationsPage.enterDescription(newDescription);
         ActivityManipulationsPage.clickDueDate();
         ActivityManipulationsPage.selectDateMonth(newDueDateMonth);
@@ -213,7 +218,7 @@ public class FollowUpActivityTest extends BaseTest {
         ActivityManipulationsPage.enterExpenses(expenses);
         ActivityManipulationsPage.clickSave();
         softAssert.assertEquals(newDescription, ActivityPage.getDescriptionOnView());
-        softAssert.assertEquals(ActivityPage.getTitleOnView(), testActivityType.toUpperCase());
+        softAssert.assertEquals(ActivityPage.getTitleOnView(), testActivityType2.toUpperCase());
         softAssert.assertEquals(ActivityPage.getDate(), newDate);
         softAssert.assertEquals(ActivityPage.getTime(), newTime);
         softAssert.assertEquals(ActivityPage.getAccountName(), testAccount2);
@@ -243,15 +248,17 @@ public class FollowUpActivityTest extends BaseTest {
         ActivityPage.alertConfirm();
         softAssert.assertEquals(ActivityManipulationsPage.getLabelDescription(), defaultLabelDescription);
         ActivityManipulationsPage.hideKeyboard();
-        softAssert.assertEquals(ActivityManipulationsPage.getActivityType(), testActivityType);
+        softAssert.assertEquals(ActivityManipulationsPage.getActivityType(), testActivityType2);
         softAssert.assertEquals(ActivityManipulationsPage.getCurrentDate(), ActivityManipulationsPage.getDueDate());
         softAssert.assertEquals(ActivityManipulationsPage.getTime(), defaultTime);
         softAssert.assertEquals(ActivityManipulationsPage.getAccount(), testAccount2);
-        softAssert.assertEquals(ActivityManipulationsPage.getContact(), " " + testContact2);
+        softAssert.assertEquals(ActivityManipulationsPage.getContact(), testContact2);
         softAssert.assertEquals(ActivityManipulationsPage.getOpportunity(), labelSelectOpportunity);
         softAssert.assertEquals(ActivityManipulationsPage.getUser(), defaultUser);
         softAssert.assertEquals(ActivityManipulationsPage.getCampaign(), testCampaign);
+        ActivityManipulationsPage.swipeFromBottomToTop();
         softAssert.assertTrue(ActivityManipulationsPage.getNotesStartsWith(testNoteStart2));
+        ActivityManipulationsPage.scrollToLabel("Description");
         ActivityManipulationsPage.setDescription();
         String newDescription = ActivityManipulationsPage.getDescription();
         ActivityManipulationsPage.enterDescription(newDescription);
@@ -272,7 +279,7 @@ public class FollowUpActivityTest extends BaseTest {
         ActivityManipulationsPage.enterExpenses(expenses);
         ActivityManipulationsPage.clickSave();
         softAssert.assertEquals(newDescription, ActivityPage.getDescriptionOnView());
-        softAssert.assertEquals(ActivityPage.getTitle(), testActivityType.toUpperCase());
+        softAssert.assertEquals(ActivityPage.getTitle(), testActivityType2.toUpperCase());
         softAssert.assertEquals(ActivityPage.getDate(), newDate);
         softAssert.assertEquals(ActivityPage.getTime(), newTime);
         softAssert.assertEquals(ActivityPage.getAccountName(), testAccount2);
@@ -342,10 +349,10 @@ public class FollowUpActivityTest extends BaseTest {
         softAssert.assertEquals(ActivityPage.getUserName(), currentUser);
         ActivityManipulationsPage.scrollToLabel(labelOtherInfo);
         softAssert.assertTrue(ActivityPage.getNotesStartsWith(testNoteStart));
-        ActivityPage.clickBack();
-        AccountPage.clickTabActivities();
-        softAssert.assertTrue(ActivitiesPage.searchActivityByName(testActivityDescription));
-        softAssert.assertTrue(ActivitiesPage.searchActivityByName(newDescription));
+//        ActivityPage.clickBack();
+//        AccountPage.clickTabActivities();
+//        softAssert.assertTrue(ActivitiesPage.searchActivityByName(testActivityDescription));
+//        softAssert.assertTrue(ActivitiesPage.searchActivityByName(newDescription));
         softAssert.assertAll();
     }
 
@@ -445,7 +452,9 @@ public class FollowUpActivityTest extends BaseTest {
         ContactManipulationPage.setContactName();
         String contactName = ContactManipulationPage.getContactName();
         ContactManipulationPage.enterContactName(contactName);
-        ContactManipulationPage.scrollToLabel("extra ID");
+        ContactManipulationPage.swipeFromBottomToTop();
+        ContactManipulationPage.swipeFromBottomToTop();
+//        ContactManipulationPage.scrollToLabel("extra ID");
         ContactManipulationPage.clickExtraID();
         ContactManipulationPage.enterExtraID(extraID);
         ContactManipulationPage.clickChanceOfSuccess();

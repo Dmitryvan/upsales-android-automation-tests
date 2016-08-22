@@ -5,7 +5,7 @@ import org.openqa.selenium.By;
 
 public class AppointmentPage extends BasePage {
 
-    private static final By buttonLeftMenu = MobileBy.IosUIAutomation(".navigationBar().buttons()[2]");
+//    private static final By buttonLeftMenu = MobileBy.IosUIAutomation(".navigationBar().buttons()[2]");
     private static final By buttonLeftMenuInFollowUp = MobileBy.IosUIAutomation(".navigationBar().buttons()[1]");
 
     private static final By buttonAccount = MobileBy.id("account_name");
@@ -31,9 +31,9 @@ public class AppointmentPage extends BasePage {
         return getValue(fifththCellValue);
     }
 
-    public static void clickLeftMenu() {
-        find(buttonLeftMenu).click();
-    }
+//    public static void clickLeftMenu() {
+//        find(buttonLeftMenu).click();
+//    }
 
     public static void clickLeftMenuInFollowUp() {
         find(buttonLeftMenuInFollowUp).click();
