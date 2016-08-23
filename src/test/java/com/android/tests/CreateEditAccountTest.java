@@ -506,7 +506,7 @@ public class CreateEditAccountTest extends BaseTest {
         softAssert.assertEquals(AccountManipulationsPage.getZipcodeFieldValue(), newOtherZipcode);
         softAssert.assertEquals(AccountManipulationsPage.getCityFieldValue(), newOtherCity);
         softAssert.assertEquals(AccountManipulationsPage.getCountryFieldValue(), newOtherCountry);
-        AccountManipulationsPage.scrollToLabel(lblCampaigns);
+        AccountManipulationsPage.swipeFromBottomToTop();
         softAssert.assertEquals(AccountManipulationsPage.getNotes(), newNotes);
         softAssert.assertEquals(AccountManipulationsPage.getCampaign(), newCampaign);
         softAssert.assertEquals(AccountManipulationsPage.getCategories(), newCategory);
@@ -1083,7 +1083,7 @@ public class CreateEditAccountTest extends BaseTest {
         assertEquals(SearchPage.getFirstSearchResult(), accountName);
     }
 
-    @Test(priority = 17, enabled = false) // Case 53
+    @Test(priority = 17) // Case 53
     public void softCreateAccountCreateContactEditContact() {
         SoftAssertExtended softAssert = new SoftAssertExtended();
         AccountManipulationsPage.enterAccountName(accountName);
@@ -1104,6 +1104,7 @@ public class CreateEditAccountTest extends BaseTest {
         AddSelectEntityPage.clickSelect();
         ContactManipulationPage.typeIntoNotes(notes);
         ContactManipulationPage.hideKeyboard();
+        ContactManipulationPage.swipeFromBottomToTop();
         ContactManipulationPage.clickChanceOfSuccess();
         ContactManipulationPage.enterChanceOfSuccess(chanceOfSuccess);
         ContactManipulationPage.clickExtraID();
@@ -1126,13 +1127,12 @@ public class CreateEditAccountTest extends BaseTest {
         AddSelectEntityPage.select(contactNewCategory);
         AddSelectEntityPage.clickSelect();
         ContactManipulationPage.typeIntoNotes(newNotes);
-//        ContactManipulationPage.clickExtraID();
-//        ContactManipulationPage.clickExtraID();
-//        Helpers.clearCustomField();
-//        ContactManipulationPage.enterValueFromKeyboard(newExtraID);
-//        ContactManipulationPage.clickChanceOfSuccess();
-//        Helpers.clearCustomField();
-//        ContactManipulationPage.enterValueFromKeyboard(newChanceOfSuccess);
+        ContactPage.swipeFromBottomToTop();
+        ContactPage.swipeFromBottomToTop();
+        ContactManipulationPage.clickExtraID();
+        ContactManipulationPage.enterExtraID(newExtraID);
+        ContactManipulationPage.clickChanceOfSuccess();
+        ContactManipulationPage.enterChanceOfSuccess(newChanceOfSuccess);
         ContactManipulationPage.clickSave();
         ContactPage.clickAddContactInfo();
         ContactManipulationPage.enterPhone(contactPhone);
@@ -1142,94 +1142,91 @@ public class CreateEditAccountTest extends BaseTest {
 
         ContactPage.checkPageTitle(contactPageTitle);
         softAssert.assertEquals(ContactPage.getContactName(), contactName);
-        softAssert.assertEquals(ContactPage.getContactTitle(), contactNewTitle.toUpperCase());
+        softAssert.assertEquals(ContactPage.getContactTitle(), contactNewTitle);
         softAssert.assertEquals(ContactPage.getAccount(), parentAccount);
         softAssert.assertEquals(ContactPage.getPhone(), contactPhone);
         softAssert.assertEquals(ContactPage.getMobile(), contactMobile);
         softAssert.assertEquals(ContactPage.getEmail(), contactEmail);
-        softAssert.assertEquals(ContactPage.getCampaign(), " " + newCampaign);
-        softAssert.assertEquals(ContactPage.getCategory(), " " + contactNewCategory);
-        ContactPage.clickShowNotes();
+        softAssert.assertEquals(ContactPage.getCampaign(), newCampaign);
+        softAssert.assertEquals(ContactPage.getCategory(), contactNewCategory);
         softAssert.assertEquals(ContactPage.getNotes(), newNotes);
-        ContactPage.clickShowMore();
+        ContactPage.swipeFromBottomToTop();
+        ContactPage.swipeFromBottomToTop();
         softAssert.assertEquals(ContactPage.getExtraID(), newExtraID);
-        softAssert.assertEquals(ContactPage.getChanceOfSuccess(), newChanceOfSuccess + " %");
+        softAssert.assertEquals(ContactPage.getChanceOfSuccess(), newChanceOfSuccess + "%");
         softAssert.assertAll();
     }
 
-//    @Test(priority = 18) // Case 54
-//    public void softCreateAccountCreateContactEditContactCancel() {
-//        SoftAssertExtended softAssert = new SoftAssertExtended();
-//        AccountManipulationsPage.clickSave();
-//        AccountManipulationsPage.clickPopUpContact();
-//        ContactManipulationPage.setContactName();
-//        contactName = ContactManipulationPage.getContactName();
-//        ContactManipulationPage.enterContactName(contactName);
-//        ContactManipulationPage.enterTitle(contactTitle);
-//        assertEquals(ContactManipulationPage.getWorksAt(), accountName);
-//        ContactManipulationPage.clickWorksAt();
-//        AddSelectEntityPage.select(parentAccount);
-//        ContactManipulationPage.clickCampaigns();
-//        AddSelectEntityPage.select(campaign);
-//        AddSelectEntityPage.clickSelect();
-//        ContactManipulationPage.clickCategories();
-//        AddSelectEntityPage.select(contactCategory);
-//        AddSelectEntityPage.clickSelect();
-//        ContactManipulationPage.typeIntoNotes(notes);
-//        ContactManipulationPage.clickDoneOnKeyboard();
-//        ContactManipulationPage.clickChanceOfSuccess();
-//        ContactManipulationPage.enterValueFromKeyboard(fieldChanceOfSuccess);
-//        ContactManipulationPage.clickExtraID();
-//        ContactManipulationPage.enterValueFromKeyboard(fieldExtraID);
-//        ContactManipulationPage.clickSave();
-//        ContactManipulationPage.clickNoThanks();
-//
-//        ContactPage.clickTools();
-//        ContactPage.clickEditContact();
-//        ContactManipulationPage.setContactName();
-//        contactName = ContactManipulationPage.getContactName();
-//        ContactManipulationPage.enterContactName(contactName);
-//        ContactManipulationPage.enterTitle(contactNewTitle);
-//        ContactManipulationPage.clickDoneOnKeyboard();
-//        ContactManipulationPage.clickCampaigns();
-//        AddSelectEntityPage.select(campaign);
-//        AddSelectEntityPage.select(newCampaign);
-//        AddSelectEntityPage.clickSelect();
-//        ContactManipulationPage.clickCategories();
-//        AddSelectEntityPage.select(contactCategory);
-//        AddSelectEntityPage.select(contactNewCategory);
-//        AddSelectEntityPage.clickSelect();
-//        ContactManipulationPage.typeIntoNotes(newNotes);
-//        ContactManipulationPage.clickDoneOnKeyboard();
-//        ContactManipulationPage.clickExtraID();
-//        ContactManipulationPage.clickExtraID();
-//        Helpers.clearCustomField();
-//        ContactManipulationPage.enterValueFromKeyboard(newExtraID);
-//        ContactManipulationPage.clickChanceOfSuccess();
-//        Helpers.clearCustomField();
-//        ContactManipulationPage.enterValueFromKeyboard(newChanceOfSuccess);
-//        ContactManipulationPage.clickSave();
-//
-//        ContactPage.clickAddContactInfo();
-//        ContactManipulationPage.enterPhone(contactPhone);
-//        ContactManipulationPage.enterMobile(contactMobile);
-//        ContactManipulationPage.enterEmail(contactEmail);
-//        ContactManipulationPage.clickCancel();
-//
-//        ContactPage.checkPageTitle(contactPageTitle);
-//        softAssert.assertEquals(ContactPage.getContactName(), contactName);
-//        softAssert.assertEquals(ContactPage.getContactTitle(), contactNewTitle.toUpperCase());
-//        softAssert.assertEquals(ContactPage.getAccount(), parentAccount);
-//        softAssert.assertEquals(ContactPage.getCampaignWithoutContact(), " " + newCampaign);
-//        softAssert.assertEquals(ContactPage.getCategoryWithoutContact(), " " + contactNewCategory);
-//        ContactPage.clickShowNotes();
-//        softAssert.assertEquals(ContactPage.getNotesWithoutContact(), newNotes);
-//        ContactPage.clickShowMore();
-//        softAssert.assertEquals(ContactPage.getExtraIDWithoutData(), newExtraID);
-//        softAssert.assertEquals(ContactPage.getChanceOfSuccessWithoutData(), newChanceOfSuccess + " %");
-//        softAssert.assertAll();
-//    }
-//
+    @Test(priority = 18) // Case 54
+    public void softCreateAccountCreateContactEditContactCancel() {
+        SoftAssertExtended softAssert = new SoftAssertExtended();
+        AccountManipulationsPage.enterAccountName(accountName);
+        AccountManipulationsPage.clickSave();
+        AccountManipulationsPage.clickPopUpContact();
+        ContactManipulationPage.setContactName();
+        contactName = ContactManipulationPage.getContactName();
+        ContactManipulationPage.enterContactName(contactName);
+        ContactManipulationPage.enterTitle(contactTitle);
+        assertEquals(ContactManipulationPage.getAccount(), accountName);
+        ContactManipulationPage.clickAccount();
+        AddSelectEntityPage.select(parentAccount);
+        ContactManipulationPage.clickCampaign();
+        AddSelectEntityPage.select(campaign);
+        AddSelectEntityPage.clickSelect();
+        ContactManipulationPage.clickCategories();
+        AddSelectEntityPage.select(contactCategory);
+        AddSelectEntityPage.clickSelect();
+        ContactManipulationPage.typeIntoNotes(notes);
+        ContactManipulationPage.swipeFromBottomToTop();
+        ContactManipulationPage.clickChanceOfSuccess();
+        ContactManipulationPage.enterChanceOfSuccess(chanceOfSuccess);
+        ContactManipulationPage.clickExtraID();
+        ContactManipulationPage.enterExtraID(extraID);
+        ContactManipulationPage.clickSave();
+        ContactManipulationPage.clickNoThanks();
+
+        ContactPage.clickTools();
+        ContactPage.clickEditContact();
+        ContactManipulationPage.setContactName();
+        contactName = ContactManipulationPage.getContactName();
+        ContactManipulationPage.enterContactName(contactName);
+        ContactManipulationPage.enterTitle(contactNewTitle);
+        ContactManipulationPage.clickCampaign();
+        AddSelectEntityPage.select(campaign);
+        AddSelectEntityPage.select(newCampaign);
+        AddSelectEntityPage.clickSelect();
+        ContactManipulationPage.clickCategories();
+        AddSelectEntityPage.select(contactCategory);
+        AddSelectEntityPage.select(contactNewCategory);
+        AddSelectEntityPage.clickSelect();
+        ContactManipulationPage.typeIntoNotes(newNotes);
+        ContactManipulationPage.swipeFromBottomToTop();
+        ContactManipulationPage.clickExtraID();
+        ContactManipulationPage.enterExtraID(newExtraID);
+        ContactManipulationPage.clickChanceOfSuccess();
+        ContactManipulationPage.enterChanceOfSuccess(newChanceOfSuccess);
+        ContactManipulationPage.clickSave();
+
+        ContactPage.clickAddContactInfo();
+        ContactManipulationPage.enterPhone(contactPhone);
+        ContactManipulationPage.enterMobile(contactMobile);
+        ContactManipulationPage.enterEmail(contactEmail);
+        ContactManipulationPage.clickCancel();
+
+        ContactPage.checkPageTitle(contactPageTitle);
+        softAssert.assertEquals(ContactPage.getContactName(), contactName);
+        softAssert.assertEquals(ContactPage.getContactTitle(), contactNewTitle.toUpperCase());
+        softAssert.assertEquals(ContactPage.getAccount(), parentAccount);
+        softAssert.assertEquals(ContactPage.getCampaign(), newCampaign);
+        softAssert.assertEquals(ContactPage.getCategory(), contactNewCategory);
+        softAssert.assertEquals(ContactPage.getNotes(), newNotes);
+        ContactManipulationPage.swipeFromBottomToTop();
+        ContactManipulationPage.swipeFromBottomToTop();
+        softAssert.assertEquals(ContactPage.getExtraIDWithoutData(), newExtraID);
+        softAssert.assertEquals(ContactPage.getChanceOfSuccessWithoutData(), newChanceOfSuccess + "%");
+        softAssert.assertAll();
+    }
+
 //    @Test(priority = 19) // Case 55
 //    public void softCreateAccountCreateContactCreateActivity() {
 //        SoftAssertExtended softAssert = new SoftAssertExtended();

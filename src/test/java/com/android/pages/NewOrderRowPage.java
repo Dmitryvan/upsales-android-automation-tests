@@ -61,6 +61,7 @@ public class NewOrderRowPage extends BasePage {
     }
 
     public static String getLabelOtherInfo() {
+        wait(labelOtherInfo);
         return getText(labelOtherInfo);
     }
 

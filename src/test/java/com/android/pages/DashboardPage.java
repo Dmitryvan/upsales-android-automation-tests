@@ -198,6 +198,7 @@ public class DashboardPage extends BasePage {
 
     public static void selectAppointment(String app) {
         wait(labelMyAppointmentsToday);
+        scrollToLabel(app);
         find(MobileBy.xpath("//*[contains(@resource-id, 'description') and @text='" + app + "']")).click();
 //        try {
 //            find(MobileBy.IosUIAutomation(".tableViews()[0].cells()['" + app + "']")).click();

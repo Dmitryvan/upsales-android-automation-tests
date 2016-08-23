@@ -26,6 +26,7 @@ public class ContactManipulationPage extends BasePage {
 
     public static void clickNoThanks() {
         find(buttonNoThanks).click();
+        waitByThread(2000);
     }
 
     public static void clickActivity() {
@@ -111,6 +112,7 @@ public class ContactManipulationPage extends BasePage {
     public static void typeIntoNotes(String note) {
         find(fieldNotes).clear();
         find(fieldNotes).sendKeys(note);
+        hideKeyboard();
     }
 
     private static final By fieldNotes = MobileBy.id("notes");

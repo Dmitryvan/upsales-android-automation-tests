@@ -67,6 +67,10 @@ public class FollowUpAppointmentTest extends BaseTest {
     private final String location = PropertyLoader.loadProperty(createAppointmentPropertyPath, "location");
     private final String startDateTime = PropertyLoader.loadProperty(createAppointmentPropertyPath, "startDateTime");
     private final String endDateTime = PropertyLoader.loadProperty(createAppointmentPropertyPath, "endDateTime");
+    private final String startFullDate = PropertyLoader.loadProperty(createAppointmentPropertyPath, "startFullDate");
+    private final String startTime = PropertyLoader.loadProperty(createAppointmentPropertyPath, "startTime");
+    private final String endFullDate = PropertyLoader.loadProperty(createAppointmentPropertyPath, "endFullDate");
+    private final String endTime = PropertyLoader.loadProperty(createAppointmentPropertyPath, "endTime");
     private final String newStartDate = PropertyLoader.loadProperty(createAppointmentPropertyPath, "newStartDate");
     private final String newStartMonth = PropertyLoader.loadProperty(createAppointmentPropertyPath, "newStartMonth");
     private final String newStartDay = PropertyLoader.loadProperty(createAppointmentPropertyPath, "newStartDay");
@@ -335,9 +339,9 @@ public class FollowUpAppointmentTest extends BaseTest {
         softAssert.assertEquals(ActivityManipulationsPage.getDueDate(), ActivityManipulationsPage.getCurrentDate());
         softAssert.assertEquals(ActivityManipulationsPage.getTime(), defaultTime);
         softAssert.assertEquals(ActivityManipulationsPage.getAccount(), account);
-        softAssert.assertEquals(ActivityManipulationsPage.getContact(), " " + contact);
+        softAssert.assertEquals(ActivityManipulationsPage.getContact(), contact);
         softAssert.assertEquals(ActivityManipulationsPage.getOpportunity(), defaultOpportunityWithAcc);
-        softAssert.assertEquals(ActivityManipulationsPage.getUser(), " " + user);
+        softAssert.assertEquals(ActivityManipulationsPage.getUser(), user);
         softAssert.assertEquals(ActivityManipulationsPage.getCampaign(), campaign);
         ActivityManipulationsPage.scrollToLabel(labelOtherInfo);
         softAssert.assertEquals(ActivityManipulationsPage.getNotes(), notes);
@@ -375,7 +379,7 @@ public class FollowUpAppointmentTest extends BaseTest {
         softAssert.assertEquals(ActivityPage.getNotes(), notes);
         ActivityPage.swipeFromBottomToTop();
         ActivityPage.scrollToLabel("Expenses");
-        softAssert.assertEquals(ActivityPage.getExpenses(), expenses);
+        softAssert.assertEquals(ActivityPage.getExpenses(), expenses + " SEK");
 
         ActivityPage.clickBack();
 //        AppointmentPage.clickLeftMenu();
@@ -405,9 +409,11 @@ public class FollowUpAppointmentTest extends BaseTest {
         AppointmentManipulationsPage.hideKeyboard();
         softAssert.assertEquals(AppointmentManipulationsPage.getTitle(), titleCreateAppointment);
         softAssert.assertEquals(AppointmentManipulationsPage.getLabelDescription(), defaultLabelDescription);
-        softAssert.assertEquals(AppointmentManipulationsPage.getLabelAppointmentType(), appType);
-        softAssert.assertEquals(AppointmentManipulationsPage.getDefaultAppStartDate(), AppointmentManipulationsPage.getStartDate());
-        softAssert.assertEquals(AppointmentManipulationsPage.getDefaultAppEndDate(), AppointmentManipulationsPage.getEndDate());
+        softAssert.assertEquals(AppointmentManipulationsPage.getAppointmentType(), appType);
+        softAssert.assertEquals(AppointmentManipulationsPage.getDefaultAppStartDate(),
+                AppointmentManipulationsPage.getStartDate() + " " + AppointmentManipulationsPage.getStartTime());
+        softAssert.assertEquals(AppointmentManipulationsPage.getDefaultAppEndDate(),
+                AppointmentManipulationsPage.getEndDate() + " " + AppointmentManipulationsPage.getEndTime());
         softAssert.assertEquals(AppointmentManipulationsPage.getAccount(), appAccount);
         softAssert.assertEquals(AppointmentManipulationsPage.getContact(), appContact);
         softAssert.assertEquals(AppointmentManipulationsPage.getOpportunity(), defaultOpportunity);
@@ -455,10 +461,10 @@ public class FollowUpAppointmentTest extends BaseTest {
         softAssert.assertEquals(AppointmentPage.getDescriptionOnView(), description);
         softAssert.assertEquals(AppointmentPage.getAccountName(), appAccount);
         softAssert.assertEquals(AppointmentPage.getUserName(), yourUser);
-        softAssert.assertEquals(AppointmentPage.getStartDate(), newStartFullDate);
-        softAssert.assertEquals(AppointmentPage.getStartTime(), newStartTime);
-        softAssert.assertEquals(AppointmentPage.getEndDate(), newEndFullDate);
-        softAssert.assertEquals(AppointmentPage.getEndTime(), newEndTime);
+        softAssert.assertEquals(AppointmentPage.getStartDate(), startFullDate);
+        softAssert.assertEquals(AppointmentPage.getStartTime(), startTime);
+        softAssert.assertEquals(AppointmentPage.getEndDate(), endFullDate);
+        softAssert.assertEquals(AppointmentPage.getEndTime(), endTime);
         softAssert.assertEquals(AppointmentPage.getLocation(), newLocation);
         softAssert.assertEquals(AppointmentPage.getContactOnView(), appContact);
         softAssert.assertEquals(AppointmentPage.getCampaign(), labelNone);
@@ -698,7 +704,7 @@ public class FollowUpAppointmentTest extends BaseTest {
         ActivityPage.swipeFromBottomToTop();
         ActivityPage.swipeFromBottomToTop();
         ActivityPage.scrollToLabel("Expenses");
-        softAssert.assertEquals(ActivityPage.getExpenses(), expenses);
+        softAssert.assertEquals(ActivityPage.getExpenses(), expenses + " SEK");
 
         ActivityPage.clickBack();
 //        AppointmentPage.clickLeftMenu();
