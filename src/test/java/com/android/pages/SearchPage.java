@@ -18,6 +18,7 @@ public class SearchPage extends BasePage {
 
     public static void search(String value) {
         sendValues(value, fieldSearch);
+        waitByThread(2000);
     }
 
     public static String getFirstSearchResult() {
@@ -29,5 +30,6 @@ public class SearchPage extends BasePage {
         WebElement element = find(labelFirstSearchResult);
         Point point = ((Locatable)element).getCoordinates().onPage();
         new TouchAction((MobileDriver)getDriver()).tap(point.getX(), point.getY()).perform();
+        waitByThread(4000);
     }
 }

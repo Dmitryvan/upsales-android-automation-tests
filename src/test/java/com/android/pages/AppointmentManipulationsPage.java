@@ -174,6 +174,7 @@ public class AppointmentManipulationsPage extends BasePage {
 
     public static void enterHoursInPreparation(String value) {
         sendValues(value, hoursInPreparation);
+        hideKeyboard();
     }
 
     public static void clearHoursInPreparation() {

@@ -1215,7 +1215,7 @@ public class CreateEditAccountTest extends BaseTest {
 
         ContactPage.checkPageTitle(contactPageTitle);
         softAssert.assertEquals(ContactPage.getContactName(), contactName);
-        softAssert.assertEquals(ContactPage.getContactTitle(), contactNewTitle.toUpperCase());
+        softAssert.assertEquals(ContactPage.getContactTitle(), contactNewTitle);
         softAssert.assertEquals(ContactPage.getAccount(), parentAccount);
         softAssert.assertEquals(ContactPage.getCampaign(), newCampaign);
         softAssert.assertEquals(ContactPage.getCategory(), contactNewCategory);
@@ -1227,252 +1227,269 @@ public class CreateEditAccountTest extends BaseTest {
         softAssert.assertAll();
     }
 
-//    @Test(priority = 19) // Case 55
-//    public void softCreateAccountCreateContactCreateActivity() {
-//        SoftAssertExtended softAssert = new SoftAssertExtended();
-//        AccountManipulationsPage.clickSave();
-//
-//        AccountManipulationsPage.clickPopUpContact();
-//        ContactManipulationPage.setContactName();
-//        contactName = ContactManipulationPage.getContactName();
-//        ContactManipulationPage.enterContactName(contactName);
-//        ContactManipulationPage.enterTitle(contactTitle);
-//        assertEquals(ContactManipulationPage.getWorksAt(), accountName);
-//        ContactManipulationPage.clickWorksAt();
-//        AddSelectEntityPage.select(parentAccount);
-//        ContactManipulationPage.enterPhone(contactPhone);
-//        ContactManipulationPage.enterMobile(contactMobile);
-//        ContactManipulationPage.enterEmail(contactEmail);
-//        ContactManipulationPage.clickCampaigns();
-//        AddSelectEntityPage.select(campaign);
-//        AddSelectEntityPage.clickSelect();
-//        ContactManipulationPage.clickCategories();
-//        AddSelectEntityPage.select(contactCategory);
-//        AddSelectEntityPage.clickSelect();
-//        ContactManipulationPage.typeIntoNotes(notes);
-//        ContactManipulationPage.clickDoneOnKeyboard();
-//        ContactManipulationPage.clickChanceOfSuccess();
-//        ContactManipulationPage.enterValueFromKeyboard(fieldChanceOfSuccess);
-//        ContactManipulationPage.clickExtraID();
-//        ContactManipulationPage.enterValueFromKeyboard(fieldExtraID);
-//        ContactManipulationPage.clickSave();
-//
-//        ContactManipulationPage.clickActivity();
-//        ActivityManipulationsPage.setDescription();
-//        activityDescription = ActivityManipulationsPage.getDescription();
-//        ActivityManipulationsPage.enterDescription(activityDescription);
-//        ActivityManipulationsPage.clickTime();
-//        ActivityManipulationsPage.selectTimeHours(timeHours);
-//        ActivityManipulationsPage.selectTimeMinutes(timeMinutes);
-//        ActivityManipulationsPage.selectTimeAmPm(timeAmPm);
-//        ActivityManipulationsPage.clickTime();
-//        ActivityManipulationsPage.clickUser();
-//        AddSelectEntityPage.select(user);
-//        ActivityManipulationsPage.clickCampaign();
-//        AddSelectEntityPage.select(campaign);
-//        ActivityManipulationsPage.scrollToLabel(labelOtherInfo.toUpperCase());
-//        ActivityManipulationsPage.typeIntoNotes(notes);
-//        ActivityManipulationsPage.clickExpenses();
-//        ActivityManipulationsPage.enterValueFromKeyboard(expenses);
-//        ActivityManipulationsPage.clickDoneOnKeyboard();
-//
-//        ActivityManipulationsPage.clickSave();
-//
-//        softAssert.assertEquals(ActivityPage.getTitle(), defaultActivityType.toUpperCase());
-//        softAssert.assertEquals(ActivityPage.getDescriptionOnView(), activityDescription);
-//        softAssert.assertEquals(ActivityPage.getAccountName(), parentAccount);
-//        softAssert.assertEquals(ActivityPage.getUserName(), user);
-//        softAssert.assertEquals(ActivityPage.getDate(), ActivityPage.getCurrentDate());
-//        softAssert.assertEquals(ActivityPage.getTime(), time);
-//        softAssert.assertEquals(ActivityPage.getContact(), contactName);
-////        softAssert.assertEquals(ActivityPage.getContactTitle(), contactTitle);
-//        softAssert.assertEquals(ActivityPage.getCampaign(), campaign);
-//        softAssert.assertEquals(ActivityPage.getOpportunity(), lblNone);
-//        softAssert.assertEquals(ActivityPage.getNotes(), notes);
-//        ActivityPage.clickShowMore();
-//        softAssert.assertEquals(ActivityPage.getExpensesWithAllData(), expenses);
-//
-//        ActivityPage.clickBack();
+    @Test(priority = 19) // Case 55
+    public void softCreateAccountCreateContactCreateActivity() {
+        SoftAssertExtended softAssert = new SoftAssertExtended();
+        AccountManipulationsPage.enterAccountName(accountName);
+        AccountManipulationsPage.clickSave();
+
+        AccountManipulationsPage.clickPopUpContact();
+        ContactManipulationPage.setContactName();
+        contactName = ContactManipulationPage.getContactName();
+        ContactManipulationPage.enterContactName(contactName);
+        ContactManipulationPage.enterTitle(contactTitle);
+        assertEquals(ContactManipulationPage.getAccount(), accountName);
+        ContactManipulationPage.clickAccount();
+        AddSelectEntityPage.select(parentAccount);
+        ContactManipulationPage.enterPhone(contactPhone);
+        ContactManipulationPage.enterMobile(contactMobile);
+        ContactManipulationPage.enterEmail(contactEmail);
+        ContactManipulationPage.clickCampaign();
+        AddSelectEntityPage.select(campaign);
+        AddSelectEntityPage.clickSelect();
+        ContactManipulationPage.clickCategories();
+        AddSelectEntityPage.select(contactCategory);
+        AddSelectEntityPage.clickSelect();
+        ContactManipulationPage.typeIntoNotes(notes);
+        ContactManipulationPage.swipeFromBottomToTop();
+        ContactManipulationPage.swipeFromBottomToTop();
+        ContactManipulationPage.clickChanceOfSuccess();
+        ContactManipulationPage.enterChanceOfSuccess(chanceOfSuccess);
+        ContactManipulationPage.clickExtraID();
+        ContactManipulationPage.enterExtraID(extraID);
+        ContactManipulationPage.clickSave();
+
+        ContactManipulationPage.clickActivity();
+        ActivityManipulationsPage.setDescription();
+        activityDescription = ActivityManipulationsPage.getDescription();
+        ActivityManipulationsPage.enterDescription(activityDescription);
+        ActivityManipulationsPage.clickTime();
+        ActivityManipulationsPage.selectTimeHours(timeHours);
+        ActivityManipulationsPage.selectTimeMinutes(timeMinutes);
+        ActivityManipulationsPage.selectTimeAmPm(timeAmPm);
+        ActivityManipulationsPage.closePicker();
+        ActivityManipulationsPage.clickUser();
+        AddSelectEntityPage.select(user);
+        ActivityManipulationsPage.clickCampaign();
+        AddSelectEntityPage.select(campaign);
+        ActivityManipulationsPage.scrollToLabel(labelOtherInfo);
+        ActivityManipulationsPage.typeIntoNotes(notes);
+        ActivityManipulationsPage.swipeFromBottomToTop();
+        ActivityManipulationsPage.clickExpenses();
+        ActivityManipulationsPage.enterExpenses(expenses);
+
+        ActivityManipulationsPage.clickSave();
+
+        softAssert.assertEquals(ActivityPage.getTitle(), defaultActivityType.toUpperCase());
+        softAssert.assertEquals(ActivityPage.getDescriptionOnView(), activityDescription);
+        softAssert.assertEquals(ActivityPage.getAccountName(), parentAccount);
+        softAssert.assertEquals(ActivityPage.getUserName(), user);
+        softAssert.assertEquals(ActivityPage.getDate(), ActivityPage.getCurrentDate());
+        softAssert.assertEquals(ActivityPage.getTime(), time);
+        softAssert.assertEquals(ActivityPage.getContact(), contactName);
+//        softAssert.assertEquals(ActivityPage.getContactTitle(), contactTitle);
+        softAssert.assertEquals(ActivityPage.getCampaign(), campaign);
+        softAssert.assertEquals(ActivityPage.getOpportunity(), lblNone);
+        softAssert.assertEquals(ActivityPage.getNotes(), notes);
+        ActivityPage.swipeFromBottomToTop();
+        softAssert.assertEquals(ActivityPage.getExpenses(), expenses + " SEK");
+
+        ActivityPage.clickLeftMenu();
 //        AccountManipulationsPage.clickBack();
-//        LeftMenuPage.clickSearch();
-//        SearchPage.search(parentAccount);
-//        SearchPage.clickOnFirstSearchResult();
-//        AccountPage.clickTabActivities();
+        LeftMenuPage.clickSearch();
+        SearchPage.search(parentAccount);
+        SearchPage.clickOnFirstSearchResult();
+        AccountPage.clickTabActivities();
 //        assertTrue(ActivitiesPage.searchActivityByName(activityDescription));
 //        ActivitiesPage.selectActivity(activityDescription);
 //        assertEquals(ActivityPage.getUserName(), user);
-//        softAssert.assertAll();
-//    }
-//
-//    @Test(priority = 20) // Case 56
-//    public void softCreateAccountCreateContactCreateAppointment() {
-//        SoftAssertExtended softAssert = new SoftAssertExtended();
-//        AccountManipulationsPage.clickSave();
-//        AccountManipulationsPage.clickPopUpContact();
-//        ContactManipulationPage.setContactName();
-//        contactName = ContactManipulationPage.getContactName();
-//        ContactManipulationPage.enterContactName(contactName);
-//        assertEquals(ContactManipulationPage.getWorksAt(), accountName);
-//        ContactManipulationPage.enterTitle(contactTitle);
-//        ContactManipulationPage.clickWorksAt();
-//        AddSelectEntityPage.select(parentAccount);
-//        ContactManipulationPage.enterPhone(contactPhone);
-//        ContactManipulationPage.enterMobile(contactMobile);
-//        ContactManipulationPage.enterEmail(contactEmail);
-//        ContactManipulationPage.clickCampaigns();
-//        AddSelectEntityPage.select(campaign);
-//        AddSelectEntityPage.clickSelect();
-//        ContactManipulationPage.clickCategories();
-//        AddSelectEntityPage.select(contactCategory);
-//        AddSelectEntityPage.clickSelect();
-//        ContactManipulationPage.typeIntoNotes(notes);
-//        ContactManipulationPage.clickDoneOnKeyboard();
-//        ContactManipulationPage.clickChanceOfSuccess();
-//        ContactManipulationPage.enterValueFromKeyboard(fieldChanceOfSuccess);
-//        ContactManipulationPage.clickExtraID();
-//        ContactManipulationPage.enterValueFromKeyboard(fieldExtraID);
-//        ContactManipulationPage.clickSave();
-//
-//        ContactManipulationPage.clickAppointment();
-//        AppointmentManipulationsPage.setAppointmentName();
-//        AppointmentManipulationsPage.setDefaultAppStartEndDates();
-//        appointmentName = AppointmentManipulationsPage.getAppointmentName();
-//        AppointmentManipulationsPage.enterDescription(appointmentName);
-//        AppointmentManipulationsPage.clickLocation();
-//        AppointmentManipulationsPage.enterLocation(location);
-//        AppointmentManipulationsPage.clickCampaign();
-//        AddSelectEntityPage.select(campaign);
-//        AppointmentManipulationsPage.clickInsertSignature();
-//        AppointmentManipulationsPage.typeIntoNotes(notes);
-//
-//        softAssert.assertEquals(AppointmentManipulationsPage.getLabelAppointmentType(), appDefaultType);
-//        softAssert.assertEquals(AppointmentManipulationsPage.getStartDate(), AppointmentManipulationsPage.getDefaultAppStartDate());
-//        softAssert.assertEquals(AppointmentManipulationsPage.getEndDate(), AppointmentManipulationsPage.getDefaultAppEndDate());
-//        softAssert.assertEquals(AppointmentManipulationsPage.getAccount(), parentAccount);
-//        softAssert.assertEquals(AppointmentManipulationsPage.getContact(), " " + contactName);
-//        softAssert.assertEquals(AppointmentManipulationsPage.getUser(), " " + defaultUser);
-//        AppointmentManipulationsPage.clickSave();
-//
-//        softAssert.assertEquals(AppointmentPage.getTitle(), appDefaultType.toUpperCase());
-//        softAssert.assertEquals(AppointmentPage.getAppointmentDescription(), appointmentName);
-//        softAssert.assertEquals(AppointmentPage.getAccountName(), parentAccount);
-//        softAssert.assertEquals(AppointmentPage.getUserName(), currentUser);
-//        softAssert.assertEquals(AppointmentPage.getStartDate() + " " + AppointmentPage.getStartTime(),
-//                AppointmentPage.appStartDateWithDoW());
-//        softAssert.assertEquals(AppointmentPage.getEndDate() + " " + AppointmentPage.getEndTime(),
-//                AppointmentPage.appEndDateWithDoW());
-//        softAssert.assertEquals(AppointmentPage.getLocation(), location);
-//        softAssert.assertEquals(AppointmentPage.getContact(), contactName);
-//        softAssert.assertEquals(AppointmentPage.getContactTitle(), contactTitle);
-//        softAssert.assertEquals(AppointmentPage.getCampaign(), campaign);
-//        softAssert.assertEquals(AppointmentPage.getOpportunity(), lblNone);
-//        softAssert.assertEquals(AppointmentPage.getNotes(), notes);
-//
-//        ActivityPage.clickBack();
-////        AccountManipulationsPage.clickBack();
-//        LeftMenuPage.clickSearch();
-//        SearchPage.search(parentAccount);
-//        SearchPage.clickOnFirstSearchResult();
-//        AccountPage.clickTabContacts();
-//
-////        ContactsPage.selectContact(contactName);
-//        ContactPage.swipeFromTopToBottom();
-//        ContactsPage.clickSearch();
-//        ContactsPage.search(contactName);
+        softAssert.assertAll();
+    }
+
+    @Test(priority = 20) // Case 56
+    public void softCreateAccountCreateContactCreateAppointment() {
+        SoftAssertExtended softAssert = new SoftAssertExtended();
+        AccountManipulationsPage.enterAccountName(accountName);
+        AccountManipulationsPage.clickSave();
+
+        AccountManipulationsPage.clickPopUpContact();
+        ContactManipulationPage.setContactName();
+        contactName = ContactManipulationPage.getContactName();
+        ContactManipulationPage.enterContactName(contactName);
+        assertEquals(ContactManipulationPage.getAccount(), accountName);
+        ContactManipulationPage.enterTitle(contactTitle);
+        ContactManipulationPage.clickAccount();
+        AddSelectEntityPage.select(parentAccount);
+        ContactManipulationPage.enterPhone(contactPhone);
+        ContactManipulationPage.enterMobile(contactMobile);
+        ContactManipulationPage.enterEmail(contactEmail);
+        ContactManipulationPage.clickCampaign();
+        AddSelectEntityPage.select(campaign);
+        AddSelectEntityPage.clickSelect();
+        ContactManipulationPage.clickCategories();
+        AddSelectEntityPage.select(contactCategory);
+        AddSelectEntityPage.clickSelect();
+        ContactManipulationPage.typeIntoNotes(notes);
+        ContactManipulationPage.swipeFromBottomToTop();
+        ContactManipulationPage.swipeFromBottomToTop();
+        ContactManipulationPage.clickChanceOfSuccess();
+        ContactManipulationPage.enterChanceOfSuccess(chanceOfSuccess);
+        ContactManipulationPage.clickExtraID();
+        ContactManipulationPage.enterExtraID(extraID);
+        ContactManipulationPage.clickSave();
+
+        ContactManipulationPage.clickAppointment();
+        AppointmentManipulationsPage.setAppointmentName();
+        AppointmentManipulationsPage.setDefaultAppStartEndDates();
+        appointmentName = AppointmentManipulationsPage.getAppointmentName();
+        AppointmentManipulationsPage.enterDescription(appointmentName);
+        AppointmentManipulationsPage.clickLocation();
+        AppointmentManipulationsPage.enterLocation(location);
+        AppointmentManipulationsPage.clickCampaign();
+        AddSelectEntityPage.select(campaign);
+        AppointmentManipulationsPage.swipeFromBottomToTop();
+        AppointmentManipulationsPage.typeIntoNotes(notes);
+        AppointmentManipulationsPage.swipeFromBottomToTop();
+        AppointmentManipulationsPage.clickHoursInPreparation();
+        AppointmentManipulationsPage.enterHoursInPreparation(hoursInPreparation);
+
+        AppointmentManipulationsPage.swipeFromTopToBottom();
+        AppointmentManipulationsPage.swipeFromTopToBottom();
+        softAssert.assertEquals(AppointmentManipulationsPage.getAppointmentType(), appDefaultType);
+        softAssert.assertEquals(AppointmentManipulationsPage.getStartDate() + " " + AppointmentManipulationsPage.getStartTime(),
+                AppointmentManipulationsPage.getDefaultAppStartDate());
+        softAssert.assertEquals(AppointmentManipulationsPage.getEndDate() + " " + AppointmentManipulationsPage.getEndTime(),
+                AppointmentManipulationsPage.getDefaultAppEndDate());
+        softAssert.assertEquals(AppointmentManipulationsPage.getAccount(), parentAccount);
+        softAssert.assertEquals(AppointmentManipulationsPage.getContact(), contactName);
+        softAssert.assertEquals(AppointmentManipulationsPage.getUser(), defaultUser);
+        AppointmentManipulationsPage.clickSave();
+
+        softAssert.assertEquals(AppointmentPage.getTitle(), appDefaultType.toUpperCase());
+        softAssert.assertEquals(AppointmentPage.getDescriptionOnView(), appointmentName);
+        softAssert.assertEquals(AppointmentPage.getAccountName(), parentAccount);
+        softAssert.assertEquals(AppointmentPage.getUserName(), currentUser);
+        softAssert.assertEquals(AppointmentPage.getStartDate() + " " + AppointmentPage.getStartTime(),
+                AppointmentPage.appStartDateWithDoW());
+        softAssert.assertEquals(AppointmentPage.getEndDate() + " " + AppointmentPage.getEndTime(),
+                AppointmentPage.appEndDateWithDoW());
+        softAssert.assertEquals(AppointmentPage.getLocation(), location);
+        softAssert.assertEquals(AppointmentPage.getContactOnView(), contactName);
+//        softAssert.assertEquals(AppointmentPage.getContact(), contactTitle);
+        softAssert.assertEquals(AppointmentPage.getCampaign(), campaign);
+        softAssert.assertEquals(AppointmentPage.getOpportunity(), lblNone);
+        AppointmentPage.swipeFromBottomToTop();
+        softAssert.assertEquals(AppointmentPage.getNotes(), notes);
+
+        ActivityPage.clickLeftMenu();
+//        AccountManipulationsPage.clickBack();
+        LeftMenuPage.clickSearch();
+        SearchPage.search(parentAccount);
+        SearchPage.clickOnFirstSearchResult();
+        AccountPage.clickTabContacts();
+
 //        ContactsPage.selectContact(contactName);
-//        softAssert.assertEquals(ContactPage.getTitle(), contactPageTitle);
-//        softAssert.assertEquals(ContactPage.getContactName(), contactName);
-//        softAssert.assertEquals(ContactPage.getContactTitle(), contactTitle.toUpperCase());
-//        softAssert.assertEquals(ContactPage.getAccount(), parentAccount);
-//        softAssert.assertEquals(ContactPage.getPhone(), contactPhone);
-//        softAssert.assertEquals(ContactPage.getMobile(), contactMobile);
-//        softAssert.assertEquals(ContactPage.getEmail(), contactEmail);
-//        softAssert.assertEquals(ContactPage.getCampaign(), " " + campaign);
-//        softAssert.assertEquals(ContactPage.getCategory(), " " + contactCategory);
-//        ContactPage.clickShowNotes();
-//        softAssert.assertEquals(ContactPage.getNotes(), notes);
-//        ContactPage.clickShowMore();
-//        softAssert.assertEquals(ContactPage.getExtraID(), fieldExtraID);
-//        softAssert.assertEquals(ContactPage.getChanceOfSuccess(), fieldChanceOfSuccess + " %");
-//
-//        softAssert.assertAll();
-//    }
-//
-//    @Test(priority = 21) // Case 57
-//    public void softCreateAccountCreateContactCreateOpportunity() {
-//        SoftAssertExtended softAssert = new SoftAssertExtended();
-//        AccountManipulationsPage.clickSave();
-//
-//        AccountManipulationsPage.clickPopUpContact();
-//        ContactManipulationPage.setContactName();
-//        contactName = ContactManipulationPage.getContactName();
-//        ContactManipulationPage.enterContactName(contactName);
-//        assertEquals(ContactManipulationPage.getWorksAt(), accountName);
-//        ContactManipulationPage.enterTitle(contactTitle);
-//        ContactManipulationPage.clickWorksAt();
-//        AddSelectEntityPage.select(parentAccount);
-//        ContactManipulationPage.enterPhone(contactPhone);
-//        ContactManipulationPage.enterMobile(contactMobile);
-//        ContactManipulationPage.enterEmail(contactEmail);
-//        ContactManipulationPage.clickCampaigns();
-//        AddSelectEntityPage.select(campaign);
-//        AddSelectEntityPage.clickSelect();
-//        ContactManipulationPage.clickCategories();
-//        AddSelectEntityPage.select(contactCategory);
-//        AddSelectEntityPage.clickSelect();
-//        ContactManipulationPage.typeIntoNotes(notes);
-//        ContactManipulationPage.clickDoneOnKeyboard();
-//        ContactManipulationPage.clickChanceOfSuccess();
-//        ContactManipulationPage.enterValueFromKeyboard(fieldChanceOfSuccess);
-//        ContactManipulationPage.clickExtraID();
-//        ContactManipulationPage.enterValueFromKeyboard(fieldExtraID);
-//        ContactManipulationPage.clickSave();
-//
-//        ContactManipulationPage.clickOpportunity();
-//        OpportunityManipulationsPage.setOpportunityName();
-//        opportunityDescription = OpportunityManipulationsPage.getOpportunityName();
-//
-//        softAssert.assertEquals(OpportunityManipulationsPage.getUser(), defaultUser);
-//        softAssert.assertEquals(OpportunityManipulationsPage.getCloseDate(), Helpers.getCurrentDate());
-//        softAssert.assertEquals(OpportunityManipulationsPage.getAccount(), parentAccount);
-//        softAssert.assertEquals(OpportunityManipulationsPage.getContact(), contactName);
-//
-//        OpportunityManipulationsPage.enterDescription(opportunityDescription);
-//        OpportunityManipulationsPage.clickStage();
-//        OpportunityManipulationsPage.spinWheelToTheStage(oppStage);
-//        OpportunityManipulationsPage.clickStage();
-//        OpportunityManipulationsPage.clickCampaign();
-//        AddSelectEntityPage.select(campaign);
-//        OpportunityManipulationsPage.clickNewOrderRow();
-//        NewOrderRowPage.clickProduct();
-//        AddSelectEntityPage.select(product);
-//        NewOrderRowPage.clickAdd();
-//        OpportunityManipulationsPage.typeIntoNotes(notes);
-//        OpportunityManipulationsPage.clickSave();
-//
-//        softAssert.assertEquals(OpportunityPage.getTitle(), titleOpportunity.toUpperCase());
-//        softAssert.assertEquals(OpportunityPage.getDescription(), opportunityDescription);
-//        softAssert.assertEquals(OpportunityPage.getAccount(), parentAccount);
-//        softAssert.assertEquals(OpportunityPage.getUser(), currentUser);
-//        softAssert.assertEquals(OpportunityPage.getCloseDateInOpportunity(), Helpers.getCurrentDate());
-//        softAssert.assertEquals(OpportunityPage.getStage(), stageInOpp);
-//        softAssert.assertEquals(OpportunityPage.getContact(), contactName);
-//        softAssert.assertEquals(OpportunityPage.getCampaign(), campaign);
-//        softAssert.assertEquals(OpportunityPage.getProduct(), product);
-//        softAssert.assertEquals(OpportunityPage.getNotes(), notes);
-//        OpportunityPage.clickLeftMenu();
-//
-//        LeftMenuPage.clickSearch();
-//        SearchPage.search(parentAccount);
-//        SearchPage.clickOnFirstSearchResult();
-//
-//        AccountPage.clickTabContacts();
-//        ContactsPage.search(contactName);
+        ContactPage.swipeFromTopToBottom();
+        ContactsPage.clickSearch();
+        ContactsPage.search(contactName);
+        ContactsPage.selectContact(contactName);
+        softAssert.assertEquals(ContactPage.getTitle(), contactPageTitle);
+        softAssert.assertEquals(ContactPage.getContactName(), contactName);
+        softAssert.assertEquals(ContactPage.getContactTitle(), contactTitle);
+        softAssert.assertEquals(ContactPage.getAccount(), parentAccount);
+        softAssert.assertEquals(ContactPage.getPhone(), contactPhone);
+        softAssert.assertEquals(ContactPage.getMobile(), contactMobile);
+        softAssert.assertEquals(ContactPage.getEmail(), contactEmail);
+        softAssert.assertEquals(ContactPage.getCampaign(), campaign);
+        softAssert.assertEquals(ContactPage.getCategory(), contactCategory);
+        softAssert.assertEquals(ContactPage.getNotes(), notes);
+        ContactPage.swipeFromBottomToTop();
+        ContactPage.swipeFromBottomToTop();
+        softAssert.assertEquals(ContactPage.getExtraID(), extraID);
+        softAssert.assertEquals(ContactPage.getChanceOfSuccess(), chanceOfSuccess + "%");
+
+        softAssert.assertAll();
+    }
+
+    @Test(priority = 21) // Case 57
+    public void softCreateAccountCreateContactCreateOpportunity() {
+        SoftAssertExtended softAssert = new SoftAssertExtended();
+        AccountManipulationsPage.enterAccountName(accountName);
+        AccountManipulationsPage.clickSave();
+
+        AccountManipulationsPage.clickPopUpContact();
+        ContactManipulationPage.setContactName();
+        contactName = ContactManipulationPage.getContactName();
+        ContactManipulationPage.enterContactName(contactName);
+        assertEquals(ContactManipulationPage.getAccount(), accountName);
+        ContactManipulationPage.enterTitle(contactTitle);
+        ContactManipulationPage.clickAccount();
+        AddSelectEntityPage.select(parentAccount);
+        ContactManipulationPage.enterPhone(contactPhone);
+        ContactManipulationPage.enterMobile(contactMobile);
+        ContactManipulationPage.enterEmail(contactEmail);
+        ContactManipulationPage.clickCampaign();
+        AddSelectEntityPage.select(campaign);
+        AddSelectEntityPage.clickSelect();
+        ContactManipulationPage.clickCategories();
+        AddSelectEntityPage.select(contactCategory);
+        AddSelectEntityPage.clickSelect();
+        ContactManipulationPage.typeIntoNotes(notes);
+        ContactManipulationPage.swipeFromBottomToTop();
+        ContactManipulationPage.swipeFromBottomToTop();
+        ContactManipulationPage.clickChanceOfSuccess();
+        ContactManipulationPage.enterChanceOfSuccess(chanceOfSuccess);
+        ContactManipulationPage.clickExtraID();
+        ContactManipulationPage.enterExtraID(extraID);
+        ContactManipulationPage.clickSave();
+
+        ContactManipulationPage.clickOpportunity();
+        OpportunityManipulationsPage.setOpportunityName();
+        opportunityDescription = OpportunityManipulationsPage.getOpportunityName();
+
+        OpportunityManipulationsPage.hideKeyboard();
+        softAssert.assertEquals(OpportunityManipulationsPage.getUser(), defaultUser);
+        softAssert.assertEquals(OpportunityManipulationsPage.getCloseDate(), Helpers.getCurrentDate());
+        softAssert.assertEquals(OpportunityManipulationsPage.getAccount(), parentAccount);
+        softAssert.assertEquals(OpportunityManipulationsPage.getContact(), contactName);
+
+        OpportunityManipulationsPage.enterDescription(opportunityDescription);
+        OpportunityManipulationsPage.clickStage();
+        OpportunityManipulationsPage.selectValueFromPopUp(oppStage);
+        OpportunityManipulationsPage.clickCampaign();
+        AddSelectEntityPage.select(campaign);
+        OpportunityManipulationsPage.clickNewOrderRow();
+        NewOrderRowPage.clickProduct();
+        AddSelectEntityPage.select(product);
+        NewOrderRowPage.clickAdd();
+        OpportunityManipulationsPage.swipeFromBottomToTop();
+        OpportunityManipulationsPage.typeIntoNotes(notes);
+        OpportunityManipulationsPage.clickSave();
+
+        softAssert.assertEquals(OpportunityPage.getTitle(), titleOpportunity.toUpperCase());
+        softAssert.assertEquals(OpportunityPage.getDescriptionOnView(), opportunityDescription);
+        softAssert.assertEquals(OpportunityPage.getAccount(), parentAccount);
+        softAssert.assertEquals(OpportunityPage.getUser(), currentUser);
+        softAssert.assertEquals(OpportunityPage.getCloseDateInOpportunity(), Helpers.getCurrentDate());
+        softAssert.assertEquals(OpportunityPage.getStage(), stageInOpp);
+        softAssert.assertEquals(OpportunityPage.getContact(), contactName);
+        softAssert.assertEquals(OpportunityPage.getCampaign(), campaign);
+        OpportunityPage.swipeFromBottomToTop();
+        softAssert.assertEquals(OpportunityPage.getProduct(), product);
+        softAssert.assertEquals(OpportunityPage.getNotes(), notes);
+        OpportunityPage.clickLeftMenu();
+
+        LeftMenuPage.clickSearch();
+        SearchPage.search(parentAccount);
+        SearchPage.clickOnFirstSearchResult();
+
+        AccountPage.clickTabContacts();
+        ContactsPage.search(contactName);
 //        ContactsPage.clickBack();
-//        AccountPage.clickTabOpportunities();
-//        OpportunitiesPage.searchOpportunity(opportunityDescription, dateToday.toUpperCase());
-//        softAssert.assertAll();
-//    }
+        AccountPage.clickTabOpportunities();
+        OpportunitiesPage.searchOpportunity(opportunityDescription, dateToday);
+        softAssert.assertAll();
+    }
 
     @AfterMethod
     public void tearDown() {

@@ -43,6 +43,7 @@ public class AddSelectEntityPage extends BasePage{
         hideKeyboard();
         scrollToLabel(value);
         find(MobileBy.xpath("//*[contains(@resource-id, 'item') and @text='" + value + "']")).click();
+        waitByThread(1000);
     }
 
     public static void unselect(String value) {
@@ -50,6 +51,7 @@ public class AddSelectEntityPage extends BasePage{
         hideKeyboard();
         scrollToLabel(value);
         find(MobileBy.xpath("//*[contains(@resource-id, 'item') and @text='" + value + "']")).click();
+        waitByThread(1000);
     }
 
     public static void clickResultsLabel() {

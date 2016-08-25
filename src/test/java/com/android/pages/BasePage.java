@@ -131,6 +131,7 @@ public class BasePage extends Helpers {
 
     public static void selectValueFromPopUp(String value) {
         waitByThread(500);
+        scrollToLabel(value);
         find(MobileBy.xpath(
                 "//*[@class='android.widget.CheckedTextView' and @text='" +
                         value + "']")).click();

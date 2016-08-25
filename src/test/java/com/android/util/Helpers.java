@@ -75,6 +75,10 @@ public class Helpers {
         return driverWait.until(ExpectedConditions.visibilityOf(element));
     }
 
+    public static WebElement waitToBeClickable(By locator) {
+        return driverWait.until(ExpectedConditions.elementToBeClickable(locator));
+    }
+
     public static WebElement find(By locator) {
         return driver.findElement(locator);
     }

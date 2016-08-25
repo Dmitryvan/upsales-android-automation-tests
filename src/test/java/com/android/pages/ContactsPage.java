@@ -13,6 +13,7 @@ public class ContactsPage extends BasePage {
     public static void search(String value) {
 //        IOSElement element = (IOSElement) find(fieldSearch);
 //        element.setValue(value);
+        wait(fieldSearch);
         sendValues(value, fieldSearch);
     }
 
@@ -36,7 +37,7 @@ public class ContactsPage extends BasePage {
     }
 
     public static void selectContact(String contact) {
-        find(MobileBy.IosUIAutomation(
-                ".tableViews()[0].cells().firstWithPredicate(\"staticTexts[0].label=='" + contact + "'\")")).click();
+        find(MobileBy.xpath(
+                "//*[contains(@resource-id, 'header_title') and @text='" + contact + "']")).click();
     }
 }

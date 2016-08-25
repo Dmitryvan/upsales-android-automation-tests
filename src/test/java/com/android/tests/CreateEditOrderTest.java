@@ -143,7 +143,7 @@ public class CreateEditOrderTest extends BaseTest {
         OpportunityManipulationsPage.scrollToLabel(labelOtherInfo);
         softAssert.assertEquals(OpportunityManipulationsPage.getLabelOtherInfo(), labelOtherInfo);
         OpportunityManipulationsPage.clickNewOrderRow();
-        NewOrderRowPage.checkPageTitle(titleNewOrderRow);
+        softAssert.assertEquals(NewOrderRowPage.getTitle(), titleNewOrderRow);
         softAssert.assertEquals(NewOrderRowPage.getLabelCancel(), labelCancel);
         softAssert.assertEquals(NewOrderRowPage.getLabelAdd(), labelAdd);
         softAssert.assertEquals(NewOrderRowPage.getLabelProduct(), labelProduct);
@@ -154,7 +154,7 @@ public class CreateEditOrderTest extends BaseTest {
         softAssert.assertEquals(NewOrderRowPage.getPrice(), defaultPrice);
         softAssert.assertEquals(NewOrderRowPage.getLabelOtherInfo(), labelOtherInfo);
         NewOrderRowPage.clickProduct();
-        AddSelectEntityPage.checkPageTitle(titleAddProduct);
+        softAssert.assertEquals(AddSelectEntityPage.getTitle(), titleAddProduct);
         softAssert.assertEquals(AddSelectEntityPage.getLabelCancel(), labelCancel);
         softAssert.assertEquals(AddSelectEntityPage.getSearchFieldValue(), labelSearch);
         AddSelectEntityPage.select(product);
