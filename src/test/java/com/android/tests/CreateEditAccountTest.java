@@ -413,7 +413,7 @@ public class CreateEditAccountTest extends BaseTest {
         softAssert.assertEquals(AccountManipulationsPage.getZipcodeFieldValue(), otherZipcode);
         softAssert.assertEquals(AccountManipulationsPage.getCityFieldValue(), otherCity);
         softAssert.assertEquals(AccountManipulationsPage.getCountryFieldValue(), otherCountry);
-        AccountManipulationsPage.scrollToLabel(lblOtherInfo);
+        AccountManipulationsPage.swipeFromBottomToTop();
         softAssert.assertEquals(AccountManipulationsPage.getNotes(), notes);
         softAssert.assertEquals(AccountManipulationsPage.getCampaign(), campaign);
         softAssert.assertEquals(AccountManipulationsPage.getCategories(), category);
@@ -452,7 +452,7 @@ public class CreateEditAccountTest extends BaseTest {
         AccountManipulationsPage.enterZipcode(newOtherZipcode);
         AccountManipulationsPage.enterCity(newOtherCity);
         AccountManipulationsPage.enterCountry(newOtherCountry);
-        AccountManipulationsPage.scrollToLabel(lblOtherInfo);
+        AccountManipulationsPage.swipeFromBottomToTop();
         AccountManipulationsPage.typeIntoNotes(newNotes);
         AccountManipulationsPage.clickCampaign();
         AddSelectEntityPage.clickResultsLabel();

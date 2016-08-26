@@ -67,6 +67,7 @@ public class CreateMenuPage extends BasePage {
 
     public static void clickOpportunity() {
         find(buttonOpportunity).click();
+//        waitByThread(2000);
     }
 
     public static void clickOrder() {

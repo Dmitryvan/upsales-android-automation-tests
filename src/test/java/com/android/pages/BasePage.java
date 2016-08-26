@@ -267,6 +267,7 @@ public class BasePage extends Helpers {
     }
 
     public static String getCampaign() {
+        wait(campaign);
         return getText(campaign);
     }
 

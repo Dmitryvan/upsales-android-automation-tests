@@ -13,12 +13,10 @@ public class NewOrderRowPage extends BasePage {
     private static final By buttonQuantity = MobileBy.id("quantity_field");
     private static final By buttonPrice = MobileBy.id("price_field");
 
-    private static final List<WebElement> labels = findElements(MobileBy.id("name"));
-    private static final WebElement labelProduct = labels.get(0);
-    private static final WebElement labelQuantity = labels.get(1);
-    private static final WebElement labelPrice = labels.get(2);
+    private static final By labelProduct = MobileBy.xpath("//*[contains(@resource-id, 'product_field')]//*[contains(@resource-id, 'name')]");
+    private static final By labelQuantity = MobileBy.xpath("//*[contains(@resource-id, 'quantity_field')]//*[contains(@resource-id, 'name')]");
+    private static final By labelPrice = MobileBy.xpath("//*[contains(@resource-id, 'price_field')]//*[contains(@resource-id, 'name')]");
 
-    private static final List<WebElement> values = findElements(MobileBy.id("select"));
     private static final By product = MobileBy.xpath("//*[@text='Product']/../..//*[contains(@resource-id, 'select')]");
 
     private static final By labelOtherInfo = MobileBy.xpath("//*[contains(@resource-id, 'list_custom_field')]//*[contains(@resource-id, 'header_title')]");
@@ -35,7 +33,7 @@ public class NewOrderRowPage extends BasePage {
     }
 
     public static String getLabelProduct() {
-        return labelProduct.getText();
+        return getText(labelProduct);
     }
 
     public static String getProductName() {
@@ -49,11 +47,11 @@ public class NewOrderRowPage extends BasePage {
     }
 
     public static String getLabelQuantity() {
-        return labelQuantity.getText();
+        return getText(labelQuantity);
     }
 
     public static String getLabelPrice() {
-        return labelPrice.getText();
+        return getText(labelPrice);
     }
 
     public static String getPrice() {

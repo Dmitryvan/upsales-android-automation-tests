@@ -79,7 +79,7 @@ public class CalendarPage extends BasePage {
     }
 
     public static String getMonthOnCalendar() {
-        waitByThread(1500);
+        waitByThread(2000);
         return find(monthOnCalendar).getText();
     }
 
