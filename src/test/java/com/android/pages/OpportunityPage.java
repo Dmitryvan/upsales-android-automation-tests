@@ -11,7 +11,7 @@ public class OpportunityPage extends BasePage {
     private static final By orderName = MobileBy.id("order_name");
     private static final By account = MobileBy.id("account_name");
     private static final By stage = MobileBy.xpath("//*[contains(@resource-id, 'stage_order_field')]//*[contains(@resource-id, 'select')]");
-    private static final By user = MobileBy.xpath("//*[contains(@resource-id, 'user')]//*[contains(@resource-id, 'user_name')]");
+    private static final By user = MobileBy.xpath("//*[contains(@resource-id, 'user_container')]//*[contains(@resource-id, 'subTitle')]");
     private static final By userInOrder = MobileBy.xpath("//*[contains(@resource-id, 'sales_representative')]//*[contains(@resource-id, 'user_name')]");
     private static final By contact = MobileBy.xpath("//*[contains(@resource-id, 'contact_field')]//*[contains(@resource-id, 'select')]");
     private static final By campaign = MobileBy.xpath("//*[contains(@resource-id, 'company_field')]//*[contains(@resource-id, 'select')]");

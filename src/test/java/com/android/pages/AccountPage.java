@@ -24,7 +24,7 @@ public class AccountPage extends BasePage {
     private static final By labelAccountName = MobileBy.xpath("//*[contains(@resource-id, 'container_header')]/android.widget.RelativeLayout[1]/android.widget.TextView[1]");
     private static final By labelParent = MobileBy.IosUIAutomation(".tableViews()[0].staticTexts()[1]");
     private static final By labelAccountManager = MobileBy.id("user_title");
-    private static final By labelAccountManagerValue = MobileBy.id("user_name");
+    private static final By labelAccountManagerValue = MobileBy.xpath("//*[contains(@resource-id, 'user_container')]//*[contains(@resource-id, 'user')]//*[contains(@resource-id, 'subTitle')]");
     private static final By labelNextActivity = MobileBy.IosUIAutomation(".tableViews()[0].staticTexts()[4]");
     private static final By labelNextActivityValue = MobileBy.IosUIAutomation(".tableViews()[0].staticTexts()[6]");
     private static final By labelActivitiesCount = MobileBy.IosUIAutomation(".tableViews()[0].staticTexts()[7]");
@@ -42,10 +42,10 @@ public class AccountPage extends BasePage {
     private static final By labelCategoriesValue = MobileBy.IosUIAutomation(".tableViews()[0].cells()[4].staticTexts()[1]");
 
     private static final By tabHome = MobileBy.xpath(".tabBars()[0].buttons()[0]");
-    private static final By tabContacts = MobileBy.xpath("//*[@class='android.widget.TextView' and @text='Contacts']/../..");
+    private static final By tabContacts = MobileBy.xpath("//*[contains(@resource-id, 'title_text') and @text='Contacts']/..");
     private static final By tabActivity = MobileBy.xpath("//*[contains(@resource-id, 'title_text') and @text='Activities']/..");
-    private static final By tabOpportunities = MobileBy.xpath("//*[@class='android.widget.TextView' and @text='Opportunities']/../..");
-    private static final By tabSales = MobileBy.xpath("//*[@class='android.widget.TextView' and @text='Sales']/../..");
+    private static final By tabOpportunities = MobileBy.xpath("//*[@text='Opportunities' and contains(@resource-id, 'title_text')]/..");
+    private static final By tabSales = MobileBy.xpath("//*[contains(@resource-id, 'title_text') and @text='Sales']/..");
 
     public static String getAccountName() {
         wait(labelAccountName);

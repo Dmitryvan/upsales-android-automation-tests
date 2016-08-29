@@ -286,7 +286,7 @@ public class CreateEditAccountTest extends BaseTest {
         softAssert.assertEquals(AccountManipulationsPage.getCityLabelValue(), lblCity);
         softAssert.assertEquals(AccountManipulationsPage.getCountryLabelValue(), lblCountry);
 
-        AccountManipulationsPage.scrollToLabel(lblNotes);
+        AccountManipulationsPage.swipeFromBottomToTop();
 
         softAssert.assertEquals(AccountManipulationsPage.getLabelNotes(), lblNotes);
         softAssert.assertEquals(AccountManipulationsPage.getInsertSignatureValue(), lblInsertSignature);
@@ -787,7 +787,7 @@ public class CreateEditAccountTest extends BaseTest {
         AddSelectEntityPage.select(user);
         ActivityManipulationsPage.clickCampaign();
         AddSelectEntityPage.select(campaign);
-        ActivityManipulationsPage.scrollToLabel(labelOtherInfo.toUpperCase());
+        ActivityManipulationsPage.swipeFromBottomToTop();
         ActivityManipulationsPage.typeIntoNotes(notes);
 
         ActivityManipulationsPage.scrollToLabel("Expenses");
@@ -892,7 +892,6 @@ public class CreateEditAccountTest extends BaseTest {
         AppointmentManipulationsPage.selectDateDay(newStartDay);
         AppointmentManipulationsPage.selectDateYear(newStartYear);
         AppointmentManipulationsPage.closePicker();
-        AppointmentManipulationsPage.clickStartsTime();
         AppointmentManipulationsPage.selectTimeHours(newStartHours);
         AppointmentManipulationsPage.selectTimeMinutes(newStartMinutes);
         AppointmentManipulationsPage.selectTimeAmPm(newStartAmPm);
@@ -902,7 +901,6 @@ public class CreateEditAccountTest extends BaseTest {
         AppointmentManipulationsPage.selectDateDay(newEndDay);
         AppointmentManipulationsPage.selectDateYear(newEndYear);
         AppointmentManipulationsPage.closePicker();
-        AppointmentManipulationsPage.clickEndsTime();
         AppointmentManipulationsPage.selectTimeHours(newEndHours);
         AppointmentManipulationsPage.selectTimeMinutes(newEndMinutes);
         AppointmentManipulationsPage.selectTimeAmPm(newEndAmPm);
@@ -1485,7 +1483,9 @@ public class CreateEditAccountTest extends BaseTest {
 
         AccountPage.clickTabContacts();
         ContactsPage.search(contactName);
+        softAssert.assertEquals(ContactsPage.getFirstSearchResult(), contactName);
 //        ContactsPage.clickBack();
+        AccountPage.clickTabOpportunities();
         AccountPage.clickTabOpportunities();
         OpportunitiesPage.searchOpportunity(opportunityDescription, dateToday);
         softAssert.assertAll();

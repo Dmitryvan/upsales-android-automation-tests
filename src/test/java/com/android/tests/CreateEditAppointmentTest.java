@@ -231,7 +231,6 @@ public class CreateEditAppointmentTest extends BaseTest {
         AppointmentManipulationsPage.selectDateDay(startDay);
         AppointmentManipulationsPage.selectDateYear(startYear);
         AppointmentManipulationsPage.closePicker();
-        AppointmentManipulationsPage.clickStartsTime();
         AppointmentManipulationsPage.selectTimeHours(startHours);
         AppointmentManipulationsPage.selectTimeMinutes(startMinutes);
         AppointmentManipulationsPage.selectTimeAmPm(startAmPm);
@@ -242,7 +241,6 @@ public class CreateEditAppointmentTest extends BaseTest {
         AppointmentManipulationsPage.selectDateDay(endDay);
         AppointmentManipulationsPage.selectDateYear(endYear);
         AppointmentManipulationsPage.closePicker();
-        AppointmentManipulationsPage.clickEndsTime();
         AppointmentManipulationsPage.selectTimeHours(endHours);
         AppointmentManipulationsPage.selectTimeMinutes(endMinutes);
         AppointmentManipulationsPage.selectTimeAmPm(endAmPm);
@@ -289,7 +287,6 @@ public class CreateEditAppointmentTest extends BaseTest {
         AppointmentManipulationsPage.selectDateDay(newStartDay);
         AppointmentManipulationsPage.selectDateYear(newStartYear);
         AppointmentManipulationsPage.closePicker();
-        AppointmentManipulationsPage.clickStartsTime();
         AppointmentManipulationsPage.selectTimeHours(newStartHours);
         AppointmentManipulationsPage.selectTimeMinutes(newStartMinutes);
         AppointmentManipulationsPage.selectTimeAmPm(newStartAmPm);
@@ -299,7 +296,6 @@ public class CreateEditAppointmentTest extends BaseTest {
         AppointmentManipulationsPage.selectDateDay(newEndDay);
         AppointmentManipulationsPage.selectDateYear(newEndYear);
         AppointmentManipulationsPage.closePicker();
-        AppointmentManipulationsPage.clickEndsTime();
         AppointmentManipulationsPage.selectTimeHours(newEndHours);
         AppointmentManipulationsPage.selectTimeMinutes(newEndMinutes);
         AppointmentManipulationsPage.selectTimeAmPm(newEndAmPm);
