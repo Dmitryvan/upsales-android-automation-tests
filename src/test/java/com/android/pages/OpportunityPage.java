@@ -12,7 +12,7 @@ public class OpportunityPage extends BasePage {
     private static final By account = MobileBy.id("account_name");
     private static final By stage = MobileBy.xpath("//*[contains(@resource-id, 'stage_order_field')]//*[contains(@resource-id, 'select')]");
     private static final By user = MobileBy.xpath("//*[contains(@resource-id, 'user_container')]//*[contains(@resource-id, 'subTitle')]");
-    private static final By userInOrder = MobileBy.xpath("//*[contains(@resource-id, 'sales_representative')]//*[contains(@resource-id, 'user_name')]");
+    private static final By userInOrder = MobileBy.xpath("//*[contains(@resource-id, 'sales_representative')]//*[contains(@resource-id, 'subTitle')]");
     private static final By contact = MobileBy.xpath("//*[contains(@resource-id, 'contact_field')]//*[contains(@resource-id, 'select')]");
     private static final By campaign = MobileBy.xpath("//*[contains(@resource-id, 'company_field')]//*[contains(@resource-id, 'select')]");
     private static final By product = MobileBy.xpath("//*[contains(@resource-id, 'order_content')]//*[contains(@resource-id, 'name')]");
@@ -20,7 +20,7 @@ public class OpportunityPage extends BasePage {
     private static final By closeDateInOpportunity = MobileBy.xpath("//android.widget.LinearLayout[@index='4']//android.widget.TextView[@index='0']");
     private static final By closeDateInOrder = MobileBy.xpath("//*[contains(@resource-id, 'close_date')]//*[contains(@resource-id, 'account_counter_value')]");
     private static final By quantityPrice = MobileBy.id("formula");
-    private static final By buttonStage = MobileBy.IosUIAutomation(".tableViews()[0].cells()[0]");
+    private static final By buttonStage = MobileBy.id("stage_order_field");
 
     private static final By popoverEditOpportunity = MobileBy.id("item_edit");
     private static final By popoverAddProductRow = MobileBy.IosUIAutomation(".popover().tableViews()[0].cells()[0]");

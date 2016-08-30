@@ -1373,7 +1373,7 @@ public class CreateEditAccountTest extends BaseTest {
                 AppointmentPage.appEndDateWithDoW());
         softAssert.assertEquals(AppointmentPage.getLocation(), location);
         softAssert.assertEquals(AppointmentPage.getContactOnView(), contactName);
-//        softAssert.assertEquals(AppointmentPage.getContact(), contactTitle);
+        softAssert.assertEquals(AppointmentPage.getContactTitle(), contactTitle);
         softAssert.assertEquals(AppointmentPage.getCampaign(), campaign);
         softAssert.assertEquals(AppointmentPage.getOpportunity(), lblNone);
         AppointmentPage.swipeFromBottomToTop();

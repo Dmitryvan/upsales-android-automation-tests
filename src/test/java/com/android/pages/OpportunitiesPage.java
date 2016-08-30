@@ -10,9 +10,9 @@ import java.util.List;
 
 public class OpportunitiesPage extends BasePage {
 
-    private final static By tableOpportunitiesCells = MobileBy.IosUIAutomation(".tableViews()[0].cells()");
-    private static final By firstOppName = MobileBy.IosUIAutomation(".tableViews()[0].cells()[0].staticTexts()[2]");
-    private static final By firstOppCell = MobileBy.IosUIAutomation(".tableViews()[0].cells()[0]");
+    private final static By tableOpportunitiesCells = MobileBy.id("swipe_layout");
+    private static final By firstOppName = MobileBy.id("name");
+    private static final By firstOppCell = MobileBy.id("swipe_layout");
 
     private static final String elementPathStart = "//android.support.v7.widget.RecyclerView[1]/android.widget.RelativeLayout[";
     private static final String activityDatePathEnd = "]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.TextView[1]";
@@ -24,7 +24,8 @@ public class OpportunitiesPage extends BasePage {
     }
 
     public static String getFirstOppName() {
-        return getValue(firstOppName);
+        wait(firstOppName);
+        return getText(firstOppName);
     }
 
     public static boolean searchOpportunity(String opportunity, String date) {
@@ -78,10 +79,6 @@ public class OpportunitiesPage extends BasePage {
     }
 
     public static int countOpportunities() {
-        int rowCount = 0;
-        for (int i = 0; i < getTableSize(tableOpportunitiesCells); i++) {
-            rowCount++;
-        }
-        return rowCount;
+        return getTableSize(tableOpportunitiesCells);
     }
 }

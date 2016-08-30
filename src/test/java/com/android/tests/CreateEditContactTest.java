@@ -582,7 +582,8 @@ public class CreateEditContactTest extends BaseTest {
         ContactManipulationPage.clickAccount();
         AddSelectEntityPage.select(account);
 
-        ContactManipulationPage.scrollToLabel("Chance");
+        ContactManipulationPage.swipeFromBottomToTop();
+        ContactManipulationPage.swipeFromBottomToTop();
         ContactManipulationPage.clickExtraID();
         ContactManipulationPage.enterExtraID(extraID);
         ContactManipulationPage.clickChanceOfSuccess();
@@ -594,13 +595,12 @@ public class CreateEditContactTest extends BaseTest {
         AppointmentManipulationsPage.setDefaultAppStartEndDates();
         softAssert.assertEquals(defaultAppointmentType, AppointmentManipulationsPage.getAppointmentType());
         softAssert.assertEquals(AppointmentManipulationsPage.getCurrentDate(), AppointmentManipulationsPage.getStartDate());
-        System.out.println(AppointmentManipulationsPage.getEndDate());
         softAssert.assertEquals(AppointmentManipulationsPage.getAppEndDate(), AppointmentManipulationsPage.getEndDate());
         softAssert.assertEquals(AppointmentManipulationsPage.getAccount(), account);
         softAssert.assertEquals(AppointmentManipulationsPage.getContact(), contactName);
         softAssert.assertEquals(AppointmentManipulationsPage.getUser(), defaultUser);
 
-        AppointmentManipulationsPage.scrollToLabel("Hours");
+        AppointmentManipulationsPage.swipeFromBottomToTop();
         AppointmentManipulationsPage.clickHoursInPreparation();
         AppointmentManipulationsPage.enterHoursInPreparation(hoursInPreparation);
 
@@ -609,7 +609,7 @@ public class CreateEditContactTest extends BaseTest {
         softAssert.assertEquals(AppointmentPage.getDescriptionOnView(), defaultDescription);
         softAssert.assertEquals(AppointmentPage.getAccountName(), account);
         softAssert.assertEquals(AppointmentPage.getContactOnView(), contactName);
-        AppointmentManipulationsPage.scrollToLabel("Hours");
+        AppointmentManipulationsPage.swipeFromBottomToTop();
         softAssert.assertEquals(AppointmentPage.getHoursInPreparation(), hoursInPreparation);
         softAssert.assertAll();
     }
@@ -690,7 +690,6 @@ public class CreateEditContactTest extends BaseTest {
         AppointmentManipulationsPage.selectDateDay(newStartDay);
         AppointmentManipulationsPage.selectDateYear(newStartYear);
         AppointmentManipulationsPage.closePicker();
-        AppointmentManipulationsPage.clickStartsTime();
         AppointmentManipulationsPage.selectTimeHours(newStartHours);
         AppointmentManipulationsPage.selectTimeMinutes(newStartMinutes);
         AppointmentManipulationsPage.selectTimeAmPm(newStartAmPm);
@@ -700,7 +699,6 @@ public class CreateEditContactTest extends BaseTest {
         AppointmentManipulationsPage.selectDateDay(newEndDay);
         AppointmentManipulationsPage.selectDateYear(newEndYear);
         AppointmentManipulationsPage.closePicker();
-        AppointmentManipulationsPage.clickEndsTime();
         AppointmentManipulationsPage.selectTimeHours(newEndHours);
         AppointmentManipulationsPage.selectTimeMinutes(newEndMinutes);
         AppointmentManipulationsPage.selectTimeAmPm(newEndAmPm);

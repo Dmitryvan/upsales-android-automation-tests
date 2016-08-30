@@ -143,8 +143,8 @@ public class CreateEditOpportunityTest extends BaseTest {
         OpportunityManipulationsPage.hideKeyboard();
         softAssert.assertEquals(OpportunityManipulationsPage.getLabelOrdersRow(), labelOrdersRow);
         softAssert.assertEquals(OpportunityManipulationsPage.getLabelNewOrderRow(), labelNewOrderRow);
+        OpportunityManipulationsPage.swipeFromBottomToTop();
         softAssert.assertEquals(OpportunityManipulationsPage.getLabelNotes(), labelNotes);
-        OpportunityManipulationsPage.scrollToLabel(labelOtherInfo);
         softAssert.assertEquals(OpportunityManipulationsPage.getLabelOtherInfo(), labelOtherInfo);
         OpportunityManipulationsPage.clickNewOrderRow();
         NewOrderRowPage.checkPageTitle(titleNewOrderRow);
@@ -182,6 +182,7 @@ public class CreateEditOpportunityTest extends BaseTest {
         softAssert.assertEquals(OpportunityPage.getStage(), stageInOpp);
         softAssert.assertEquals(OpportunityPage.getTitleOnView(), titleOpportunity.toUpperCase());
         OpportunityPage.clickAccount();
+        AccountPage.clickTabOpportunities();
         AccountPage.clickTabOpportunities();
         softAssert.assertTrue(OpportunitiesPage.searchOpportunity(opportunityName, today.toUpperCase()));
         softAssert.assertAll();

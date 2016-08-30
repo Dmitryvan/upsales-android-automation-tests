@@ -139,8 +139,8 @@ public class CreateEditOrderTest extends BaseTest {
         OpportunityManipulationsPage.hideKeyboard();
         softAssert.assertEquals(OpportunityManipulationsPage.getLabelOrdersRow(), labelOrdersRow);
         softAssert.assertEquals(OpportunityManipulationsPage.getLabelNewOrderRow(), labelNewOrderRow);
+        OpportunityManipulationsPage.swipeFromBottomToTop();
         softAssert.assertEquals(OpportunityManipulationsPage.getLabelNotes(), labelNotes);
-        OpportunityManipulationsPage.scrollToLabel(labelOtherInfo);
         softAssert.assertEquals(OpportunityManipulationsPage.getLabelOtherInfo(), labelOtherInfo);
         OpportunityManipulationsPage.clickNewOrderRow();
         softAssert.assertEquals(NewOrderRowPage.getTitle(), titleNewOrderRow);

@@ -13,13 +13,9 @@ public class AddSelectEntityPage extends BasePage{
     private static final By labelNone = MobileBy.xpath("//*[@class='android.widget.CheckBox' and @index='0']");
     private static final By buttonCancel = MobileBy.id("cancel");
 
-    public static String getTitle() {
-        return BasePage.getTitle();
-    }
-
-    public static String getTrimTitle() {
-        return Helpers.trimFirstTwoChars(BasePage.getTitle());
-    }
+//    public static String getTitle() {
+//        return BasePage.getTitle();
+//    }
 
     public static String getSearchFieldValue() {
         return getText(fieldSearch);

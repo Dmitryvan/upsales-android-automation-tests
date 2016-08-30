@@ -14,11 +14,12 @@ public class ActivityPage extends BasePage {
     private static final By buttonLeftMenu = MobileBy.className("android.widget.ImageButton");
 
     private static final By buttonAccount = MobileBy.id("account_name");
-    private static final By userValue = MobileBy.id("user_name");
+    private static final By userValue = MobileBy.xpath("//*[contains(@resource-id, 'user')]//*[contains(@resource-id, 'subTitle')]");
     private static final By dateValue = MobileBy.id("date");
     private static final By timeValue = MobileBy.id("time");
     private static final By fieldNotesValue = MobileBy.id("notes");
     private static final By buttonContact = MobileBy.id("contact_root");
+    private static final By contactValue = MobileBy.xpath("//*[contains(@resource-id, 'contact_root')]//*[contains(@resource-id, 'title')]");
 
     private static final By popoverLabelEditActivity = MobileBy.xpath("//android.widget.LinearLayout[@index='0']/android.widget.TextView[@index='1']");
 
@@ -63,8 +64,7 @@ public class ActivityPage extends BasePage {
     }
 
     public static String getContact() {
-        List<WebElement> users = findElements(MobileBy.id("user_title"));
-        return users.get(1).getText();
+        return getText(contactValue);
     }
 
     public static String getUserName() {

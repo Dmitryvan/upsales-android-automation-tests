@@ -170,7 +170,6 @@ public class FollowUpAppointmentTest extends BaseTest {
         AppointmentManipulationsPage.selectDateDay(startDay);
         AppointmentManipulationsPage.selectDateYear(startYear);
         AppointmentManipulationsPage.closePicker();
-        AppointmentManipulationsPage.clickStartsTime();
         AppointmentManipulationsPage.selectTimeHours(startHours);
         AppointmentManipulationsPage.selectTimeMinutes(startMinutes);
         AppointmentManipulationsPage.selectTimeAmPm(startAmPm);
@@ -180,7 +179,6 @@ public class FollowUpAppointmentTest extends BaseTest {
         AppointmentManipulationsPage.selectDateDay(endDay);
         AppointmentManipulationsPage.selectDateYear(endYear);
         AppointmentManipulationsPage.closePicker();
-        AppointmentManipulationsPage.clickEndsTime();
         AppointmentManipulationsPage.selectTimeHours(endHours);
         AppointmentManipulationsPage.selectTimeMinutes(endMinutes);
         AppointmentManipulationsPage.selectTimeAmPm(endAmPm);
@@ -240,7 +238,6 @@ public class FollowUpAppointmentTest extends BaseTest {
         AppointmentManipulationsPage.selectDateDay(newStartDay);
         AppointmentManipulationsPage.selectDateYear(newStartYear);
         AppointmentManipulationsPage.closePicker();
-        AppointmentManipulationsPage.clickStartsTime();
         AppointmentManipulationsPage.selectTimeHours(newStartHours);
         AppointmentManipulationsPage.selectTimeMinutes(newStartMinutes);
         AppointmentManipulationsPage.selectTimeAmPm(newStartAmPm);
@@ -250,7 +247,6 @@ public class FollowUpAppointmentTest extends BaseTest {
         AppointmentManipulationsPage.selectDateDay(newEndDay);
         AppointmentManipulationsPage.selectDateYear(newEndYear);
         AppointmentManipulationsPage.closePicker();
-        AppointmentManipulationsPage.clickEndsTime();
         AppointmentManipulationsPage.selectTimeHours(newEndHours);
         AppointmentManipulationsPage.selectTimeMinutes(newEndMinutes);
         AppointmentManipulationsPage.selectTimeAmPm(newEndAmPm);
@@ -294,7 +290,6 @@ public class FollowUpAppointmentTest extends BaseTest {
         AppointmentManipulationsPage.selectDateDay(startDay);
         AppointmentManipulationsPage.selectDateYear(startYear);
         AppointmentManipulationsPage.closePicker();
-        AppointmentManipulationsPage.clickStartsTime();
         AppointmentManipulationsPage.selectTimeHours(startHours);
         AppointmentManipulationsPage.selectTimeMinutes(startMinutes);
         AppointmentManipulationsPage.selectTimeAmPm(startAmPm);
@@ -304,7 +299,6 @@ public class FollowUpAppointmentTest extends BaseTest {
         AppointmentManipulationsPage.selectDateDay(endDay);
         AppointmentManipulationsPage.selectDateYear(endYear);
         AppointmentManipulationsPage.closePicker();
-        AppointmentManipulationsPage.clickEndsTime();
         AppointmentManipulationsPage.selectTimeHours(endHours);
         AppointmentManipulationsPage.selectTimeMinutes(endMinutes);
         AppointmentManipulationsPage.selectTimeAmPm(endAmPm);
@@ -432,7 +426,6 @@ public class FollowUpAppointmentTest extends BaseTest {
         AppointmentManipulationsPage.selectDateDay(startDay);
         AppointmentManipulationsPage.selectDateYear(startYear);
         AppointmentManipulationsPage.closePicker();
-        AppointmentManipulationsPage.clickStartsTime();
         AppointmentManipulationsPage.selectTimeHours(startHours);
         AppointmentManipulationsPage.selectTimeMinutes(startMinutes);
         AppointmentManipulationsPage.selectTimeAmPm(startAmPm);
@@ -442,7 +435,6 @@ public class FollowUpAppointmentTest extends BaseTest {
         AppointmentManipulationsPage.selectDateDay(endDay);
         AppointmentManipulationsPage.selectDateYear(endYear);
         AppointmentManipulationsPage.closePicker();
-        AppointmentManipulationsPage.clickEndsTime();
         AppointmentManipulationsPage.selectTimeHours(endHours);
         AppointmentManipulationsPage.selectTimeMinutes(endMinutes);
         AppointmentManipulationsPage.selectTimeAmPm(endAmPm);
@@ -493,13 +485,16 @@ public class FollowUpAppointmentTest extends BaseTest {
         softAssert.assertEquals(ActivityManipulationsPage.getDueDate(), ActivityManipulationsPage.getCurrentDate());
         softAssert.assertEquals(ActivityManipulationsPage.getTime(), defaultTime);
         softAssert.assertEquals(ActivityManipulationsPage.getAccount(), appAccount);
-        softAssert.assertEquals(ActivityManipulationsPage.getContact(), " " + appContact);
+        softAssert.assertEquals(ActivityManipulationsPage.getContact(), appContact);
         softAssert.assertEquals(ActivityManipulationsPage.getOpportunity(), defaultOpportunity);
-        softAssert.assertEquals(ActivityManipulationsPage.getUser(), " " + defaultUser);
+        softAssert.assertEquals(ActivityManipulationsPage.getUser(), defaultUser);
         softAssert.assertEquals(ActivityManipulationsPage.getCampaign(), defaultCampaign);
+        ActivityManipulationsPage.swipeFromBottomToTop();
         softAssert.assertTrue(ActivityManipulationsPage.getNotes().startsWith(yourUser));
 
         ActivityManipulationsPage.setDescription();
+        ActivityManipulationsPage.swipeFromTopToBottom();
+        ActivityManipulationsPage.swipeFromTopToBottom();
         String activityDescription = ActivityManipulationsPage.getDescription();
         ActivityManipulationsPage.enterDescription(activityDescription);
         ActivityManipulationsPage.clickActivityType();
@@ -514,9 +509,6 @@ public class FollowUpAppointmentTest extends BaseTest {
         ActivityManipulationsPage.selectTimeMinutes(timeMinutes);
         ActivityManipulationsPage.selectTimeAmPm(timeAmPm);
         ActivityManipulationsPage.closePicker();
-//        ActivityManipulationsPage.clickOpportunity();
-//        ActivityManipulationsPage.spinOpportunityWheelTo(appOpportunity);
-//        ActivityManipulationsPage.clickOpportunity();
         ActivityPage.scrollToLabel("Expenses");
         ActivityManipulationsPage.clickExpenses();
         ActivityManipulationsPage.enterExpenses(expenses);
@@ -534,7 +526,7 @@ public class FollowUpAppointmentTest extends BaseTest {
         ActivityPage.swipeFromBottomToTop();
         ActivityPage.swipeFromBottomToTop();
         ActivityPage.scrollToLabel("Expenses");
-        softAssert.assertEquals(ActivityPage.getExpenses(), expenses);
+        softAssert.assertEquals(ActivityPage.getExpenses(), expenses + " SEK");
 
         ActivityPage.clickBack();
 //        AppointmentPage.clickLeftMenuInFollowUp();
@@ -593,7 +585,6 @@ public class FollowUpAppointmentTest extends BaseTest {
         AppointmentManipulationsPage.selectDateDay(newStartDay);
         AppointmentManipulationsPage.selectDateYear(newStartYear);
         AppointmentManipulationsPage.closePicker();
-        AppointmentManipulationsPage.clickStartsTime();
         AppointmentManipulationsPage.selectTimeHours(newStartHours);
         AppointmentManipulationsPage.selectTimeMinutes(newStartMinutes);
         AppointmentManipulationsPage.selectTimeAmPm(newStartAmPm);
@@ -603,7 +594,6 @@ public class FollowUpAppointmentTest extends BaseTest {
         AppointmentManipulationsPage.selectDateDay(newEndDay);
         AppointmentManipulationsPage.selectDateYear(newEndYear);
         AppointmentManipulationsPage.closePicker();
-        AppointmentManipulationsPage.clickEndsTime();
         AppointmentManipulationsPage.selectTimeHours(newEndHours);
         AppointmentManipulationsPage.selectTimeMinutes(newEndMinutes);
         AppointmentManipulationsPage.selectTimeAmPm(newEndAmPm);
@@ -665,7 +655,8 @@ public class FollowUpAppointmentTest extends BaseTest {
         softAssert.assertEquals(ActivityManipulationsPage.getOpportunity(), defaultOpportunityWithAcc);
         softAssert.assertEquals(ActivityManipulationsPage.getUser(), defaultUser);
         softAssert.assertEquals(ActivityManipulationsPage.getCampaign(), appActCampaign);
-        ActivityManipulationsPage.scrollToLabel(labelOtherInfo);
+        ActivityManipulationsPage.swipeFromBottomToTop();
+//        System.out.println(ActivityManipulationsPage.getNotes());
         softAssert.assertTrue(ActivityManipulationsPage.getNotes().startsWith(appActNotes));
 
         ActivityManipulationsPage.setDescription();

@@ -27,6 +27,7 @@ public class SearchPage extends BasePage {
     }
 
     public static void clickOnFirstSearchResult() {
+        waitByThread(2000);
         WebElement element = find(labelFirstSearchResult);
         Point point = ((Locatable)element).getCoordinates().onPage();
         new TouchAction((MobileDriver)getDriver()).tap(point.getX(), point.getY()).perform();
