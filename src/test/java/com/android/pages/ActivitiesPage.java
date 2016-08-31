@@ -81,6 +81,7 @@ public class ActivitiesPage extends BasePage {
     }
 
     public static boolean searchActivity(String activity, String date) {
+        scrollToLabel(activity);
         int counter = 0;
         int lastValue;
         int cellHeight;
@@ -159,6 +160,7 @@ public class ActivitiesPage extends BasePage {
     }
 
     public static boolean searchActivityByName(String activity) {
+        scrollToLabel(activity);
         int counter = 0;
         int lastValue;
         int cellHeight;

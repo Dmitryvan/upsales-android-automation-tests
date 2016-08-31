@@ -60,6 +60,7 @@ public class CreateEditOrderTest extends BaseTest {
     private final String labelUser = PropertyLoader.loadProperty(orderPropertyPath, "labelUser");
     private final String labelStage = PropertyLoader.loadProperty(orderPropertyPath, "labelStage");
     private final String defaultStage = PropertyLoader.loadProperty(orderPropertyPath, "defaultStage");
+    private final String defaultOrderStage = PropertyLoader.loadProperty(orderPropertyPath, "defaultOrderStage");
     private final String allStages = PropertyLoader.loadProperty(orderPropertyPath, "allOrderStages");
     private final String labelProbability = PropertyLoader.loadProperty(orderPropertyPath, "labelProbability");
     private final String defaultProbability = PropertyLoader.loadProperty(orderPropertyPath, "defaultOrderProbability");
@@ -108,7 +109,7 @@ public class CreateEditOrderTest extends BaseTest {
         softAssert.assertEquals(OpportunityManipulationsPage.getLabelUser(), labelUser);
         softAssert.assertEquals(OpportunityManipulationsPage.getUser(), defaultUser);
         softAssert.assertEquals(OpportunityManipulationsPage.getLabelStage(), labelStage);
-        softAssert.assertEquals(OpportunityManipulationsPage.getStage(), defaultStage);
+        softAssert.assertEquals(OpportunityManipulationsPage.getStage(), defaultOrderStage);
         OpportunityManipulationsPage.clickStage();
         softAssert.assertEquals(OpportunityManipulationsPage.getAllStages(), allStages);
         OpportunityManipulationsPage.closePopUp();

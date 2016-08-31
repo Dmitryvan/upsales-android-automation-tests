@@ -336,6 +336,7 @@ public class FollowUpActivityTest extends BaseTest {
         softAssert.assertTrue(ActivityManipulationsPage.getNotesStartsWith(testNoteStart));
         ActivityManipulationsPage.scrollToLabel("Expenses");
         ActivityManipulationsPage.clickExpenses();
+        ActivityManipulationsPage.clickExpenses();
         ActivityManipulationsPage.enterExpenses(expenses);
         ActivityManipulationsPage.clickSave();
         softAssert.assertEquals(newDescription, BasePage.getDescriptionOnView());

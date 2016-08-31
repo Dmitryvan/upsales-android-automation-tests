@@ -24,6 +24,7 @@
             <class name="com.android.tests.CreateEditAccountTest"/>
             <class name="com.android.tests.FollowUpActivityTest"/>
             <class name="com.android.tests.FollowUpAppointmentTest"/>
+            <class name="com.android.tests.SalesOpportunityTransformationTest"/>
         </classes>
     </test>
 </suite>
