@@ -545,7 +545,7 @@ public class CreateEditAccountTest extends BaseTest {
         AccountManipulationsPage.enterZipcode(otherZipcode);
         AccountManipulationsPage.enterCity(otherCity);
         AccountManipulationsPage.enterCountry(otherCountry);
-        AccountManipulationsPage.scrollToLabel(lblCampaigns);
+        AccountManipulationsPage.swipeFromBottomToTop();
         AccountManipulationsPage.typeIntoNotes(notes);
         AccountManipulationsPage.clickCampaign();
         AddSelectEntityPage.select(campaign);
@@ -626,7 +626,7 @@ public class CreateEditAccountTest extends BaseTest {
         AccountManipulationsPage.enterZipcode(newOtherZipcode);
         AccountManipulationsPage.enterCity(newOtherCity);
         AccountManipulationsPage.enterCountry(newOtherCountry);
-        AccountManipulationsPage.scrollToLabel(lblCampaigns);
+        AccountManipulationsPage.swipeFromBottomToTop();
         AccountManipulationsPage.typeIntoNotes(newNotes);
         AccountManipulationsPage.clickCampaign();
         AddSelectEntityPage.clickResultsLabel();

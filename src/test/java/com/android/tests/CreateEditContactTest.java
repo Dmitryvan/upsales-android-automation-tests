@@ -379,7 +379,8 @@ public class CreateEditContactTest extends BaseTest {
         AddSelectEntityPage.select(account);
         ContactManipulationPage.enterPhone(newPhone);
 
-        ContactManipulationPage.scrollToLabel("Chance");
+        ContactManipulationPage.swipeFromBottomToTop();
+        ContactManipulationPage.swipeFromBottomToTop();
         ContactManipulationPage.clickExtraID();
         ContactManipulationPage.enterExtraID(extraID);
         ContactManipulationPage.clickChanceOfSuccess();
@@ -404,7 +405,8 @@ public class CreateEditContactTest extends BaseTest {
         AddSelectEntityPage.clickSelect();
         ContactManipulationPage.typeIntoNotes(notes);
 
-        ContactManipulationPage.scrollToLabel("Chance");
+        ContactManipulationPage.swipeFromBottomToTop();
+        ContactManipulationPage.swipeFromBottomToTop();
         ContactManipulationPage.clickExtraID();
         ContactManipulationPage.clearExtraID();
         ContactManipulationPage.enterExtraID(newExtraID);
@@ -419,9 +421,10 @@ public class CreateEditContactTest extends BaseTest {
         softAssert.assertEquals(ContactPage.getCampaign(), labelNone);
         softAssert.assertEquals(ContactPage.getCategory(), labelNone);
 
-//        ContactPage.scrollToLabel("Extra ID");
-//        softAssert.assertEquals(ContactPage.getExtraID(), extraID);
-//        softAssert.assertEquals(ContactPage.getChanceOfSuccess(), chanceOfSuccess + "%");
+        ContactManipulationPage.swipeFromBottomToTop();
+        ContactManipulationPage.swipeFromBottomToTop();
+        softAssert.assertEquals(ContactPage.getExtraID(), extraID);
+        softAssert.assertEquals(ContactPage.getChanceOfSuccess(), chanceOfSuccess + "%");
 
         softAssert.assertAll();
     }

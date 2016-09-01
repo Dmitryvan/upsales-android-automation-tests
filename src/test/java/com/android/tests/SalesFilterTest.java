@@ -82,7 +82,7 @@ public class SalesFilterTest extends BaseTest {
         softAssert.assertAll();
     }
 
-    @Test
+    @Test(priority = 4)
     public void selectUser() {
         FilterPage.clickUsers();
         FilterPage.select(user1);

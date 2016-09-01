@@ -61,10 +61,12 @@ public class ContactManipulationPage extends BasePage {
 
     public static void enterPhone(String phone) {
         sendValues(phone, fieldPhone);
+        hideKeyboard();
     }
 
     public static void enterMobile(String mobile) {
         sendValues(mobile, fieldMobile);
+        hideKeyboard();
     }
 
     public static void enterEmail(String email) {

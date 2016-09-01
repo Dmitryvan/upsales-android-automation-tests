@@ -25,8 +25,8 @@ public class ContactPage extends BasePage {
     private static final By categoryWithPhone = MobileBy.IosUIAutomation(".tableViews()[0].cells()[2].staticTexts()[1]");
     private static final By extraIDWithoutData = MobileBy.xpath("//android.widget.RelativeLayout[@index='8']//android.widget.EditText[@index='0']");
     private static final By chanceOfSuccessWithoutData = MobileBy.xpath("//android.widget.RelativeLayout[@index='9']//android.widget.EditText[@index='0']");
-    private static final By extraID = MobileBy.xpath("//android.widget.RelativeLayout[@index='6']//android.widget.RelativeLayout[@index='8']//android.widget.EditText[@index='0']");
-    private static final By chanceOfSuccess = MobileBy.xpath("//android.widget.RelativeLayout[@index='6']//android.widget.RelativeLayout[@index='9']//android.widget.EditText[@index='0']");
+    private static final By extraID = MobileBy.xpath("//*[@text='extra ID']/..//*[contains(@resource-id, 'edit_field')]");
+    private static final By chanceOfSuccess = MobileBy.xpath("//*[@text='Chance of success']/..//*[contains(@resource-id, 'edit_field')]");
     private static final By labelShowMore = MobileBy.IosUIAutomation(".tableViews()[0].cells().firstWithPredicate(\"staticTexts[0].name=='Show more (2)'\")");
     private static final By labelShowNotes = MobileBy.IosUIAutomation(".tableViews()[0].cells().firstWithPredicate(\"staticTexts[0].name=='Notes'\").buttons()[0]");
     private static final By labelShowLess = MobileBy.IosUIAutomation(".tableViews()[0].cells().firstWithPredicate(\"staticTexts[0].name=='Show less'\")");
