@@ -28,7 +28,7 @@ public class ActivityPage extends BasePage {
 
     private static final By labelShowMore = MobileBy.IosUIAutomation(".scrollViews()[0].tableViews()[0].cells()[5]");
 
-    private static final By fieldExpanses = MobileBy.xpath("//android.widget.RelativeLayout[@index='8']//android.widget.EditText[@index='0']");
+    private static final By fieldExpanses = MobileBy.xpath("//*[@text='Expenses']/..//*[contains(@resource-id, 'edit_field')]");
 
     public static String getExpenses() {
         return getText(fieldExpanses);

@@ -90,40 +90,39 @@ public class SalesOpportunityTransformationTest extends BaseTest {
         softAssert.assertAll();
     }
 
-//    @Test(priority = 4) //CASE 4
-//    public void softOpportunityTransformationToSales2() throws InterruptedException {
-//        SoftAssertExtended softAssert = new SoftAssertExtended();
-//        AccountPage.clickTabOpportunities();
-//        String oppName = OpportunitiesPage.getFirstOppName();
-//        OpportunitiesPage.clickFirstOppCell();
-//        OpportunityPage.clickStage();
-//        OpportunityPage.spinWheelToTheStage(orderStage2);
-//        Thread.sleep(600);
-//        OpportunityPage.clickStage();
-//        softAssert.assertEquals(OpportunityPage.getDescription(), oppName);
-//        softAssert.assertEquals(OpportunityPage.getAccount(), testAccount + "  ");
-//        OpportunityPage.checkPageTitle(titleOrder.toUpperCase());
-//        softAssert.assertAll();
-//    }
-//
-//    @Test(priority = 5) //CASE 5
-//    public void softOpportunityTransformationToSalesAndCheckAccountPage() throws InterruptedException {
-//        SoftAssertExtended softAssert = new SoftAssertExtended();
-//        AccountPage.clickTabSales();
-//        int startSales = OrdersPage.countOpportunities();
-//        OrdersPage.clickBack();
-//        AccountPage.clickTabOpportunities();
-//        OpportunitiesPage.clickFirstOppCell();
-//        OpportunityPage.clickStage();
-//        OpportunityPage.spinWheelToTheStage(orderStage2);
-//        Thread.sleep(600);
-//        OpportunityPage.clickStage();
-//        OpportunityPage.clickBack();
-//        AccountPage.checkPageTitle(testAccount + " Opportunities");
-//        AccountPage.clickTabSales();
-//        softAssert.assertTrue(OrdersPage.countOpportunities() > startSales);
-//        softAssert.assertAll();
-//    }
+    @Test(priority = 4) //CASE 4
+    public void softOpportunityTransformationToSales2() throws InterruptedException {
+        SoftAssertExtended softAssert = new SoftAssertExtended();
+        AccountPage.clickTabOpportunities();
+        String oppName = OpportunitiesPage.getFirstOppName();
+        OpportunitiesPage.clickFirstOppCell();
+        OpportunityPage.clickStage();
+        OpportunityPage.selectValueFromPopUp(orderStage2);
+        Thread.sleep(2000);
+        softAssert.assertEquals(OpportunityPage.getOrderName(), oppName);
+        softAssert.assertEquals(OpportunityPage.getAccount(), testAccount);
+        OpportunityPage.checkPageTitle(titleOrder.toUpperCase());
+        softAssert.assertAll();
+    }
+
+    @Test(priority = 5) //CASE 5
+    public void softOpportunityTransformationToSalesAndCheckAccountPage() throws InterruptedException {
+        SoftAssertExtended softAssert = new SoftAssertExtended();
+        AccountPage.clickTabSales();
+        int startSales = OrdersPage.countOpportunities();
+        OrdersPage.clickBack();
+        AccountPage.clickTabOpportunities();
+        OpportunitiesPage.clickFirstOppCell();
+        OpportunityPage.clickStage();
+        OpportunityPage.selectValueFromPopUp(orderStage2);
+        Thread.sleep(2000);
+        OpportunityPage.clickBack();
+        softAssert.assertEquals(OpportunitiesPage.getSubTitle() + " " + OpportunitiesPage.getTitle(),
+                testAccount + " Opportunities");
+        AccountPage.clickTabSales();
+        softAssert.assertTrue(OrdersPage.countOpportunities() > startSales);
+        softAssert.assertAll();
+    }
 
     @AfterMethod
     public void tearDown() {

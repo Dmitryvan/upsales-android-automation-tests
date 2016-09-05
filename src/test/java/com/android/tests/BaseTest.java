@@ -25,7 +25,7 @@ public class BaseTest {
 //        capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "6.0");
 //        capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "Nexus_6P_API_23");
         capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "Nexus");
-        capabilities.setCapability(MobileCapabilityType.UDID, "ENU7N15B10001171");
+        capabilities.setCapability(MobileCapabilityType.UDID, "0139488fe3715743");
         capabilities.setCapability(MobileCapabilityType.APP, app.getAbsolutePath());
         if (driver != null) { driver.quit(); }
         driver = new AndroidDriver<>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);

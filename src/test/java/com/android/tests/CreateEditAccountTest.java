@@ -790,7 +790,7 @@ public class CreateEditAccountTest extends BaseTest {
         ActivityManipulationsPage.swipeFromBottomToTop();
         ActivityManipulationsPage.typeIntoNotes(notes);
 
-        ActivityManipulationsPage.scrollToLabel("Expenses");
+        ActivityManipulationsPage.swipeFromBottomToTop();
         ActivityManipulationsPage.clickExpenses();
         ActivityManipulationsPage.enterExpenses(newExpenses);
         ActivityManipulationsPage.clickSave();
@@ -805,7 +805,7 @@ public class CreateEditAccountTest extends BaseTest {
         softAssert.assertEquals(ActivityPage.getCampaign(), campaign);
         softAssert.assertEquals(ActivityPage.getOpportunity(), lblNone);
 //        ActivityPage.clickShowMore();
-        ActivityManipulationsPage.scrollToLabel("Expenses");
+        ActivityManipulationsPage.swipeFromBottomToTop();
         softAssert.assertEquals(ActivityPage.getExpenses(), newExpenses + " SEK");
         softAssert.assertEquals(ActivityPage.getNotes(), notes);
         softAssert.assertAll();
