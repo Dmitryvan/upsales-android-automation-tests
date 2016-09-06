@@ -218,11 +218,12 @@ public class BasePage extends Helpers {
     }
 
     public static void enterDescription (String description) {
-        AndroidElement element = (AndroidElement) find(fieldDescription);
-        element.click();
-        element.clear();
-        element.sendKeys(description);
-        hideKeyboard();
+        clearAndType(description, fieldDescription);
+//        AndroidElement element = (AndroidElement) find(fieldDescription);
+//        element.click();
+//        element.clear();
+//        element.sendKeys(description);
+//        hideKeyboard();
     }
 
     public static String getLabelDescription() {
