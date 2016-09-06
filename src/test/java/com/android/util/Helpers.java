@@ -79,6 +79,10 @@ public class Helpers {
         return driverWait.until(ExpectedConditions.elementToBeClickable(locator));
     }
 
+    public static WebElement waitToBeClickable(WebElement element) {
+        return driverWait.until(ExpectedConditions.elementToBeClickable(element));
+    }
+
     public static WebElement find(By locator) {
         return driver.findElement(locator);
     }
@@ -500,8 +504,18 @@ public class Helpers {
     }
 
     protected static void clearAndType(String accountName, By locator) {
-        find(locator).clear();
-        find(locator).sendKeys(accountName);
+        WebElement element = find(locator);
+        clearField(element);
+        element.sendKeys(accountName);
         hideKeyboard();
+    }
+
+    public static void clearField(WebElement element) {
+        int textLength = element.getText().length();
+        waitToBeClickable(element);
+        element.click();
+        for (int i = 0; i < textLength; i++) {
+            ((AndroidDriver)getDriver()).pressKeyCode(BasePage.DELETE_KEYCODE);
+        }
     }
 }

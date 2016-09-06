@@ -168,13 +168,13 @@ public class ContactPage extends BasePage {
         find(labelShowLess).click();
     }
 
-    public static void swipeFromTopToBottom() {
-        Dimension size = BaseTest.driver.manage().window().getSize();
-        int starty = (int) (size.height * 0.80);
-        int endy = (int) (size.height * 0.20);
-        int startx = size.width / 2;
-        BaseTest.driver.swipe(startx, endy, startx, starty, 500);
-    }
+//    public static void swipeFromTopToBottom() {
+//        Dimension size = BaseTest.driver.manage().window().getSize();
+//        int starty = (int) (size.height * 0.50);
+//        int endy = (int) (size.height * 0.10);
+//        int startx = size.width / 2;
+//        BaseTest.driver.swipe(startx, endy, startx, starty, 500);
+//    }
 
     public static String getAlertTitle() {
         waitByThread(1000);
