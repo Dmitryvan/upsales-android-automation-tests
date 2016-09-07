@@ -87,6 +87,7 @@ public class BasePage extends Helpers {
     }
 
     public static void clickLeftMenu() {
+        waitToBeClickable(buttonLeftMenu);
         find(buttonLeftMenu).click();
     }
 
@@ -264,6 +265,7 @@ public class BasePage extends Helpers {
     }
 
     public static String getDescriptionOnView() {
+        wait(description);
         return getText(description);
     }
 

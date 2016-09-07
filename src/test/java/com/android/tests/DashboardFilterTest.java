@@ -9,6 +9,7 @@ import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertFalse;
+import static org.testng.Assert.assertTrue;
 
 @Listeners(com.android.util.ScreenshotTaker.class)
 public class DashboardFilterTest extends BaseTest {
@@ -154,7 +155,7 @@ public class DashboardFilterTest extends BaseTest {
     public void searchUser() throws InterruptedException {
         FilterPage.clickUsers();
         FilterPage.search(searchValue);
-        FilterPage.checkFirstSearchResultContains(searchValue);
+        assertTrue(FilterPage.checkFirstSearchResultContains(searchValue));
         FilterPage.saveFirstSearchResultValue();
         FilterPage.selectFirstSearchResult();
         FilterPage.clickBack();

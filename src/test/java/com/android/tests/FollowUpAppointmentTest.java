@@ -142,6 +142,7 @@ public class FollowUpAppointmentTest extends BaseTest {
     private final String appActAccount = PropertyLoader.loadProperty(followUpAppointmentPropertyPath, "accAccount");
     private final String appActAppointment = PropertyLoader.loadProperty(followUpAppointmentPropertyPath, "accAppointment");
     private final String appActType = PropertyLoader.loadProperty(followUpAppointmentPropertyPath, "accType");
+    private final String appActTypeInEdit = PropertyLoader.loadProperty(followUpAppointmentPropertyPath, "accTypeInEdit");
     private final String appActContact = PropertyLoader.loadProperty(followUpAppointmentPropertyPath, "accContact");
     private final String appActCampaign = PropertyLoader.loadProperty(followUpAppointmentPropertyPath, "accCampaign");
     private final String appActNotes = PropertyLoader.loadProperty(followUpAppointmentPropertyPath, "accNotes");
@@ -560,7 +561,7 @@ public class FollowUpAppointmentTest extends BaseTest {
         AppointmentManipulationsPage.hideKeyboard();
         softAssert.assertEquals(AppointmentManipulationsPage.getTitle(), titleCreateAppointment);
         softAssert.assertEquals(AppointmentManipulationsPage.getLabelDescription(), defaultLabelDescription);
-        softAssert.assertEquals(AppointmentManipulationsPage.getAppointmentType(), appActType);
+        softAssert.assertEquals(AppointmentManipulationsPage.getAppointmentType(), appActTypeInEdit);
         softAssert.assertEquals(AppointmentManipulationsPage.getDefaultAppStartDate(),
                 AppointmentManipulationsPage.getStartDate() + " " + AppointmentManipulationsPage.getStartTime());
         softAssert.assertEquals(AppointmentManipulationsPage.getDefaultAppEndDate(),

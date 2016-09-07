@@ -22,6 +22,7 @@ public class ContactsPage extends BasePage {
     }
 
     public static void clickSearch() {
+        wait(fieldSearch);
         find(fieldSearch).click();
     }
 

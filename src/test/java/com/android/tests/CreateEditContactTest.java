@@ -315,7 +315,8 @@ public class CreateEditContactTest extends BaseTest {
         ContactManipulationPage.clickAccount();
         AddSelectEntityPage.select(account);
 
-        ContactManipulationPage.scrollToLabel("Chance");
+        ContactManipulationPage.swipeFromBottomToTop();
+        ContactManipulationPage.swipeFromBottomToTop();
         ContactManipulationPage.clickExtraID();
         ContactManipulationPage.enterExtraID(extraID);
         ContactManipulationPage.clickChanceOfSuccess();
@@ -339,7 +340,7 @@ public class CreateEditContactTest extends BaseTest {
         AddSelectEntityPage.clickSelect();
         ContactManipulationPage.typeIntoNotes(notes);
 
-        ContactManipulationPage.scrollToLabel("Chance");
+        ContactManipulationPage.swipeFromBottomToTop();
         ContactManipulationPage.clickExtraID();
         ContactManipulationPage.clearExtraID();
         ContactManipulationPage.enterExtraID(newExtraID);
@@ -359,7 +360,8 @@ public class CreateEditContactTest extends BaseTest {
 //        ContactPage.clickShowNotes();
         softAssert.assertEquals(ContactPage.getNotes(), notes);
 //        ContactPage.clickShowMore();
-        ContactPage.scrollToLabel("Extra ID");
+        ContactPage.swipeFromBottomToTop();
+        ContactPage.swipeFromBottomToTop();
         softAssert.assertEquals(ContactPage.getExtraID(), newExtraID);
         softAssert.assertEquals(ContactPage.getChanceOfSuccess(), newChanceOfSuccess + "%");
 //        ContactPage.clickShowLess();
@@ -655,7 +657,8 @@ public class CreateEditContactTest extends BaseTest {
         ContactManipulationPage.clickAccount();
         AddSelectEntityPage.select(account);
 
-        ContactManipulationPage.scrollToLabel("Chance");
+        ContactManipulationPage.swipeFromBottomToTop();
+        ContactManipulationPage.swipeFromBottomToTop();
         ContactManipulationPage.clickExtraID();
         ContactManipulationPage.enterExtraID(extraID);
         ContactManipulationPage.clickChanceOfSuccess();
@@ -675,7 +678,7 @@ public class CreateEditContactTest extends BaseTest {
         ActivityManipulationsPage.scrollToLabel(labelOtherInfo);
         AppointmentManipulationsPage.typeIntoNotes(notes);
 
-        AppointmentManipulationsPage.scrollToLabel("Hours");
+        AppointmentManipulationsPage.swipeFromBottomToTop();
         AppointmentManipulationsPage.clickHoursInPreparation();
         AppointmentManipulationsPage.enterHoursInPreparation(hoursInPreparation);
 

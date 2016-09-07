@@ -22,7 +22,7 @@ public class SearchPage extends BasePage {
     }
 
     public static String getFirstSearchResult() {
-        getDriver().manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        waitToBeClickable(labelFirstSearchResult);
         return getText(labelFirstSearchResult);
     }
 

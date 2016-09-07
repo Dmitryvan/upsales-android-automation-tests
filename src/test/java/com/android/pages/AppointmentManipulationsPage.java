@@ -169,6 +169,8 @@ public class AppointmentManipulationsPage extends BasePage {
     }
 
     public static void clickHoursInPreparation() {
+        wait(hoursInPreparation);
+        waitToBeClickable(hoursInPreparation);
         find(hoursInPreparation).click();
     }
 

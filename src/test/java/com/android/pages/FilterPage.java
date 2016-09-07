@@ -7,7 +7,6 @@ import org.openqa.selenium.WebElement;
 import java.util.List;
 
 import static org.apache.commons.lang3.StringUtils.containsIgnoreCase;
-import static org.testng.AssertJUnit.assertTrue;
 
 public class FilterPage extends BasePage {
 
@@ -148,8 +147,8 @@ public class FilterPage extends BasePage {
         find(fieldSearch).sendKeys(value);
     }
 
-    public static void checkFirstSearchResultContains(String value) {
-        assertTrue(containsIgnoreCase(getText(labelFirstSearchResult), value));
+    public static boolean checkFirstSearchResultContains(String value) {
+        return containsIgnoreCase(getText(labelFirstSearchResult), value);
     }
 
     public static void selectFirstSearchResult() {

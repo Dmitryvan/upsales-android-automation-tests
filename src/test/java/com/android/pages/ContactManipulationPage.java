@@ -25,6 +25,8 @@ public class ContactManipulationPage extends BasePage {
     private static final By buttonOpportunity = MobileBy.id("opportunity");
 
     public static void clickNoThanks() {
+        wait(buttonNoThanks);
+        waitToBeClickable(buttonNoThanks);
         find(buttonNoThanks).click();
         waitByThread(2000);
     }
@@ -83,6 +85,8 @@ public class ContactManipulationPage extends BasePage {
     }
 
     public static void clickExtraID() {
+        wait(fieldExtraID);
+        waitToBeClickable(fieldExtraID);
         find(fieldExtraID).click();
     }
 
