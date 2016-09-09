@@ -84,7 +84,6 @@ public class NewOrderRowPage extends BasePage {
     }
 
     public static void enterPrice(String value) {
-        find(price).clear();
         sendValues(value, price);
     }
 
@@ -97,7 +96,6 @@ public class NewOrderRowPage extends BasePage {
     }
 
     public static void enterQuantity(String value) {
-        find(quantity).clear();
         sendValues(value, quantity);
     }
 }

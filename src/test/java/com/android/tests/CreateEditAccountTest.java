@@ -1053,7 +1053,8 @@ public class CreateEditAccountTest extends BaseTest {
         ContactManipulationPage.enterContactName(contactName);
         ContactManipulationPage.hideKeyboard();
         assertEquals(ContactManipulationPage.getAccount(), accountName);
-        ContactManipulationPage.scrollToLabel("Chance");
+        ContactManipulationPage.swipeFromBottomToTop();
+        ContactManipulationPage.swipeFromBottomToTop();
         ContactManipulationPage.clickExtraID();
         ContactManipulationPage.enterExtraID(extraID);
         ContactManipulationPage.clickChanceOfSuccess();
