@@ -442,7 +442,8 @@ public class FollowUpAppointmentTest extends BaseTest {
         AppointmentManipulationsPage.closePicker();
         AppointmentManipulationsPage.clickAppointmentType();
         AppointmentManipulationsPage.selectValueFromPopUp(newAppointmentType);
-        AppointmentManipulationsPage.scrollToLabel("Hours in");
+        AppointmentManipulationsPage.swipeFromBottomToTop();
+        AppointmentManipulationsPage.swipeFromBottomToTop();
         AppointmentManipulationsPage.clickHoursInPreparation();
         AppointmentManipulationsPage.enterHoursInPreparation(hoursInPreparation);
 //        AppointmentManipulationsPage.clickOpportunity();

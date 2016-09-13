@@ -61,6 +61,7 @@ public class AppointmentPage extends BasePage {
     }
 
     public static String getAccountName() {
+        waitToBeClickable(buttonAccount);
         return getText(buttonAccount);
     }
 
