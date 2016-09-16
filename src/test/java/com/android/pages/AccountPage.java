@@ -109,23 +109,23 @@ public class AccountPage extends BasePage {
     }
 
     public static void clickTabContacts() {
-        wait(tabContacts);
-        waitToBeClickable(tabContacts);
-        find(tabContacts).click();
+        clickTab(tabContacts);
     }
 
     public static void clickTabActivities() {
-        waitToBeClickable(tabActivity);
-        find(tabActivity).click();
+        clickTab(tabActivity);
     }
 
     public static void clickTabOpportunities() {
-        wait(tabOpportunities);
-        find(tabOpportunities).click();
+        clickTab(tabOpportunities);
     }
 
     public static void clickTabSales() {
-        wait(tabSales);
-        find(tabSales).click();
+        clickTab(tabSales);
+    }
+
+    private static void clickTab(By tab) {
+        waitByThread(1500);
+        find(tab).click();
     }
 }

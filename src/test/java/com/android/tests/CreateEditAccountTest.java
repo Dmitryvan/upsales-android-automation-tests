@@ -1214,7 +1214,7 @@ public class CreateEditAccountTest extends BaseTest {
 
         ContactPage.checkPageTitle(contactPageTitle);
         softAssert.assertEquals(ContactPage.getContactName(), contactName);
-        softAssert.assertEquals(ContactPage.getContactTitle(), contactNewTitle);
+        softAssert.assertEquals(ContactPage.getContactTitle(), contactNewTitle.toUpperCase());
         softAssert.assertEquals(ContactPage.getAccount(), parentAccount);
         softAssert.assertEquals(ContactPage.getCampaign(), newCampaign);
         softAssert.assertEquals(ContactPage.getCategory(), contactNewCategory);
@@ -1394,7 +1394,7 @@ public class CreateEditAccountTest extends BaseTest {
         ContactsPage.selectContact(contactName);
         softAssert.assertEquals(ContactPage.getTitle(), contactPageTitle);
         softAssert.assertEquals(ContactPage.getContactName(), contactName);
-        softAssert.assertEquals(ContactPage.getContactTitle(), contactTitle);
+        softAssert.assertEquals(ContactPage.getContactTitle(), contactTitle.toUpperCase());
         softAssert.assertEquals(ContactPage.getAccount(), parentAccount);
         softAssert.assertEquals(ContactPage.getPhone(), contactPhone);
         softAssert.assertEquals(ContactPage.getMobile(), contactMobile);

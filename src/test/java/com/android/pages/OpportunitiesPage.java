@@ -79,6 +79,7 @@ public class OpportunitiesPage extends BasePage {
     }
 
     public static int countOpportunities() {
+        waitByThread(2000);
         return getTableSize(tableOpportunitiesCells);
     }
 }

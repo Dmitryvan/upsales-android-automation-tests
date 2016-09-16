@@ -260,7 +260,7 @@ public class CreateEditOpportunityTest extends BaseTest {
         softAssert.assertEquals(OpportunityPage.getCloseDateInOpportunity(), OpportunityPage.getCurrentDate());
         softAssert.assertEquals(OpportunityPage.getContact(), contact);
         softAssert.assertEquals(OpportunityPage.getCampaign(), defaultCampaign);
-        OpportunityManipulationsPage.scrollToLabel(labelOtherInfo);
+        OpportunityManipulationsPage.swipeFromBottomToTop();
         softAssert.assertEquals(OpportunityPage.getProduct(), product);
         softAssert.assertEquals(OpportunityPage.getNotes(), notes);
         softAssert.assertAll();
@@ -344,11 +344,11 @@ public class CreateEditOpportunityTest extends BaseTest {
         softAssert.assertEquals(OpportunityPage.getCloseDateInOpportunity(), newCloseDate);
         softAssert.assertEquals(OpportunityPage.getContact(), newContact);
         softAssert.assertEquals(OpportunityPage.getCampaign(), newCampaign);
-        softAssert.assertEquals(OpportunityPage.getNotes(), newNotes);
-        OpportunityManipulationsPage.scrollToLabel(labelOtherInfo);
         softAssert.assertEquals(OpportunityPage.getProduct(), newProduct);
         softAssert.assertEquals(OpportunityPage.getQuantity(), newQuantity);
         softAssert.assertEquals(OpportunityPage.getPrice(), newPrice);
+        OpportunityManipulationsPage.swipeFromBottomToTop();
+        softAssert.assertEquals(OpportunityPage.getNotes(), newNotes);
         OpportunityPage.clickLeftMenu();
         LeftMenuPage.clickSearch();
         SearchPage.search(account);
