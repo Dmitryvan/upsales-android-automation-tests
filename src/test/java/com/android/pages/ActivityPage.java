@@ -47,6 +47,7 @@ public class ActivityPage extends BasePage {
     }
 
     public static void clickAccount() {
+        waitToBeClickable(buttonAccount);
         find(buttonAccount).click();
     }
 

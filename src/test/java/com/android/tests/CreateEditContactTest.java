@@ -147,7 +147,7 @@ public class CreateEditContactTest extends BaseTest {
         softAssert.assertEquals(ContactManipulationPage.getLabelDescription(), defaultLabelContactName);
         softAssert.assertEquals(ContactManipulationPage.getDefaultLabelTitle(), defaultLabelTitle);
         softAssert.assertEquals(ContactManipulationPage.getLabelAccount(), labelWorksAt);
-        softAssert.assertEquals(ContactManipulationPage.getAccount(), defaultWorksAt);
+        softAssert.assertEquals(ContactManipulationPage.getAccount(), labelNone);
         ContactManipulationPage.clickAccount();
         softAssert.assertEquals(AddSelectEntityPage.getTitle(), titleSelectAccount);
         softAssert.assertEquals(AddSelectEntityPage.getSearchFieldValue(), labelSearch);
@@ -287,7 +287,7 @@ public class CreateEditContactTest extends BaseTest {
         ContactManipulationPage.clickSave();
         softAssert.assertEquals(ContactPage.getContactName(), newContactName);
         softAssert.assertEquals(ContactPage.getAccount(), account);
-        softAssert.assertEquals(ContactPage.getContactTitle(), newTitle);
+        softAssert.assertEquals(ContactPage.getContactTitle(), newTitle.toUpperCase());
         softAssert.assertEquals(ContactPage.getPhone(), newPhone);
         softAssert.assertEquals(ContactPage.getMobile(), newMobile);
         softAssert.assertEquals(ContactPage.getEmail(), newEmail);
@@ -353,7 +353,7 @@ public class CreateEditContactTest extends BaseTest {
         ContactManipulationPage.clickSave();
         softAssert.assertEquals(ContactPage.getContactName(), newContactName);
         softAssert.assertEquals(ContactPage.getAccount(), account);
-        softAssert.assertEquals(ContactPage.getContactTitle(), title);
+        softAssert.assertEquals(ContactPage.getContactTitle(), title.toUpperCase());
         softAssert.assertEquals(ContactPage.getPhone(), phone);
         softAssert.assertEquals(ContactPage.getMobile(), mobile);
         softAssert.assertEquals(ContactPage.getEmail(), email);
@@ -878,8 +878,8 @@ public class CreateEditContactTest extends BaseTest {
         softAssert.assertEquals(OpportunityPage.getCloseDateInOpportunity(), newCloseDate);
         softAssert.assertEquals(OpportunityPage.getContact(), contactName);
         softAssert.assertEquals(OpportunityPage.getCampaign(), newCampaign);
-        softAssert.assertEquals(OpportunityPage.getNotes(), newNotes);
         OpportunityManipulationsPage.swipeFromBottomToTop();
+        softAssert.assertEquals(OpportunityPage.getNotes(), newNotes);
         softAssert.assertEquals(OpportunityPage.getProduct(), newProduct);
         softAssert.assertAll();
     }

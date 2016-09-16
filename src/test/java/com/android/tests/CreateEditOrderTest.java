@@ -258,9 +258,9 @@ public class CreateEditOrderTest extends BaseTest {
         softAssert.assertEquals(OpportunityPage.getCloseDateInOrder(), Helpers.getCurrentDate());
         softAssert.assertEquals(OpportunityPage.getContact(), contact);
         softAssert.assertEquals(OpportunityPage.getCampaign(), labelNone);
-        softAssert.assertEquals(OpportunityPage.getNotes(), notes);
-        OpportunityManipulationsPage.scrollToLabel(labelOtherInfo);
         softAssert.assertEquals(OpportunityPage.getProduct(), product);
+        OpportunityManipulationsPage.swipeFromBottomToTop();
+        softAssert.assertEquals(OpportunityPage.getNotes(), notes);
         softAssert.assertAll();
     }
 
@@ -334,9 +334,9 @@ public class CreateEditOrderTest extends BaseTest {
         softAssert.assertEquals(OpportunityPage.getCloseDateInOrder(), newCloseDate);
         softAssert.assertEquals(OpportunityPage.getContact(), newContact);
         softAssert.assertEquals(OpportunityPage.getCampaign(), newCampaign);
-        softAssert.assertEquals(OpportunityPage.getNotes(), newNotes);
-        OpportunityPage.scrollToLabel(labelOtherInfo);
         softAssert.assertEquals(OpportunityPage.getProduct(), newProduct);
+        OpportunityPage.swipeFromBottomToTop();
+        softAssert.assertEquals(OpportunityPage.getNotes(), newNotes);
         OpportunityPage.clickLeftMenu();
         LeftMenuPage.clickSearch();
         SearchPage.search(account);

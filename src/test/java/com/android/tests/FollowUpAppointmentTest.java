@@ -199,7 +199,7 @@ public class FollowUpAppointmentTest extends BaseTest {
         AddSelectEntityPage.clickSelect();
         AppointmentManipulationsPage.clickCampaign();
         AddSelectEntityPage.select(campaign);
-        AppointmentManipulationsPage.scrollToLabel(labelOtherInfo);
+        AppointmentManipulationsPage.swipeFromBottomToTop();
         AppointmentManipulationsPage.typeIntoNotes(notes);
         AppointmentManipulationsPage.clickHoursInPreparation();
         AppointmentManipulationsPage.enterHoursInPreparation(hoursInPreparation);
@@ -223,7 +223,7 @@ public class FollowUpAppointmentTest extends BaseTest {
         softAssert.assertEquals(AppointmentManipulationsPage.getOpportunity(), defaultOpportunityWithAcc);
         softAssert.assertEquals(AppointmentManipulationsPage.getUser(), user);
         softAssert.assertEquals(AppointmentManipulationsPage.getCampaign(), campaign);
-        AppointmentManipulationsPage.scrollToLabel(labelOtherInfo);
+        AppointmentManipulationsPage.swipeFromBottomToTop();
         softAssert.assertEquals(AppointmentManipulationsPage.getNotes(), notes);
         softAssert.assertEquals(AppointmentManipulationsPage.getHoursInPreparation(), hoursInPreparation);
 
@@ -269,9 +269,8 @@ public class FollowUpAppointmentTest extends BaseTest {
         softAssert.assertEquals(AppointmentPage.getLocation(), newLocation);
         softAssert.assertEquals(AppointmentPage.getContactOnView(), contact);
         softAssert.assertEquals(AppointmentPage.getCampaign(), campaign);
-//        softAssert.assertEquals(AppointmentPage.getOpportunity(), opportunity);
+        softAssert.assertEquals(AppointmentPage.getOpportunity(), opportunity);
         softAssert.assertEquals(AppointmentPage.getNotes(), notes);
-//        AppointmentPage.scrollToLabel("Hours");
         AppointmentPage.swipeFromBottomToTop();
         softAssert.assertEquals(AppointmentPage.getHoursInPreparation(), hoursInPreparation);
         softAssert.assertAll();
@@ -442,7 +441,8 @@ public class FollowUpAppointmentTest extends BaseTest {
         AppointmentManipulationsPage.closePicker();
         AppointmentManipulationsPage.clickAppointmentType();
         AppointmentManipulationsPage.selectValueFromPopUp(newAppointmentType);
-        AppointmentManipulationsPage.scrollToLabel("Hours in");
+        AppointmentManipulationsPage.swipeFromBottomToTop();
+        AppointmentManipulationsPage.swipeFromBottomToTop();
         AppointmentManipulationsPage.clickHoursInPreparation();
         AppointmentManipulationsPage.enterHoursInPreparation(hoursInPreparation);
 //        AppointmentManipulationsPage.clickOpportunity();
@@ -571,7 +571,8 @@ public class FollowUpAppointmentTest extends BaseTest {
         softAssert.assertEquals(AppointmentManipulationsPage.getOpportunity(), defaultOpportunityWithAcc);
         softAssert.assertEquals(AppointmentManipulationsPage.getUser(), defaultUser);
         softAssert.assertEquals(AppointmentManipulationsPage.getCampaign(), appActCampaign);
-        AppointmentManipulationsPage.scrollToLabel("Notes");
+        softAssert.assertEquals(AppointmentManipulationsPage.getOpportunity(), defaultOpportunityWithAcc);
+        AppointmentManipulationsPage.swipeFromBottomToTop();
         softAssert.assertTrue(AppointmentManipulationsPage.getNotes().startsWith(appActNotes));
 
         AppointmentManipulationsPage.setAppointmentName();
@@ -601,10 +602,10 @@ public class FollowUpAppointmentTest extends BaseTest {
         AppointmentManipulationsPage.closePicker();
         AppointmentManipulationsPage.clickLocation();
         AppointmentManipulationsPage.enterLocation(newLocation);
-//        AppointmentManipulationsPage.clickOpportunity();
-//        AppointmentManipulationsPage.spinOpportunityWheelTo(opportunity);
-//        AppointmentManipulationsPage.clickOpportunity();
-        AppointmentManipulationsPage.scrollToLabel("Hours in");
+        AppointmentManipulationsPage.clickOpportunity();
+        AppointmentManipulationsPage.selectValueFromPopUp("Opp2");
+        AppointmentManipulationsPage.swipeFromBottomToTop();
+        AppointmentManipulationsPage.swipeFromBottomToTop();
         AppointmentManipulationsPage.clickHoursInPreparation();
         AppointmentManipulationsPage.enterHoursInPreparation(hoursInPreparation);
         AppointmentManipulationsPage.clickSave();
@@ -620,11 +621,10 @@ public class FollowUpAppointmentTest extends BaseTest {
         softAssert.assertEquals(AppointmentPage.getLocation(), newLocation);
         softAssert.assertEquals(AppointmentPage.getContactOnView(), appActContact);
         softAssert.assertEquals(AppointmentPage.getCampaign(), appActCampaign);
-//        softAssert.assertEquals(AppointmentPage.getOpportunity(), labelNone);
+        softAssert.assertEquals(AppointmentPage.getOpportunity(), "Opp2");
         softAssert.assertTrue(AppointmentPage.getNotes().startsWith(appActNotes));
         AppointmentPage.swipeFromBottomToTop();
         AppointmentPage.swipeFromBottomToTop();
-        AppointmentPage.scrollToLabel("Hours in");
         softAssert.assertEquals(AppointmentPage.getHoursInPreparation(), hoursInPreparation);
 
         softAssert.assertAll();
