@@ -15,6 +15,7 @@ public class ContactsPage extends BasePage {
 //        element.setValue(value);
         wait(fieldSearch);
         sendValues(value, fieldSearch);
+        hideKeyboard();
     }
 
     public static String getFirstSearchResult() {

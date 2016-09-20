@@ -1141,7 +1141,7 @@ public class CreateEditAccountTest extends BaseTest {
 
         ContactPage.checkPageTitle(contactPageTitle);
         softAssert.assertEquals(ContactPage.getContactName(), contactName);
-        softAssert.assertEquals(ContactPage.getContactTitle(), contactNewTitle);
+        softAssert.assertEquals(ContactPage.getContactTitle(), contactNewTitle.toUpperCase());
         softAssert.assertEquals(ContactPage.getAccount(), parentAccount);
         softAssert.assertEquals(ContactPage.getPhone(), contactPhone);
         softAssert.assertEquals(ContactPage.getMobile(), contactMobile);

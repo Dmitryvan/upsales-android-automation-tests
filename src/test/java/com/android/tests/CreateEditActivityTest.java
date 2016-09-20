@@ -288,7 +288,8 @@ public class CreateEditActivityTest extends BaseTest {
         softAssert.assertEquals(ActivityPage.getCampaign(), newCampaign);
         softAssert.assertEquals(ActivityPage.getOpportunity(), opportunity);
         softAssert.assertEquals(ActivityPage.getNotes(), newNotes);
-        ActivityPage.scrollToLabel("Expenses");
+        ActivityPage.swipeFromBottomToTop();
+        ActivityPage.swipeFromBottomToTop();
         softAssert.assertEquals(ActivityPage.getExpenses(), newExpenses + " SEK");
         softAssert.assertAll();
     }

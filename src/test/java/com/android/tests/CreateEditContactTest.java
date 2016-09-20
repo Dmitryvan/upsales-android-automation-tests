@@ -906,13 +906,13 @@ public class CreateEditContactTest extends BaseTest {
         ContactManipulationPage.clickSave();
         ContactPage.clickPhone();
         ContactPage.clickBackOnDevice();
-        ContactPage.clickBackOnDevice();
-        ContactPage.clickBackOnDevice();
+//        ContactPage.clickBackOnDevice();
+//        ContactPage.clickBackOnDevice();
         Thread.sleep(1000);
         ContactPage.clickMobile();
         ContactPage.clickBackOnDevice();
-        ContactPage.clickBackOnDevice();
-        ContactPage.clickBackOnDevice();
+//        ContactPage.clickBackOnDevice();
+//        ContactPage.clickBackOnDevice();
         Thread.sleep(1000);
         ContactPage.clickEmail();
         softAssert.assertEquals(ContactPage.getAlertTitle(), "Share with");

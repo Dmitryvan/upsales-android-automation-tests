@@ -126,7 +126,7 @@ public class BasePage extends Helpers {
     //common methods
     protected static void sendValues(String value, By locator) {
         WebElement element = find(locator);
-        element.clear();
+        clearField(element);
         element.sendKeys(value);
     }
 
@@ -167,6 +167,7 @@ public class BasePage extends Helpers {
         int endy = (int) (size.height * 0.20);
         int startx = size.width / 2;
         ((AppiumDriver)getDriver()).swipe(startx, starty, startx, endy, 3000);
+        waitByThread(100 );
     }
 
     protected static void swipeLeft(By locator) {
