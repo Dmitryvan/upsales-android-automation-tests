@@ -51,8 +51,7 @@ public class ContactManipulationPage extends BasePage {
 
     public static void enterTitle(String title) {
         AndroidElement element = (AndroidElement) find(fieldTitle);
-        element.click();
-        element.clear();
+        clearField(element);
         element.sendKeys(title);
         hideKeyboard();
     }
@@ -115,6 +114,7 @@ public class ContactManipulationPage extends BasePage {
 
     public static void enterContactName(String contactName) {
         enterDescription(contactName);
+        hideKeyboard();
     }
 
     public static void typeIntoNotes(String note) {

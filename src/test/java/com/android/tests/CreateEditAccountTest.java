@@ -704,7 +704,10 @@ public class CreateEditAccountTest extends BaseTest {
         softAssert.assertEquals(ActivityManipulationsPage.getUser(), defaultUser);
         softAssert.assertEquals(ActivityManipulationsPage.getCampaign(), defaultCampaign);
 
-        ActivityManipulationsPage.scrollToLabel("Expenses");
+        ActivityManipulationsPage.clickCampaign();
+        AddSelectEntityPage.select(campaign);
+        ActivityManipulationsPage.swipeFromBottomToTop();
+        ActivityManipulationsPage.swipeFromBottomToTop();
         ActivityManipulationsPage.clickExpenses();
         ActivityManipulationsPage.enterExpenses(expenses);
         ActivityManipulationsPage.clickSave();
@@ -714,7 +717,7 @@ public class CreateEditAccountTest extends BaseTest {
         softAssert.assertEquals(ActivityPage.getAccountName(), accountName);
         softAssert.assertEquals(ActivityPage.getUserName(), currentUser);
         softAssert.assertEquals(ActivityPage.getDate(), ActivityPage.getCurrentDate());
-        softAssert.assertEquals(ActivityPage.getCampaign(), lblNone);
+        softAssert.assertEquals(ActivityPage.getCampaign(), campaign);
         softAssert.assertEquals(ActivityPage.getOpportunity(), lblNone);
 
 //        ActivityPage.clickShowMore();
@@ -761,7 +764,10 @@ public class CreateEditAccountTest extends BaseTest {
         activityDescription = ActivityManipulationsPage.getDescription();
         ActivityManipulationsPage.enterDescription(activityDescription);
 
-        ActivityManipulationsPage.scrollToLabel("Expenses");
+        ActivityManipulationsPage.clickCampaign();
+        AddSelectEntityPage.select(campaign);
+        ActivityManipulationsPage.swipeFromBottomToTop();
+        ActivityManipulationsPage.swipeFromBottomToTop();
         ActivityManipulationsPage.clickExpenses();
         ActivityManipulationsPage.enterExpenses(expenses);
 
@@ -786,7 +792,7 @@ public class CreateEditAccountTest extends BaseTest {
         ActivityManipulationsPage.clickUser();
         AddSelectEntityPage.select(user);
         ActivityManipulationsPage.clickCampaign();
-        AddSelectEntityPage.select(campaign);
+        AddSelectEntityPage.select(newCampaign);
         ActivityManipulationsPage.swipeFromBottomToTop();
         ActivityManipulationsPage.typeIntoNotes(notes);
 
@@ -802,7 +808,7 @@ public class CreateEditAccountTest extends BaseTest {
         softAssert.assertEquals(ActivityPage.getDate(), dueDate);
         softAssert.assertEquals(ActivityPage.getTime(), time);
 //        softAssert.assertEquals(ActivityPage.getContact(), "Hans Christer Zaar");
-        softAssert.assertEquals(ActivityPage.getCampaign(), campaign);
+        softAssert.assertEquals(ActivityPage.getCampaign(), newCampaign);
         softAssert.assertEquals(ActivityPage.getOpportunity(), lblNone);
 //        ActivityPage.clickShowMore();
         ActivityManipulationsPage.swipeFromBottomToTop();
@@ -1051,7 +1057,7 @@ public class CreateEditAccountTest extends BaseTest {
         ContactManipulationPage.setContactName();
         contactName = ContactManipulationPage.getContactName();
         ContactManipulationPage.enterContactName(contactName);
-        ContactManipulationPage.hideKeyboard();
+        ContactManipulationPage.enterTitle(contactTitle);
         assertEquals(ContactManipulationPage.getAccount(), accountName);
         ContactManipulationPage.swipeFromBottomToTop();
         ContactManipulationPage.swipeFromBottomToTop();
@@ -1063,6 +1069,7 @@ public class CreateEditAccountTest extends BaseTest {
         ContactManipulationPage.clickNoThanks();
         assertEquals(ContactPage.getAccount(), accountName);
         assertEquals(ContactPage.getContactName(), contactName);
+        assertEquals(ContactPage.getContactTitle(), contactTitle.toUpperCase());
     }
 
     @Test(priority = 16) // Case 52

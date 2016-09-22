@@ -61,12 +61,12 @@ public class BasePage extends Helpers {
 
     //work with headers
     public static String getTitle() {
-        wait(title);
+        waitToBeClickable(title);
         return getText(title);
     }
 
     public static String getSubTitle() {
-        wait(subTitle);
+        waitToBeClickable(subTitle);
         return getText(subTitle);
     }
 
@@ -84,6 +84,7 @@ public class BasePage extends Helpers {
 
     public static void clickBack() {
         find(buttonBack).click();
+        waitByThread(1000);
     }
 
     public static void clickLeftMenu() {
@@ -167,7 +168,7 @@ public class BasePage extends Helpers {
         int endy = (int) (size.height * 0.20);
         int startx = size.width / 2;
         ((AppiumDriver)getDriver()).swipe(startx, starty, startx, endy, 3000);
-        waitByThread(100 );
+        waitByThread(150);
     }
 
     protected static void swipeLeft(By locator) {

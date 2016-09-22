@@ -89,6 +89,7 @@ public class SalesPage extends BasePage {
     }
 
     public static int getOrdersTableCount() {
+        waitByThread(500);
         return getTableSize(tableWithSEK);
     }
 

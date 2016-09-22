@@ -2,6 +2,7 @@ package com.android.pages;
 
 import io.appium.java_client.MobileBy;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
@@ -20,8 +21,7 @@ public class FilterPage extends BasePage {
     private static final By buttonAppointmentsType = MobileBy.id("appointment_types");
     private static final By buttonActivityType = MobileBy.IosUIAutomation(
             ".tableViews()[1].cells()[1]");
-    private static final By buttonDate = MobileBy.IosUIAutomation(
-            ".tableViews()[1].cells()[\"Date\"]");
+    private static final By buttonDate = MobileBy.id("dates");
     private static final By buttonDatePeriod = MobileBy.IosUIAutomation(
             ".tableViews()[1].cells()[\"Date period\"]");
     private static final By buttonArchived = MobileBy.IosUIAutomation(
@@ -136,7 +136,11 @@ public class FilterPage extends BasePage {
 //        List<WebElement> elements = getDriver().findElements(MobileBy.xpath("//*[@class='android.widget.CheckBox']"));
 //        for (WebElement el : elements)
 //            System.out.println(el.getText());
-        find(MobileBy.xpath("//*[@class='android.widget.CheckBox' and @text='" + value + "']")).click();
+        try {
+            find(MobileBy.xpath("//*[@class='android.widget.CheckBox' and @text='" + value + "']")).click();
+        } catch (NoSuchElementException e) {
+            find(MobileBy.xpath("//*[@class='android.widget.RadioButton' and @text='" + value + "']")).click();
+        }
     }
 
     public static void selectOnCalendar(String value) {

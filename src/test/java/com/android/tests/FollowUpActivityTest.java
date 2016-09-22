@@ -11,6 +11,7 @@ import org.testng.annotations.Test;
 public class FollowUpActivityTest extends BaseTest {
 
     private String description;
+    private String title = Helpers.generateString();
 
     private final String commonPropertyPath = "src/test/resources/common.properties";
     private final String account = PropertyLoader.loadProperty(commonPropertyPath, "account");
@@ -461,6 +462,7 @@ public class FollowUpActivityTest extends BaseTest {
         ContactManipulationPage.setContactName();
         String contactName = ContactManipulationPage.getContactName();
         ContactManipulationPage.enterContactName(contactName);
+        ContactManipulationPage.enterTitle(title);
         ContactManipulationPage.swipeFromBottomToTop();
         ContactManipulationPage.swipeFromBottomToTop();
         ContactManipulationPage.clickExtraID();
@@ -519,7 +521,8 @@ public class FollowUpActivityTest extends BaseTest {
         ActivityManipulationsPage.closePicker();
         ActivityManipulationsPage.scrollToLabel(labelOtherInfo);
         softAssert.assertEquals(ActivityManipulationsPage.getNotes(), notes);
-        ActivityManipulationsPage.scrollToLabel("Expenses");
+        ActivityManipulationsPage.swipeFromBottomToTop();
+        ActivityManipulationsPage.swipeFromBottomToTop();
         ActivityManipulationsPage.clickExpenses();
         ActivityManipulationsPage.clearExpenses();
         ActivityManipulationsPage.enterExpenses(newExpenses);
@@ -532,9 +535,9 @@ public class FollowUpActivityTest extends BaseTest {
         softAssert.assertEquals(ActivityPage.getContact(), contactName);
         softAssert.assertEquals(ActivityPage.getUserName(), user);
         softAssert.assertEquals(ActivityPage.getCampaign(), campaign);
-        ActivityPage.scrollToLabel(labelOtherInfo);
+        ActivityPage.swipeFromBottomToTop();
         softAssert.assertEquals(ActivityPage.getNotes(), notes);
-        ActivityPage.scrollToLabel("Expenses");
+        ActivityPage.swipeFromBottomToTop();
         softAssert.assertEquals(ActivityPage.getExpenses(), newExpenses + " SEK");
 //        ActivityPage.clickBack(); ???
         ActivityPage.swipeFromTopToBottom();

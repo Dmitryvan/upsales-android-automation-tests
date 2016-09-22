@@ -89,9 +89,10 @@ public class Helpers {
 
     public static boolean checkIsDisplayed(By locator) {
         try {
+            wait(locator);
             find(locator);
             return true;
-        } catch (NoSuchElementException e) {
+        } catch (NoSuchElementException | TimeoutException e) {
             return false;
         }
     }

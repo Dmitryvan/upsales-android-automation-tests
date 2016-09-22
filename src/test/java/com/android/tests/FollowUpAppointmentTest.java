@@ -417,7 +417,8 @@ public class FollowUpAppointmentTest extends BaseTest {
         softAssert.assertTrue(AppointmentManipulationsPage.getNotes().startsWith(yourUser));
 
         AppointmentManipulationsPage.setDefaultAppStartEndDates();
-        AppointmentManipulationsPage.scrollToLabel("Description");
+        AppointmentManipulationsPage.swipeFromTopToBottom();
+        AppointmentManipulationsPage.swipeFromTopToBottom();
         AppointmentManipulationsPage.enterDescription(description);
         AppointmentManipulationsPage.clickLocation();
         AppointmentManipulationsPage.enterLocation(newLocation);
@@ -510,7 +511,10 @@ public class FollowUpAppointmentTest extends BaseTest {
         ActivityManipulationsPage.selectTimeMinutes(timeMinutes);
         ActivityManipulationsPage.selectTimeAmPm(timeAmPm);
         ActivityManipulationsPage.closePicker();
-        ActivityPage.scrollToLabel("Expenses");
+        ActivityManipulationsPage.clickCampaign();
+        AddSelectEntityPage.select(campaign);
+        ActivityManipulationsPage.swipeFromBottomToTop();
+        ActivityManipulationsPage.swipeFromBottomToTop();
         ActivityManipulationsPage.clickExpenses();
         ActivityManipulationsPage.enterExpenses(expenses);
         ActivityManipulationsPage.clickSave();
@@ -521,23 +525,22 @@ public class FollowUpAppointmentTest extends BaseTest {
         softAssert.assertEquals(ActivityPage.getUserName(), yourUser);
         softAssert.assertEquals(ActivityPage.getDate(), activityDate);
         softAssert.assertEquals(ActivityPage.getContact(), appContact);
-        softAssert.assertEquals(ActivityPage.getCampaign(), labelNone);
+        softAssert.assertEquals(ActivityPage.getCampaign(), campaign);
         softAssert.assertEquals(ActivityPage.getOpportunity(), labelNone);
         softAssert.assertTrue(ActivityPage.getNotes().startsWith(yourUser));
         ActivityPage.swipeFromBottomToTop();
         ActivityPage.swipeFromBottomToTop();
-        ActivityPage.scrollToLabel("Expenses");
         softAssert.assertEquals(ActivityPage.getExpenses(), expenses + " SEK");
 
         ActivityPage.clickBack();
-//        AppointmentPage.clickLeftMenuInFollowUp();
-//        DashboardPage.clickLeftMenu();
-//        LeftMenuPage.clickActivities();
-////        ActivitiesPage.clickFilter();
-////        FilterPage.clickDate();
-////        FilterPage.select(dateOneYear);
-////        FilterPage.clickClose();
-//        softAssert.assertTrue(ActivitiesPage.searchActivityByName(activityDescription));
+        AppointmentPage.clickBack();
+        DashboardPage.clickLeftMenu();
+        LeftMenuPage.clickActivities();
+        ActivitiesPage.clickFilter();
+        FilterPage.clickDate();
+        FilterPage.select(dateOneYear);
+        FilterPage.clickClose();
+        softAssert.assertTrue(ActivitiesPage.searchActivityByName(activityDescription));
 
         softAssert.assertAll();
     }

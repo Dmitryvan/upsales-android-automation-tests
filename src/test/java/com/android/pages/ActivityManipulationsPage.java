@@ -83,6 +83,7 @@ public class ActivityManipulationsPage extends BasePage {
     }
 
     public static String getActivityType() {
+        waitToBeClickable(activityType);
         return getText(activityType);
     }
 

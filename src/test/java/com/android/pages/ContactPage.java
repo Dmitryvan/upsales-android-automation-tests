@@ -21,7 +21,7 @@ public class ContactPage extends BasePage {
     private static final By categoryWithoutContact = MobileBy.IosUIAutomation(".tableViews()[0].cells()[2].staticTexts()[1]");
     private static final By notes = MobileBy.id("notes");
     private static final By notesWithoutContact = MobileBy.IosUIAutomation(".tableViews()[0].cells()[4].textViews()[0]");
-    private static final By buttonAddContactInfo = MobileBy.id("add_contact_info_title");
+    private static final By buttonAddContactInfo = MobileBy.id("add_contact_info");
     private static final By categoryWithPhone = MobileBy.IosUIAutomation(".tableViews()[0].cells()[2].staticTexts()[1]");
     private static final By extraIDWithoutData = MobileBy.xpath("//android.widget.RelativeLayout[@index='8']//android.widget.EditText[@index='0']");
     private static final By chanceOfSuccessWithoutData = MobileBy.xpath("//android.widget.RelativeLayout[@index='9']//android.widget.EditText[@index='0']");
@@ -73,6 +73,7 @@ public class ContactPage extends BasePage {
     }
 
     public static void clickAddContactInfo() {
+        find(buttonAddContactInfo).click();
         find(buttonAddContactInfo).click();
     }
 
