@@ -504,19 +504,21 @@ public class Helpers {
 //        ((AndroidDriver)getDriver()).scrollTo(text);
     }
 
-    protected static void clearAndType(String accountName, By locator) {
+    protected static void clearAndType(String text, By locator) {
         WebElement element = find(locator);
         clearField(element);
-        element.sendKeys(accountName);
+        element.sendKeys(text);
         hideKeyboard();
     }
 
     public static void clearField(WebElement element) {
         int textLength = element.getText().length();
-        waitToBeClickable(element);
-        element.click();
-        for (int i = 0; i < textLength; i++) {
-            ((AndroidDriver)getDriver()).pressKeyCode(BasePage.DELETE_KEYCODE);
+        if(textLength != 0) {
+            waitToBeClickable(element);
+            element.click();
+            for (int i = 0, j = textLength + 1; i < j; i++) {
+                ((AndroidDriver) getDriver()).pressKeyCode(BasePage.DELETE_KEYCODE);
+            }
         }
     }
 }

@@ -61,7 +61,7 @@ public class BasePage extends Helpers {
 
     //work with headers
     public static String getTitle() {
-        waitToBeClickable(title);
+        wait(title);
         return getText(title);
     }
 
@@ -98,6 +98,7 @@ public class BasePage extends Helpers {
 
     public static void clickSave() {
         find(buttonSave).click();
+        waitByThread(500);
     }
 
     protected static int getTableSize(By elementPath) {
@@ -168,7 +169,7 @@ public class BasePage extends Helpers {
         int endy = (int) (size.height * 0.20);
         int startx = size.width / 2;
         ((AppiumDriver)getDriver()).swipe(startx, starty, startx, endy, 3000);
-        waitByThread(150);
+        waitByThread(200);
     }
 
     protected static void swipeLeft(By locator) {

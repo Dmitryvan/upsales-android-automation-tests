@@ -420,7 +420,8 @@ public class CreateEditAccountTest extends BaseTest {
 
         AccountManipulationsPage.setAccountName();
         accountName = AccountManipulationsPage.getAccountName();
-        AccountManipulationsPage.scrollToTheTop();
+        AccountManipulationsPage.swipeFromTopToBottom();
+        AccountManipulationsPage.swipeFromTopToBottom();
         AccountManipulationsPage.enterAccountName(accountName);
         AccountManipulationsPage.clickParentAccount();
         AddSelectEntityPage.select(newParentAccount);
@@ -750,7 +751,7 @@ public class CreateEditAccountTest extends BaseTest {
         AccountManipulationsPage.enterAccountName(accountName);
         AccountManipulationsPage.clickParentAccount();
         AddSelectEntityPage.select(parentAccount);
-        AccountManipulationsPage.scrollToLabel(lblOtherInfo);
+        AccountManipulationsPage.swipeFromBottomToTop();
         AccountManipulationsPage.typeIntoNotes(notes);
         AccountManipulationsPage.clickCampaign();
         AddSelectEntityPage.select(campaign);

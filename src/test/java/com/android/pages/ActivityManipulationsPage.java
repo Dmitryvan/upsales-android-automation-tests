@@ -32,6 +32,7 @@ public class ActivityManipulationsPage extends BasePage {
     private static final By fieldExpenses = MobileBy.xpath("//*[@text='Expenses']/..//*[contains(@resource-id, 'edit_field')]");
 
     public static void clickExpenses() {
+        getDriver().getPageSource();
         find(fieldExpenses).click();
     }
 

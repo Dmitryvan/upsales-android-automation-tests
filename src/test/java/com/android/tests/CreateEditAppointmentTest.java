@@ -191,7 +191,8 @@ public class CreateEditAppointmentTest extends BaseTest {
         AppointmentManipulationsPage.enterDescription(description);
         AppointmentManipulationsPage.clickAccount();
         AddSelectEntityPage.select(account);
-        AppointmentManipulationsPage.scrollToLabel("Hours");
+        AppointmentManipulationsPage.swipeFromBottomToTop();
+        AppointmentManipulationsPage.swipeFromBottomToTop();
         AppointmentManipulationsPage.clickHoursInPreparation();
         AppointmentManipulationsPage.enterHoursInPreparation(hoursInPreparation);
         AppointmentManipulationsPage.clickSave();
