@@ -320,10 +320,12 @@ public class CreateEditAccountTest extends BaseTest {
     public void softCreateAccount() {
         SoftAssertExtended softAssert = new SoftAssertExtended();
         AccountManipulationsPage.enterAccountName(accountName);
+        AccountManipulationsPage.enterWebsite(website);
         AccountManipulationsPage.clickSave();
         AccountManipulationsPage.clickPopUpNoThanx();
         softAssert.assertEquals(AccountPage.getAccountName(), accountName);
         softAssert.assertEquals(AccountPage.getAccountManagerValue(), currentUser);
+        softAssert.assertEquals(AccountPage.getWebsite(), website);
         AccountPage.clickLeftMenu();
         LeftMenuPage.clickSearch();
         SearchPage.search(accountName);
@@ -692,6 +694,7 @@ public class CreateEditAccountTest extends BaseTest {
     public void softCreateAccountAndCreateActivity() {
         SoftAssertExtended softAssert = new SoftAssertExtended();
         AccountManipulationsPage.enterAccountName(accountName);
+        AccountManipulationsPage.enterWebsite(website);
         AccountManipulationsPage.clickSave();
         AccountManipulationsPage.clickPopUpActivity();
 
@@ -722,7 +725,8 @@ public class CreateEditAccountTest extends BaseTest {
         softAssert.assertEquals(ActivityPage.getOpportunity(), lblNone);
 
 //        ActivityPage.clickShowMore();
-        ActivityPage.scrollToLabel("Expenses");
+        ActivityPage.swipeFromBottomToTop();
+        ActivityPage.swipeFromBottomToTop();
         softAssert.assertEquals(ActivityPage.getExpenses(), expenses + " SEK");
 
         ActivityPage.clickLeftMenu();
@@ -735,6 +739,7 @@ public class CreateEditAccountTest extends BaseTest {
     @Test(priority = 7) // Case 43
     public void createAccountAndCreateActivityAndCancel() {
         AccountManipulationsPage.enterAccountName(accountName);
+        AccountManipulationsPage.enterWebsite(website);
         AccountManipulationsPage.clickSave();
         AccountManipulationsPage.clickPopUpActivity();
         assertEquals(ActivityPage.getTitle(), createActivityTitle);
@@ -751,6 +756,7 @@ public class CreateEditAccountTest extends BaseTest {
         AccountManipulationsPage.enterAccountName(accountName);
         AccountManipulationsPage.clickParentAccount();
         AddSelectEntityPage.select(parentAccount);
+        AccountManipulationsPage.enterWebsite(website);
         AccountManipulationsPage.swipeFromBottomToTop();
         AccountManipulationsPage.typeIntoNotes(notes);
         AccountManipulationsPage.clickCampaign();
@@ -781,14 +787,14 @@ public class CreateEditAccountTest extends BaseTest {
         ActivityManipulationsPage.clickActivityType();
         ActivityManipulationsPage.selectValueFromPopUp(activityType);
         ActivityManipulationsPage.clickDueDate();
+        ActivityManipulationsPage.selectDateYear(dueDateYear);
         ActivityManipulationsPage.selectDateMonth(dueDateMonth);
         ActivityManipulationsPage.selectDateDay(dueDateDay);
-        ActivityManipulationsPage.selectDateYear(dueDateYear);
         ActivityManipulationsPage.closePicker();
         ActivityManipulationsPage.clickTime();
         ActivityManipulationsPage.selectTimeHours(timeHours);
         ActivityManipulationsPage.selectTimeMinutes(timeMinutes);
-        ActivityManipulationsPage.selectTimeAmPm(timeAmPm);
+//        ActivityManipulationsPage.selectTimeAmPm(timeAmPm);
         ActivityManipulationsPage.closePicker();
         ActivityManipulationsPage.clickUser();
         AddSelectEntityPage.select(user);
@@ -822,6 +828,7 @@ public class CreateEditAccountTest extends BaseTest {
     public void softCreateAccountCreateAppointment() {
         SoftAssertExtended softAssert = new SoftAssertExtended();
         AccountManipulationsPage.enterAccountName(accountName);
+        AccountManipulationsPage.enterWebsite(website);
         AccountManipulationsPage.clickSave();
         AccountManipulationsPage.clickPopUpAppointment();
         AppointmentManipulationsPage.setDefaultAppStartEndDates();
@@ -837,7 +844,8 @@ public class CreateEditAccountTest extends BaseTest {
         softAssert.assertEquals(AppointmentManipulationsPage.getOpportunity(), appDefaultOpp);
         softAssert.assertEquals(AppointmentManipulationsPage.getUser(), defaultUser);
         softAssert.assertEquals(AppointmentManipulationsPage.getCampaign(), defaultCampaign);
-        AppointmentManipulationsPage.scrollToLabel("Hours");
+        AppointmentManipulationsPage.swipeFromBottomToTop();
+        AppointmentManipulationsPage.swipeFromBottomToTop();
         AppointmentManipulationsPage.clickHoursInPreparation();
         AppointmentManipulationsPage.enterHoursInPreparation(hoursInPreparation);
         AppointmentManipulationsPage.clickSave();
@@ -853,6 +861,7 @@ public class CreateEditAccountTest extends BaseTest {
     @Test(priority = 10) // Case 46
     public void createAccountCreateAppointmentCancel() {
         AccountManipulationsPage.enterAccountName(accountName);
+        AccountManipulationsPage.enterWebsite(website);
         AccountManipulationsPage.clickSave();
         AccountManipulationsPage.clickPopUpAppointment();
         assertEquals(AppointmentManipulationsPage.getTitle(), appCreateTitle);
@@ -868,6 +877,7 @@ public class CreateEditAccountTest extends BaseTest {
     public void softCreateAccountCreateAppointmentEditAppointment() {
         SoftAssertExtended softAssert = new SoftAssertExtended();
         AccountManipulationsPage.enterAccountName(accountName);
+        AccountManipulationsPage.enterWebsite(website);
         AccountManipulationsPage.clickSave();
         AccountManipulationsPage.clickPopUpAppointment();
         AppointmentManipulationsPage.setAppointmentName();
@@ -880,7 +890,8 @@ public class CreateEditAccountTest extends BaseTest {
         AppointmentManipulationsPage.scrollToLabel(lblOtherInfo);
         AppointmentManipulationsPage.typeIntoNotes(notes);
 
-        AppointmentManipulationsPage.scrollToLabel("Hours");
+        AppointmentManipulationsPage.swipeFromBottomToTop();
+        AppointmentManipulationsPage.swipeFromBottomToTop();
         AppointmentManipulationsPage.clickHoursInPreparation();
         AppointmentManipulationsPage.enterHoursInPreparation(hoursInPreparation);
 
@@ -895,22 +906,22 @@ public class CreateEditAccountTest extends BaseTest {
         AppointmentManipulationsPage.clickAppointmentType();
         AppointmentManipulationsPage.selectValueFromPopUp(newAppointmentType);
         AppointmentManipulationsPage.clickStartsDate();
+        AppointmentManipulationsPage.selectDateYear(newStartYear);
         AppointmentManipulationsPage.selectDateMonth(newStartMonth);
         AppointmentManipulationsPage.selectDateDay(newStartDay);
-        AppointmentManipulationsPage.selectDateYear(newStartYear);
         AppointmentManipulationsPage.closePicker();
         AppointmentManipulationsPage.selectTimeHours(newStartHours);
         AppointmentManipulationsPage.selectTimeMinutes(newStartMinutes);
-        AppointmentManipulationsPage.selectTimeAmPm(newStartAmPm);
+//        AppointmentManipulationsPage.selectTimeAmPm(newStartAmPm);
         AppointmentManipulationsPage.closePicker();
         AppointmentManipulationsPage.clickEndsDate();
+        AppointmentManipulationsPage.selectDateYear(newEndYear);
         AppointmentManipulationsPage.selectDateMonth(newEndMonth);
         AppointmentManipulationsPage.selectDateDay(newEndDay);
-        AppointmentManipulationsPage.selectDateYear(newEndYear);
         AppointmentManipulationsPage.closePicker();
         AppointmentManipulationsPage.selectTimeHours(newEndHours);
         AppointmentManipulationsPage.selectTimeMinutes(newEndMinutes);
-        AppointmentManipulationsPage.selectTimeAmPm(newEndAmPm);
+//        AppointmentManipulationsPage.selectTimeAmPm(newEndAmPm);
         AppointmentManipulationsPage.closePicker();
         AppointmentManipulationsPage.clickLocation();
         AppointmentManipulationsPage.enterLocation(newLocation);
@@ -920,10 +931,11 @@ public class CreateEditAccountTest extends BaseTest {
         AddSelectEntityPage.clickSelect();
         AppointmentManipulationsPage.clickCampaign();
         AddSelectEntityPage.select(newCampaign);
-        AppointmentManipulationsPage.scrollToLabel(labelOtherInfo);
+        AppointmentManipulationsPage.swipeFromBottomToTop();
         AppointmentManipulationsPage.typeIntoNotes(newNotes);
 
-        AppointmentManipulationsPage.scrollToLabel("Hours");
+        AppointmentManipulationsPage.swipeFromBottomToTop();
+        AppointmentManipulationsPage.swipeFromBottomToTop();
         AppointmentManipulationsPage.clickHoursInPreparation();
         AppointmentManipulationsPage.enterHoursInPreparation(newHoursInPreparation);
 
@@ -942,7 +954,8 @@ public class CreateEditAccountTest extends BaseTest {
         softAssert.assertEquals(AppointmentPage.getOpportunity(), lblNone);
         softAssert.assertEquals(AppointmentPage.getNotes(), newNotes);
 
-        AppointmentPage.scrollToLabel("Hours");
+        AppointmentPage.swipeFromBottomToTop();
+        AppointmentPage.swipeFromBottomToTop();
         softAssert.assertEquals(AppointmentPage.getHoursInPreparation(), newHoursInPreparation);
         softAssert.assertAll();
     }
@@ -951,6 +964,7 @@ public class CreateEditAccountTest extends BaseTest {
     public void softCreateAccountCreateOpportunity() {
         SoftAssertExtended softAssert = new SoftAssertExtended();
         AccountManipulationsPage.enterAccountName(accountName);
+        AccountManipulationsPage.enterWebsite(website);
         AccountManipulationsPage.clickSave();
         AccountManipulationsPage.clickPopUpOpportunity();
         OpportunityManipulationsPage.hideKeyboard();
@@ -982,6 +996,7 @@ public class CreateEditAccountTest extends BaseTest {
     @Test(priority = 13) // Case 49
     public void createAccountCreateOpportunityCancel() {
         AccountManipulationsPage.enterAccountName(accountName);
+        AccountManipulationsPage.enterWebsite(website);
         AccountManipulationsPage.clickSave();
         AccountManipulationsPage.clickPopUpOpportunity();
         OpportunityManipulationsPage.clickStage();
@@ -997,6 +1012,7 @@ public class CreateEditAccountTest extends BaseTest {
     public void softCreateAccountCreateOpportunityEditOpportunity() {
         SoftAssertExtended softAssert = new SoftAssertExtended();
         AccountManipulationsPage.enterAccountName(accountName);
+        AccountManipulationsPage.enterWebsite(website);
         AccountManipulationsPage.clickSave();
         AccountManipulationsPage.clickPopUpOpportunity();
 
@@ -1020,9 +1036,9 @@ public class CreateEditAccountTest extends BaseTest {
         OpportunityManipulationsPage.clickProbability();
         OpportunityManipulationsPage.enterProbability(probability);
         OpportunityManipulationsPage.clickCloseDate();
+        OpportunityManipulationsPage.selectDateYear(oppNewYear);
         OpportunityManipulationsPage.selectDateMonth(oppNewMonth);
         OpportunityManipulationsPage.selectDateDay(oppNewDay);
-        OpportunityManipulationsPage.selectDateYear(oppNewYear);
         OpportunityManipulationsPage.closePicker();
         OpportunityManipulationsPage.clickCampaign();
         AddSelectEntityPage.select(oppNewCampaign);
@@ -1053,6 +1069,7 @@ public class CreateEditAccountTest extends BaseTest {
     @Test(priority = 15) // Case 51
     public void createAccountCreateContact() {
         AccountManipulationsPage.enterAccountName(accountName);
+        AccountManipulationsPage.enterWebsite(website);
         AccountManipulationsPage.clickSave();
         AccountManipulationsPage.clickPopUpContact();
         ContactManipulationPage.setContactName();
@@ -1076,6 +1093,7 @@ public class CreateEditAccountTest extends BaseTest {
     @Test(priority = 16) // Case 52
     public void createAccountCreateContactCancel() {
         AccountManipulationsPage.enterAccountName(accountName);
+        AccountManipulationsPage.enterWebsite(website);
         AccountManipulationsPage.clickSave();
         AccountManipulationsPage.clickPopUpContact();
         ContactManipulationPage.setContactName();
@@ -1094,6 +1112,7 @@ public class CreateEditAccountTest extends BaseTest {
     public void softCreateAccountCreateContactEditContact() {
         SoftAssertExtended softAssert = new SoftAssertExtended();
         AccountManipulationsPage.enterAccountName(accountName);
+        AccountManipulationsPage.enterWebsite(website);
         AccountManipulationsPage.clickSave();
         AccountManipulationsPage.clickPopUpContact();
         ContactManipulationPage.setContactName();
@@ -1237,6 +1256,7 @@ public class CreateEditAccountTest extends BaseTest {
     @Test(priority = 19) // Case 55
     public void softCreateAccountCreateContactCreateActivity() {
         SoftAssertExtended softAssert = new SoftAssertExtended();
+        AccountManipulationsPage.enterWebsite(website);
         AccountManipulationsPage.enterAccountName(accountName);
         AccountManipulationsPage.clickSave();
 
@@ -1273,7 +1293,7 @@ public class CreateEditAccountTest extends BaseTest {
         ActivityManipulationsPage.clickTime();
         ActivityManipulationsPage.selectTimeHours(timeHours);
         ActivityManipulationsPage.selectTimeMinutes(timeMinutes);
-        ActivityManipulationsPage.selectTimeAmPm(timeAmPm);
+//        ActivityManipulationsPage.selectTimeAmPm(timeAmPm);
         ActivityManipulationsPage.closePicker();
         ActivityManipulationsPage.clickUser();
         AddSelectEntityPage.select(user);
@@ -1317,6 +1337,7 @@ public class CreateEditAccountTest extends BaseTest {
     public void softCreateAccountCreateContactCreateAppointment() {
         SoftAssertExtended softAssert = new SoftAssertExtended();
         AccountManipulationsPage.enterAccountName(accountName);
+        AccountManipulationsPage.enterWebsite(website);
         AccountManipulationsPage.clickSave();
 
         AccountManipulationsPage.clickPopUpContact();
@@ -1422,6 +1443,7 @@ public class CreateEditAccountTest extends BaseTest {
     public void softCreateAccountCreateContactCreateOpportunity() {
         SoftAssertExtended softAssert = new SoftAssertExtended();
         AccountManipulationsPage.enterAccountName(accountName);
+        AccountManipulationsPage.enterWebsite(website);
         AccountManipulationsPage.clickSave();
 
         AccountManipulationsPage.clickPopUpContact();

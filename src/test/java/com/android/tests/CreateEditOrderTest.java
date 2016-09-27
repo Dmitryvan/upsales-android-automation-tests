@@ -237,9 +237,9 @@ public class CreateEditOrderTest extends BaseTest {
 //        OpportunityManipulationsPage.clickProbability();
 //        OpportunityManipulationsPage.enterProbability(newProbability);
         OpportunityManipulationsPage.clickCloseDate();
+        OpportunityManipulationsPage.selectDateYear(year);
         OpportunityManipulationsPage.selectDateMonth(month);
         OpportunityManipulationsPage.selectDateDay(day);
-        OpportunityManipulationsPage.selectDateYear(year);
         OpportunityManipulationsPage.closePicker();
         OpportunityManipulationsPage.clickContact();
         AddSelectEntityPage.select(newContact);
@@ -278,9 +278,9 @@ public class CreateEditOrderTest extends BaseTest {
 //        OpportunityManipulationsPage.enterProbability(probability);
 //        OpportunityManipulationsPage.hideKeyboard();
         OpportunityManipulationsPage.clickCloseDate();
+        OpportunityManipulationsPage.selectDateYear(year);
         OpportunityManipulationsPage.selectDateMonth(month);
         OpportunityManipulationsPage.selectDateDay(day);
-        OpportunityManipulationsPage.selectDateYear(year);
         OpportunityManipulationsPage.closePicker();
         softAssert.assertEquals(OpportunityManipulationsPage.getCloseDate(), closeDate);
         OpportunityManipulationsPage.clickAccount();
@@ -312,9 +312,9 @@ public class CreateEditOrderTest extends BaseTest {
 //        OpportunityManipulationsPage.clickProbability();
 //        OpportunityManipulationsPage.enterProbability(newProbability);
         OpportunityManipulationsPage.clickCloseDate();
+        OpportunityManipulationsPage.selectDateYear(newYear);
         OpportunityManipulationsPage.selectDateMonth(newMonth);
         OpportunityManipulationsPage.selectDateDay(newDay);
-        OpportunityManipulationsPage.selectDateYear(newYear);
         OpportunityManipulationsPage.closePicker();
         OpportunityManipulationsPage.clickContact();
         AddSelectEntityPage.select(newContact);

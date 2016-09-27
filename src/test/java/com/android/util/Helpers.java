@@ -14,6 +14,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -24,6 +25,9 @@ public class Helpers {
 
     private static String appDefaultStartDate;
     private static String appDefaultEndDate;
+
+    private static final String UP = "up";
+    private static final String DOWN = "down";
 
     private static final String pathToProperty = "src/test/resources/app.properties";
     private static final String login = PropertyLoader.loadProperty(pathToProperty, "login");
@@ -42,11 +46,19 @@ public class Helpers {
     private static final DateFormat calendarDateFormat = new SimpleDateFormat("EEEE d MMM YYYY");
     protected static final DateFormat formAndMailDateFormat = new SimpleDateFormat("YYYY-MM-dd");
 
+    private static final By pickerYear = MobileBy.id("date_picker_year");
+    private static final By wheelYear = MobileBy.id("month_text_view");
+
+    private static final By pickerMonth = MobileBy.id("date_picker_month");
+    private static final By wheelMonth = MobileBy.xpath("//*[contains(@resource-id, 'animator')]/android.widget.ListView[1]");
+
     protected static final By pickerSecondField = MobileBy.xpath("//android.widget.NumberPicker[2]/android.widget.EditText[1]");
     protected static final By pickerFirstField = MobileBy.xpath("//android.widget.NumberPicker[1]/android.widget.EditText[1]");
     protected static final By pickerThirdField = MobileBy.xpath("//android.widget.NumberPicker[3]/android.widget.EditText[1]");
     protected static final By pickerAmPmField = MobileBy.xpath("//android.widget.TimePicker[1]/android.widget.LinearLayout[1]/android.widget.NumberPicker[1]/android.widget.EditText[1]");
-    protected static final By pickerDone = MobileBy.id("button1");
+    protected static final By pickerOK = MobileBy.id("ok");
+    protected static final By pickerTimeOK = MobileBy.id("button1");
+
 
     private static final String charList = "abcdefghigklmnopqrstuvwxyzABCDEFGHIGKLMNOPQRSTUVWXYZ1234567890";
     private static final int randomStringLength = 8;
@@ -224,45 +236,131 @@ public class Helpers {
 //work with date&time wheels
 //*
 
+    private static String getYear() {
+        return find(pickerYear).getText();
+    }
+
+    private static void clickYear() {
+        find(pickerYear).click();
+    }
+
     public static void closePicker() {
-        find(pickerDone).click();
+        try {
+            find(pickerOK).click();
+        } catch (NoSuchElementException e) {
+            find(pickerTimeOK).click();
+        }
     }
 
     public static void selectDateMonth(String month) {
-        MobileElement el = (MobileElement) find(pickerFirstField);
-        while (!el.getText().equals(month)) {
-            el.swipe(SwipeElementDirection.UP, 500);
-            waitByThread(200);
-        }
-//        el.enterExpenses();
-//        el.sendKeys(month);
+        String currentMonth = find(pickerMonth).getText();
+        DateFormat currentDateFormat = new SimpleDateFormat("MMM");
+        DateFormat aimDateFormat = new SimpleDateFormat("MMMM");
+        DateFormat monthInYear = new SimpleDateFormat("M");
+
+
+        try {
+            Date currentDate = currentDateFormat.parse(currentMonth);
+            Date aimDate = aimDateFormat.parse(month);
+            int currentMonthIndex = Integer.parseInt(monthInYear.format(currentDate));
+            int aimMonthIndex = Integer.parseInt(monthInYear.format(aimDate));
+
+            if (currentMonthIndex != aimMonthIndex) {
+                int steps = defineSteps(currentMonthIndex, aimMonthIndex);
+
+                String direction = defineSpinDirection(currentMonthIndex, aimMonthIndex);
+
+                spinMonthWheel(direction, steps);
+            }
+        } catch (ParseException e) {}
+
+//        while(true) {
+//            MobileElement el = (MobileElement) find(wheelMonth);
+//            el.swipe(SwipeElementDirection.DOWN, 5, 70, 500);
+//        }
+//        MobileElement el = (MobileElement) find(pickerFirstField);
+//        while (!el.getText().equals(month)) {
+//            el.swipe(SwipeElementDirection.UP, 500);
+//            waitByThread(200);
+//        }
     }
 
     public static void selectDateDay(String day) {
-        MobileElement el = (MobileElement) find(pickerSecondField);
-        spinNumericField(el, day);
+        find(MobileBy.xpath(
+                "//*[contains(@resource-id, 'animator')]/android.widget.ListView[1]/android.view.View[1]/android.view.View["
+                        + day + "]")).click();
+//        MobileElement el = (MobileElement) find(pickerSecondField);
+//        spinNumericField(el, day);
 //        el.enterExpenses();
 //        el.sendKeys(day);
     }
 
     public static void selectDateYear(String year) {
-        MobileElement el = (MobileElement) find(pickerThirdField);
-        spinNumericField(el, year);
-//        el.enterExpenses();
-//        el.sendKeys(year);
-//        hideKeyboard();
+        int currentValue = Integer.parseInt(getYear());
+        int aimValue = Integer.parseInt(year);
+        int steps = defineSteps(currentValue, aimValue);
+        if(currentValue != aimValue) {
+            clickYear();
+            String direction = defineSpinDirection(currentValue, aimValue);
+            spinYearWheel(direction, steps, aimValue);
+        }
+//        MobileElement el = (MobileElement) find(pickerThirdField);
+//        spinNumericField(el, year);
+    }
+
+    private static int defineSteps(int currentValue, int aimValue) {
+        return Math.abs(currentValue - aimValue);
+    }
+
+    private static String defineSpinDirection(int current, int aim) {
+        if(current < aim) {
+            return UP;
+        } else {
+            return DOWN;
+        }
+    }
+
+    private static void spinYearWheel(String direction, int steps, int aimValue) {
+        MobileElement el = (MobileElement) find(wheelYear);
+        for(int i = 0; i < steps; i++) {
+            if (direction.equals(UP))
+                el.swipe(SwipeElementDirection.UP, 500);
+            else if (direction.equals(DOWN))
+                el.swipe(SwipeElementDirection.DOWN, 500);
+        }
+        find(MobileBy.xpath("//*[contains(@resource-id, 'month_text_view') and @text='" + aimValue + "']")).click();
+    }
+
+    private static void spinMonthWheel(String direction, int steps) {
+        MobileElement el = (MobileElement) find(wheelMonth);
+        for(int i = 0; i < steps; i++) {
+            if (direction.equals(UP)) {
+                el.swipe(SwipeElementDirection.UP, 30, 50, 1000);
+                waitByThread(100);
+            } else if (direction.equals(DOWN)) {
+                el.swipe(SwipeElementDirection.DOWN, 30, 50, 1000);
+                waitByThread(100);
+            }
+        }
     }
 
     public static void selectTimeHours(String hours) {
-        MobileElement el = (MobileElement) find(pickerFirstField);
-        spinNumericField(el, hours);
+
+        find(MobileBy.xpath(
+                "//android.widget.RadialTimePickerView.RadialPickerTouchHelper["
+                        + (Integer.parseInt(hours) + 1) + "]")).click();
+//        MobileElement el = (MobileElement) find(pickerFirstField);
+//        spinNumericField(el, hours);
 //        el.enterExpenses();
 //        el.sendKeys(hours);
     }
 
     public static void selectTimeMinutes(String minutes) {
-        MobileElement el = (MobileElement) find(pickerSecondField);
-        spinNumericField(el, minutes);
+        find(MobileBy.xpath(
+                "//android.widget.RadialTimePickerView.RadialPickerTouchHelper[contains(@content-desc, '"
+                        + minutes + "')]")).click();
+//        MobileElement el = (MobileElement) find(pickerSecondField);
+//        spinNumericField(el, minutes);
 //        el.enterExpenses();
 //        el.sendKeys(minutes);
     }

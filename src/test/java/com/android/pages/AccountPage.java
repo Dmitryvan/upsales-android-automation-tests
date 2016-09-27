@@ -36,7 +36,7 @@ public class AccountPage extends BasePage {
     private static final By labelCampaignsCount = MobileBy.IosUIAutomation(".tableViews()[0].staticTexts()[13]");
     private static final By labelCampaigns = MobileBy.IosUIAutomation(".tableViews()[0].staticTexts()[14]");
     private static final By labelPhone = MobileBy.IosUIAutomation(".tableViews()[0].cells()[0].staticTexts()[1]");
-    private static final By labelWebsite = MobileBy.IosUIAutomation(".tableViews()[0].cells()[1].staticTexts()[1]");
+    private static final By website = MobileBy.id("website");
     private static final By labelAddresses = MobileBy.IosUIAutomation(".tableViews()[0].groups()[0].staticTexts()[0]");
     private static final By labelCampaignsValue = MobileBy.IosUIAutomation(".tableViews()[0].cells()[3].staticTexts()[1]");
     private static final By labelCategoriesValue = MobileBy.IosUIAutomation(".tableViews()[0].cells()[4].staticTexts()[1]");
@@ -58,6 +58,10 @@ public class AccountPage extends BasePage {
 
     public static String getAccountManagerValue() {
         return getText(labelAccountManagerValue);
+    }
+
+    public static String getWebsite() {
+        return getText(website);
     }
 
     public static void clickLeftMenu() {

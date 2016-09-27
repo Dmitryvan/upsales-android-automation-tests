@@ -556,14 +556,14 @@ public class CreateEditContactTest extends BaseTest {
         ActivityManipulationsPage.clickActivityType();
         ActivityManipulationsPage.selectValueFromPopUp(activityType);
         ActivityManipulationsPage.clickDueDate();
+        ActivityManipulationsPage.selectDateYear(dueDateYear);
         ActivityManipulationsPage.selectDateMonth(dueDateMonth);
         ActivityManipulationsPage.selectDateDay(dueDateDay);
-        ActivityManipulationsPage.selectDateYear(dueDateYear);
         ActivityManipulationsPage.closePicker();
         ActivityManipulationsPage.clickTime();
         ActivityManipulationsPage.selectTimeHours(timeHours);
         ActivityManipulationsPage.selectTimeMinutes(timeMinutes);
-        ActivityManipulationsPage.selectTimeAmPm(timeAmPm);
+//        ActivityManipulationsPage.selectTimeAmPm(timeAmPm);
         ActivityManipulationsPage.closePicker();
         ActivityManipulationsPage.clickOpportunity();
         ActivityManipulationsPage.selectValueFromPopUp(opportunity);
@@ -880,9 +880,9 @@ public class CreateEditContactTest extends BaseTest {
         OpportunityManipulationsPage.clickStage();
         OpportunityManipulationsPage.selectValueFromPopUp(newStage);
         OpportunityManipulationsPage.clickCloseDate();
+        OpportunityManipulationsPage.selectDateYear(newYear);
         OpportunityManipulationsPage.selectDateMonth(newMonth);
         OpportunityManipulationsPage.selectDateDay(newDay);
-        OpportunityManipulationsPage.selectDateYear(newYear);
         OpportunityManipulationsPage.closePicker();
         OpportunityManipulationsPage.clickCampaign();
         AddSelectEntityPage.select(newCampaign);

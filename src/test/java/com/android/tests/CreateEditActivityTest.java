@@ -220,15 +220,15 @@ public class CreateEditActivityTest extends BaseTest {
         ActivityManipulationsPage.selectValueFromPopUp(activityType);
         softAssert.assertEquals(activityType, ActivityManipulationsPage.getActivityType());
         ActivityManipulationsPage.clickDueDate();
+        ActivityManipulationsPage.selectDateYear(dueDateYear);
         ActivityManipulationsPage.selectDateMonth(dueDateMonth);
         ActivityManipulationsPage.selectDateDay(dueDateDay);
-        ActivityManipulationsPage.selectDateYear(dueDateYear);
         ActivityManipulationsPage.closePicker();
         softAssert.assertEquals(dueDate, ActivityManipulationsPage.getDueDate());
         ActivityManipulationsPage.clickTime();
         ActivityManipulationsPage.selectTimeHours(timeHours);
         ActivityManipulationsPage.selectTimeMinutes(timeMinutes);
-        ActivityManipulationsPage.selectTimeAmPm(timeAmPm);
+//        ActivityManipulationsPage.selectTimeAmPm(timeAmPm);
         ActivityManipulationsPage.closePicker();
         softAssert.assertEquals(time, ActivityManipulationsPage.getTime());
         ActivityManipulationsPage.clickAccount();
@@ -261,9 +261,9 @@ public class CreateEditActivityTest extends BaseTest {
         ActivityManipulationsPage.clickActivityType();
         ActivityManipulationsPage.selectValueFromPopUp(newActivityType);
         ActivityManipulationsPage.clickDueDate();
+        ActivityManipulationsPage.selectDateYear(newDueDateYear);
         ActivityManipulationsPage.selectDateMonth(newDueDateMonth);
         ActivityManipulationsPage.selectDateDay(newDueDateDay);
-        ActivityManipulationsPage.selectDateYear(newDueDateYear);
         ActivityManipulationsPage.closePicker();
         ActivityManipulationsPage.clickTime();
         ActivityManipulationsPage.selectTimeHours(newHours);

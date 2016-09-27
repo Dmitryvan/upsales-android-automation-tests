@@ -98,7 +98,7 @@ public class BasePage extends Helpers {
 
     public static void clickSave() {
         find(buttonSave).click();
-        waitByThread(500);
+        waitByThread(1000);
     }
 
     protected static int getTableSize(By elementPath) {
