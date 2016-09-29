@@ -1187,6 +1187,7 @@ public class CreateEditAccountTest extends BaseTest {
     public void softCreateAccountCreateContactEditContactCancel() {
         SoftAssertExtended softAssert = new SoftAssertExtended();
         AccountManipulationsPage.enterAccountName(accountName);
+        AccountManipulationsPage.enterWebsite(website);
         AccountManipulationsPage.clickSave();
         AccountManipulationsPage.clickPopUpContact();
         ContactManipulationPage.setContactName();

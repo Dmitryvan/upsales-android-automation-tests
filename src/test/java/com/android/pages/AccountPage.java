@@ -43,7 +43,7 @@ public class AccountPage extends BasePage {
 
     private static final By tabHome = MobileBy.xpath(".tabBars()[0].buttons()[0]");
     private static final By tabContacts = MobileBy.xpath("//*[@text='Contacts' and contains(@resource-id, 'title_text')]/..");
-    private static final By tabActivity = MobileBy.xpath("//*[contains(@resource-id, 'title_text') and @text='Activities']/..");
+    private static final By tabActivity = MobileBy.xpath("//*[contains(@resource-id, 'root_tab')]//*[@text='Activities']/..");
     private static final By tabOpportunities = MobileBy.xpath("//*[@text='Opportunities' and contains(@resource-id, 'title_text')]/..");
     private static final By tabSales = MobileBy.xpath("//*[contains(@resource-id, 'title_text') and @text='Sales']/..");
 
@@ -130,6 +130,7 @@ public class AccountPage extends BasePage {
 
     private static void clickTab(By tab) {
         waitByThread(1500);
+        waitToBeClickable(tab);
         find(tab).click();
     }
 }
