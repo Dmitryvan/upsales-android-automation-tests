@@ -286,6 +286,7 @@ public class Helpers {
     }
 
     public static void selectDateDay(String day) {
+        waitByThread(200);
         find(MobileBy.xpath(
                 "//*[contains(@resource-id, 'animator')]/android.widget.ListView[1]/android.view.View[1]/android.view.View["
                         + day + "]")).click();
@@ -336,10 +337,10 @@ public class Helpers {
         for(int i = 0; i < steps; i++) {
             if (direction.equals(UP)) {
                 el.swipe(SwipeElementDirection.UP, 30, 50, 1000);
-                waitByThread(100);
+                waitByThread(150);
             } else if (direction.equals(DOWN)) {
                 el.swipe(SwipeElementDirection.DOWN, 30, 50, 1000);
-                waitByThread(100);
+                waitByThread(150);
             }
         }
     }

@@ -126,6 +126,7 @@ public class AppointmentManipulationsPage extends BasePage {
     }
 
     public static String getAppointmentType() {
+        waitByThread(200);
         return find(appointmentType).getText();
     }
 
