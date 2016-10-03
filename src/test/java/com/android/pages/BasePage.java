@@ -21,6 +21,7 @@ public class BasePage extends Helpers {
     public static final int DELETE_KEYCODE = 67;
 
     //headers
+    private static final By toolbar = MobileBy.id("toolbar");
     private static final By buttonLeftMenu = MobileBy.id("left_icon");
     protected static final By buttonCancel = MobileBy.id("cancel");
     protected static final By buttonSave = MobileBy.id("save");
@@ -122,6 +123,7 @@ public class BasePage extends Helpers {
     }
 
     public static void clickTools() {
+        waitToBeClickable(toolbar);
         find(buttonTools).click();
     }
 
