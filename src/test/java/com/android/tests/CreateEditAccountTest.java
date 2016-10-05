@@ -247,6 +247,8 @@ public class CreateEditAccountTest extends BaseTest {
         softAssert.assertEquals(AddSelectEntityPage.getSelectButtonValue(), lblSelect);
         softAssert.assertEquals(AddSelectEntityPage.getResultsLabelValue(), lblResults);
         AddSelectEntityPage.clickBack();
+        AccountManipulationsPage.hideKeyboard();
+
         softAssert.assertEquals(AccountManipulationsPage.getContactInformationLabelValue(), lblContactInformation);
         softAssert.assertEquals(AccountManipulationsPage.getPhoneFieldDefaultValue(),lblPhone);
         softAssert.assertEquals(AccountManipulationsPage.getWebsiteFieldDefaultValue(), lblWebsite);
@@ -301,6 +303,8 @@ public class CreateEditAccountTest extends BaseTest {
         softAssert.assertEquals(AddSelectEntityPage.getSelectButtonValue(), lblSelect);
         softAssert.assertEquals(AddSelectEntityPage.getResultsLabelValue(), lblResults);
         AddSelectEntityPage.clickBack();
+
+        AccountManipulationsPage.hideKeyboard();
 
         softAssert.assertEquals(AccountManipulationsPage.getLabelCategories(), lblCategories);
         softAssert.assertEquals(AccountManipulationsPage.getCategories(), lblNone);

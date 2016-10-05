@@ -181,8 +181,7 @@ public class CreateEditAppointmentTest extends BaseTest {
         AppointmentManipulationsPage.clickAccount();
         AddSelectEntityPage.select(account);
         AppointmentManipulationsPage.clickCancel();
-        assertTrue(LeftMenuPage.checkSearch());
-        assertEquals(LeftMenuPage.getHiddenPageTitle(), titleDashboard);
+        assertEquals(DashboardPage.getTitle(), titleDashboard);
     }
 
     @Test(priority = 4)

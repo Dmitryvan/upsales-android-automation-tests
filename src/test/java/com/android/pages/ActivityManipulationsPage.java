@@ -28,6 +28,7 @@ public class ActivityManipulationsPage extends BasePage {
     private static final By labelDueDate = MobileBy.xpath("//*[contains(@resource-id, 'date_field')]//*[contains(@resource-id, 'name')]");
     private static final By labelTime = MobileBy.xpath("//*[contains(@resource-id, 'time_field')]//*[contains(@resource-id, 'name')]");
     private static final By labelUser = MobileBy.xpath("//*[contains(@resource-id, 'user_field')]//*[contains(@resource-id, 'name')]");
+    private static final By labelNotes = MobileBy.xpath("//*[contains(@resource-id, 'notes_field_above')]//*[contains(@resource-id, 'name')]");
 
     private static final By fieldExpenses = MobileBy.xpath("//*[@text='Expenses']/..//*[contains(@resource-id, 'edit_field')]");
 
@@ -46,6 +47,10 @@ public class ActivityManipulationsPage extends BasePage {
 
     public static String getLabelTime() {
         return getText(labelTime);
+    }
+
+    public static String getLabelNotes() {
+        return getText(labelNotes);
     }
 
     public static String getAllActivityTypes() {

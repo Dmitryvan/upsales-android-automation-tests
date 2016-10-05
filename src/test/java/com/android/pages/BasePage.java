@@ -99,7 +99,7 @@ public class BasePage extends Helpers {
 
     public static void clickSave() {
         find(buttonSave).click();
-        waitByThread(1000);
+        waitByThread(2000);
     }
 
     protected static int getTableSize(By elementPath) {
@@ -130,6 +130,7 @@ public class BasePage extends Helpers {
     //common methods
     protected static void sendValues(String value, By locator) {
         WebElement element = find(locator);
+        element.click();
         clearField(element);
         element.sendKeys(value);
     }

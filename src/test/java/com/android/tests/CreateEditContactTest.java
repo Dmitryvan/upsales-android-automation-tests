@@ -221,7 +221,8 @@ public class CreateEditContactTest extends BaseTest {
         ContactManipulationPage.enterContactName(contactName);
         ContactManipulationPage.clickAccount();
         AddSelectEntityPage.select(account);
-        ContactManipulationPage.scrollToLabel("Chance");
+        ContactManipulationPage.swipeFromBottomToTop();
+        ContactManipulationPage.swipeFromBottomToTop();
         ContactManipulationPage.clickExtraID();
         ContactManipulationPage.enterExtraID(extraID);
         ContactManipulationPage.clickChanceOfSuccess();
@@ -382,7 +383,6 @@ public class CreateEditContactTest extends BaseTest {
         ContactManipulationPage.clickAccount();
         AddSelectEntityPage.select(account);
         ContactManipulationPage.enterTitle(title);
-        ContactManipulationPage.enterPhone(newPhone);
 
         ContactManipulationPage.swipeFromBottomToTop();
         ContactManipulationPage.swipeFromBottomToTop();
@@ -506,8 +506,8 @@ public class CreateEditContactTest extends BaseTest {
         ContactManipulationPage.hideKeyboard();
         ActivityManipulationsPage.checkPageTitle(titleCreate);
         ActivityManipulationsPage.clickCancel();
-        softAssert.assertTrue(LeftMenuPage.checkSearch());
-        softAssert.assertEquals(LeftMenuPage.getHiddenPageTitle(), titleDashboard);
+        softAssert.assertEquals(DashboardPage.getTitle(), titleDashboard);
+        DashboardPage.clickLeftMenu();
         LeftMenuPage.clickSearch();
         SearchPage.search(account);
         SearchPage.clickOnFirstSearchResult();
@@ -657,8 +657,8 @@ public class CreateEditContactTest extends BaseTest {
         ContactManipulationPage.clickAppointment();
         AppointmentManipulationsPage.checkPageTitle(titleCreateApp);
         AppointmentManipulationsPage.clickCancel();
-        softAssert.assertTrue(LeftMenuPage.checkSearch());
-        softAssert.assertEquals(LeftMenuPage.getHiddenPageTitle(), titleDashboard);
+        softAssert.assertEquals(DashboardPage.getTitle(), titleDashboard);
+        DashboardPage.clickLeftMenu();
         LeftMenuPage.clickSearch();
         SearchPage.search(account);
         SearchPage.clickOnFirstSearchResult();
@@ -838,8 +838,7 @@ public class CreateEditContactTest extends BaseTest {
         AddSelectEntityPage.select(product);
         NewOrderRowPage.clickAdd();
         OpportunityManipulationsPage.clickCancel();
-        softAssert.assertTrue(LeftMenuPage.checkSearch());
-        softAssert.assertEquals(LeftMenuPage.getHiddenPageTitle(), titleDashboard);
+        softAssert.assertEquals(DashboardPage.getTitle(), titleDashboard);
         softAssert.assertAll();
     }
 
@@ -864,7 +863,7 @@ public class CreateEditContactTest extends BaseTest {
         OpportunityManipulationsPage.clickStage();
         OpportunityManipulationsPage.selectValueFromPopUp(stage);
         OpportunityManipulationsPage.hideKeyboard();
-        OpportunityManipulationsPage.scrollToLabel(labelOtherInfo);
+        OpportunityManipulationsPage.swipeFromBottomToTop();
         OpportunityManipulationsPage.clickNewOrderRow();
         NewOrderRowPage.clickProduct();
         AddSelectEntityPage.select(product);

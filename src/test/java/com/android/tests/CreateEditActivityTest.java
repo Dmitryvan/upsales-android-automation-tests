@@ -172,8 +172,7 @@ public class CreateEditActivityTest extends BaseTest {
         ActivityManipulationsPage.clickAccount();
         AddSelectEntityPage.select(account);
         ActivityManipulationsPage.clickCancel();
-        softAssert.assertTrue(LeftMenuPage.checkSearch());
-        softAssert.assertEquals(LeftMenuPage.getHiddenPageTitle(), titleDashboard);
+        softAssert.assertEquals(DashboardPage.getTitle(), titleDashboard);
         softAssert.assertAll();
     }
 
