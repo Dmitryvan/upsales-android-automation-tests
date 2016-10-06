@@ -73,6 +73,7 @@ public class CreateEditAccountTest extends BaseTest {
     private final String appDefaultType = PropertyLoader.loadProperty(createAppPropertyPath, "defaultAppointmentType");
     private final String newAppointmentType = PropertyLoader.loadProperty(createAppPropertyPath, "newAppointmentType");
     private final String appDefaultContact = PropertyLoader.loadProperty(createAppPropertyPath, "defaultContact");
+    private final String appDefaultNoContact = PropertyLoader.loadProperty(createAppPropertyPath, "defaultNoContact");
     private final String appDefaultOpp = PropertyLoader.loadProperty(createAppPropertyPath, "defaultOpportunity");
     private final String location = PropertyLoader.loadProperty(createAppPropertyPath, "location");
     private final String newLocation = PropertyLoader.loadProperty(createAppPropertyPath, "newLocation");
@@ -340,8 +341,7 @@ public class CreateEditAccountTest extends BaseTest {
     @Test(priority = 3) // Case 3
     public void cancelAccountBeforeSave() {
         AccountManipulationsPage.clickCancel();
-        assertTrue(LeftMenuPage.checkSearch());
-        assertEquals(LeftMenuPage.getHiddenPageTitle(), dashboardTitle);
+        assertEquals(DashboardPage.getTitle(), dashboardTitle);
     }
 
     @Test(priority = 4) // Case 4
@@ -433,7 +433,6 @@ public class CreateEditAccountTest extends BaseTest {
         AddSelectEntityPage.select(newParentAccount);
         AccountManipulationsPage.enterPhone(newPhone);
         AccountManipulationsPage.enterWebsite(newWebsite);
-        AccountManipulationsPage.clickVisit();
         AccountManipulationsPage.clickPostal();
         AccountManipulationsPage.enterStreet(newPostalStreet);
         AccountManipulationsPage.enterZipcode(newPostalZipcode);
@@ -700,6 +699,9 @@ public class CreateEditAccountTest extends BaseTest {
         AccountManipulationsPage.enterAccountName(accountName);
         AccountManipulationsPage.enterWebsite(website);
         AccountManipulationsPage.clickSave();
+
+        AccountManipulationsPage.hideKeyboard();
+
         AccountManipulationsPage.clickPopUpActivity();
 
         AccountManipulationsPage.hideKeyboard();
@@ -733,8 +735,8 @@ public class CreateEditAccountTest extends BaseTest {
         ActivityPage.swipeFromBottomToTop();
         softAssert.assertEquals(ActivityPage.getExpenses(), expenses + " SEK");
 
-        ActivityPage.clickLeftMenu();
-//        AccountManipulationsPage.clickBack();
+        ActivityPage.clickBack();
+        DashboardPage.clickLeftMenu();
         LeftMenuPage.clickActivities();
         softAssert.assertTrue(ActivitiesPage.searchActivity(defaultDescription, dateToday));
         softAssert.assertAll();
@@ -745,10 +747,13 @@ public class CreateEditAccountTest extends BaseTest {
         AccountManipulationsPage.enterAccountName(accountName);
         AccountManipulationsPage.enterWebsite(website);
         AccountManipulationsPage.clickSave();
+
+        AccountManipulationsPage.hideKeyboard();
+
         AccountManipulationsPage.clickPopUpActivity();
         assertEquals(ActivityPage.getTitle(), createActivityTitle);
         ActivityManipulationsPage.clickCancel();
-//        AccountPage.clickBack();
+        DashboardPage.clickLeftMenu();
         LeftMenuPage.clickSearch();
         SearchPage.search(accountName);
         assertEquals(SearchPage.getFirstSearchResult(), accountName);
@@ -770,6 +775,9 @@ public class CreateEditAccountTest extends BaseTest {
         AddSelectEntityPage.select(category);
         AddSelectEntityPage.clickSelect();
         AccountManipulationsPage.clickSave();
+
+        AccountManipulationsPage.hideKeyboard();
+
         AccountManipulationsPage.clickPopUpActivity();
         ActivityManipulationsPage.setDescription();
         activityDescription = ActivityManipulationsPage.getDescription();
@@ -844,7 +852,7 @@ public class CreateEditAccountTest extends BaseTest {
         softAssert.assertEquals(AppointmentManipulationsPage.getEndDate() + " " + AppointmentManipulationsPage.getEndTime(),
                 AppointmentManipulationsPage.getDefaultAppEndDate());
         softAssert.assertEquals(AppointmentManipulationsPage.getAccount(), accountName);
-        softAssert.assertEquals(AppointmentManipulationsPage.getContact(), appDefaultContact);
+        softAssert.assertEquals(AppointmentManipulationsPage.getContact(), appDefaultNoContact);
         softAssert.assertEquals(AppointmentManipulationsPage.getOpportunity(), appDefaultOpp);
         softAssert.assertEquals(AppointmentManipulationsPage.getUser(), defaultUser);
         softAssert.assertEquals(AppointmentManipulationsPage.getCampaign(), defaultCampaign);
@@ -870,8 +878,7 @@ public class CreateEditAccountTest extends BaseTest {
         AccountManipulationsPage.clickPopUpAppointment();
         assertEquals(AppointmentManipulationsPage.getTitle(), appCreateTitle);
         AppointmentManipulationsPage.clickCancel();
-//        AccountManipulationsPage.clickBack();
-        assertTrue(LeftMenuPage.checkSearch());
+        DashboardPage.clickLeftMenu();
         LeftMenuPage.clickSearch();
         SearchPage.search(accountName);
         assertEquals(SearchPage.getFirstSearchResult(), accountName);
@@ -1006,7 +1013,7 @@ public class CreateEditAccountTest extends BaseTest {
         OpportunityManipulationsPage.clickStage();
         OpportunityManipulationsPage.selectValueFromPopUp(oppStage);
         OpportunityManipulationsPage.clickCancel();
-        LeftMenuPage.checkSearch();
+        DashboardPage.clickLeftMenu();
         LeftMenuPage.clickSearch();
         SearchPage.search(accountName);
         assertEquals(SearchPage.getFirstSearchResult(), accountName);
@@ -1105,8 +1112,7 @@ public class CreateEditAccountTest extends BaseTest {
         ContactManipulationPage.enterContactName(contactName);
         assertEquals(ContactManipulationPage.getAccount(), accountName);
         ContactManipulationPage.clickCancel();
-//        AccountManipulationsPage.clickBack();
-        assertTrue(LeftMenuPage.checkSearch());
+        DashboardPage.clickLeftMenu();
         LeftMenuPage.clickSearch();
         SearchPage.search(accountName);
         assertEquals(SearchPage.getFirstSearchResult(), accountName);

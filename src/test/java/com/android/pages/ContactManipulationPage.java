@@ -118,9 +118,7 @@ public class ContactManipulationPage extends BasePage {
     }
 
     public static void typeIntoNotes(String note) {
-        clearField(find(fieldNotes));
-        find(fieldNotes).sendKeys(note);
-        hideKeyboard();
+        clearAndType(note, fieldNotes);
     }
 
     private static final By fieldNotes = MobileBy.id("notes");

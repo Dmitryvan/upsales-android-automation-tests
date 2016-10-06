@@ -228,13 +228,12 @@ public class CreateEditContactTest extends BaseTest {
         ContactManipulationPage.clickChanceOfSuccess();
         ContactManipulationPage.enterChanceOfSuccess(chanceOfSuccess);
         ContactManipulationPage.clickCancel();
-        softAssert.assertTrue(LeftMenuPage.checkSearch());
-        softAssert.assertEquals(LeftMenuPage.getHiddenPageTitle(), titleDashboard);
+        softAssert.assertEquals(DashboardPage.getTitle(), titleDashboard);
         softAssert.assertAll();
     }
 
     @Test(priority = 4) //CASE 25
-    public void softEditContactWithHelpPopover() throws InterruptedException {
+    public void softEditContactWithHelpPopover() {
         SoftAssertExtended softAssert = new SoftAssertExtended();
         ContactManipulationPage.enterContactName(contactName);
         ContactManipulationPage.enterTitle(title);
@@ -251,6 +250,7 @@ public class CreateEditContactTest extends BaseTest {
         AddSelectEntityPage.clickSelect();
         ContactManipulationPage.typeIntoNotes(notes);
 
+        ContactManipulationPage.swipeFromBottomToTop();
         ContactManipulationPage.swipeFromBottomToTop();
         ContactManipulationPage.clickExtraID();
         ContactManipulationPage.enterExtraID(extraID);
@@ -278,6 +278,7 @@ public class CreateEditContactTest extends BaseTest {
         AddSelectEntityPage.clickSelect();
         ContactManipulationPage.typeIntoNotes(newNotes);
 
+        ContactManipulationPage.swipeFromBottomToTop();
         ContactManipulationPage.swipeFromBottomToTop();
         ContactManipulationPage.clickExtraID();
         ContactManipulationPage.clearExtraID();
@@ -345,6 +346,7 @@ public class CreateEditContactTest extends BaseTest {
         AddSelectEntityPage.clickSelect();
         ContactManipulationPage.typeIntoNotes(notes);
 
+        ContactManipulationPage.swipeFromBottomToTop();
         ContactManipulationPage.swipeFromBottomToTop();
         ContactManipulationPage.clickExtraID();
         ContactManipulationPage.clearExtraID();

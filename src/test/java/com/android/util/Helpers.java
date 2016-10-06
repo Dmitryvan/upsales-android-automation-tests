@@ -605,6 +605,7 @@ public class Helpers {
 
     protected static void clearAndType(String text, By locator) {
         WebElement element = find(locator);
+        element.click();
         clearField(element);
         element.sendKeys(text);
         hideKeyboard();
