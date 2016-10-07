@@ -25,6 +25,7 @@ public class AppointmentManipulationsPage extends BasePage {
     private static final By labelEndDateTime = MobileBy.xpath("//*[contains(@resource-id, 'ends_field')]//*[contains(@resource-id, 'name')]");
     private static final By labelLocation = MobileBy.xpath("//*[contains(@resource-id, 'location')]//*[contains(@resource-id, 'name')]");
     private static final By labelUser = MobileBy.xpath("//*[contains(@resource-id, 'user_field')]//*[contains(@resource-id, 'name')]");
+    private static final By labelNotes = MobileBy.xpath("//*[contains(@resource-id, 'notes_field_above')]//*[contains(@resource-id, 'name')]");
 
     private static final By startDate = MobileBy.xpath("//*[contains(@resource-id, 'starts_field')]//*[contains(@resource-id, 'date')]");
     private static final By endDate = MobileBy.xpath("//*[contains(@resource-id, 'ends_field')]//*[contains(@resource-id, 'date')]");
@@ -182,5 +183,9 @@ public class AppointmentManipulationsPage extends BasePage {
 
     public static void clearHoursInPreparation() {
         find(hoursInPreparation).clear();
+    }
+
+    public static String getLabelNotesInAppointment() {
+        return getText(labelNotes);
     }
 }

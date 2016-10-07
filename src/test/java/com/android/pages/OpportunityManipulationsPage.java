@@ -20,6 +20,7 @@ public class OpportunityManipulationsPage extends BasePage {
     private static final By values = MobileBy.id("select");
     private static final By labelOrdersRow = MobileBy.xpath("//*[contains(@resource-id, 'order_field')]//*[contains(@resource-id, 'header_title')]");
     private static final By listStages = MobileBy.id("text1");
+    private static final By labelNotes = MobileBy.xpath("//*[contains(@resource-id, 'notes_field_below')]//*[contains(@resource-id, 'name')]");
 
     private static final By buttonUser = MobileBy.id("sales_representative_field");
     private static final By buttonStage = MobileBy.id("stage_field");
@@ -119,6 +120,9 @@ public class OpportunityManipulationsPage extends BasePage {
         hideKeyboard();
     }
 
+    public static String getLabelNotesInOppotunity() {
+        return getText(labelNotes);
+    }
 }
 
 

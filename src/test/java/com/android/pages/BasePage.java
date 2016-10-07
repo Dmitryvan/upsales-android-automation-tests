@@ -84,6 +84,7 @@ public class BasePage extends Helpers {
     }
 
     public static void clickBack() {
+        waitToBeClickable(buttonBack);
         find(buttonBack).click();
         waitByThread(1000);
     }

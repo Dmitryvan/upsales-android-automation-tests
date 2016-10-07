@@ -141,7 +141,7 @@ public class CreateEditOrderTest extends BaseTest {
         softAssert.assertEquals(OpportunityManipulationsPage.getLabelOrdersRow(), labelOrdersRow);
         softAssert.assertEquals(OpportunityManipulationsPage.getLabelNewOrderRow(), labelNewOrderRow);
         OpportunityManipulationsPage.swipeFromBottomToTop();
-        softAssert.assertEquals(OpportunityManipulationsPage.getLabelNotes(), labelNotes);
+        softAssert.assertEquals(OpportunityManipulationsPage.getLabelNotesInOppotunity(), labelNotes);
         softAssert.assertEquals(OpportunityManipulationsPage.getLabelOtherInfo(), labelOtherInfo);
         OpportunityManipulationsPage.clickNewOrderRow();
         softAssert.assertEquals(NewOrderRowPage.getTitle(), titleNewOrderRow);
@@ -180,7 +180,8 @@ public class CreateEditOrderTest extends BaseTest {
         softAssert.assertEquals(OpportunityPage.getOrderName(), orderName);
         softAssert.assertEquals(OpportunityPage.getStage(), stageInOrder);
         softAssert.assertEquals(OpportunityPage.getOrderTitle(), titleOrder.toUpperCase());
-        OpportunityPage.clickLeftMenu();
+        OpportunityPage.clickBack();
+        DashboardPage.clickLeftMenu();
         LeftMenuPage.clickSearch();
         SearchPage.search(account);
         SearchPage.clickOnFirstSearchResult();
@@ -203,8 +204,7 @@ public class CreateEditOrderTest extends BaseTest {
         AddSelectEntityPage.select(product);
         NewOrderRowPage.clickAdd();
         OpportunityManipulationsPage.clickCancel();
-        softAssert.assertTrue(LeftMenuPage.checkSearch());
-        softAssert.assertEquals(LeftMenuPage.getHiddenPageTitle(), titleDashboard);
+        softAssert.assertEquals(DashboardPage.getTitle(), titleDashboard);
         softAssert.assertAll();
     }
 
@@ -337,7 +337,8 @@ public class CreateEditOrderTest extends BaseTest {
         softAssert.assertEquals(OpportunityPage.getProduct(), newProduct);
         OpportunityPage.swipeFromBottomToTop();
         softAssert.assertEquals(OpportunityPage.getNotes(), newNotes);
-        OpportunityPage.clickLeftMenu();
+        OpportunityPage.clickBack();
+        DashboardPage.clickLeftMenu();
         LeftMenuPage.clickSearch();
         SearchPage.search(account);
         SearchPage.clickOnFirstSearchResult();

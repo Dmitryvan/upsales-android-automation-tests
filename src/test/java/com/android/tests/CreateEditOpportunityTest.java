@@ -144,7 +144,7 @@ public class CreateEditOpportunityTest extends BaseTest {
         softAssert.assertEquals(OpportunityManipulationsPage.getLabelOrdersRow(), labelOrdersRow);
         softAssert.assertEquals(OpportunityManipulationsPage.getLabelNewOrderRow(), labelNewOrderRow);
         OpportunityManipulationsPage.swipeFromBottomToTop();
-        softAssert.assertEquals(OpportunityManipulationsPage.getLabelNotes(), labelNotes);
+        softAssert.assertEquals(OpportunityManipulationsPage.getLabelNotesInOppotunity(), labelNotes);
         softAssert.assertEquals(OpportunityManipulationsPage.getLabelOtherInfo(), labelOtherInfo);
         OpportunityManipulationsPage.clickNewOrderRow();
         NewOrderRowPage.checkPageTitle(titleNewOrderRow);
@@ -201,8 +201,7 @@ public class CreateEditOpportunityTest extends BaseTest {
         AddSelectEntityPage.select(product);
         NewOrderRowPage.clickAdd();
         OpportunityManipulationsPage.clickCancel();
-        softAssert.assertTrue(LeftMenuPage.checkSearch());
-        softAssert.assertEquals(LeftMenuPage.getHiddenPageTitle(), titleDashboard);
+        softAssert.assertEquals(DashboardPage.getTitle(), titleDashboard);
         softAssert.assertAll();
     }
 
@@ -349,7 +348,8 @@ public class CreateEditOpportunityTest extends BaseTest {
         softAssert.assertEquals(OpportunityPage.getPrice(), newPrice);
         OpportunityManipulationsPage.swipeFromBottomToTop();
         softAssert.assertEquals(OpportunityPage.getNotes(), newNotes);
-        OpportunityPage.clickLeftMenu();
+        OpportunityPage.clickBack();
+        DashboardPage.clickLeftMenu();
         LeftMenuPage.clickSearch();
         SearchPage.search(account);
         SearchPage.clickOnFirstSearchResult();
