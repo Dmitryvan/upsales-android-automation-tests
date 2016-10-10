@@ -470,6 +470,7 @@ public class FollowUpActivityTest extends BaseTest {
         ContactManipulationPage.enterTitle(title);
         ContactManipulationPage.swipeFromBottomToTop();
         ContactManipulationPage.swipeFromBottomToTop();
+        ContactManipulationPage.swipeFromBottomToTop();
         ContactManipulationPage.clickExtraID();
         ContactManipulationPage.enterExtraID(extraID);
         ContactManipulationPage.clickChanceOfSuccess();
@@ -495,6 +496,7 @@ public class FollowUpActivityTest extends BaseTest {
         AddSelectEntityPage.select(campaign);
         ActivityManipulationsPage.swipeFromBottomToTop();
         ActivityManipulationsPage.typeIntoNotes(notes);
+        ActivityManipulationsPage.swipeFromBottomToTop();
         ActivityManipulationsPage.swipeFromBottomToTop();
         ActivityManipulationsPage.clickExpenses();
         ActivityManipulationsPage.enterExpenses(expenses);
@@ -545,7 +547,6 @@ public class FollowUpActivityTest extends BaseTest {
         softAssert.assertEquals(ActivityPage.getNotes(), notes);
         ActivityPage.swipeFromBottomToTop();
         softAssert.assertEquals(ActivityPage.getExpenses(), newExpenses + " SEK");
-//        ActivityPage.clickBack(); ???
         ActivityPage.swipeFromTopToBottom();
         ActivityPage.swipeFromTopToBottom();
         ActivityPage.clickAccount();

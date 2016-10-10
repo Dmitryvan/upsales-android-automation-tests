@@ -25,7 +25,7 @@ public class NewOrderRowPage extends BasePage {
     private static final By price = MobileBy.xpath("//android.widget.RelativeLayout[@index='3']//android.widget.EditText[@index='0']");
 
     private static final By labelRowTotal = MobileBy.id("view");
-    private static final By buttonRemoveOrderRow = MobileBy.id("remove");
+    private static final By buttonRemoveOrderRow = MobileBy.id("remove_order_row");
     private static final By popupRemove = MobileBy.id("remove");
 
     public static String getLabelRowTotal() {
@@ -33,6 +33,7 @@ public class NewOrderRowPage extends BasePage {
     }
 
     public static String getLabelProduct() {
+        waitToBeClickable(labelProduct);
         return getText(labelProduct);
     }
 

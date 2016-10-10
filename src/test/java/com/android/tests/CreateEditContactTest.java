@@ -188,9 +188,9 @@ public class CreateEditContactTest extends BaseTest {
     public void softCreateContact() {
         SoftAssertExtended softAssert = new SoftAssertExtended();
         ContactManipulationPage.enterContactName(contactName);
+        ContactManipulationPage.enterTitle(title);
         ContactManipulationPage.clickAccount();
         AddSelectEntityPage.select(account);
-        ContactManipulationPage.enterTitle(title);
         ContactManipulationPage.swipeFromBottomToTop();
         ContactManipulationPage.swipeFromBottomToTop();
         ContactManipulationPage.clickExtraID();
@@ -205,7 +205,7 @@ public class CreateEditContactTest extends BaseTest {
         ContactManipulationPage.swipeFromBottomToTop();
         softAssert.assertEquals(ContactPage.getExtraID(), extraID);
         softAssert.assertEquals(ContactPage.getChanceOfSuccess(), chanceOfSuccess + "%");
-        ContactPage.scrollToLabel("Campaign");
+        ContactManipulationPage.swipeFromTopToBottom();
         ContactManipulationPage.swipeFromTopToBottom();
         ContactPage.clickAccount();
         AccountPage.clickTabContacts();
@@ -317,9 +317,9 @@ public class CreateEditContactTest extends BaseTest {
     public void softEditContactWithHelpAddContactInfoForNameButton() {
         SoftAssertExtended softAssert = new SoftAssertExtended();
         ContactManipulationPage.enterContactName(contactName);
+        ContactManipulationPage.enterTitle(title);
         ContactManipulationPage.clickAccount();
         AddSelectEntityPage.select(account);
-        ContactManipulationPage.enterTitle(title);
 
         ContactManipulationPage.swipeFromBottomToTop();
         ContactManipulationPage.swipeFromBottomToTop();
@@ -382,9 +382,9 @@ public class CreateEditContactTest extends BaseTest {
     public void softCancelAfterSelectEditContact() {
         SoftAssertExtended softAssert = new SoftAssertExtended();
         ContactManipulationPage.enterContactName(contactName);
+        ContactManipulationPage.enterTitle(title);
         ContactManipulationPage.clickAccount();
         AddSelectEntityPage.select(account);
-        ContactManipulationPage.enterTitle(title);
         ContactManipulationPage.enterPhone(newPhone);
 
         ContactManipulationPage.swipeFromBottomToTop();
@@ -441,9 +441,9 @@ public class CreateEditContactTest extends BaseTest {
     public void softCreateContactAndCreateActivity() {
         SoftAssertExtended softAssert = new SoftAssertExtended();
         ContactManipulationPage.enterContactName(contactName);
+        ContactManipulationPage.enterTitle(title);
         ContactManipulationPage.clickAccount();
         AddSelectEntityPage.select(account);
-        ContactManipulationPage.enterTitle(title);
 
         ContactManipulationPage.swipeFromBottomToTop();
         ContactManipulationPage.swipeFromBottomToTop();
@@ -494,9 +494,9 @@ public class CreateEditContactTest extends BaseTest {
     public void softCreateContactAndCreateActivityAndCancel() {
         SoftAssertExtended softAssert = new SoftAssertExtended();
         ContactManipulationPage.enterContactName(contactName);
+        ContactManipulationPage.enterTitle(title);
         ContactManipulationPage.clickAccount();
         AddSelectEntityPage.select(account);
-        ContactManipulationPage.enterTitle(title);
 
         ContactManipulationPage.swipeFromBottomToTop();
         ContactManipulationPage.swipeFromBottomToTop();
@@ -526,9 +526,9 @@ public class CreateEditContactTest extends BaseTest {
     public void softCreateContactAndCreateActivityAndEditActivity() {
         SoftAssertExtended softAssert = new SoftAssertExtended();
         ContactManipulationPage.enterContactName(contactName);
+        ContactManipulationPage.enterTitle(title);
         ContactManipulationPage.clickAccount();
         AddSelectEntityPage.select(account);
-        ContactManipulationPage.enterTitle(title);
 
         ContactManipulationPage.swipeFromBottomToTop();
         ContactManipulationPage.swipeFromBottomToTop();
@@ -605,9 +605,9 @@ public class CreateEditContactTest extends BaseTest {
     public void softCreateContactAndCreateAppointment() {
         SoftAssertExtended softAssert = new SoftAssertExtended();
         ContactManipulationPage.enterContactName(contactName);
+        ContactManipulationPage.enterTitle(title);
         ContactManipulationPage.clickAccount();
         AddSelectEntityPage.select(account);
-        ContactManipulationPage.enterTitle(title);
 
         ContactManipulationPage.swipeFromBottomToTop();
         ContactManipulationPage.swipeFromBottomToTop();
@@ -646,9 +646,9 @@ public class CreateEditContactTest extends BaseTest {
     public void softCreateContactAndCreateAppointmentAndCancel() {
         SoftAssertExtended softAssert = new SoftAssertExtended();
         ContactManipulationPage.enterContactName(contactName);
+        ContactManipulationPage.enterTitle(title);
         ContactManipulationPage.clickAccount();
         AddSelectEntityPage.select(account);
-        ContactManipulationPage.enterTitle(title);
 
         ContactManipulationPage.swipeFromBottomToTop();
         ContactManipulationPage.swipeFromBottomToTop();
@@ -778,9 +778,9 @@ public class CreateEditContactTest extends BaseTest {
     public void softCreateContactAndCreateOpportunity() {
         SoftAssertExtended softAssert = new SoftAssertExtended();
         ContactManipulationPage.enterContactName(contactName);
+        ContactManipulationPage.enterTitle(title);
         ContactManipulationPage.clickAccount();
         AddSelectEntityPage.select(account);
-        ContactManipulationPage.enterTitle(title);
 
         ContactManipulationPage.swipeFromBottomToTop();
         ContactManipulationPage.swipeFromBottomToTop();
@@ -821,9 +821,9 @@ public class CreateEditContactTest extends BaseTest {
     public void softCreateContactAndCreateOpportunityAndCancel() {
         SoftAssertExtended softAssert = new SoftAssertExtended();
         ContactManipulationPage.enterContactName(contactName);
+        ContactManipulationPage.enterTitle(title);
         ContactManipulationPage.clickAccount();
         AddSelectEntityPage.select(account);
-        ContactManipulationPage.enterTitle(title);
 
         ContactManipulationPage.swipeFromBottomToTop();
         ContactManipulationPage.swipeFromBottomToTop();
@@ -850,9 +850,9 @@ public class CreateEditContactTest extends BaseTest {
     public void softCreateContactAndCreateOpportunityAndEditOpportunity() {
         SoftAssertExtended softAssert = new SoftAssertExtended();
         ContactManipulationPage.enterContactName(contactName);
+        ContactManipulationPage.enterTitle(title);
         ContactManipulationPage.clickAccount();
         AddSelectEntityPage.select(account);
-        ContactManipulationPage.enterTitle(title);
 
         ContactManipulationPage.swipeFromBottomToTop();
         ContactManipulationPage.swipeFromBottomToTop();
@@ -913,9 +913,9 @@ public class CreateEditContactTest extends BaseTest {
     public void softCreateContactCallAndSendMessage() throws InterruptedException {
         SoftAssertExtended softAssert = new SoftAssertExtended();
         ContactManipulationPage.enterContactName(contactName);
+        ContactManipulationPage.enterTitle(title);
         ContactManipulationPage.clickAccount();
         AddSelectEntityPage.select(account);
-        ContactManipulationPage.enterTitle(title);
 
         ContactManipulationPage.swipeFromBottomToTop();
         ContactManipulationPage.swipeFromBottomToTop();

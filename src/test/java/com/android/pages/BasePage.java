@@ -62,7 +62,7 @@ public class BasePage extends Helpers {
 
     //work with headers
     public static String getTitle() {
-        wait(title);
+        waitToBeClickable(title);
         return getText(title);
     }
 

@@ -113,6 +113,7 @@ public class AccountPage extends BasePage {
     }
 
     public static void clickTabContacts() {
+        waitToBeClickable(tabContacts);
         clickTab(tabContacts);
     }
 

@@ -147,7 +147,7 @@ public class CreateEditOpportunityTest extends BaseTest {
         softAssert.assertEquals(OpportunityManipulationsPage.getLabelNotesInOppotunity(), labelNotes);
         softAssert.assertEquals(OpportunityManipulationsPage.getLabelOtherInfo(), labelOtherInfo);
         OpportunityManipulationsPage.clickNewOrderRow();
-        NewOrderRowPage.checkPageTitle(titleNewOrderRow);
+        softAssert.assertEquals(NewOrderRowPage.getTitle(), titleNewOrderRow);
         softAssert.assertEquals(NewOrderRowPage.getLabelCancel(), labelCancel);
         softAssert.assertEquals(NewOrderRowPage.getLabelSave(), labelAdd);
         softAssert.assertEquals(NewOrderRowPage.getLabelProduct(), labelProduct);
