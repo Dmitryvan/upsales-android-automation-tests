@@ -1434,7 +1434,7 @@ public class CreateEditAccountTest extends BaseTest {
         AccountPage.clickTabContacts();
 
 //        ContactsPage.selectContact(contactName);
-        ContactPage.swipeFromTopToBottom();
+//        ContactPage.swipeFromTopToBottom();
         ContactsPage.clickSearch();
         ContactsPage.search(contactName);
         ContactsPage.selectContact(contactName);

@@ -65,8 +65,8 @@ public class SalesPipelineTest extends BaseTest {
     @Test(priority = 2) //CASE 3
     public void softSalesPerUserVerification() {
         SoftAssertExtended softAssert = new SoftAssertExtended();
-        SalesPage.verifySumForEachUser();
         softAssert.assertEquals(SalesPage.getSalesPerUserCountCells(), 8);
+        SalesPage.verifySumForEachUser();
         softAssert.assertAll();
     }
 

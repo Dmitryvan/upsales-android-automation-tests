@@ -575,10 +575,9 @@ public class CreateEditContactTest extends BaseTest {
         AddSelectEntityPage.select(newUser);
         ActivityManipulationsPage.clickCampaign();
         AddSelectEntityPage.select(newCampaign);
-        ActivityManipulationsPage.scrollToLabel(labelOtherInfo.toUpperCase());
+        ActivityManipulationsPage.swipeFromBottomToTop();
         ActivityManipulationsPage.typeIntoNotes(notes);
 
-        ActivityManipulationsPage.swipeFromBottomToTop();
         ActivityManipulationsPage.swipeFromBottomToTop();
         ActivityManipulationsPage.clickExpenses();
         ActivityManipulationsPage.enterExpenses(newExpenses);
