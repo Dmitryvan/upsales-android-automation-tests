@@ -121,6 +121,7 @@ public class FollowUpActivityTest extends BaseTest {
         ActivityManipulationsPage.swipeFromBottomToTop();
         ActivityManipulationsPage.typeIntoNotes(notes);
         ActivityManipulationsPage.swipeFromBottomToTop();
+        ActivityManipulationsPage.swipeFromBottomToTop();
         ActivityManipulationsPage.clickExpenses();
         ActivityManipulationsPage.enterExpenses(expenses);
         ActivityManipulationsPage.clickSave();

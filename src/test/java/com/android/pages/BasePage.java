@@ -164,6 +164,7 @@ public class BasePage extends Helpers {
         int starty = (int) (size.height * 0.80);
         int endy = (int) (size.height * 0.20);
         int startx = size.width / 2;
+        waitByThread(100);
         ((AppiumDriver)getDriver()).swipe(startx, endy, startx, starty, 3000);
     }
 
@@ -172,6 +173,7 @@ public class BasePage extends Helpers {
         int starty = (int) (size.height * 0.80);
         int endy = (int) (size.height * 0.20);
         int startx = size.width / 2;
+        waitByThread(100);
         ((AppiumDriver)getDriver()).swipe(startx, starty, startx, endy, 3000);
         waitByThread(200);
     }

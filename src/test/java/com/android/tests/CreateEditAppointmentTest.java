@@ -266,10 +266,10 @@ public class CreateEditAppointmentTest extends BaseTest {
         AddSelectEntityPage.clickSelect();
         AppointmentManipulationsPage.clickCampaign();
         AddSelectEntityPage.select(campaign);
-        ActivityManipulationsPage.scrollToLabel(labelOtherInfo);
+        AppointmentManipulationsPage.swipeFromBottomToTop();
         AppointmentManipulationsPage.typeIntoNotes(notes);
 
-        AppointmentManipulationsPage.scrollToLabel("Hours");
+        AppointmentManipulationsPage.swipeFromBottomToTop();
         AppointmentManipulationsPage.clickHoursInPreparation();
         AppointmentManipulationsPage.enterHoursInPreparation(hoursInPreparation);
         AppointmentManipulationsPage.clickSave();
@@ -313,10 +313,10 @@ public class CreateEditAppointmentTest extends BaseTest {
         AddSelectEntityPage.clickSelect();
         AppointmentManipulationsPage.clickCampaign();
         AddSelectEntityPage.select(newCampaign);
-        ActivityManipulationsPage.scrollToLabel(labelOtherInfo);
+        AppointmentManipulationsPage.swipeFromBottomToTop();
         AppointmentManipulationsPage.typeIntoNotes(newNotes);
 
-        AppointmentManipulationsPage.scrollToLabel("Hours");
+        AppointmentManipulationsPage.swipeFromBottomToTop();
         AppointmentManipulationsPage.clickHoursInPreparation();
         AppointmentManipulationsPage.clearHoursInPreparation();
         AppointmentManipulationsPage.enterHoursInPreparation(newHoursInPreparation);

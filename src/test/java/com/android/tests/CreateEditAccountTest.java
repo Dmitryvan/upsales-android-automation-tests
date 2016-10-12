@@ -775,12 +775,11 @@ public class CreateEditAccountTest extends BaseTest {
         AddSelectEntityPage.select(parentAccount);
         AccountManipulationsPage.enterWebsite(website);
         AccountManipulationsPage.swipeFromBottomToTop();
-        AccountManipulationsPage.swipeFromBottomToTop();
         AccountManipulationsPage.typeIntoNotes(notes);
         AccountManipulationsPage.clickCampaign();
         AddSelectEntityPage.select(campaign);
         AddSelectEntityPage.clickSelect();
-        AccountManipulationsPage.scrollToLabel("Categories");
+        AccountManipulationsPage.swipeFromBottomToTop();
         AccountManipulationsPage.clickCategories();
         AddSelectEntityPage.select(category);
         AddSelectEntityPage.clickSelect();
@@ -1009,7 +1008,7 @@ public class CreateEditAccountTest extends BaseTest {
         softAssert.assertEquals(OpportunityPage.getUser(), currentUser);
         softAssert.assertEquals(OpportunityPage.getCloseDateInOpportunity(), Helpers.getCurrentDate());
         softAssert.assertEquals(OpportunityPage.getStage(), stageInOpp);
-        softAssert.assertEquals(OpportunityPage.getContact(), oppDefaultContact);
+        softAssert.assertEquals(OpportunityPage.getContact(), oppNoContacts);
         softAssert.assertEquals(OpportunityPage.getCampaign(), defaultCampaign);
         softAssert.assertEquals(OpportunityPage.getProduct(), product);
         softAssert.assertAll();
@@ -1080,7 +1079,7 @@ public class CreateEditAccountTest extends BaseTest {
         softAssert.assertEquals(OpportunityPage.getUser(), oppUser);
         softAssert.assertEquals(OpportunityPage.getCloseDateInOpportunity(), oppNewCloseDate);
         softAssert.assertEquals(OpportunityPage.getStage(), newChangedStageInOpp);
-        softAssert.assertEquals(OpportunityPage.getContact(), oppDefaultContact);
+        softAssert.assertEquals(OpportunityPage.getContact(), oppNoContacts);
         softAssert.assertEquals(OpportunityPage.getCampaign(), oppNewCampaign);
         OpportunityPage.swipeFromBottomToTop();
         softAssert.assertEquals(OpportunityPage.getProduct(), oppNewProduct);
