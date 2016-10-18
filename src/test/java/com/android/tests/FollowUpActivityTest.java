@@ -103,11 +103,10 @@ public class FollowUpActivityTest extends BaseTest {
         ActivityManipulationsPage.selectDateMonth(dueDateMonth);
         ActivityManipulationsPage.selectDateDay(dueDateDay);
         ActivityManipulationsPage.closePicker();
-//        ActivityManipulationsPage.clickTime();
-//        ActivityManipulationsPage.selectTimeHours(timeHours);
-//        ActivityManipulationsPage.selectTimeMinutes(timeMinutes);
-////        ActivityManipulationsPage.selectTimeAmPm(timeAmPm);
-//        ActivityManipulationsPage.closePicker();
+        ActivityManipulationsPage.clickTime();
+        ActivityManipulationsPage.selectTimeHours(timeHours);
+        ActivityManipulationsPage.selectTimeMinutes(timeMinutes);
+        ActivityManipulationsPage.closePicker();
         ActivityManipulationsPage.clickAccount();
         AddSelectEntityPage.select(account);
         ActivityManipulationsPage.clickContact();
@@ -146,11 +145,10 @@ public class FollowUpActivityTest extends BaseTest {
         ActivityManipulationsPage.selectDateMonth(newDueDateMonth);
         ActivityManipulationsPage.selectDateDay(newDueDateDay);
         ActivityManipulationsPage.closePicker();
-//        ActivityManipulationsPage.clickTime();
-//        ActivityManipulationsPage.selectTimeHours(newHours);
-//        ActivityManipulationsPage.selectTimeMinutes(newMinutes);
-////        ActivityManipulationsPage.selectTimeAmPm(timeAmPm);
-//        ActivityManipulationsPage.closePicker();
+        ActivityManipulationsPage.clickTime();
+        ActivityManipulationsPage.selectTimeHours(newHours);
+        ActivityManipulationsPage.selectTimeMinutes(newMinutes);
+        ActivityManipulationsPage.closePicker();
         ActivityManipulationsPage.clickOpportunity();
         ActivityManipulationsPage.selectValueFromPopUp(opportunity);
         ActivityManipulationsPage.swipeFromBottomToTop();
@@ -163,7 +161,7 @@ public class FollowUpActivityTest extends BaseTest {
         softAssert.assertEquals(newDescription, ActivityPage.getDescriptionOnView());
         softAssert.assertEquals(ActivityPage.getTitleOnView(), activityType.toUpperCase());
         softAssert.assertEquals(ActivityPage.getDate(), newDate);
-//        softAssert.assertEquals(ActivityPage.getTime(), newTime);
+        softAssert.assertEquals(ActivityPage.getTime(), newTime);
         softAssert.assertEquals(ActivityPage.getUserName(), user);
         softAssert.assertEquals(ActivityPage.getAccountName(), account);
         softAssert.assertEquals(ActivityPage.getContact(), contact);
@@ -213,11 +211,10 @@ public class FollowUpActivityTest extends BaseTest {
         ActivityManipulationsPage.selectDateMonth(newDueDateMonth);
         ActivityManipulationsPage.selectDateDay(newDueDateDay);
         ActivityManipulationsPage.closePicker();
-//        ActivityManipulationsPage.clickTime();
-//        ActivityManipulationsPage.selectTimeHours(newHours);
-//        ActivityManipulationsPage.selectTimeMinutes(newMinutes);
-////        ActivityManipulationsPage.selectTimeAmPm(timeAmPm);
-//        ActivityManipulationsPage.closePicker();
+        ActivityManipulationsPage.clickTime();
+        ActivityManipulationsPage.selectTimeHours(newHours);
+        ActivityManipulationsPage.selectTimeMinutes(newMinutes);
+        ActivityManipulationsPage.closePicker();
         ActivityManipulationsPage.clickOpportunity();
         ActivityManipulationsPage.selectValueFromPopUp(testOpp4);
         ActivityManipulationsPage.swipeFromBottomToTop();
@@ -228,7 +225,7 @@ public class FollowUpActivityTest extends BaseTest {
         softAssert.assertEquals(newDescription, ActivityPage.getDescriptionOnView());
         softAssert.assertEquals(ActivityPage.getTitleOnView(), testActivityType4.toUpperCase());
         softAssert.assertEquals(ActivityPage.getDate(), newDate);
-//        softAssert.assertEquals(ActivityPage.getTime(), newTime);
+        softAssert.assertEquals(ActivityPage.getTime(), newTime);
         softAssert.assertEquals(ActivityPage.getAccountName(), testAccount4);
         softAssert.assertEquals(ActivityPage.getContact(), testContact2);
         softAssert.assertEquals(ActivityPage.getOpportunity(), testOpp4);
@@ -246,7 +243,7 @@ public class FollowUpActivityTest extends BaseTest {
         softAssert.assertAll();
     }
 
-    @Test(priority = 3, enabled = false) //CASE 3
+    @Test(priority = 3) //CASE 3
     public void softFollowUpActivityFromDashboard() {
         SoftAssertExtended softAssert = new SoftAssertExtended();
         LeftMenuPage.clickDashboard();
@@ -279,7 +276,6 @@ public class FollowUpActivityTest extends BaseTest {
         ActivityManipulationsPage.clickTime();
         ActivityManipulationsPage.selectTimeHours(newHours);
         ActivityManipulationsPage.selectTimeMinutes(newMinutes);
-//        ActivityManipulationsPage.selectTimeAmPm(timeAmPm);
         ActivityManipulationsPage.closePicker();
         ActivityManipulationsPage.clickOpportunity();
         ActivityManipulationsPage.selectValueFromPopUp(testOpp4);
@@ -334,11 +330,10 @@ public class FollowUpActivityTest extends BaseTest {
         ActivityManipulationsPage.selectDateMonth(newDueDateMonth);
         ActivityManipulationsPage.selectDateDay(newDueDateDay);
         ActivityManipulationsPage.closePicker();
-//        ActivityManipulationsPage.clickTime();
-//        ActivityManipulationsPage.selectTimeHours(newHours);
-//        ActivityManipulationsPage.selectTimeMinutes(newMinutes);
-////        ActivityManipulationsPage.selectTimeAmPm(timeAmPm);
-//        ActivityManipulationsPage.closePicker();
+        ActivityManipulationsPage.clickTime();
+        ActivityManipulationsPage.selectTimeHours(newHours);
+        ActivityManipulationsPage.selectTimeMinutes(newMinutes);
+        ActivityManipulationsPage.closePicker();
         ActivityManipulationsPage.hideKeyboard();
         ActivityManipulationsPage.clickOpportunity();
         ActivityManipulationsPage.selectValueFromPopUp(testOpp4);
@@ -353,7 +348,7 @@ public class FollowUpActivityTest extends BaseTest {
         softAssert.assertEquals(newDescription, BasePage.getDescriptionOnView());
         softAssert.assertEquals(ActivityPage.getTitleOnView(), testActivityType.toUpperCase());
         softAssert.assertEquals(ActivityPage.getDate(), newDate);
-//        softAssert.assertEquals(ActivityPage.getTime(), newTime);
+        softAssert.assertEquals(ActivityPage.getTime(), newTime);
         softAssert.assertEquals(ActivityPage.getAccountName(), testAccount4);
         softAssert.assertEquals(ActivityPage.getContact(), testContact);
         softAssert.assertEquals(ActivityPage.getOpportunity(), testOpp4);
@@ -388,11 +383,10 @@ public class FollowUpActivityTest extends BaseTest {
         ActivityManipulationsPage.selectDateMonth(dueDateMonth);
         ActivityManipulationsPage.selectDateDay(dueDateDay);
         ActivityManipulationsPage.closePicker();
-//        ActivityManipulationsPage.clickTime();
-//        ActivityManipulationsPage.selectTimeHours(timeHours);
-//        ActivityManipulationsPage.selectTimeMinutes(timeMinutes);
-////        ActivityManipulationsPage.selectTimeAmPm(timeAmPm);
-//        ActivityManipulationsPage.closePicker();
+        ActivityManipulationsPage.clickTime();
+        ActivityManipulationsPage.selectTimeHours(timeHours);
+        ActivityManipulationsPage.selectTimeMinutes(timeMinutes);
+        ActivityManipulationsPage.closePicker();
         ActivityManipulationsPage.clickUser();
         AddSelectEntityPage.select(user);
         ActivityManipulationsPage.clickCampaign();
@@ -425,11 +419,10 @@ public class FollowUpActivityTest extends BaseTest {
         ActivityManipulationsPage.selectDateMonth(newDueDateMonth);
         ActivityManipulationsPage.selectDateDay(newDueDateDay);
         ActivityManipulationsPage.closePicker();
-//        ActivityManipulationsPage.clickTime();
-//        ActivityManipulationsPage.selectTimeHours(newHours);
-//        ActivityManipulationsPage.selectTimeMinutes(newMinutes);
-////        ActivityManipulationsPage.selectTimeAmPm(timeAmPm);
-//        ActivityManipulationsPage.closePicker();
+        ActivityManipulationsPage.clickTime();
+        ActivityManipulationsPage.selectTimeHours(newHours);
+        ActivityManipulationsPage.selectTimeMinutes(newMinutes);
+        ActivityManipulationsPage.closePicker();
         ActivityManipulationsPage.swipeFromBottomToTop();
         softAssert.assertEquals(ActivityManipulationsPage.getNotes(), notes);
         ActivityManipulationsPage.swipeFromBottomToTop();
@@ -440,7 +433,7 @@ public class FollowUpActivityTest extends BaseTest {
         softAssert.assertEquals(newDescription, ActivityPage.getDescriptionOnView());
         softAssert.assertEquals(ActivityPage.getTitleOnView(), activityType.toUpperCase());
         softAssert.assertEquals(ActivityPage.getDate(), newDate);
-//        softAssert.assertEquals(ActivityPage.getTime(), newTime);
+        softAssert.assertEquals(ActivityPage.getTime(), newTime);
         softAssert.assertEquals(ActivityPage.getUserName(), user);
         softAssert.assertEquals(ActivityPage.getAccountName(), accountName);
         softAssert.assertEquals(ActivityPage.getCampaign(), campaign);
@@ -486,11 +479,10 @@ public class FollowUpActivityTest extends BaseTest {
         ActivityManipulationsPage.selectDateMonth(dueDateMonth);
         ActivityManipulationsPage.selectDateDay(dueDateDay);
         ActivityManipulationsPage.closePicker();
-//        ActivityManipulationsPage.clickTime();
-//        ActivityManipulationsPage.selectTimeHours(timeHours);
-//        ActivityManipulationsPage.selectTimeMinutes(timeMinutes);
-////        ActivityManipulationsPage.selectTimeAmPm(timeAmPm);
-//        ActivityManipulationsPage.closePicker();
+        ActivityManipulationsPage.clickTime();
+        ActivityManipulationsPage.selectTimeHours(timeHours);
+        ActivityManipulationsPage.selectTimeMinutes(timeMinutes);
+        ActivityManipulationsPage.closePicker();
         ActivityManipulationsPage.clickUser();
         AddSelectEntityPage.select(user);
         ActivityManipulationsPage.clickCampaign();
@@ -509,7 +501,7 @@ public class FollowUpActivityTest extends BaseTest {
         ActivityManipulationsPage.hideKeyboard();
         softAssert.assertEquals(ActivityManipulationsPage.getActivityType(), activityType);
         softAssert.assertEquals(ActivityManipulationsPage.getCurrentDate(), ActivityManipulationsPage.getDueDate());
-//        softAssert.assertEquals(ActivityManipulationsPage.getTime(), defaultTime);
+        softAssert.assertEquals(ActivityManipulationsPage.getTime(), defaultTime);
         softAssert.assertEquals(ActivityManipulationsPage.getAccount(), accountName);
         softAssert.assertEquals(ActivityManipulationsPage.getContact(), contactName);
         softAssert.assertEquals(ActivityManipulationsPage.getOpportunity(), defaultOpportunity);
@@ -523,11 +515,10 @@ public class FollowUpActivityTest extends BaseTest {
         ActivityManipulationsPage.selectDateMonth(newDueDateMonth);
         ActivityManipulationsPage.selectDateDay(newDueDateDay);
         ActivityManipulationsPage.closePicker();
-//        ActivityManipulationsPage.clickTime();
-//        ActivityManipulationsPage.selectTimeHours(newHours);
-//        ActivityManipulationsPage.selectTimeMinutes(newMinutes);
-////        ActivityManipulationsPage.selectTimeAmPm(timeAmPm);
-//        ActivityManipulationsPage.closePicker();
+        ActivityManipulationsPage.clickTime();
+        ActivityManipulationsPage.selectTimeHours(newHours);
+        ActivityManipulationsPage.selectTimeMinutes(newMinutes);
+        ActivityManipulationsPage.closePicker();
         ActivityManipulationsPage.swipeFromBottomToTop();
         softAssert.assertEquals(ActivityManipulationsPage.getNotes(), notes);
         ActivityManipulationsPage.swipeFromBottomToTop();
@@ -540,7 +531,7 @@ public class FollowUpActivityTest extends BaseTest {
         softAssert.assertEquals(ActivityPage.getTitleOnView(), activityType.toUpperCase());
         softAssert.assertEquals(ActivityPage.getAccountName(), accountName);
         softAssert.assertEquals(ActivityPage.getDate(), newDate);
-//        softAssert.assertEquals(ActivityPage.getTime(), newTime);
+        softAssert.assertEquals(ActivityPage.getTime(), newTime);
         softAssert.assertEquals(ActivityPage.getContact(), contactName);
         softAssert.assertEquals(ActivityPage.getUserName(), user);
         softAssert.assertEquals(ActivityPage.getCampaign(), campaign);

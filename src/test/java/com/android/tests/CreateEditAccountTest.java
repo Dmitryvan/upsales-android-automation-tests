@@ -812,11 +812,10 @@ public class CreateEditAccountTest extends BaseTest {
         ActivityManipulationsPage.selectDateMonth(dueDateMonth);
         ActivityManipulationsPage.selectDateDay(dueDateDay);
         ActivityManipulationsPage.closePicker();
-//        ActivityManipulationsPage.clickTime();
-//        ActivityManipulationsPage.selectTimeHours(timeHours);
-//        ActivityManipulationsPage.selectTimeMinutes(timeMinutes);
-////        ActivityManipulationsPage.selectTimeAmPm(timeAmPm);
-//        ActivityManipulationsPage.closePicker();
+        ActivityManipulationsPage.clickTime();
+        ActivityManipulationsPage.selectTimeHours(timeHours);
+        ActivityManipulationsPage.selectTimeMinutes(timeMinutes);
+        ActivityManipulationsPage.closePicker();
         ActivityManipulationsPage.clickUser();
         AddSelectEntityPage.select(user);
         ActivityManipulationsPage.clickCampaign();
@@ -835,8 +834,8 @@ public class CreateEditAccountTest extends BaseTest {
         softAssert.assertEquals(ActivityPage.getAccountName(), accountName);
         softAssert.assertEquals(ActivityPage.getUserName(), user);
         softAssert.assertEquals(ActivityPage.getDate(), dueDate);
-//        softAssert.assertEquals(ActivityPage.getTime(), time);
-//        softAssert.assertEquals(ActivityPage.getContact(), "Hans Christer Zaar");
+        softAssert.assertEquals(ActivityPage.getTime(), time);
+        softAssert.assertEquals(ActivityPage.getContact(), "Hans Christer Zaar");
         softAssert.assertEquals(ActivityPage.getCampaign(), newCampaign);
         softAssert.assertEquals(ActivityPage.getOpportunity(), lblNone);
 //        ActivityPage.clickShowMore();
@@ -894,7 +893,7 @@ public class CreateEditAccountTest extends BaseTest {
         assertEquals(SearchPage.getFirstSearchResult(), accountName);
     }
 
-    @Test(priority = 11, enabled = false) // Case 47
+    @Test(priority = 11) // Case 47
     public void softCreateAccountCreateAppointmentEditAppointment() {
         SoftAssertExtended softAssert = new SoftAssertExtended();
         AccountManipulationsPage.enterAccountName(accountName);
@@ -1307,11 +1306,10 @@ public class CreateEditAccountTest extends BaseTest {
         ActivityManipulationsPage.setDescription();
         activityDescription = ActivityManipulationsPage.getDescription();
         ActivityManipulationsPage.enterDescription(activityDescription);
-//        ActivityManipulationsPage.clickTime();
-//        ActivityManipulationsPage.selectTimeHours(timeHours);
-//        ActivityManipulationsPage.selectTimeMinutes(timeMinutes);
-////        ActivityManipulationsPage.selectTimeAmPm(timeAmPm);
-//        ActivityManipulationsPage.closePicker();
+        ActivityManipulationsPage.clickTime();
+        ActivityManipulationsPage.selectTimeHours(timeHours);
+        ActivityManipulationsPage.selectTimeMinutes(timeMinutes);
+        ActivityManipulationsPage.closePicker();
         ActivityManipulationsPage.clickUser();
         AddSelectEntityPage.select(user);
         ActivityManipulationsPage.clickCampaign();
@@ -1329,7 +1327,7 @@ public class CreateEditAccountTest extends BaseTest {
         softAssert.assertEquals(ActivityPage.getAccountName(), accountName);
         softAssert.assertEquals(ActivityPage.getUserName(), user);
         softAssert.assertEquals(ActivityPage.getDate(), ActivityPage.getCurrentDate());
-//        softAssert.assertEquals(ActivityPage.getTime(), time);
+        softAssert.assertEquals(ActivityPage.getTime(), time);
         softAssert.assertEquals(ActivityPage.getContact(), contactName);
 //        softAssert.assertEquals(ActivityPage.getContactTitle(), contactTitle);
         softAssert.assertEquals(ActivityPage.getCampaign(), campaign);

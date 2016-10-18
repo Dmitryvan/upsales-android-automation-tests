@@ -672,7 +672,7 @@ public class CreateEditContactTest extends BaseTest {
         softAssert.assertAll();
     }
 
-    @Test(priority = 12, enabled = false)
+    @Test(priority = 12)
     public void softCreateContactAndCreateAppointmentAndEditAppointment() {
         SoftAssertExtended softAssert = new SoftAssertExtended();
         ContactManipulationPage.enterContactName(contactName);

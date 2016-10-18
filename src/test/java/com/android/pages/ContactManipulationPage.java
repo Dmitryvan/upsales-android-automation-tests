@@ -84,9 +84,6 @@ public class ContactManipulationPage extends BasePage {
     }
 
     public static void clickExtraID() {
-//        wait(fieldExtraID);
-//        waitToBeClickable(fieldExtraID);
-//        find(fieldExtraID).click();
         getDriver().getPageSource();
         find(fieldExtraID).click();
     }
@@ -101,6 +98,7 @@ public class ContactManipulationPage extends BasePage {
     }
 
     public static void clickChanceOfSuccess() {
+        getDriver().getPageSource();
         find(fieldChanceOfSuccess).click();
     }
 

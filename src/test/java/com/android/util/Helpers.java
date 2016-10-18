@@ -1,10 +1,7 @@
 package com.android.util;
 
 import com.android.pages.BasePage;
-import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileBy;
-import io.appium.java_client.MobileElement;
-import io.appium.java_client.SwipeElementDirection;
+import io.appium.java_client.*;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.ios.IOSElement;
@@ -347,23 +344,135 @@ public class Helpers {
 
     public static void selectTimeHours(String hours) {
 
-        find(MobileBy.xpath(
-                "//android.widget.RadialTimePickerView.RadialPickerTouchHelper["
-                        + (Integer.parseInt(hours) + 1) + "]")).click();
-//        MobileElement el = (MobileElement) find(pickerFirstField);
-//        spinNumericField(el, hours);
-//        el.enterExpenses();
-//        el.sendKeys(hours);
+        WebElement el = find(By.id("time_picker"));
+
+        int xP = el.getLocation().getX();
+        int yP = el.getLocation().getY();
+
+        int x = 0, y = 0;
+
+        TouchAction action = new TouchAction((AndroidDriver)getDriver());
+
+        switch (hours) {
+            case "1":
+                x = 444; y = 244;
+                break;
+            case "2":
+                x = 510; y = 300;
+                break;
+            case "3":
+                x = 534; y = 393;
+                break;
+            case "4":
+                x = 510; y = 483;
+                break;
+            case "5":
+                x = 444; y = 549;
+                break;
+            case "6":
+                x = 354; y = 573;
+                break;
+            case "7":
+                x = 261; y = 549;
+                break;
+            case "8":
+                x = 195; y = 483;
+                break;
+            case "9":
+                x = 171; y = 393;
+                break;
+            case "10":
+                x = 198; y = 300;
+                break;
+            case "11":
+                x = 261; y = 244;
+                break;
+            case "12":
+                x = 354; y = 213;
+                break;
+            case "13":
+                x = 480; y = 174;
+                break;
+            case "14":
+                x = 570; y = 267;
+                break;
+            case "15":
+                x = 606; y = 393;
+                break;
+            case "16":
+                x = 570; y = 516;
+                break;
+            case "17":
+                x = 480; y = 609;
+                break;
+            case "18":
+                x = 354; y = 642;
+                break;
+            case "19":
+                x = 228; y = 609;
+                break;
+            case "20":
+                x = 138; y = 516;
+                break;
+            case "21":
+                x = 102; y = 393;
+                break;
+            case "22":
+                x = 138; y = 267;
+                break;
+            case "23":
+                x = 228; y = 174;
+                break;
+            case "00":
+            case "24":
+                x = 354; y = 141;
+                break;
+        }
+
+        action.tap(xP + x, yP + y).release().perform();
+
+//        find(MobileBy.xpath(
+//                "//android.widget.RadialTimePickerView.RadialPickerTouchHelper["
+//                        + (Integer.parseInt(hours) + 1) + "]")).click();
+////        MobileElement el = (MobileElement) find(pickerFirstField);
+////        spinNumericField(el, hours);
+////        el.enterExpenses();
+////        el.sendKeys(hours);
     }
 
     public static void selectTimeMinutes(String minutes) {
-        find(MobileBy.xpath(
-                "//android.widget.RadialTimePickerView.RadialPickerTouchHelper[contains(@content-desc, '"
-                        + minutes + "')]")).click();
-//        MobileElement el = (MobileElement) find(pickerSecondField);
-//        spinNumericField(el, minutes);
-//        el.enterExpenses();
-//        el.sendKeys(minutes);
+        WebElement el = find(By.id("time_picker"));
+
+        int xP = el.getLocation().getX();
+        int yP = el.getLocation().getY();
+
+        int x = 0, y = 0;
+
+        TouchAction action = new TouchAction((AndroidDriver)getDriver());
+
+        switch (minutes) {
+            case "00":
+                x = 354; y = 141;
+                break;
+            case "15":
+                x = 606; y = 393;
+                break;
+            case "30":
+                x = 354; y = 642;
+                break;
+            case "45":
+                x = 102; y = 393;
+                break;
+        }
+
+        action.tap(xP + x, yP + y).release().perform();
+//        find(MobileBy.xpath(
+//                "//android.widget.RadialTimePickerView.RadialPickerTouchHelper[contains(@content-desc, '"
+//                        + minutes + "')]")).click();
+////        MobileElement el = (MobileElement) find(pickerSecondField);
+////        spinNumericField(el, minutes);
+////        el.enterExpenses();
+////        el.sendKeys(minutes);
     }
 
     public static void selectTimeAmPm(String aMpM) {

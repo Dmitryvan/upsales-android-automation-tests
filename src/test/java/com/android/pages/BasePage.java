@@ -221,7 +221,7 @@ public class BasePage extends Helpers {
     }
 
     public static String getNotes() {
-        wait(fieldNotes);
+        getDriver().getPageSource();
         return getText(fieldNotes);
     }
 
