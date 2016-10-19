@@ -835,7 +835,6 @@ public class CreateEditAccountTest extends BaseTest {
         softAssert.assertEquals(ActivityPage.getUserName(), user);
         softAssert.assertEquals(ActivityPage.getDate(), dueDate);
         softAssert.assertEquals(ActivityPage.getTime(), time);
-        softAssert.assertEquals(ActivityPage.getContact(), "Hans Christer Zaar");
         softAssert.assertEquals(ActivityPage.getCampaign(), newCampaign);
         softAssert.assertEquals(ActivityPage.getOpportunity(), lblNone);
 //        ActivityPage.clickShowMore();

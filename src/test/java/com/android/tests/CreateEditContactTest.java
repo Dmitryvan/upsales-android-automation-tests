@@ -723,7 +723,6 @@ public class CreateEditContactTest extends BaseTest {
         AppointmentManipulationsPage.closePicker();
         AppointmentManipulationsPage.selectTimeHours(newStartHours);
         AppointmentManipulationsPage.selectTimeMinutes(newStartMinutes);
-        AppointmentManipulationsPage.selectTimeAmPm(newStartAmPm);
         AppointmentManipulationsPage.closePicker();
         AppointmentManipulationsPage.clickEndsDate();
         AppointmentManipulationsPage.selectDateMonth(newEndMonth);
@@ -732,7 +731,6 @@ public class CreateEditContactTest extends BaseTest {
         AppointmentManipulationsPage.closePicker();
         AppointmentManipulationsPage.selectTimeHours(newEndHours);
         AppointmentManipulationsPage.selectTimeMinutes(newEndMinutes);
-        AppointmentManipulationsPage.selectTimeAmPm(newEndAmPm);
         AppointmentManipulationsPage.closePicker();
 
         AppointmentManipulationsPage.clickLocation();

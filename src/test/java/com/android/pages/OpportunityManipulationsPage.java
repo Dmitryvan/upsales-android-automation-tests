@@ -93,6 +93,7 @@ public class OpportunityManipulationsPage extends BasePage {
     }
 
     public static void clickNewOrderRow() {
+        getDriver().getPageSource();
         find(buttonNewOrderRow).click();
     }
 
