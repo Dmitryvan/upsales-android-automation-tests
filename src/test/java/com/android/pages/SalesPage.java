@@ -53,7 +53,7 @@ public class SalesPage extends BasePage {
     }
 
     public static int countAverageValue() {
-        ((MobileDriver)getDriver()).scrollTo("SALES TOTAL");
+        scrollToLabel("SALES TOTAL");
         int sec = getIntValue(labelTotalSalesValue);
         int orders = getLabelOrdersNumericValue();
         float avr = (float) sec / orders;

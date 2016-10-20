@@ -5,6 +5,8 @@
     </listeners>
     <test name="App Test">
         <classes>
+            <class name="com.android.tests.FollowUpActivityTest"/>
+            <class name="com.android.tests.FollowUpAppointmentTest"/>
             <class name="com.android.tests.DashboardTest"/>
             <class name="com.android.tests.ActivitiesNavigationAndVerifyTest"/>
             <class name="com.android.tests.DashboardFilterTest"/>
@@ -22,8 +24,6 @@
             <class name="com.android.tests.CreateEditOpportunityTest"/>
             <class name="com.android.tests.CreateEditOrderTest"/>
             <class name="com.android.tests.CreateEditAccountTest"/>
-            <class name="com.android.tests.FollowUpActivityTest"/>
-            <class name="com.android.tests.FollowUpAppointmentTest"/>
             <class name="com.android.tests.SalesOpportunityTransformationTest"/>
         </classes>
     </test>

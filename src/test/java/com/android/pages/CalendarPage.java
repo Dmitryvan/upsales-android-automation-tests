@@ -162,6 +162,6 @@ public class CalendarPage extends BasePage {
     }
 
     public static void scrollToTheFirstRecord() {
-        ((MobileDriver)getDriver()).scrollTo((firstDateInTable));
+        scrollToLabel((firstDateInTable));
     }
 }

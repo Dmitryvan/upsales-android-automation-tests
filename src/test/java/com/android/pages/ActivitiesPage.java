@@ -211,7 +211,7 @@ public class ActivitiesPage extends BasePage {
     }
 
     public static void selectActivity(String activity) {
-        ((AndroidDriver)getDriver()).scrollTo(activity);
+        scrollToLabel(activity);
         try {
             find(MobileBy.xpath("//*[contains(@resource-id, 'descriptionTxt') and @text='" + activity + "']")).click();
         } catch (NoSuchElementException e) {

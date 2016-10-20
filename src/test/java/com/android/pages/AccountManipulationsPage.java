@@ -65,7 +65,7 @@ public class AccountManipulationsPage extends BasePage {
     }
 
     public static void scrollToTheTop() {
-        ((MobileDriver)getDriver()).scrollTo("Account name");
+        scrollToLabel("Account name");
     }
 
     public static void enterPhone (String phone) {
