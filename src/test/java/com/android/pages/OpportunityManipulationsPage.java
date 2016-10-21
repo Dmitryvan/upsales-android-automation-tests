@@ -122,6 +122,7 @@ public class OpportunityManipulationsPage extends BasePage {
     }
 
     public static String getLabelNotesInOppotunity() {
+        getDriver().getPageSource();
         return getText(labelNotes);
     }
 }
