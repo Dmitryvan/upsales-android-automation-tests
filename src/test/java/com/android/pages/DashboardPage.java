@@ -42,6 +42,8 @@ public class DashboardPage extends BasePage {
     private static final By salesPipelinePanel = MobileBy.xpath("//android.support.v4.view.ViewPager[1]/android.widget.LinearLayout[1]");
     private static final By labelShowAllActivities = MobileBy.id("show_all_activities");
 
+    private static final By buttonDelete = MobileBy.id("trash");
+
     public static String getLabelSales() {
         return getText(labelSales);
     }
@@ -114,6 +116,10 @@ public class DashboardPage extends BasePage {
 
     public static void clickLabelPipeline() {
         find(labelPipeline).click();
+    }
+
+    public static void clickDelete() {
+        find(buttonDelete).click();
     }
 
     public static void saveCurrentSalesAndPipelineValues() throws InterruptedException {
@@ -272,5 +278,25 @@ public class DashboardPage extends BasePage {
         find(MobileBy.xpath("//*[starts-with(@text, \"MY OPEN\")]/../following-sibling::android.widget.RelativeLayout[1]")).click();
         ActivityPage.clickTools();
         return ActivityPage.getTextEditActivity();
+    }
+
+    public static void swipeActivity(String name) {
+        AndroidElement activity = (AndroidElement) find(MobileBy.xpath("//*[contains(resoirce-id, dashboard_item)]//*[@text='" + name + "']/.."));
+        activity.swipe(SwipeElementDirection.LEFT, 500);
+    }
+
+    public static boolean checkActiviyIsPresent(String name) {
+        try {
+            find(MobileBy.xpath("//*[contains(resoirce-id, dashboard_item)]//*[@text='" + name + "']/.."));
+            return true;
+        } catch (Exception e1) {
+            try {
+                swipeFromBottomToTop();
+                find(MobileBy.xpath("//*[contains(resoirce-id, dashboard_item)]//*[@text='" + name + "']/.."));
+                return true;
+            } catch (Exception e2) {
+                return false;
+            }
+        }
     }
 }

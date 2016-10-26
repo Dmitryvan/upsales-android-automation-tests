@@ -186,6 +186,7 @@ public class AppointmentManipulationsPage extends BasePage {
     }
 
     public static String getLabelNotesInAppointment() {
+        getDriver().getPageSource();
         return getText(labelNotes);
     }
 }
