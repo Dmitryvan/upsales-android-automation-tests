@@ -13,7 +13,7 @@ import java.util.List;
 
 public class DashboardPage extends BasePage {
 
-    public static final int cellsOnScreenSize = 6;
+    private static final int cellsOnScreenSize = 6;
     private static ArrayList<float[]> usersValuesStorage = new ArrayList<>();
     private static float[] salesAndPipelineValues = new float[2];
 

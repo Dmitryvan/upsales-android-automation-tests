@@ -61,6 +61,7 @@ public class AppointmentPage extends BasePage {
     }
 
     public static String getAccountName() {
+        getDriver().getPageSource();
         waitToBeClickable(buttonAccount);
         return getText(buttonAccount);
     }

@@ -251,6 +251,7 @@ public class BasePage extends Helpers {
     }
 
     public static String getLabelNotes() {
+        getDriver().getPageSource();
         return getText(labelNotes);
     }
 
