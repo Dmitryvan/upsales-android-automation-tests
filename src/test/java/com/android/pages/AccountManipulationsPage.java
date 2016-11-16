@@ -13,7 +13,7 @@ public class AccountManipulationsPage extends BasePage {
     private static final By buttonNext = MobileBy.IosUIAutomation(".navigationBars()[0].buttons()[2]");
     private static final By fieldSearchAccountName = MobileBy.IosUIAutomation(".textFields()[0]");
 
-    private static final By fieldAccountName = MobileBy.xpath("//android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/TextInputLayout[1]/android.widget.EditText[1]");
+    private static final By fieldAccountName = MobileBy.xpath("//*[contains(@resource-id, 'contact_name_field')]//*[contains(@resource-id, 'edit')]");
     private static final By buttonParentAccount = MobileBy.xpath("//android.widget.RelativeLayout[2]/android.widget.RelativeLayout[1]");
     private static final By fieldParentAccount = MobileBy.xpath("//android.widget.RelativeLayout[2]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]");
     private static final By buttonAccountManagers = MobileBy.xpath("//android.widget.RelativeLayout[3]/android.widget.RelativeLayout[1]");
@@ -38,10 +38,10 @@ public class AccountManipulationsPage extends BasePage {
     private static final By labelPhone = MobileBy.id("phone_container");
     private static final By labelWebsite = MobileBy.id("text_input_website");
     private static final By labelAddress = MobileBy.xpath("//android.widget.RelativeLayout[3]/android.widget.LinearLayout[1]/android.widget.LinearLayout[1]/android.widget.TextView[1]");
-    private static final By labelStreet = MobileBy.xpath("//*[contains(@resource-id, 'street')]/../../TextInputLayout[1]");
-    private static final By labelZipcode = MobileBy.xpath("//*[contains(@resource-id, 'zipcode')]/../../TextInputLayout[2]");
-    private static final By labelCity = MobileBy.xpath("//*[contains(@resource-id, 'city')]/../../TextInputLayout[3]");
-    private static final By labelCountry = MobileBy.xpath("//*[contains(@resource-id, 'country')]/../../TextInputLayout[4]");
+    private static final By labelStreet = MobileBy.xpath("//*[contains(@resource-id, 'street')]/../..");
+    private static final By labelZipcode = MobileBy.xpath("//*[contains(@resource-id, 'zipcode')]/../..");
+    private static final By labelCity = MobileBy.xpath("//*[contains(@resource-id, 'city')]/../..");
+    private static final By labelCountry = MobileBy.xpath("//*[contains(@resource-id, 'country')]/../..");
 
     private static final By popupLabelAccountName = MobileBy.IosUIAutomation(".staticTexts()[1]");
     private static final By popupLabelSuccessCreated = MobileBy.IosUIAutomation(".staticTexts()[2]");
@@ -133,6 +133,7 @@ public class AccountManipulationsPage extends BasePage {
     }
 
     public static String getAddressLabelValue() {
+        getDriver().getPageSource();
         return getText(labelAddress);
     }
 

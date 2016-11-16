@@ -23,7 +23,7 @@ public class OpportunityManipulationsPage extends BasePage {
     private static final By labelNotes = MobileBy.xpath("//*[contains(@resource-id, 'notes_field_below')]//*[contains(@resource-id, 'name')]");
 
     private static final By buttonUser = MobileBy.id("sales_representative_field");
-    private static final By buttonStage = MobileBy.id("stage_field");
+    private static final By buttonStage = MobileBy.xpath("//*[contains(@resource-id, 'stage_field')]//*[contains(@resource-id, 'field')]");
     private static final By buttonCloseDate = MobileBy.id("date_field");
     private static final By buttonNewOrderRow = MobileBy.id("new_oredr");
 
@@ -50,7 +50,7 @@ public class OpportunityManipulationsPage extends BasePage {
     }
 
     public static void clickStage() {
-        wait(buttonStage);
+        getDriver().getPageSource();
         find(buttonStage).click();
         waitByThread(1000);
     }
