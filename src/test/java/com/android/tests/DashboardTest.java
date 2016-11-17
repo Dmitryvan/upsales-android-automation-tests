@@ -98,7 +98,7 @@ public class DashboardTest extends BaseTest {
     @Test(priority = 4) //CASE 3
     public void softMyAppointmentsTodayVerification() {
         SoftAssertExtended softAssert = new SoftAssertExtended();
-        softAssert.assertTrue(DashboardPage.checkAllAppointmentsAreForToday(today));
+        softAssert.assertTrue(DashboardPage.checkAllAppointmentsAreForDate(today));
         int appCount = DashboardPage.getMyAppointmentsTodayCount();
         softAssert.assertEquals(DashboardPage.getLastAppType(appCount), editAppointment);
         AppointmentPage.closePopUp();

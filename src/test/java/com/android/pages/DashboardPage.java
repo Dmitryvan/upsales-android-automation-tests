@@ -29,7 +29,6 @@ public class DashboardPage extends BasePage {
 
     private static final By salesWidget = MobileBy.id("sales_view");
     private static final By pipelineWidget = MobileBy.id("pipeline_view");
-    private static final List<WebElement> date = findElements(MobileBy.id("date"));
 
     private static final By labelShowMore = MobileBy.id("show_more");
 
@@ -229,13 +228,18 @@ public class DashboardPage extends BasePage {
         return getFloatValue(labelPipelineValue);
     }
 
-    public static boolean checkAllAppointmentsAreForToday(String today) {
+    public static boolean checkAllAppointmentsAreForDate(String forDate) {
+        List<WebElement> date = findElements(MobileBy.id("date"));
         int appointmentsCount = getMyAppointmentsTodayCount();
+
+        if(appointmentsCount > 5)
+            appointmentsCount = 5;
+
         for (int i = 0; i < appointmentsCount; i++) {
             String appDate = date.get(i).getText().substring(6);
-            if (appDate.equals(today)) return true;
+            if (!appDate.equals(forDate)) return false;
         }
-        return false;
+        return true;
     }
 
     public static void swipeLeft() {
